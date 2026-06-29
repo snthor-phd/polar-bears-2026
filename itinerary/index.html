@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Northern Lights &amp; Polar Bears — 2026 Caravan</title>
+<style>
+  :root{
+    --ink:#16202e;          /* deep midnight slate — text + dark hero */
+    --ink-soft:#2b3a4d;
+    --frost:#f4f1e9;         /* warm paper page background */
+    --snow:#ffffff;          /* card surface */
+    --aurora:#36c98e;        /* signature aurora green (sparing) */
+    --aurora-deep:#1c8a64;
+    --violet:#7a6cc6;        /* Polar Bear Town social motif */
+    --blue:#34618f;          /* tours / activities */
+    --amber:#d98a2b;         /* travel + heads-up */
+    --stone:#6c7787;         /* muted captions / routine */
+    --line:#e4ddcd;          /* hairline on paper */
+    --line-soft:#eee9dc;
+    --shadow:0 1px 2px rgba(22,32,46,.05),0 8px 24px rgba(22,32,46,.06);
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;background:var(--frost);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.5;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;color:#eef3f1;
+    background:
+      radial-gradient(120% 90% at 20% -20%, rgba(54,201,142,.40), transparent 55%),
+      radial-gradient(120% 90% at 85% -10%, rgba(122,108,198,.42), transparent 55%),
+      linear-gradient(180deg,#0c1622 0%, #142233 60%, #16202e 100%);
+  }
+  .aurora-band{
+    position:absolute;inset:-30% -10% auto -10%;height:70%;
+    background:
+      conic-gradient(from 200deg at 30% 50%, transparent, rgba(54,201,142,.55), transparent 40%),
+      conic-gradient(from 20deg at 75% 40%, transparent, rgba(91,141,239,.5), transparent 38%),
+      conic-gradient(from 120deg at 55% 60%, transparent, rgba(122,108,198,.45), transparent 35%);
+    filter:blur(34px);opacity:.85;
+    animation:drift 16s ease-in-out infinite alternate;
+    pointer-events:none;
+  }
+  @keyframes drift{
+    0%{transform:translate3d(-3%,0,0) scale(1.05);}
+    100%{transform:translate3d(4%,2%,0) scale(1.12);}
+  }
+  .hero-inner{position:relative;padding:54px 0 40px;}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--aurora);font-weight:600;margin:0 0 14px;
+  }
+  .hero h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(2.1rem,6vw,3.5rem);line-height:1.04;
+    margin:0;letter-spacing:-.01em;
+  }
+  .hero h1 .amp{color:var(--aurora);font-style:italic;}
+  .hero .sub{
+    margin:16px 0 0;color:#b9c6cf;font-size:1.05rem;max-width:48ch;
+  }
+  .route-line{
+    margin:26px 0 6px;font-size:.84rem;color:#cdd7dd;
+    display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;
+  }
+  .route-line b{color:#eef3f1;font-weight:600;}
+  .route-line .arr{color:var(--aurora);}
+  .stats{
+    display:flex;flex-wrap:wrap;gap:28px;margin-top:30px;
+    padding-top:24px;border-top:1px solid rgba(255,255,255,.14);
+  }
+  .stat .n{font-family:var(--serif);font-size:1.7rem;font-weight:600;line-height:1;}
+  .stat .l{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#9fb0b9;margin-top:6px;}
+
+  /* ---------- CONTROLS ---------- */
+  .controls{
+    position:sticky;top:0;z-index:20;background:rgba(244,241,233,.92);
+    backdrop-filter:saturate(1.2) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .controls-inner{display:flex;align-items:center;gap:14px;padding:10px 0;flex-wrap:wrap;}
+  .jump{display:flex;gap:4px;flex-wrap:wrap;flex:1;min-width:0;}
+  .jump a{
+    font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
+    color:var(--ink-soft);text-decoration:none;padding:5px 9px;border-radius:999px;
+    border:1px solid transparent;white-space:nowrap;
+  }
+  .jump a:hover{background:#fff;border-color:var(--line);}
+  .jump a.churchill{color:var(--aurora-deep);}
+  .btns{display:flex;gap:8px;}
+  .btn{
+    font-family:var(--sans);font-size:.78rem;font-weight:600;letter-spacing:.02em;
+    border:1px solid var(--line);background:#fff;color:var(--ink);
+    padding:8px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;
+  }
+  .btn:hover{border-color:var(--stone);}
+  .btn[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .btn:focus-visible,.jump a:focus-visible{outline:2px solid var(--aurora);outline-offset:2px;}
+
+  /* ---------- ROUTE / SPINE ---------- */
+  .route{position:relative;padding:40px 0 60px;}
+  .route::before{          /* the journey spine */
+    content:"";position:absolute;left:9px;top:48px;bottom:120px;width:2px;
+    background:linear-gradient(180deg,var(--amber),var(--aurora) 78%,var(--aurora-deep));
+    border-radius:2px;
+  }
+  .leg{position:relative;padding-left:42px;margin-top:36px;}
+  .leg:first-child{margin-top:0;}
+  .node{
+    position:absolute;left:0;top:6px;width:20px;height:20px;border-radius:50%;
+    background:var(--snow);border:3px solid var(--amber);
+  }
+  .leg.is-churchill .node{
+    border-color:var(--aurora);
+    box-shadow:0 0 0 4px rgba(54,201,142,.18),0 0 18px rgba(54,201,142,.6);
+  }
+  .leg-head{margin-bottom:14px;}
+  .leg-eyebrow{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);font-weight:600;}
+  .leg-town{font-family:var(--serif);font-size:1.75rem;font-weight:600;line-height:1.05;margin:3px 0 4px;letter-spacing:-.01em;}
+  .leg-meta{font-size:.86rem;color:var(--stone);}
+  .leg-meta .camp{color:var(--ink-soft);}
+
+  /* travel divider sits on the spine */
+  .travel{position:relative;padding-left:42px;margin:30px 0;}
+  .travel .node{
+    top:2px;width:16px;height:16px;left:2px;border-width:3px;border-color:var(--amber);
+    background:var(--frost);
+  }
+  .travel-card{
+    background:linear-gradient(180deg,#fbf6ec,#f7efe0);
+    border:1px solid #ecdcc0;border-radius:12px;padding:12px 16px;
+    font-size:.9rem;color:var(--ink-soft);
+  }
+  .travel-card .lead{font-weight:600;color:var(--amber);letter-spacing:.02em;text-transform:uppercase;font-size:.72rem;}
+  .travel-card .leg-dist{font-family:var(--serif);font-size:1.05rem;color:var(--ink);margin:2px 0 0;}
+  .travel-card .tnote{display:block;margin-top:7px;color:var(--ink-soft);font-size:.84rem;}
+  .travel-card .tnote::before{content:"▸ ";color:var(--amber);}
+
+  /* ---------- DAY CARDS ---------- */
+  .day{
+    background:var(--snow);border:1px solid var(--line);border-radius:14px;
+    padding:16px 18px;margin-bottom:14px;box-shadow:var(--shadow);
+  }
+  .day-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px;}
+  .daynum{
+    font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+    color:#fff;background:var(--ink);border-radius:6px;padding:3px 7px;
+  }
+  .is-churchill .daynum{background:var(--aurora-deep);}
+  .date{font-weight:600;font-size:.92rem;color:var(--ink);}
+  .dow{color:var(--stone);font-weight:500;}
+  .headline{font-family:var(--serif);font-size:1.12rem;line-height:1.25;margin:2px 0 12px;color:var(--ink);}
+  .is-churchill .headline{color:var(--aurora-deep);}
+
+  .sched{list-style:none;margin:0;padding:0;}
+  .row{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:3px 0;align-items:baseline;}
+  .row .t{
+    font-size:.82rem;color:var(--ink-soft);font-weight:600;text-align:right;
+    font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:1px;
+  }
+  .row .d{font-size:.93rem;position:relative;padding-left:16px;}
+  .row .d::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%;background:var(--stone);}
+  .row.tour    .d::before{background:var(--blue);}
+  .row.meal    .d::before{background:var(--aurora);}
+  .row.social  .d::before{background:var(--violet);}
+  .row.arrive  .d::before{background:var(--amber);}
+  .row.bear    .d::before{background:var(--aurora);box-shadow:0 0 0 3px rgba(54,201,142,.22);}
+  .row.tour .d strong,.row.meal .d strong{font-weight:600;}
+  .row.routine .t,.row.routine .d{color:var(--stone);}
+  .row.routine .d{font-size:.88rem;}
+  .tag{
+    display:inline-block;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+    font-weight:700;border-radius:4px;padding:1px 5px;margin-left:7px;vertical-align:1px;
+  }
+  .tag.inc{background:rgba(54,201,142,.15);color:var(--aurora-deep);}
+  .tag.opt{background:rgba(217,138,43,.16);color:#9c5e12;}
+  .tag.pbt{background:rgba(122,108,198,.16);color:#5a4ba0;}
+
+  .heads{
+    margin:10px 0 2px;background:rgba(217,138,43,.09);border:1px solid rgba(217,138,43,.28);
+    border-radius:9px;padding:9px 12px;font-size:.86rem;color:#7a4d11;display:flex;gap:9px;
+  }
+  .heads .ic{color:var(--amber);font-weight:700;flex:none;}
+
+  /* highlights mode hides routine noise */
+  body.highlights .row.routine{display:none;}
+  body.highlights .day.empty-collapsible{opacity:.85;}
+
+  /* ---------- LEGEND / FOOTER ---------- */
+  .legend{display:flex;flex-wrap:wrap;gap:14px 20px;margin:6px 0 30px;font-size:.78rem;color:var(--ink-soft);}
+  .legend .k{display:flex;align-items:center;gap:7px;}
+  .legend .sw{width:9px;height:9px;border-radius:50%;}
+  .foot{border-top:1px solid var(--line);padding:24px 0 60px;font-size:.82rem;color:var(--stone);}
+  .foot b{color:var(--ink-soft);}
+
+  @media (max-width:560px){
+    .stats{gap:20px;}
+    .row{grid-template-columns:54px 1fr;gap:8px;}
+    .leg-town{font-size:1.5rem;}
+    .jump{order:2;width:100%;}
+    .btns{order:1;}
+  }
+  @media (prefers-reduced-motion:reduce){.aurora-band{animation:none;}}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    body{background:#fff;font-size:11px;}
+    .controls,.aurora-band,.btns,.jump,.legend{display:none !important;}
+    body.highlights .row.routine{display:grid !important;} /* full schedule on paper */
+    .hero{color:#16202e;background:#fff;border-bottom:2px solid var(--ink);}
+    .hero .sub,.route-line,.stat .l{color:#444;}
+    .hero h1 .amp,.eyebrow{color:var(--aurora-deep);}
+    .stats{border-top-color:#ccc;}
+    .day{box-shadow:none;border-color:#ccc;break-inside:avoid;page-break-inside:avoid;}
+    .leg,.travel{break-inside:avoid;}
+    .route::before,.node{display:none;}
+    .leg,.travel{padding-left:0;}
+    a{color:inherit;text-decoration:none;}
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="aurora-band" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow"><a href="../" style="color:var(--aurora);text-decoration:none;">&larr; Trip hub</a> &nbsp;·&nbsp; 2026 RV Caravan · Manitoba, Canada</p>
+      <h1>Northern Lights <span class="amp">&amp;</span> Polar Bears</h1>
+      <p class="sub">Thirty-one days up the spine of Manitoba — prairie towns, farm tours and campfires — building to the overnight rail run and the Tundra Buggy at Churchill.</p>
+      <div class="route-line" id="routeLine"></div>
+      <div class="stats">
+        <div class="stat"><div class="n">31</div><div class="l">Caravan days</div></div>
+        <div class="stat"><div class="n">Sep 13&ndash;Oct 13</div><div class="l">2026</div></div>
+        <div class="stat"><div class="n">8</div><div class="l">RV stops + Churchill</div></div>
+        <div class="stat"><div class="n">~1,100<span style="font-size:1rem"> mi</span></div><div class="l">Driving + the rail north</div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="controls">
+    <div class="wrap controls-inner">
+      <div class="jump" id="jump"></div>
+      <div class="btns">
+        <button class="btn" id="toggle" aria-pressed="false">Highlights only</button>
+        <button class="btn" id="print">Print</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="legend">
+      <span class="k"><span class="sw" style="background:var(--blue)"></span>Tour / activity</span>
+      <span class="k"><span class="sw" style="background:var(--aurora)"></span>Included meal</span>
+      <span class="k"><span class="sw" style="background:var(--violet)"></span>Polar Bear Town social</span>
+      <span class="k"><span class="sw" style="background:var(--amber)"></span>Travel / arrive</span>
+      <span class="k"><span class="sw" style="background:var(--stone)"></span>Free time &amp; routine</span>
+    </div>
+    <div class="route" id="route"></div>
+    <div class="foot wrap" style="padding-left:0;padding-right:0;">
+      <p><b>Pre-caravan parking · Forest Hills RV Park, Carberry:</b> Leaders arrive Thu Sep 10; parking crew Fri Sep 11. Advance parking Fri &amp; Sat, 1:00–3:00 PM (book with the caravan leaders ahead of time).</p>
+      <p><b>Good to know:</b> Times and tours are <i>subject to change without notice.</i> Most breakfasts and many lunches/dinners are on your own; “included” tags mark meals, tours and gratuities covered by the kitty fee. Churchill meals, tours and gratuities are all in the kitty fee.</p>
+      <p><b>Deparkers at Winnipeg:</b> Bruce &amp; Gail Harrower and Bruce Balsdon.</p>
+      <p style="margin-top:14px;color:#9aa4b1;">Rebuilt from the preliminary detailed itinerary (rev. 2025-04-07). Open this file on your phone in the rig, or print it for the binder — it works with no signal once it’s loaded.</p>
+    </div>
+  </main>
+
+<script>
+/* ---- category helpers ----
+   cat: tour | meal | social | arrive | bear | church | free | routine
+   tag: inc (included) | opt (extra cost) | pbt (Polar Bear Town)
+   routine rows are hidden in "Highlights only" mode.
+*/
+const ITIN = [
+  { id:"carberry", town:"Carberry", camp:"Forest Hills RV Park", dates:"Sep 13 – 15 · Days 1–3", churchill:false,
+    days:[
+      { n:1, dow:"Sun", date:"Sep 13", headline:"Arrive Forest Hills RV Park — Meet & Greet at the casino",
+        rows:[
+          {t:"1–3 PM", c:"arrive", d:"Arrive & park · Carberry, MB <span class='tag pbt'>parkers on duty</span>"},
+          {t:"5:30 PM", c:"meal", d:"Meet & Greet — finger food at the Casino <span class='tag inc'>incl. gratuity</span>"},
+          {t:"Evening", c:"routine", d:"Campfire (weather permitting)"},
+        ]},
+      { n:2, dow:"Mon", date:"Sep 14", headline:"Spud Plains Farms tour & the Welcome Dinner",
+        rows:[
+          {t:"9:30 AM", c:"routine", d:"First-Timers meeting"},
+          {t:"10:00 AM", c:"routine", d:"Drivers meeting + schedule review (Neepawa drive)"},
+          {t:"1:00 PM", c:"tour", d:"Tour of Spud Plains Farms <span class='tag inc'>incl. gratuity</span>"},
+          {t:"4:30 PM", c:"social", d:"Group social hour — Tent Area"},
+          {t:"5:30 PM", c:"meal", d:"Welcome Dinner — Sand Hills Casino Lounge <span class='tag inc'>included</span>"},
+        ]},
+      { n:3, dow:"Tue", date:"Sep 15", headline:"Wagon ride to the Devils Punch Bowl",
+        rows:[
+          {t:"Morning", c:"free", d:"Free time"},
+          {t:"1:00 PM", c:"tour", d:"Wagon ride to the Devils Punch Bowl"},
+          {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #1)"},
+          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Neepawa parkers meeting"},
+        ]},
+    ]},
+
+  { id:"neepawa", town:"Neepawa", camp:"Lions Riverbend Campground", dates:"Sep 16 – 18 · Days 4–6", churchill:false,
+    travel:{lead:"Travel · Carberry → Neepawa", dist:"60 km · ~40 min", notes:["Dump before you leave the campground","Arrive at Lions Riverbend after 11:00 AM"]},
+    days:[
+      { n:4, dow:"Wed", date:"Sep 16", headline:"Into Neepawa — Polar Bear Town #1 & the Bratt’s cookout",
+        rows:[
+          {t:"9:30 AM", c:"arrive", d:"Travel to Neepawa · park 11:00 AM–1:00 PM"},
+          {t:"Afternoon", c:"free", d:"Free time — Neepawa Trails (10 km), shop or tour"},
+          {t:"5:00 PM", c:"social", d:"Social hour — Polar Bear Town #1 <span class='tag pbt'>Welcome to Churchill</span>"},
+          {t:"6:30 PM", c:"meal", d:"Cookout — Bratt’s dinner at the campground"},
+        ]},
+      { n:5, dow:"Thu", date:"Sep 17", headline:"“A Day in the Life of a Farmer” — RnR Galbraith Farms",
+        rows:[
+          {t:"9:00 AM", c:"tour", d:"Carpool to RnR Galbraith Farms — <strong>bring a bag lunch & lawn chairs</strong>"},
+          {t:"10:00 AM", c:"tour", d:"WYSIWYG farm tour (details set on arrival)"},
+          {t:"12:00 PM", c:"free", d:"Bag lunch at the farm · tour continues 1:00 PM"},
+          {t:"2:00 PM", c:"tour", d:"Maybe out to the fields to see the harvest"},
+          {t:"3:00 PM", c:"free", d:"Free time — Minnedosa on the way back, or shop/hike/bike"},
+        ]},
+      { n:6, dow:"Fri", date:"Sep 18", headline:"Farmers Brewery Estate & the Legion dinner",
+        rows:[
+          {t:"10:00 AM", c:"tour", d:"Group A — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"1:30 PM", c:"tour", d:"Group B — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #2)"},
+          {t:"6:00 PM", c:"meal", d:"Catered dinner at the Legion (TBC) <span class='tag inc'>included</span>"},
+          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Dauphin parkers meeting"},
+        ]},
+    ]},
+
+  { id:"dauphin", town:"Dauphin", camp:"Vermillion Campground", dates:"Sep 19 – 22 · Days 7–10", churchill:false,
+    travel:{lead:"Travel · Neepawa → Dauphin", dist:"96 mi · ~1 hr 48 min", notes:["Arrive at Vermillion Campground after 10:30 AM"]},
+    days:[
+      { n:7, dow:"Sat", date:"Sep 19", headline:"First peek at the Churchill train — Dauphin Rail Museum",
+        rows:[
+          {t:"8:30 AM", c:"arrive", d:"Travel to Dauphin · park 10:30 AM–12:30 PM"},
+          {t:"11:56 AM", c:"bear", d:"VIA Rail train from Churchill stops ~10 min at the Rail Museum — your first look at the train"},
+          {t:"1:00 PM", c:"tour", d:"Group A — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group B free"},
+          {t:"2:00 PM", c:"tour", d:"Group B — Dauphin Rail Museum tour · Group A free"},
+          {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #3)"},
+        ]},
+      { n:8, dow:"Sun", date:"Sep 20", headline:"Ukrainian church tour, dinner & dancers",
+        rows:[
+          {t:"AM", c:"church", d:"Church of your choice · then free morning"},
+          {t:"1:30 PM", c:"tour", d:"Ukrainian crafts — Pysanky egg writing (new Ukrainian church)"},
+          {t:"4:30 PM", c:"tour", d:"Ukrainian church tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"5:30 PM", c:"meal", d:"Ukrainian church dinner <span class='tag inc'>included</span>"},
+          {t:"Evening", c:"social", d:"Ukrainian Dancers performance <span class='tag inc'>included</span>"},
+        ]},
+      { n:9, dow:"Mon", date:"Sep 21", headline:"Riding Mountain National Park",
+        rows:[
+          {t:"10:00 AM", c:"tour", d:"RMNP vehicle tour with guide Ryan Murray (GMRS radios available) <span class='tag inc'>incl. gratuity</span>"},
+          {t:"12:00 PM", c:"free", d:"Lunch with the guide · possible afternoon hike (TBC)"},
+          {t:"Afternoon", c:"free", d:"Free — shop Wasagaming, visit the buffalo, hike or bike the trails"},
+        ]},
+      { n:10, dow:"Tue", date:"Sep 22", headline:"Fort Dauphin Museum · Polar Bear Town #2",
+        rows:[
+          {t:"9:00 AM", c:"free", d:"Free morning — tour or shop in Dauphin"},
+          {t:"1:00 PM", c:"tour", d:"Fort Dauphin Museum tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"5:00 PM", c:"social", d:"Social hour — Polar Bear Town #2 <span class='tag pbt'>Paparazzi Alert</span>"},
+          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Swan River parkers meeting"},
+        ]},
+    ]},
+
+  { id:"swanriver", town:"Swan River", camp:"Green Acres Campground", dates:"Sep 23 – 25 · Days 11–13", churchill:false,
+    travel:{lead:"Travel · Dauphin → Swan River", dist:"106 mi · ~1 hr 46 min", notes:["Arrive at Green Acres after 1:30 PM"]},
+    days:[
+      { n:11, dow:"Wed", date:"Sep 23", headline:"Into Swan River — Polar Bear Town #3",
+        rows:[
+          {t:"10:00 AM", c:"arrive", d:"Travel to Swan River · park 1:30–3:30 PM"},
+          {t:"Afternoon", c:"free", d:"Free time — tour, shop, hike or bike"},
+          {t:"5:00 PM", c:"social", d:"Social hour — Polar Bear Town #3 <span class='tag pbt'>Rumble on the Tundra</span>"},
+        ]},
+      { n:12, dow:"Thu", date:"Sep 24", headline:"Spruce Wood Products tour",
+        rows:[
+          {t:"9:30 AM", c:"tour", d:"Group B — Spruce Wood Products tour · Group A free"},
+          {t:"1:00 PM", c:"tour", d:"Group A — Spruce Wood Products tour · Group B free"},
+          {t:"4:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #4)"},
+        ]},
+      { n:13, dow:"Fri", date:"Sep 25", headline:"Pretty Valley Honey Farm · Polar Bear Town #4",
+        heads:"Bring Canadian cash to shop at the Honey Farm.",
+        rows:[
+          {t:"9:30 AM", c:"tour", d:"Pretty Valley Honey Farm tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"Afternoon", c:"free", d:"Free time — tour, shop, hike or bike"},
+          {t:"5:00 PM", c:"social", d:"Social hour — Polar Bear Town #4 <span class='tag pbt'>Halloween Horror Story</span>"},
+          {t:"6:00 PM", c:"meal", d:"Campout supper"},
+          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 The Pas parkers meeting"},
+        ]},
+    ]},
+
+  { id:"thepas", town:"The Pas", camp:"The Pas Exhibition Grounds", dates:"Sep 26 – 29 · Days 14–17", churchill:false,
+    travel:{lead:"Travel · Swan River → The Pas", dist:"142 mi · ~2 hr 19 min", notes:["Dump before you leave","Arrive at the Exhibition Grounds after 2:00 PM"]},
+    days:[
+      { n:14, dow:"Sat", date:"Sep 26", headline:"Into The Pas — Polar Bear Town #5",
+        rows:[
+          {t:"9:15 AM", c:"arrive", d:"Travel to The Pas · park 2:00–4:00 PM"},
+          {t:"5:00 PM", c:"social", d:"Social hour — Polar Bear Town #5 <span class='tag pbt'>Parole Day</span>"},
+        ]},
+      { n:15, dow:"Sun", date:"Sep 27", headline:"Grace Boardwalk & dinner at Good Thymes",
+        rows:[
+          {t:"9:00 AM", c:"tour", d:"Sweat Lodge — 12 people <span class='tag opt'>extra charge · TBD</span>"},
+          {t:"10:00 AM", c:"church", d:"Church of your choice · free morning"},
+          {t:"1:00 PM", c:"tour", d:"Grace Boardwalk tour (two groups)"},
+          {t:"4:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #5)"},
+          {t:"5:30 PM", c:"meal", d:"Dinner at Good Thymes Restaurant <span class='tag inc'>incl. gratuity</span>"},
+        ]},
+      { n:16, dow:"Mon", date:"Sep 28", headline:"Round the Bend Farm · Polar Bear Town #6",
+        heads:"Bring a bag lunch — and rain gear if it’s wet.",
+        rows:[
+          {t:"11:00 AM", c:"tour", d:"Round the Bend Farm tour"},
+          {t:"Noon", c:"free", d:"Bag lunch at the farm · tour continues 1:00 PM"},
+          {t:"3:00 PM", c:"meal", d:"Stay for farm dinner <span class='tag opt'>optional · extra cost</span>"},
+          {t:"5:00 PM", c:"social", d:"Social hour (for those not dining at the farm)"},
+          {t:"7:30 PM", c:"social", d:"Polar Bear Town #6 <span class='tag pbt'>Quest for Cubs</span>"},
+        ]},
+      { n:17, dow:"Tue", date:"Sep 29", headline:"Blanket Exercise · Clearwater Lake",
+        rows:[
+          {t:"9:00 AM", c:"tour", d:"Blanket Exercise — The Pas Arts Council <span class='tag inc'>incl. gratuity</span>"},
+          {t:"1:00 PM", c:"free", d:"Free — Clearwater Lake Park or tour The Pas"},
+          {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #6)"},
+          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Thompson parkers meeting"},
+        ]},
+    ]},
+
+  { id:"thompson", town:"Thompson", camp:"McCreedy Campground", dates:"Sep 30 – Oct 1 · Days 18–19", churchill:false,
+    travel:{lead:"Travel · The Pas → Thompson", dist:"237 mi · ~4 hr 14 min (plan ~6 hr)", notes:["National Truth & Reconciliation Day","Fuel up at Wabowden","Stop at Pisew Falls Provincial Park for the falls & bridge","Arrive at McCreedy after 4:00 PM"]},
+    days:[
+      { n:18, dow:"Wed", date:"Sep 30", headline:"The long haul to Thompson — Pisew Falls en route",
+        rows:[
+          {t:"8:30 AM", c:"arrive", d:"Travel to Thompson (long drive) · park 4:00–6:00 PM"},
+        ]},
+      { n:19, dow:"Thu", date:"Oct 1", headline:"Community service & Heritage North — “Update on Churchill”",
+        rows:[
+          {t:"10:00 AM", c:"tour", d:"Community service — sort & distribute goods (University of the North)"},
+          {t:"1:30 PM", c:"tour", d:"Heritage North Museum tour"},
+          {t:"5:00 PM", c:"social", d:"Social hour — Update on Churchill"},
+        ]},
+    ]},
+
+  { id:"churchill", town:"Churchill", camp:"By VIA Rail · Tundra Buggy Lodge & Tundra Inn", dates:"Oct 2 – 7 · Days 20–25", churchill:true,
+    days:[
+      { n:20, dow:"Fri", date:"Oct 2", headline:"★ Board the train to Churchill — overnight",
+        heads:"Get the rig ready to be left in Thompson for 5 days. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
+        rows:[
+          {t:"11:00 AM", c:"meal", d:"Group lunch — Northern Inn & Steakhouse <span class='tag inc'>incl. gratuity</span>"},
+          {t:"2:50 PM", c:"arrive", d:"Checked baggage to the lot · 3:00 owners take it to the station"},
+          {t:"3:50 PM", c:"arrive", d:"Gather with carry-on for the ride to the train station"},
+          {t:"5:00 PM", c:"bear", d:"Train departs for Churchill — overnight (limited meals on board)"},
+        ]},
+      { n:21, dow:"Sat", date:"Oct 3", headline:"Arrive Churchill → out to the Tundra Buggy Lodge",
+        rows:[
+          {t:"9:00 AM", c:"bear", d:"Train arrives Churchill — met by Frontiers North escorts"},
+          {t:"9:15 AM", c:"tour", d:"Shuttle tour — Miss Piggy, the Inukshuk, Polar Bear Holding Facility"},
+          {t:"11:00 AM", c:"tour", d:"Itsanitaq Museum (groups stagger) · lunch at the Tundra Pub <span class='tag inc'>included</span>"},
+          {t:"2:00 PM", c:"tour", d:"Community service — Iglualuk boarding house"},
+          {t:"2:30 PM", c:"bear", d:"Transfer out to the Tundra Buggy Lodge"},
+          {t:"6:45 PM", c:"meal", d:"Dinner at the Lodge <span class='tag inc'>included</span> · overnight on the tundra"},
+        ]},
+      { n:22, dow:"Sun", date:"Oct 4", headline:"Tundra Buggy — out among the polar bears",
+        rows:[
+          {t:"7–8 AM", c:"meal", d:"Breakfast at the Lodge <span class='tag inc'>included</span>"},
+          {t:"8:00 AM", c:"bear", d:"Board the Tundra Buggy for the day’s tour"},
+          {t:"Noon", c:"meal", d:"Lunch on the buggy <span class='tag inc'>included</span> · tour continues"},
+          {t:"4:30 PM", c:"social", d:"Back to the Lodge — beverages, snacks & games (Left-Right-Center)"},
+          {t:"6:45 PM", c:"meal", d:"Dinner at the Lodge <span class='tag inc'>included</span> · overnight at the Lodge"},
+        ]},
+      { n:23, dow:"Mon", date:"Oct 5", headline:"Full-day buggy tour, then into Churchill",
+        heads:"Mark your luggage and leave it by your lower bunk — Frontiers North moves it to the Tundra Inn.",
+        rows:[
+          {t:"7–8 AM", c:"meal", d:"Breakfast at the Lodge <span class='tag inc'>included</span>"},
+          {t:"8:00 AM", c:"bear", d:"Board the Tundra Buggy for the full-day tour"},
+          {t:"Noon", c:"meal", d:"Lunch on the buggy <span class='tag inc'>included</span>"},
+          {t:"5:00 PM", c:"arrive", d:"Check in at the Tundra Inn, Churchill"},
+          {t:"6:00 PM", c:"meal", d:"Dinner at the Ptarmigan Restaurant <span class='tag inc'>incl. gratuity</span>"},
+          {t:"8:00 PM", c:"social", d:"Cultural presentation at the Ptarmigan"},
+        ]},
+      { n:24, dow:"Tue", date:"Oct 6", headline:"Wapusk dog sledding, Polar Bears Int’l — night train out",
+        heads:"Dress warm for Wapusk Adventures. Leave checked baggage outside your room for transfer; keep your carry-on for the day.",
+        rows:[
+          {t:"7:30 AM", c:"meal", d:"Breakfast at the Tundra Pub <span class='tag inc'>incl. gratuity</span>"},
+          {t:"9:00 AM", c:"bear", d:"Wapusk Adventures — dog sledding (Group A 9:00 / Group B 10:00)"},
+          {t:"11:00 AM", c:"meal", d:"Lunch at the Ptarmigan <span class='tag inc'>incl. gratuity</span>"},
+          {t:"1:00 PM", c:"tour", d:"Polar Bears International"},
+          {t:"2:00 PM", c:"tour", d:"Parks Canada Visitor Centre (Group A 2:00 / Group B 3:00)"},
+          {t:"4:30 PM", c:"meal", d:"Dinner at the Tundra Pub <span class='tag inc'>incl. gratuity</span>"},
+          {t:"7:30 PM", c:"bear", d:"Night train departs Churchill for Thompson"},
+        ]},
+      { n:25, dow:"Wed", date:"Oct 7", headline:"Back in Thompson — free afternoon",
+        rows:[
+          {t:"Noon", c:"arrive", d:"Arrive Thompson · claim luggage, ride back to McCreedy"},
+          {t:"Afternoon", c:"free", d:"Free — laundry or tour Thompson"},
+          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Grand Rapids parkers meeting"},
+        ]},
+    ]},
+
+  { id:"grandrapids", town:"Grand Rapids", camp:"Cook’s Campground", dates:"Oct 8 · Day 26", churchill:false,
+    travel:{lead:"Travel · Thompson → Grand Rapids", dist:"205 mi · ~3 hr 38 min", notes:["Fuel up at Wabowden","Arrive at Cook’s Campground after 3:00 PM"]},
+    days:[
+      { n:26, dow:"Thu", date:"Oct 8", headline:"Down to Grand Rapids",
+        rows:[
+          {t:"8:15 AM", c:"arrive", d:"Travel to Grand Rapids · park 3:00–5:00 PM"},
+          {t:"5:30 PM", c:"social", d:"Group social hour"},
+          {t:"7:30 PM", c:"routine", d:"Drivers meeting · 8:30 Winnipeg parkers meeting"},
+        ]},
+    ]},
+
+  { id:"winnipeg", town:"Winnipeg", camp:"Town & Country Campground", dates:"Oct 9 – 13 · Days 27–31", churchill:false,
+    travel:{lead:"Travel · Grand Rapids → Winnipeg", dist:"269 mi · ~4 hr 50 min", notes:["RV/truck wash en route — 6n73 WandWASH (Woodlands) or Birds Hill Car & Truck Wash (East St. Paul)","Arrive at Town & Country after 3:00 PM"]},
+    days:[
+      { n:27, dow:"Fri", date:"Oct 9", headline:"Into Winnipeg — the home stretch",
+        rows:[
+          {t:"8:30 AM", c:"arrive", d:"Travel to Winnipeg · park 3:00–5:00 PM"},
+          {t:"5:00 PM", c:"social", d:"Group social hour (maybe Polar Bear Town, Season 2)"},
+        ]},
+      { n:28, dow:"Sat", date:"Oct 10", headline:"Guided bus tour of Winnipeg",
+        rows:[
+          {t:"10:00 AM", c:"tour", d:"Guided city bus tour of Winnipeg"},
+          {t:"Afternoon", c:"free", d:"Free time to tour Winnipeg"},
+          {t:"5:00 PM", c:"social", d:"Group social hour"},
+          {t:"6:30 PM", c:"meal", d:"Maybe a pizza party (weather permitting)"},
+        ]},
+      { n:29, dow:"Sun", date:"Oct 11", headline:"Canadian Human Rights Museum",
+        rows:[
+          {t:"10:00 AM", c:"church", d:"Church of your choice · free time to shop or tour"},
+          {t:"1:00 PM", c:"tour", d:"Canadian Museum for Human Rights"},
+          {t:"5:00 PM", c:"social", d:"Group social hour"},
+        ]},
+      { n:30, dow:"Mon", date:"Oct 12", headline:"Winnipeg Zoo — Journey to Churchill — & Farewell Dinner",
+        rows:[
+          {t:"10:00 AM", c:"tour", d:"Winnipeg Zoo — Journey to Churchill exhibit <span class='tag inc'>incl. gratuity</span>"},
+          {t:"Afternoon", c:"free", d:"Free time to tour Winnipeg"},
+          {t:"4:00 PM", c:"social", d:"Group social hour at the campground restaurant"},
+          {t:"5:30 PM", c:"meal", d:"Farewell Dinner — campground restaurant"},
+        ]},
+      { n:31, dow:"Tue", date:"Oct 13", headline:"Farewells & so-longs — caravan departs",
+        rows:[
+          {t:"7:30 AM", c:"meal", d:"Continental breakfast / grab & go"},
+          {t:"9:30 AM", c:"social", d:"Farewells & so-longs"},
+          {t:"Noon", c:"arrive", d:"Caravan departs Winnipeg"},
+        ]},
+    ]},
+];
+
+/* ---- render ---- */
+const route = document.getElementById('route');
+const jump = document.getElementById('jump');
+const rl = document.getElementById('routeLine');
+
+const townOrder = ITIN.map(l=>l.town);
+townOrder.forEach((t,i)=>{
+  const span=document.createElement('span');
+  span.innerHTML = `<b>${t}</b>`;
+  rl.appendChild(span);
+  if(i<townOrder.length-1){const a=document.createElement('span');a.className='arr';a.textContent='→';rl.appendChild(a);}
+});
+
+ITIN.forEach(leg=>{
+  const a=document.createElement('a');
+  a.href='#'+leg.id; a.textContent=leg.town;
+  if(leg.churchill)a.className='churchill';
+  jump.appendChild(a);
+
+  if(leg.travel){
+    const tv=document.createElement('div');
+    tv.className='travel';
+    tv.innerHTML=`<span class="node"></span>
+      <div class="travel-card">
+        <div class="lead">${leg.travel.lead}</div>
+        <div class="leg-dist">${leg.travel.dist}</div>
+        ${leg.travel.notes.map(n=>`<span class="tnote">${n}</span>`).join('')}
+      </div>`;
+    route.appendChild(tv);
+  }
+
+  const sec=document.createElement('section');
+  sec.className='leg'+(leg.churchill?' is-churchill':'');
+  sec.id=leg.id;
+  let html=`<span class="node"></span>
+    <div class="leg-head">
+      <div class="leg-eyebrow">${leg.churchill?'★ The main event':'Caravan stop'}</div>
+      <div class="leg-town">${leg.town}</div>
+      <div class="leg-meta"><span class="camp">${leg.camp}</span> · ${leg.dates}</div>
+    </div>`;
+
+  leg.days.forEach(day=>{
+    html+=`<article class="day">
+      <div class="day-top">
+        <span class="daynum">Day ${day.n}</span>
+        <span class="date"><span class="dow">${day.dow}</span> · ${day.date}</span>
+      </div>
+      <div class="headline">${day.headline}</div>`;
+    if(day.heads){html+=`<div class="heads"><span class="ic">⚠</span><span>${day.heads}</span></div>`;}
+    html+=`<ul class="sched">`;
+    day.rows.forEach(r=>{
+      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="d">${r.d}</span></li>`;
+    });
+    html+=`</ul></article>`;
+  });
+
+  sec.innerHTML=html;
+  route.appendChild(sec);
+});
+
+/* ---- controls ---- */
+const toggle=document.getElementById('toggle');
+toggle.addEventListener('click',()=>{
+  const on=document.body.classList.toggle('highlights');
+  toggle.setAttribute('aria-pressed',on);
+  toggle.textContent=on?'Show full schedule':'Highlights only';
+});
+document.getElementById('print').addEventListener('click',()=>window.print());
+</script>
+</body>
+</html>

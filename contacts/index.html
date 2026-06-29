@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contacts — 2026 Caravan</title>
+<style>
+  :root{--ink:#16202e;--ink-soft:#2b3a4d;--frost:#f4f1e9;--snow:#fff;--aurora:#36c98e;
+    --aurora-deep:#1c8a64;--stone:#6c7787;--line:#e4ddcd;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --serif:ui-serif,"Iowan Old Style",Palatino,Georgia,serif;}
+  *{box-sizing:border-box;} body{margin:0;background:var(--frost);color:var(--ink);
+    font-family:var(--sans);line-height:1.55;min-height:100vh;display:flex;flex-direction:column;}
+  .wrap{max-width:680px;margin:0 auto;padding:0 22px;width:100%;}
+  .top{background:linear-gradient(180deg,#0c1622,#16202e);color:#eef3f1;padding:40px 0;}
+  .home{display:inline-block;font-size:.78rem;letter-spacing:.04em;color:var(--aurora);
+    text-decoration:none;margin-bottom:18px;font-weight:600;}
+  .kicker{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--aurora);font-weight:700;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6vw,2.8rem);margin:8px 0 0;line-height:1.05;}
+  main{flex:1;display:flex;align-items:center;padding:50px 0;}
+  .card{background:var(--snow);border:1px solid var(--line);border-radius:16px;padding:30px;
+    box-shadow:0 10px 30px rgba(22,32,46,.07);width:100%;}
+  .badge{display:inline-block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+    background:rgba(108,119,135,.14);color:var(--stone);padding:4px 10px;border-radius:999px;margin-bottom:14px;}
+  .card p{margin:0 0 6px;color:var(--ink-soft);font-size:1.02rem;}
+  .back{display:inline-block;margin-top:20px;font-weight:600;color:var(--aurora-deep);text-decoration:none;font-size:.92rem;}
+  .back::before{content:"← ";}
+</style>
+</head>
+<body>
+  <div class="top"><div class="wrap">
+    <a class="home" href="../">&larr; Trip hub</a>
+    <div class="kicker">Who to call</div>
+    <h1>Contacts</h1>
+  </div></div>
+  <main><div class="wrap"><div class="card">
+    <span class="badge">Coming soon</span>
+    <p>Caravan leaders, the parkers and deparkers at each stop, campground phone numbers, and emergency contacts along the route.</p>
+    <p style="color:var(--stone);font-size:.92rem;">We'll fill this in before departure — check back, or it'll be linked from the hub when it's ready.</p>
+    <a class="back" href="../">Back to the trip hub</a>
+  </div></div></main>
+</body>
+</html>

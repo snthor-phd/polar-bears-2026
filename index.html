@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Northern Lights &amp; Polar Bears — 2026 Caravan</title>
+<style>
+  :root{
+    --ink:#16202e;--ink-soft:#2b3a4d;--frost:#f4f1e9;--snow:#ffffff;
+    --aurora:#36c98e;--aurora-deep:#1c8a64;--violet:#7a6cc6;--blue:#34618f;
+    --amber:#d98a2b;--stone:#6c7787;--line:#e4ddcd;
+    --shadow:0 1px 2px rgba(22,32,46,.05),0 10px 30px rgba(22,32,46,.07);
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--frost);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;}
+  a{color:inherit;}
+
+  .hero{position:relative;overflow:hidden;color:#eef3f1;
+    background:
+      radial-gradient(120% 100% at 18% -25%, rgba(54,201,142,.42), transparent 55%),
+      radial-gradient(120% 100% at 86% -15%, rgba(122,108,198,.44), transparent 55%),
+      linear-gradient(180deg,#0c1622 0%, #142233 60%, #16202e 100%);}
+  .aurora-band{position:absolute;inset:-35% -10% auto -10%;height:80%;
+    background:
+      conic-gradient(from 200deg at 30% 50%, transparent, rgba(54,201,142,.55), transparent 40%),
+      conic-gradient(from 20deg at 75% 40%, transparent, rgba(91,141,239,.5), transparent 38%),
+      conic-gradient(from 120deg at 55% 60%, transparent, rgba(122,108,198,.45), transparent 35%);
+    filter:blur(36px);opacity:.85;animation:drift 16s ease-in-out infinite alternate;pointer-events:none;}
+  @keyframes drift{0%{transform:translate3d(-3%,0,0) scale(1.05);}100%{transform:translate3d(4%,2%,0) scale(1.12);}}
+  .hero-inner{position:relative;padding:64px 0 48px;}
+  .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--aurora);font-weight:600;margin:0 0 16px;}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,6.5vw,3.8rem);line-height:1.03;margin:0;letter-spacing:-.01em;}
+  .hero h1 .amp{color:var(--aurora);font-style:italic;}
+  .hero .sub{margin:18px 0 0;color:#b9c6cf;font-size:1.06rem;max-width:50ch;}
+  .route-line{margin:26px 0 0;font-size:.82rem;color:#cdd7dd;display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;}
+  .route-line b{color:#eef3f1;font-weight:600;}
+  .route-line .arr{color:var(--aurora);}
+
+  main{padding:40px 0 12px;}
+  .lead{font-family:var(--serif);font-size:1.15rem;color:var(--ink-soft);margin:0 0 26px;max-width:60ch;}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .card{display:block;text-decoration:none;background:var(--snow);border:1px solid var(--line);
+    border-radius:16px;padding:22px 22px 20px;box-shadow:var(--shadow);position:relative;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;}
+  .card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(22,32,46,.06),0 16px 38px rgba(22,32,46,.1);border-color:#d6cdb8;}
+  .card:focus-visible{outline:2px solid var(--aurora);outline-offset:3px;}
+  .card .kicker{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--stone);}
+  .card h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;line-height:1.1;margin:8px 0 6px;color:var(--ink);}
+  .card p{margin:0;font-size:.92rem;color:var(--ink-soft);}
+  .card .go{margin-top:14px;font-size:.82rem;font-weight:600;color:var(--aurora-deep);}
+  .card .go::after{content:" →";}
+  .tag{position:absolute;top:18px;right:18px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+    font-weight:700;padding:3px 8px;border-radius:999px;}
+  .tag.ready{background:rgba(54,201,142,.16);color:var(--aurora-deep);}
+  .tag.soon{background:rgba(108,119,135,.14);color:var(--stone);}
+  .card.feature{grid-column:1 / -1;background:linear-gradient(180deg,#10202f,#16202e);color:#eef3f1;border-color:#21384d;}
+  .card.feature .kicker{color:var(--aurora);}
+  .card.feature h2{color:#fff;font-size:1.8rem;}
+  .card.feature p{color:#b9c6cf;}
+  .card.feature .go{color:var(--aurora);}
+  .card.soon{opacity:.92;}
+  .card.soon:hover{transform:none;}
+
+  .foot{margin-top:34px;border-top:1px solid var(--line);padding:22px 0 56px;font-size:.84rem;color:var(--stone);}
+  .foot b{color:var(--ink-soft);}
+
+  @media (max-width:560px){.grid{grid-template-columns:1fr;}.card.feature h2{font-size:1.5rem;}}
+  @media (prefers-reduced-motion:reduce){.aurora-band{animation:none;}.card{transition:none;}}
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="aurora-band" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <p class="eyebrow">2026 RV Caravan · Manitoba, Canada</p>
+      <h1>Northern Lights <span class="amp">&amp;</span> Polar Bears</h1>
+      <p class="sub">Everything for the run up the spine of Manitoba to Churchill — in one place, kept current on the road.</p>
+      <div class="route-line">
+        <b>Carberry</b><span class="arr">→</span><b>Neepawa</b><span class="arr">→</span><b>Dauphin</b><span class="arr">→</span><b>Swan River</b><span class="arr">→</span><b>The Pas</b><span class="arr">→</span><b>Thompson</b><span class="arr">→</span><b>Churchill</b><span class="arr">→</span><b>Grand Rapids</b><span class="arr">→</span><b>Winnipeg</b>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <p class="lead">Sep 13 – Oct 13, 2026 · 31 days · the schedule is subject to change, so check here before you count on a tour time.</p>
+    <div class="grid">
+      <a class="card feature" href="./itinerary/">
+        <span class="tag ready">Ready</span>
+        <span class="kicker">Day by day</span>
+        <h2>The Itinerary</h2>
+        <p>All 31 days grouped by stop, the driving legs with distances and the dump/fuel/cash reminders, building to the overnight train and the Tundra Buggy at Churchill. Toggle to highlights, or print for the binder.</p>
+        <span class="go">Open the itinerary</span>
+      </a>
+
+      <a class="card soon" href="./packing-list/">
+        <span class="tag soon">Coming soon</span>
+        <span class="kicker">What to bring</span>
+        <h2>Packing List</h2>
+        <p>Layers for a sub-arctic October, what Frontiers North supplies, and the carry-on vs. checked split for the Churchill leg.</p>
+        <span class="go">Preview</span>
+      </a>
+
+      <a class="card soon" href="./contacts/">
+        <span class="tag soon">Coming soon</span>
+        <span class="kicker">Who to call</span>
+        <h2>Contacts</h2>
+        <p>Caravan leaders, the parkers and deparkers, campground numbers, and emergency info for each stop.</p>
+        <span class="go">Preview</span>
+      </a>
+
+      <a class="card soon" href="./route-map/">
+        <span class="tag soon">Coming soon</span>
+        <span class="kicker">The drive north</span>
+        <h2>Route Map</h2>
+        <p>The full caravan route leg by leg, fuel stops, and the rail line from Thompson to Churchill and back.</p>
+        <span class="go">Preview</span>
+      </a>
+    </div>
+
+    <div class="foot">
+      <p><b>Pre-caravan parking:</b> Forest Hills RV Park, Carberry — leaders Thu Sep 10, advance parking Fri &amp; Sat 1:00–3:00 PM (book ahead). <b>Winnipeg deparkers:</b> Bruce &amp; Gail Harrower and Bruce Balsdon.</p>
+      <p style="margin-top:10px;color:#9aa4b1;">Updated as plans firm up. Bookmark this page — one link for the whole trip.</p>
+    </div>
+  </main>
+</body>
+</html>
