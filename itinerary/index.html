@@ -240,7 +240,7 @@
         <div class="stat"><div class="n">31</div><div class="l">Caravan days</div></div>
         <div class="stat"><div class="n">Sep 13&ndash;Oct 13</div><div class="l">2026</div></div>
         <div class="stat"><div class="n">8</div><div class="l">RV stops + Churchill</div></div>
-        <div class="stat"><div class="n">~1,100<span style="font-size:1rem"> mi / 1,770 km</span></div><div class="l">Driving + the rail north</div></div>
+        <div class="stat"><div class="n">~1,200<span style="font-size:1rem"> mi / 1,930 km</span></div><div class="l">Driving + the rail north</div></div>
       </div>
     </div>
   </header>
@@ -265,7 +265,7 @@
     </div>
     <div class="route" id="route"></div>
     <div class="foot wrap" style="padding-left:0;padding-right:0;">
-      <p><b>Pre-caravan parking · Forest Hills RV Park, Carberry:</b> Leaders arrive Thu Sep 10; parking crew Fri Sep 11. Advance parking Fri &amp; Sat, 1:00–3:00 PM (book with the caravan leaders ahead of time).</p>
+      <p><b>Rendezvous · Town &amp; Country Campground, Winnipeg:</b> Start point relocated from Carberry after western-Manitoba flooding and campground/road closures. Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM; arrival Sun Sep 13, 1:00–4:00 PM (park within the window). Full 30/50-amp hookups; T&amp;C hosts the Meet &amp; Greet and Welcome Dinner.</p>
       <p><b>Good to know:</b> Times and tours are <i>subject to change without notice.</i> Most breakfasts and many lunches/dinners are on your own; “included” tags mark meals, tours and gratuities covered by the kitty fee. Churchill meals, tours and gratuities are all in the kitty fee.</p>
       <p><b>Deparkers at Winnipeg:</b> Bruce &amp; Gail Harrower and Bruce Balsdon.</p>
       <p style="margin-top:14px;color:#9aa4b1;">Rebuilt from the preliminary detailed itinerary (rev. 2025-04-07). Open this file on your phone in the rig, or print it for the binder — it works with no signal once it’s loaded.</p>
@@ -279,40 +279,40 @@
    routine rows are hidden in "Highlights only" mode.
 */
 const ITIN = [
-  { id:"carberry", town:"Carberry", camp:"Forest Hills RV Park", dates:"Sep 13 – 15 · Days 1–3", churchill:false,
+  { id:"winnipeg-start", town:"Winnipeg", camp:"Town & Country Campground (Murdoch Rd)", dates:"Sep 13 – 14 · Days 1–2", churchill:false,
     days:[
-      { n:1, dow:"Sun", date:"Sep 13", headline:"Arrive Forest Hills RV Park — Meet & Greet at the casino",
+      { n:1, dow:"Sun", date:"Sep 13", headline:"Rendezvous at Town & Country — Meet & Greet",
+        heads:"New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground & road closures). Advance parking Fri Sep 11 & Sat Sep 12, 1:00–4:00 PM.",
         rows:[
-          {t:"1–3 PM", c:"arrive", d:"Arrive & park · Carberry, MB <span class='tag pbt'>parkers on duty</span>"},
-          {t:"5:30 PM", c:"meal", d:"Meet & Greet — finger food at the Casino <span class='tag inc'>incl. gratuity</span>"},
+          {t:"1–4 PM", c:"arrive", d:"Arrive & park — Town & Country Campground, Winnipeg <span class='tag pbt'>parking crew on duty</span> · arrive within the window"},
+          {t:"TBD", c:"meal", d:"Meet & Greet at T&C — finger food <span class='tag inc'>included</span>"},
+          {t:"6:30 PM", c:"routine", d:"First-Timers intro + Caravan schedule review (location TBD)"},
           {t:"Evening", c:"routine", d:"Campfire (weather permitting)"},
         ]},
-      { n:2, dow:"Mon", date:"Sep 14", headline:"Spud Plains Farms tour & the Welcome Dinner",
+      { n:2, dow:"Mon", date:"Sep 14", headline:"Guided bus tour of Winnipeg & the Welcome Dinner",
         rows:[
-          {t:"9:30 AM", c:"routine", d:"First-Timers meeting"},
-          {t:"10:00 AM", c:"routine", d:"Drivers meeting + schedule review (Neepawa drive)"},
-          {t:"1:00 PM", c:"tour", d:"Tour of Spud Plains Farms <span class='tag inc'>incl. gratuity</span>"},
-          {t:"4:30 PM", c:"social", d:"Group social hour — Tent Area"},
-          {t:"5:30 PM", c:"meal", d:"Welcome Dinner — Sand Hills Casino Lounge <span class='tag inc'>included</span>"},
-        ]},
-      { n:3, dow:"Tue", date:"Sep 15", headline:"Wagon ride to the Devils Punch Bowl",
-        rows:[
-          {t:"Morning", c:"free", d:"Free time"},
-          {t:"1:00 PM", c:"tour", d:"Wagon ride to the Devils Punch Bowl"},
-          {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #1)"},
-          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Neepawa parkers meeting"},
+          {t:"9:00 AM", c:"tour", d:"Chartered bus — guided tour of Winnipeg"},
+          {t:"Midday", c:"free", d:"Lunch on your own"},
+          {t:"4:30 PM", c:"social", d:"Group social hour at the campground"},
+          {t:"5:30 PM", c:"meal", d:"Welcome Dinner at Town & Country <span class='tag inc'>included</span>"},
+          {t:"After dinner", c:"routine", d:"Drivers meeting (location TBD)"},
         ]},
     ]},
 
-  { id:"neepawa", town:"Neepawa", camp:"Lions Riverbend Campground", dates:"Sep 16 – 18 · Days 4–6", churchill:false,
-    travel:{lead:"Travel · Carberry → Neepawa", dist:"37 mi / 60 km · ~40 min", notes:["Dump before you leave the campground","Arrive at Lions Riverbend after 11:00 AM"]},
+  { id:"neepawa", town:"Neepawa", camp:"Lions Riverbend Campground", dates:"Sep 15 – 18 · Days 3–6", churchill:false,
+    travel:{lead:"Travel · Winnipeg → Neepawa", dist:"115 mi / 185 km · ~2 hr", notes:["Departure time to be confirmed","Neepawa is the base for day-trips to Carberry & area farms"]},
     days:[
-      { n:4, dow:"Wed", date:"Sep 16", headline:"Into Neepawa — Polar Bear Town #1 & the Bratt’s cookout",
+      { n:3, dow:"Tue", date:"Sep 15", headline:"Drive Winnipeg → Neepawa; settle in at Lions Riverbend",
         rows:[
-          {t:"9:30 AM", c:"arrive", d:"Travel to Neepawa · park 11:00 AM–1:00 PM"},
-          {t:"Afternoon", c:"free", d:"Free time — Neepawa Trails (6 mi / 10 km), shop or tour"},
+          {t:"TBD", c:"arrive", d:"Drive from Winnipeg to Neepawa · park at Lions Riverbend Campground"},
+          {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #1)"},
+        ]},
+      { n:4, dow:"Wed", date:"Sep 16", headline:"Day-trip to Spud Plains Farm, Carberry",
+        rows:[
+          {t:"12:15 PM", c:"tour", d:"Drive to Spud Plains Farm, Carberry (27 mi / 43 km · ~30 min) — farm tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"Afternoon", c:"free", d:"Return to Neepawa · free time"},
           {t:"5:00 PM", c:"social", d:"Social hour — Polar Bear Town #1 <span class='tag pbt'>Welcome to Churchill</span>"},
-          {t:"6:30 PM", c:"meal", d:"Cookout — Bratt’s dinner at the campground"},
+          {t:"6:30 PM", c:"meal", d:"Cookout — Bratt's dinner at the campground"},
         ]},
       { n:5, dow:"Thu", date:"Sep 17", headline:"“A Day in the Life of a Farmer” — RnR Galbraith Farms",
         rows:[
@@ -322,18 +322,17 @@ const ITIN = [
           {t:"2:00 PM", c:"tour", d:"Maybe out to the fields to see the harvest"},
           {t:"3:00 PM", c:"free", d:"Free time — Minnedosa on the way back, or shop/hike/bike"},
         ]},
-      { n:6, dow:"Fri", date:"Sep 18", headline:"Farmers Brewery Estate & the Legion dinner",
+      { n:6, dow:"Fri", date:"Sep 18", headline:"Farmer Brewery Estates tour",
         rows:[
-          {t:"10:00 AM", c:"tour", d:"Group A — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>"},
-          {t:"1:30 PM", c:"tour", d:"Group B — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"10:00 AM", c:"tour", d:"Group A — Farmer Brewery Estates tour <span class='tag inc'>incl. gratuity</span>"},
+          {t:"1:30 PM", c:"tour", d:"Group B — Farmer Brewery Estates tour <span class='tag inc'>incl. gratuity</span>"},
           {t:"5:00 PM", c:"routine", d:"Get-Acquainted Meeting (GAM #2)"},
-          {t:"6:00 PM", c:"meal", d:"Catered dinner at the Legion (TBC) <span class='tag inc'>included</span>"},
-          {t:"7:00 PM", c:"routine", d:"Drivers meeting · 8:00 Dauphin parkers meeting"},
+          {t:"Evening", c:"routine", d:"Drivers & Dauphin parkers meeting (to be confirmed)"},
         ]},
     ]},
 
   { id:"dauphin", town:"Dauphin", camp:"Vermillion Campground", dates:"Sep 19 – 22 · Days 7–10", churchill:false,
-    travel:{lead:"Travel · Neepawa → Dauphin", dist:"96 mi / 154 km · ~1 hr 48 min", notes:["Arrive at Vermillion Campground after 10:30 AM"]},
+    travel:{lead:"Travel · Neepawa → Dauphin", dist:"96 mi / 154 km · ~1 hr 48 min", notes:["Route via Hwy 10 being confirmed — closures reported (final route set late August)","Arrive at Vermillion Campground after 10:30 AM"]},
     days:[
       { n:7, dow:"Sat", date:"Sep 19", headline:"First peek at the Churchill train — Dauphin Rail Museum",
         rows:[
