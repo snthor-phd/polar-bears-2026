@@ -5,6 +5,7 @@ summary: "Cross-posted from Epsilon Adventures - how 63 days of caravanning to A
 ---
 ![Caravan friends gathered together](https://adventuresinepsilon.com/wp-content/uploads/2025/09/1a3330ba-eabd-4095-807e-a530e230a6fa.jpg)
 
+An excerpt from the Thorsen's first caravan:
 We ended our North to Alaska 2025 Caravan on Sept. 12th. What an amazing and wonderful 63 days we had with this diverse and adventurous group. Lasting friendships were formed, as we experienced the beauty of Alaska and Canada together. It was sad to part from all these new friends. Tears were shed and vows were made to stay in touch as we travel down the road.
 
 We formed a thread on our social media called "On the way home" and we've stayed connected as we make our way toward our "sticks and bricks" homes. Many have daily shared pictures of wonderful campgrounds and the beauty of the surrounding area.
