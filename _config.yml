@@ -1,0 +1,14 @@
+title: "Northern Lights & Polar Bears - 2026 Caravan"
+description: "The 2026 Northern Lights & Polar Bears RV caravan up Manitoba to Churchill."
+url: "https://snthor-phd.github.io"
+baseurl: "/polar-bears-2026"
+
+collections:
+  articles:
+    output: true
+    permalink: /articles/:name/
+
+exclude:
+  - deploy.sh
+  - README.md
+  - CUSTOM_DOMAIN.md

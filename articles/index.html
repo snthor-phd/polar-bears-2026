@@ -1,0 +1,21 @@
+---
+layout: default
+title: Trip Journal
+hero_title: Trip Journal
+hero_sub: Dispatches, notes, and articles from the road.
+---
+{% assign entries = site.articles | sort: 'date' | reverse %}
+{% if entries.size == 0 %}
+<p class="article" style="text-align:center;">No entries yet &mdash; check back once we're rolling.</p>
+{% else %}
+<div class="grid article-grid">
+  {% for a in entries %}
+  <a class="card" href="{{ a.url | relative_url }}">
+    <span class="kicker">{% if a.date %}{{ a.date | date: "%B %-d, %Y" }}{% endif %}</span>
+    <h2>{{ a.title }}</h2>
+    {% if a.summary %}<p>{{ a.summary }}</p>{% endif %}
+    <span class="go">Read</span>
+  </a>
+  {% endfor %}
+</div>
+{% endif %}
