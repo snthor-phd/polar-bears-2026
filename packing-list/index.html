@@ -3,41 +3,279 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Packing List — 2026 Caravan</title>
+<title>Packing &amp; Clothing Layers — 2026 Caravan</title>
 <style>
-  :root{--ink:#16202e;--ink-soft:#2b3a4d;--frost:#f4f1e9;--snow:#fff;--aurora:#36c98e;
-    --aurora-deep:#1c8a64;--stone:#6c7787;--line:#e4ddcd;
-    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-    --serif:ui-serif,"Iowan Old Style",Palatino,Georgia,serif;}
-  *{box-sizing:border-box;} body{margin:0;background:var(--frost);color:var(--ink);
-    font-family:var(--sans);line-height:1.55;min-height:100vh;display:flex;flex-direction:column;}
-  .wrap{max-width:680px;margin:0 auto;padding:0 22px;width:100%;}
-  .top{background:linear-gradient(180deg,#0c1622,#16202e);color:#eef3f1;padding:40px 0;}
+  :root{
+    --ink:#16202e;--ink-soft:#2b3a4d;--frost:#f4f1e9;--snow:#ffffff;
+    --aurora:#36c98e;--aurora-deep:#1c8a64;--violet:#7a6cc6;--blue:#34618f;
+    --amber:#d98a2b;--stone:#6c7787;--line:#e4ddcd;--line-soft:#eee9dc;
+    --shadow:0 1px 2px rgba(22,32,46,.05),0 8px 24px rgba(22,32,46,.06);
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--frost);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 20px;}
+
+  .top{background:
+      radial-gradient(120% 90% at 20% -20%, rgba(54,201,142,.35), transparent 55%),
+      radial-gradient(120% 90% at 85% -10%, rgba(122,108,198,.36), transparent 55%),
+      linear-gradient(180deg,#0c1622 0%,#142233 60%,#16202e 100%);
+    color:#eef3f1;padding:44px 0 38px;}
   .home{display:inline-block;font-size:.78rem;letter-spacing:.04em;color:var(--aurora);
     text-decoration:none;margin-bottom:18px;font-weight:600;}
-  .kicker{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--aurora);font-weight:700;}
-  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6vw,2.8rem);margin:8px 0 0;line-height:1.05;}
-  main{flex:1;display:flex;align-items:center;padding:50px 0;}
-  .card{background:var(--snow);border:1px solid var(--line);border-radius:16px;padding:30px;
-    box-shadow:0 10px 30px rgba(22,32,46,.07);width:100%;}
-  .badge{display:inline-block;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
-    background:rgba(108,119,135,.14);color:var(--stone);padding:4px 10px;border-radius:999px;margin-bottom:14px;}
-  .card p{margin:0 0 6px;color:var(--ink-soft);font-size:1.02rem;}
-  .back{display:inline-block;margin-top:20px;font-weight:600;color:var(--aurora-deep);text-decoration:none;font-size:.92rem;}
-  .back::before{content:"← ";}
+  .kicker{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--aurora);font-weight:700;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6vw,2.9rem);margin:8px 0 0;line-height:1.05;}
+  .top .sub{margin:14px 0 0;color:#b9c6cf;font-size:1rem;max-width:56ch;}
+  .top .actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;}
+  .pill{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.02em;text-decoration:none;
+    padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.28);color:#eef3f1;}
+  .pill:hover{border-color:var(--aurora);color:var(--aurora);}
+
+  main{padding:36px 0 60px;}
+  h2{font-family:var(--serif);font-weight:600;font-size:1.55rem;margin:38px 0 12px;letter-spacing:-.005em;}
+  h2:first-of-type{margin-top:0;}
+  h3{font-size:.95rem;font-weight:700;color:var(--aurora-deep);margin:24px 0 8px;}
+  p{color:var(--ink-soft);}
+  .callout{background:#e9f5ef;border:1px solid #bfe3d2;border-radius:14px;padding:18px 20px;margin:0 0 8px;}
+  .callout p{margin:0;font-size:.98rem;}
+  .note{font-size:.86rem;color:var(--stone);font-style:italic;margin-top:10px;}
+
+  .tbl-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--snow);box-shadow:var(--shadow);}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:.88rem;}
+  th{background:var(--ink);color:#fff;text-align:left;font-weight:600;font-size:.78rem;
+    letter-spacing:.04em;padding:10px 12px;}
+  td{padding:9px 12px;border-top:1px solid var(--line-soft);vertical-align:top;color:var(--ink-soft);}
+  td:first-child{font-weight:600;color:var(--ink);white-space:nowrap;}
+  tr:nth-child(even) td{background:#faf8f2;}
+  tr.churchill td{background:#e9f5ef;}
+
+  .checks{background:var(--snow);border:1px solid var(--line);border-radius:14px;
+    padding:6px 18px 14px;box-shadow:var(--shadow);}
+  .check{display:flex;gap:12px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line-soft);cursor:pointer;}
+  .checks .check:first-of-type{border-top:none;}
+  .check input{appearance:none;-webkit-appearance:none;flex:0 0 auto;width:19px;height:19px;margin:2px 0 0;
+    border:2px solid var(--aurora-deep);border-radius:5px;background:#fff;cursor:pointer;position:relative;}
+  .check input:checked{background:var(--aurora-deep);}
+  .check input:checked::after{content:"";position:absolute;left:4px;top:1px;width:5px;height:9px;
+    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(42deg);}
+  .check input:focus-visible{outline:2px solid var(--aurora);outline-offset:2px;}
+  .check span{font-size:.95rem;color:var(--ink-soft);}
+  .check input:checked + span{color:var(--stone);}
+  .checkbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:8px 0 14px;flex-wrap:wrap;}
+  .checkbar .count{font-size:.82rem;color:var(--stone);}
+  .checkbar button{font-family:var(--sans);font-size:.76rem;font-weight:600;border:1px solid var(--line);
+    background:#fff;color:var(--ink-soft);padding:6px 12px;border-radius:999px;cursor:pointer;}
+  .checkbar button:hover{border-color:var(--stone);}
+
+  .legs .leg{background:var(--snow);border:1px solid var(--line);border-left:4px solid var(--amber);
+    border-radius:12px;padding:14px 18px;margin:12px 0;box-shadow:var(--shadow);}
+  .legs .leg.cold{border-left-color:var(--blue);}
+  .legs .leg.churchill{border-left-color:var(--aurora-deep);}
+  .legs .leg h3{margin:0 0 6px;color:var(--ink);}
+  .legs .leg p{margin:0;font-size:.93rem;}
+
+  .foot{margin-top:44px;border-top:1px solid var(--line);padding-top:20px;font-size:.84rem;color:var(--stone);}
+  .foot a{color:var(--aurora-deep);font-weight:600;text-decoration:none;}
+
+  @media print{
+    .top{background:#fff;color:#000;padding:10px 0;}
+    .top .sub{color:#333;}
+    .home,.actions,.checkbar{display:none;}
+    body{background:#fff;font-size:12px;}
+    .checks,.tbl-scroll,.legs .leg,.callout{box-shadow:none;}
+    h1{color:#000;font-size:1.8rem;}
+    .kicker{color:#1c8a64;}
+    a{text-decoration:none;color:inherit;}
+  }
 </style>
 </head>
 <body>
   <div class="top"><div class="wrap">
     <a class="home" href="../">&larr; Trip hub</a>
     <div class="kicker">What to bring</div>
-    <h1>Packing List</h1>
+    <h1>Packing &amp; Clothing Layers</h1>
+    <p class="sub">Three climates in one month: early fall in Winnipeg, hard frost by Thompson, and a sub-arctic
+      Hudson Bay shoreline at Churchill. One layering system covers it all &mdash; sized for the coldest week.</p>
+    <div class="actions">
+      <a class="pill" href="./NLPB-2026-Packing-Guide.pdf">Download the printable PDF</a>
+      <a class="pill" href="javascript:window.print()">Print this page</a>
+    </div>
   </div></div>
-  <main><div class="wrap"><div class="card">
-    <span class="badge">Coming soon</span>
-    <p>Layers for a sub-arctic October, what Frontiers North supplies on the Tundra Buggy, and how to split carry-on vs. checked baggage for the Churchill rail leg.</p>
-    <p style="color:var(--stone);font-size:.92rem;">We'll fill this in before departure — check back, or it'll be linked from the hub when it's ready.</p>
-    <a class="back" href="../">Back to the trip hub</a>
-  </div></div></main>
+
+  <main class="wrap">
+    <div class="callout">
+      <p><b>The big picture:</b> southern Manitoba in mid-September is often shirtsleeves by day, jacket by night.
+      Thompson in early October sits near freezing. Churchill (Oct 2&ndash;7) runs 30s&ndash;40s&nbsp;&deg;F by day,
+      at or below freezing at night &mdash; and it's the windiest month of the year on the bay.
+      <b>Pack a complete layering system and size everything for the Churchill leg;</b> the southern weeks simply
+      use fewer of the same pieces.</p>
+    </div>
+    <p class="note">Temperature ranges below combine observed weather at each stop during our dates in 2024 and 2025
+      with the 1991&ndash;2020 climate normals. Both recent Octobers opened mild in Churchill &mdash; that's luck,
+      not a promise. Pack for the cold end of the range.</p>
+
+    <h2>What the Weather Was Actually Like</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr><th>Stop</th><th>Our dates</th><th>Daytime high</th><th>Overnight low</th><th>Watch for</th></tr></thead>
+        <tbody>
+          <tr><td>Winnipeg</td><td>Sep 11&ndash;15</td><td>63&ndash;72&deg;F (17&ndash;22&deg;C)</td><td>45&ndash;52&deg;F (7&ndash;11&deg;C)</td><td>A rainy day or two; warm spells to ~85&deg;F possible</td></tr>
+          <tr><td>Neepawa / Carberry</td><td>Sep 15&ndash;19</td><td>60&ndash;70&deg;F (16&ndash;21&deg;C)</td><td>42&ndash;50&deg;F (6&ndash;10&deg;C)</td><td>First frost possible on clear nights</td></tr>
+          <tr><td>Dauphin</td><td>Sep 19+</td><td>55&ndash;68&deg;F (13&ndash;20&deg;C)</td><td>38&ndash;48&deg;F (3&ndash;9&deg;C)</td><td>Frost likely; 2025 was wet &mdash; muddy ground</td></tr>
+          <tr><td>Swan River</td><td>late Sep</td><td>52&ndash;64&deg;F (11&ndash;18&deg;C)</td><td>36&ndash;45&deg;F (2&ndash;7&deg;C)</td><td>Overnight frost; soft ground after the 2026 floods</td></tr>
+          <tr><td>Thompson</td><td>late Sep &ndash; early Oct</td><td>40&ndash;52&deg;F (4&ndash;11&deg;C)</td><td>28&ndash;36&deg;F (&minus;2 to +2&deg;C)</td><td>Hard frost; first snow flurries possible</td></tr>
+          <tr class="churchill"><td>Churchill &mdash; daytime</td><td>Oct 2&ndash;7</td><td>36&ndash;45&deg;F (2&ndash;7&deg;C)</td><td>28&ndash;34&deg;F (&minus;2 to +1&deg;C)</td><td>Windiest month on Hudson Bay &mdash; feels colder; snow possible</td></tr>
+          <tr class="churchill"><td>Churchill &mdash; aurora nights</td><td>Oct 2&ndash;7, ~10&thinsp;pm&ndash;2&thinsp;am</td><td>&mdash;</td><td>28&ndash;33&deg;F (&minus;2 to +1&deg;C)</td><td>Coldest exposure of the trip: standing still, wind off the bay</td></tr>
+          <tr><td>Return via Thompson</td><td>Oct 8&ndash;13</td><td>38&ndash;52&deg;F (3&ndash;11&deg;C)</td><td>26&ndash;38&deg;F (&minus;3 to +3&deg;C)</td><td>Keep the winter kit handy all the way south</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>The Layer System &mdash; What to Pack</h2>
+    <p>One kit covers the whole trip: wear one or two layers in the south, all of them in Churchill.
+      <b>Avoid cotton next to your skin</b> &mdash; it traps sweat and chills you. Tap items to check them off;
+      your list is remembered on this device.</p>
+    <div class="checkbar">
+      <span class="count" id="count"></span>
+      <button id="clear" type="button">Reset list</button>
+    </div>
+
+    <h3>1 &middot; Base layer (wicking, against the skin)</h3>
+    <div class="checks" data-sec="base">
+      <label class="check"><input type="checkbox"><span>2 sets merino wool or synthetic long underwear &mdash; tops and bottoms</span></label>
+      <label class="check"><input type="checkbox"><span>Everyday shirts for warm southern afternoons</span></label>
+    </div>
+
+    <h3>2 &middot; Mid layer (everyday warmth)</h3>
+    <div class="checks" data-sec="mid">
+      <label class="check"><input type="checkbox"><span>1&ndash;2 fleece or light down/synthetic sweaters or jackets</span></label>
+      <label class="check"><input type="checkbox"><span>Fleece or insulated pants to wear over base bottoms up north</span></label>
+    </div>
+
+    <h3>3 &middot; Insulation layer (Churchill)</h3>
+    <div class="checks" data-sec="ins">
+      <label class="check"><input type="checkbox"><span>Heavier insulated or down jacket worn under the shell for tundra days and aurora nights</span></label>
+    </div>
+
+    <h3>4 &middot; Shell (wind + water)</h3>
+    <div class="checks" data-sec="shell">
+      <label class="check"><input type="checkbox"><span>Windproof, waterproof insulated parka &mdash; ideally rated to about &minus;30&deg;C <i>(see the rental note below)</i></span></label>
+      <label class="check"><input type="checkbox"><span>Insulated or windproof snow pants / over-pants</span></label>
+      <label class="check"><input type="checkbox"><span>Packable rain jacket and rain pants &mdash; used on every leg of the trip</span></label>
+    </div>
+
+    <h3>Head, hands &amp; feet</h3>
+    <div class="checks" data-sec="ext">
+      <label class="check"><input type="checkbox"><span>Warm hat / toque covering the ears, plus a neck gaiter or balaclava for the bay wind</span></label>
+      <label class="check"><input type="checkbox"><span>Two-glove system: thin liner gloves (camera-friendly) under heavy insulated mittens</span></label>
+      <label class="check"><input type="checkbox"><span>Insulated <b>waterproof</b> winter boots (Baffin / Sorel class) &mdash; cold feet end tundra days early</span></label>
+      <label class="check"><input type="checkbox"><span>Waterproof walking shoes or light hikers for the southern leg (expect mud &mdash; see the flood note)</span></label>
+      <label class="check"><input type="checkbox"><span>Several pairs of wool socks; sock liners optional</span></label>
+      <label class="check"><input type="checkbox"><span>Slip-on ice cleats &mdash; Churchill streets can be icy in early October</span></label>
+      <label class="check"><input type="checkbox"><span>Ball cap / sun hat and sunglasses (snow glare up north, bright days down south)</span></label>
+    </div>
+
+    <h3>Extras worth their weight</h3>
+    <div class="checks" data-sec="extra">
+      <label class="check"><input type="checkbox"><span>Chemical hand and foot warmers &mdash; a generous supply; the best comfort upgrade for aurora nights</span></label>
+      <label class="check"><input type="checkbox"><span>Lip balm and moisturizer (cold, dry, windy air)</span></label>
+      <label class="check"><input type="checkbox"><span>Spare camera/phone batteries kept warm in an inside pocket &mdash; cold drains them fast</span></label>
+      <label class="check"><input type="checkbox"><span>Small daypack for shedding layers between heated buggy/lodge and outdoors</span></label>
+      <label class="check"><input type="checkbox"><span>Gaiters for mud and early snow</span></label>
+      <label class="check"><input type="checkbox"><span>Thermos for hot drinks</span></label>
+    </div>
+
+    <h2>Dressing It, Leg by Leg</h2>
+    <div class="legs">
+      <div class="leg">
+        <h3>Southern Manitoba (Sep 11 &ndash; ~28)</h3>
+        <p>Light layers: base + fleece or light jacket, rain gear within reach. Warm afternoons, cool mornings.
+        If a front pushes overnight lows toward freezing (watch the forecast around Dauphin / Swan River), add the
+        thermal base and a warm hat.</p>
+      </div>
+      <div class="leg cold">
+        <h3>Thompson &amp; the train (late Sep &ndash; early Oct)</h3>
+        <p>Switch to winter mode: thermal base, mid layer, hat, gloves, waterproof boots. <b>The RVs stay in
+        Thompson &mdash; pack your entire Churchill cold-weather kit in your train luggage,</b> not the trailer.</p>
+      </div>
+      <div class="leg churchill">
+        <h3>Churchill (Oct 2&ndash;7)</h3>
+        <p>Full stack for any outdoor time. Buggies and lodges are heated, but windows open for photos and you'll be
+        in and out. For aurora nights, over-dress on purpose: base + mid + insulation + parka, snow pants, mittens,
+        balaclava, warmers in gloves and boots. Clear nights &mdash; the good aurora nights &mdash; are also the coldest.</p>
+      </div>
+      <div class="leg cold">
+        <h3>The drive home (Oct 8&ndash;13)</h3>
+        <p>Keep the winter kit accessible; late-October Winnipeg can see the first measurable snow.</p>
+      </div>
+    </div>
+
+    <h2>Good to Know</h2>
+    <p><b>Parka &amp; boot rentals &mdash; before you buy anything expensive:</b> Frontiers North (our Churchill
+      operator) runs a
+      <a href="https://frontiersnorth.com/resources/gear-rental/" style="color:var(--aurora-deep);font-weight:600;">gear
+      rental program</a>: Canada Goose &lsquo;Ontario&rsquo; and &lsquo;Constable&rsquo; parkas (three-quarter length,
+      unisex, XS&ndash;3XL), Canada Goose Tundra Bib overalls, and Baffin &lsquo;Impact&rsquo; boots &mdash; men's
+      7&ndash;14, women's 6&ndash;11. You reserve by submitting their Gear Form, and they come back to you on sizes and
+      payment, so <b>do it early</b> rather than at the last minute. Two things worth knowing: the boots run narrow, so
+      order up a size if you're a half size; and parka style and colour aren't guaranteed &mdash; not every parka has
+      fur. Renting the big three doesn't get you out of bringing your own base and mid layers, hat, gloves, socks and
+      warmers.</p>
+    <p class="note" style="margin-top:-2px;">Rental pricing isn't published on their site &mdash; ask when you submit
+      the form.</p>
+    <p><b>What actually goes on the train:</b> the rigs stay in Thompson, so everything you need for Churchill has to
+      fit in what you carry aboard &mdash; parka, boots, the whole cold-weather kit, plus medications and camera gear.
+      Pack that as a separate bag before Thompson rather than digging through the trailer on departure morning. Check
+      the current
+      <a href="https://www.viarail.ca/en/plan/baggages" style="color:var(--aurora-deep);font-weight:600;">VIA Rail
+      baggage allowance</a> for the Winnipeg&ndash;Churchill train while you're packing; the caravan leaders will
+      confirm the group's arrangements closer to the date.</p>
+    <p><b>2026 flood conditions:</b> June 2026 flooding hit the Swan River / Dauphin / Parkland corridor hard &mdash;
+      hundreds of road, bridge and culvert sites damaged. Expect soft, muddy campsites and check
+      <a href="https://www.manitoba511.ca" style="color:var(--aurora-deep);font-weight:600;">manitoba511.ca</a>
+      for road status. Waterproof footwear matters more this year than usual.</p>
+    <p><b>Before you leave:</b> weather varies a lot year to year (Sep 2024 was warm, Sep 2025 wetter and cooler).
+      Recheck the Environment Canada 7-day forecasts for Winnipeg, Thompson and Churchill in the days before
+      departure and adjust.</p>
+
+    <div class="foot">
+      <p>Based on Sep&ndash;Oct 2024/2025 observed weather and ECCC climate normals &middot;
+        <a href="./NLPB-2026-Packing-Guide.pdf">Printable PDF</a> &middot;
+        <a href="../">Back to the trip hub</a></p>
+    </div>
+  </main>
+
+<script>
+(function(){
+  var KEY='nlpb-packing-v1';
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('.check input'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){}
+  boxes.forEach(function(b,i){
+    if(saved[i]) b.checked=true;
+    b.addEventListener('change',function(){
+      saved[i]=b.checked; if(!b.checked) delete saved[i];
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      update();
+    });
+  });
+  var count=document.getElementById('count');
+  function update(){
+    var n=boxes.filter(function(b){return b.checked;}).length;
+    count.textContent=n+' of '+boxes.length+' packed';
+  }
+  document.getElementById('clear').addEventListener('click',function(){
+    boxes.forEach(function(b){b.checked=false;});
+    saved={}; try{localStorage.removeItem(KEY);}catch(e){}
+    update();
+  });
+  update();
+})();
+</script>
+
+<p style="max-width:880px;margin:28px auto 40px;padding:0 22px;font-size:.78rem;color:#8a94a3;text-align:center;">Independent personal site by SN Thorsen — not affiliated with or representing Airstream Club International or any other club or organization. Maintained at the pleasure of its creator; subject to change or removal at any time.</p>
 </body>
 </html>

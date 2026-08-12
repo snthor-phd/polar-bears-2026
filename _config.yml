@@ -8,6 +8,13 @@ collections:
     output: true
     permalink: /articles/:name/
 
+defaults:
+  - scope:
+      path: ""
+      type: articles
+    values:
+      layout: article
+
 exclude:
   - deploy.sh
   - README.md
