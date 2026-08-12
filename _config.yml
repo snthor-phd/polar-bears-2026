@@ -16,6 +16,7 @@ defaults:
       layout: article
 
 exclude:
+  - packing-list/index.html
   - deploy.sh
   - README.md
   - CUSTOM_DOMAIN.md
