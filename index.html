@@ -56,6 +56,17 @@
   .tag{position:absolute;top:18px;right:18px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
     font-weight:700;padding:3px 8px;border-radius:999px;}
   .tag.ready{background:rgba(54,201,142,.16);color:var(--aurora-deep);}
+  .card.wide .go::after{content:" \2192";}
+  .card.prep h2 a{text-decoration:none;color:inherit;}
+  .card.prep h2 a::after{content:" \2192";color:var(--aurora-deep);font-size:.8em;}
+  .card.prep:hover{transform:none;}
+  .card.prep .subs{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px;}
+  .card.prep .subs a{display:inline-block;background:rgba(54,201,142,.1);
+    border:1px solid rgba(54,201,142,.28);color:var(--aurora-deep);text-decoration:none;
+    font-weight:600;font-size:.85rem;padding:7px 13px;border-radius:999px;
+    transition:background .15s ease;}
+  .card.prep .subs a:hover{background:rgba(54,201,142,.2);}
+  .card.prep .subs a::after{content:" \2192";}
   .tag.soon{background:rgba(108,119,135,.14);color:var(--stone);}
   .card.feature{grid-column:1 / -1;background:linear-gradient(180deg,#10202f,#16202e);color:#eef3f1;border-color:#21384d;}
   .card.wide{grid-column:1 / -1;}
@@ -96,6 +107,19 @@
         <p>All 31 days grouped by stop, the driving legs with distances and the dump/fuel/cash reminders, building to the overnight train and the Tundra Buggy at Churchill. Toggle to highlights, or print for the binder.</p>
         <span class="go">Open the itinerary</span>
       </a>
+
+      <div class="card wide prep">
+        <span class="tag ready">New</span>
+        <span class="kicker">Practical prep</span>
+        <h2><a href="./before-you-go/">Before You Go</a></h2>
+        <p>The August word from Manitoba, in one place: the fire ban and wildfire picture, the Medical Emergency Form everyone has to seal in an envelope, Starlink and cell coverage, and what's easy to forget. Three topics have their own pages, with room to grow as more comes in.</p>
+        <div class="subs">
+          <a href="./community-service/">Community Service Project</a>
+          <a href="./via-rail/">The Train to Churchill</a>
+          <a href="./winterizing/">Winterizing in Thompson</a>
+          <a href="./tundra-buggy-lodge/">The Tundra Buggy Lodge</a>
+        </div>
+      </div>
 
       <div class="card soon">
         <span class="tag soon">Coming soon</span>
@@ -146,7 +170,7 @@
     </div>
 
     <div class="foot">
-      <p><b>Rendezvous &amp; pre-caravan parking:</b> Town &amp; Country Campground, Winnipeg — relocated from Carberry after western-Manitoba flooding &amp; road closures. Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM; arrival Sun Sep 13, 1:00–4:00 PM. <b>Co-leaders:</b> Gail &amp; Bruce Harrower and Bruce Balsdon.</p>
+      <p><b>Rendezvous &amp; pre-caravan parking:</b> Town &amp; Country Campground, Winnipeg — relocated from Carberry after western-Manitoba flooding &amp; road closures. Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM. Sunday, Sep 13 arrival windows and site numbers were emailed to each rig individually — go by yours. <b>No open fires this year</b> — Manitoba burning restrictions are in force; the caravan brings a propane fire pit. <b>Co-leaders:</b> Gail &amp; Bruce Harrower and Bruce Balsdon.</p>
       <p style="margin-top:10px;color:#9aa4b1;">Updated as plans firm up. Bookmark this page — one link for the whole trip.</p>
       <p style="margin-top:14px;color:#9aa4b1;font-size:.8rem;"><b>Disclaimer:</b> This is an independent, personal trip site created and maintained by SN Thorsen. It is not an official publication of, and does not represent, speak for, or reflect the views of, Airstream Club International (ACI/WBCCI), the caravan’s leadership, or any other club or organization. Nothing here is official caravan communication — rely on caravan leaders’ official communications for authoritative details. This site exists at the pleasure of its creator and may be edited, corrected, or taken down at any time without notice.</p>
     </div>

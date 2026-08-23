@@ -265,7 +265,9 @@
     </div>
     <div class="route" id="route"></div>
     <div class="foot wrap" style="padding-left:0;padding-right:0;">
-      <p><b>Rendezvous · Town &amp; Country Campground, Winnipeg:</b> Start point relocated from Carberry after western-Manitoba flooding and campground/road closures. Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM; arrival Sun Sep 13, 1:00–4:00 PM (park within the window). Full 30/50-amp hookups; T&amp;C hosts the Meet &amp; Greet and Welcome Dinner.</p>
+      <p><b>Rendezvous · Town &amp; Country Campground, Winnipeg:</b> Start point relocated from Carberry after western-Manitoba flooding and campground/road closures. Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM. <b>Sunday, Sep 13 arrival windows and site numbers were emailed rig by rig in late August</b> — park within <i>your</i> window, not the general one. Full 30/50-amp hookups; T&amp;C hosts the Meet &amp; Greet and Welcome Dinner.</p>
+      <p><b>No open fires:</b> Manitoba is extremely dry and burning restrictions are in force across much of the route — no open fires during the caravan. The caravan carries a propane fire pit and tank for group use. Expect to see wildfire damage; the province-wide state of emergency has been lifted.</p>
+      <p><b>Bring on arrival:</b> a completed <b>Medical Emergency Form</b> per person, sealed in a named envelope — collected in Winnipeg, opened only in an emergency, returned before you leave. Blanks available on site. Full prep list on the <a href="../before-you-go/" style="color:var(--aurora-deep);">Before You Go</a> page, with detail on the <a href="../community-service/" style="color:var(--aurora-deep);">community service project</a>, <a href="../via-rail/" style="color:var(--aurora-deep);">the train to Churchill</a>, <a href="../winterizing/" style="color:var(--aurora-deep);">winterizing in Thompson</a>, and <a href="../tundra-buggy-lodge/" style="color:var(--aurora-deep);">the Tundra Buggy Lodge</a>.</p>
       <p><b>Good to know:</b> Times and tours are <i>subject to change without notice.</i> Most breakfasts and many lunches/dinners are on your own; “included” tags mark meals, tours and gratuities covered by the kitty fee. Churchill meals, tours and gratuities are all in the kitty fee.</p>
       <p><b>Deparkers at Winnipeg:</b> Bruce &amp; Gail Harrower and Bruce Balsdon.</p>
       <p style="margin-top:14px;color:#9aa4b1;">Rebuilt from the preliminary detailed itinerary (rev. 2025-04-07). Open this file on your phone in the rig, or print it for the binder — it works with no signal once it’s loaded.</p>
@@ -279,12 +281,12 @@
    routine rows are hidden in "Highlights only" mode.
 */
 const ITIN = [
-  { id:"winnipeg-start", town:"Winnipeg", camp:"Town & Country Campground (Murdoch Rd)", dates:"Sep 13 – 14 · Days 1–2", churchill:false,
+  { id:"winnipeg-start", town:"Winnipeg", camp:"Town & Country Campground (Murdock Rd)", dates:"Sep 13 – 14 · Days 1–2", churchill:false,
     days:[
       { n:1, dow:"Sun", date:"Sep 13", headline:"Rendezvous at Town & Country — Meet & Greet",
-        heads:"New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground & road closures). Advance parking Fri Sep 11 & Sat Sep 12, 1:00–4:00 PM.",
+        heads:"New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground & road closures). Advance parking Fri Sep 11 & Sat Sep 12, 1:00–4:00 PM. Your Sep 13 arrival window and site number came by individual email — go by yours. Bring your sealed Medical Emergency Form.",
         rows:[
-          {t:"1–4 PM", c:"arrive", d:"Arrive & park — Town & Country Campground, Winnipeg <span class='tag pbt'>parking crew on duty</span> · arrive within the window"},
+          {t:"Your window", c:"arrive", d:"Arrive & park — Town & Country Campground, Winnipeg <span class='tag pbt'>parking crew on duty</span> · windows are staggered rig by rig (emailed late August)"},
           {t:"TBD", c:"meal", d:"Meet & Greet at T&C — finger food <span class='tag inc'>included</span>"},
           {t:"6:30 PM", c:"routine", d:"First-Timers intro + Caravan schedule review (location TBD)"},
           {t:"Evening", c:"routine", d:"Campfire (weather permitting)"},
@@ -433,6 +435,7 @@ const ITIN = [
           {t:"8:30 AM", c:"arrive", d:"Travel to Thompson (long drive) · park 4:00–6:00 PM"},
         ]},
       { n:19, dow:"Thu", date:"Oct 1", headline:"Community service & Heritage North — “Update on Churchill”",
+        heads:"This is where the donations you collected get sorted — some stay in Thompson for the women's shelter and local schools, the rest is boxed for the train to Churchill (VIA carries them free).",
         rows:[
           {t:"10:00 AM", c:"tour", d:"Community service — sort & distribute goods (University of the North)"},
           {t:"1:30 PM", c:"tour", d:"Heritage North Museum tour"},
@@ -443,7 +446,7 @@ const ITIN = [
   { id:"churchill", town:"Churchill", camp:"By VIA Rail · Tundra Buggy Lodge & Tundra Inn", dates:"Oct 2 – 7 · Days 20–25", churchill:true,
     days:[
       { n:20, dow:"Fri", date:"Oct 2", headline:"★ Board the train to Churchill — overnight",
-        heads:"Get the rig ready to be left in Thompson for 5 days. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
+        heads:"Get the rig ready to be left in Thompson for 5 days — 2 gal RV antifreeze in the drains, water lines drained &amp; blown out, hot water tank drained, electric heater left on the counter (no antifreeze in fresh water lines). Bruce Balsdon assists; keys stay with Colleen at McCreedy. Train baggage: carry-on 1 personal item (25 lb) + 1 item (50 lb / 62 linear in), checked 2 × 50 lb. No dining car (snack/lounge car only, very limited, no dietary accommodation) — bring your own; alcohol must be checked, not carry-on. Security screening in Thompson. No sleeper? Bring a pillow and blanket. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
         rows:[
           {t:"11:00 AM", c:"meal", d:"Group lunch — Northern Inn & Steakhouse <span class='tag inc'>incl. gratuity</span>"},
           {t:"2:50 PM", c:"arrive", d:"Checked baggage to the lot · 3:00 owners take it to the station"},

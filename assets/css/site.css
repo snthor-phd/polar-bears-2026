@@ -73,3 +73,87 @@ main{padding:40px 0 12px;}
 /* ---------- FOOTER ---------- */
 .site-foot{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 56px;font-size:.84rem;color:var(--stone);}
 .site-foot a{color:var(--aurora-deep);}
+
+/* ---------- DOC PAGES (Before You Go, Community Service, VIA Rail, Winterizing) ---------- */
+.docpage{max-width:760px;margin:0 auto;}
+.docpage .updated{font-size:.82rem;color:var(--stone);text-align:center;margin:0 0 26px;}
+.docpage .toc{background:var(--snow);border:1px solid var(--line);border-radius:14px;
+  padding:16px 20px;margin:0 0 32px;box-shadow:var(--shadow);}
+.docpage .toc p{margin:0 0 8px;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:700;color:var(--stone);}
+.docpage .toc ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;}
+.docpage .toc a{color:var(--aurora-deep);text-decoration:none;font-size:.92rem;font-weight:600;}
+.docpage .toc a:hover{text-decoration:underline;}
+
+.docpage section{background:var(--snow);border:1px solid var(--line);border-radius:16px;
+  padding:24px 26px;margin:0 0 18px;box-shadow:var(--shadow);scroll-margin-top:20px;}
+.docpage section > .kicker{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--stone);display:block;}
+.docpage h2{font-family:var(--serif);font-weight:600;font-size:1.45rem;line-height:1.15;
+  margin:7px 0 12px;color:var(--ink);}
+.docpage h3{font-family:var(--serif);font-weight:600;font-size:1.05rem;margin:20px 0 6px;color:var(--ink);}
+.docpage p{margin:0 0 .9em;color:var(--ink-soft);font-size:1rem;}
+.docpage ul,.docpage ol{margin:0 0 .9em;padding-left:1.25em;color:var(--ink-soft);}
+.docpage li{margin:.35em 0;}
+.docpage p:last-child,.docpage ul:last-child,.docpage ol:last-child{margin-bottom:0;}
+.docpage strong{color:var(--ink);}
+.docpage a{color:var(--aurora-deep);}
+
+.docpage section.alert{border-left:4px solid var(--amber);}
+.docpage section.action{border-left:4px solid var(--aurora);}
+.docpage section.dark{background:linear-gradient(180deg,#10202f,#16202e);border-color:#21384d;color:#eef3f1;}
+.docpage section.dark > .kicker{color:var(--aurora);}
+.docpage section.dark h2,.docpage section.dark h3{color:#fff;}
+.docpage section.dark p,.docpage section.dark ul,.docpage section.dark ol{color:#b9c6cf;}
+.docpage section.dark strong{color:#fff;}
+.docpage section.dark a{color:var(--aurora);}
+
+.docpage .flag{display:inline-block;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;
+  font-weight:700;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:3px;}
+.docpage .flag.req{background:rgba(217,138,43,.16);color:#9c5f12;}
+.docpage .flag.new{background:rgba(54,201,142,.16);color:var(--aurora-deep);}
+.docpage .flag.tbd{background:rgba(108,119,135,.14);color:var(--stone);}
+
+.docpage .spec{width:100%;border-collapse:collapse;margin:0 0 .9em;font-size:.95rem;}
+.docpage .spec th,.docpage .spec td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);
+  vertical-align:top;color:var(--ink-soft);}
+.docpage .spec th{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);
+  font-weight:700;border-bottom-width:2px;}
+.docpage .spec td:first-child{font-weight:600;color:var(--ink);white-space:nowrap;}
+
+/* jump-off links to sibling pages */
+.docpage .seealso{display:flex;flex-wrap:wrap;gap:10px;margin:.4em 0 0;}
+.docpage .seealso a{display:inline-block;background:rgba(54,201,142,.1);border:1px solid rgba(54,201,142,.28);
+  color:var(--aurora-deep);text-decoration:none;font-weight:600;font-size:.88rem;
+  padding:8px 14px;border-radius:999px;transition:background .15s ease;}
+.docpage .seealso a:hover{background:rgba(54,201,142,.18);}
+.docpage .seealso a::after{content:" \2192";}
+
+.docpage .ask{margin-top:26px;text-align:center;font-size:.95rem;color:var(--ink-soft);}
+.docpage .ask a{font-weight:600;}
+@media (max-width:560px){.docpage section{padding:20px 18px;}}
+
+/* figures + document downloads on doc pages */
+.docpage figure{margin:1.1em 0 .9em;}
+.docpage figure img{display:block;width:100%;height:auto;border-radius:12px;
+  border:1px solid var(--line);background:#fff;}
+.docpage figcaption{margin-top:8px;font-size:.85rem;color:var(--stone);text-align:center;}
+.docpage .dl{display:inline-flex;align-items:center;gap:9px;background:var(--frost);
+  border:1px solid var(--line);border-radius:12px;padding:11px 15px;margin:.35em 10px .35em 0;
+  text-decoration:none;color:var(--ink);font-weight:600;font-size:.92rem;
+  transition:border-color .15s ease,background .15s ease;}
+.docpage .dl:hover{border-color:var(--aurora);background:#fff;}
+.docpage .dl::before{content:"PDF";font-size:.58rem;letter-spacing:.08em;font-weight:800;
+  background:var(--amber);color:#fff;padding:3px 6px;border-radius:4px;}
+.docpage .dl .sz{font-weight:400;color:var(--stone);font-size:.82rem;}
+.docpage section.dark .dl{background:rgba(255,255,255,.07);border-color:#2c4a63;color:#eef3f1;}
+.docpage section.dark .dl:hover{background:rgba(255,255,255,.13);border-color:var(--aurora);}
+.docpage .coords{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem;
+  background:rgba(22,32,46,.05);padding:2px 7px;border-radius:5px;}
+
+/* photo credits */
+.docpage figcaption a{color:var(--aurora-deep);text-decoration:underline;text-underline-offset:2px;}
+.docpage figcaption .credit{display:block;margin-top:3px;font-size:.78rem;opacity:.85;}
+.docpage section.dark figcaption{color:#9fb0b9;}
+.docpage section.dark figcaption a{color:var(--aurora);}
+.docpage section.dark figure img{border-color:#2c4a63;}
