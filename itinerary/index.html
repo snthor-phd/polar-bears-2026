@@ -129,6 +129,9 @@
   .leg-meta .camp{color:var(--ink-soft);}
   .leg-wx{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;padding:9px 13px;
     background:rgba(22,32,46,.035);border:1px solid var(--line);border-radius:10px;}
+  .leg-wx .wx-label{flex:0 0 100%;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;color:var(--stone);margin-bottom:5px;}
+  .leg-wx .wx-label span{font-weight:600;opacity:.75;}
   .leg-wx .wx-i{display:flex;flex-direction:column;line-height:1.15;}
   .leg-wx .wx-i b{font-size:1rem;font-weight:700;color:var(--ink);white-space:nowrap;}
   .leg-wx .wx-i b.hi{color:var(--amber);} .leg-wx .wx-i b.lo{color:var(--blue);}
@@ -598,9 +601,10 @@ ITIN.forEach(leg=>{
       <div class="leg-town">${leg.town}</div>
       <div class="leg-meta"><span class="camp">${leg.camp}</span> · ${leg.dates}</div>
       ${leg.wx?`<div class="leg-wx" data-lat="${leg.wx.lat}" data-lon="${leg.wx.lon}">
+        <div class="wx-label">Temperatures &middot; historical &amp; current <span>&deg;F</span></div>
         <span class="wx-i"><b class="hi">${leg.wx.hi}&deg;</b><i>avg high</i></span>
         <span class="wx-i"><b class="lo">${leg.wx.lo}&deg;</b><i>avg low</i></span>
-        <span class="wx-i wx-ext"><b>${leg.wx.rlo}&deg;&ndash;${leg.wx.rhi}&deg;</b><i>range seen</i></span>
+        <span class="wx-i wx-ext"><b>${leg.wx.rlo}&deg;&ndash;${leg.wx.rhi}&deg;</b><i>recorded range</i></span>
         <span class="wx-i wx-now"><b class="live">&middot;&middot;&middot;</b><i>right now</i></span>
       </div>`:''}
     </div>`;

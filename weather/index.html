@@ -8,6 +8,8 @@ hero_sub: What it normally does at each stop on the days we are actually there â
 <style>
   .wx{max-width:860px;margin:0 auto;}
   .wx .updated{font-size:.82rem;color:var(--stone);text-align:center;margin:0 0 22px;}
+  .wx-cap{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;
+    color:var(--stone);padding:14px 16px 0;}
   .wxwrap{overflow-x:auto;background:var(--snow);border:1px solid var(--line);
     border-radius:16px;box-shadow:var(--shadow);}
   table.wx-t{width:100%;border-collapse:collapse;font-size:.95rem;min-width:600px;}
@@ -40,10 +42,11 @@ hero_sub: What it normally does at each stop on the days we are actually there â
 dates the caravan is at each stop. Live readings refresh when you open the page.</p>
 
 <div class="wxwrap">
+<div class="wx-cap">Temperatures &middot; historical &amp; current, &deg;F</div>
 <table class="wx-t">
   <thead>
     <tr><th>Stop</th><th>Dates</th><th style="text-align:center">Avg high</th>
-    <th style="text-align:center">Avg low</th><th style="text-align:center">Coldest &ndash; warmest</th>
+    <th style="text-align:center">Avg low</th><th style="text-align:center">Recorded range</th>
     <th style="text-align:center">Right now</th></tr>
   </thead>
   <tbody id="wxbody">
@@ -124,7 +127,7 @@ dates the caravan is at each stop. Live readings refresh when you open the page.
 </div>
 
 <p class="legend"><b>Avg high / low</b> is the mean daily maximum and minimum over those calendar
-days, 2010&ndash;2024. <b>Coldest &ndash; warmest</b> is the actual range seen across those fifteen
+days, 2010&ndash;2024. <b>Recorded range</b> is the actual range seen across those fifteen
 years &mdash; the outer edges, not the norm. Plan for the averages; pack for the edges.</p>
 
 <div class="note">
