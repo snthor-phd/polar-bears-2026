@@ -127,6 +127,17 @@
   .leg-town{font-family:var(--serif);font-size:1.75rem;font-weight:600;line-height:1.05;margin:3px 0 4px;letter-spacing:-.01em;}
   .leg-meta{font-size:.86rem;color:var(--stone);}
   .leg-meta .camp{color:var(--ink-soft);}
+  .leg-wx{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;padding:9px 13px;
+    background:rgba(22,32,46,.035);border:1px solid var(--line);border-radius:10px;}
+  .leg-wx .wx-i{display:flex;flex-direction:column;line-height:1.15;}
+  .leg-wx .wx-i b{font-size:1rem;font-weight:700;color:var(--ink);white-space:nowrap;}
+  .leg-wx .wx-i b.hi{color:var(--amber);} .leg-wx .wx-i b.lo{color:var(--blue);}
+  .leg-wx .wx-i b.live{color:var(--aurora-deep);}
+  .leg-wx .wx-i b.live.err{color:var(--stone);font-weight:400;font-size:.82rem;}
+  .leg-wx .wx-i i{font-style:normal;font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--stone);font-weight:600;margin-top:1px;}
+  .leg-wx .wx-ext b{color:var(--stone);font-weight:600;font-size:.92rem;}
+  @media print{.leg-wx .wx-now{display:none;}}
 
   /* travel divider sits on the spine */
   .travel{position:relative;padding-left:42px;margin:30px 0;}
@@ -281,7 +292,7 @@
    routine rows are hidden in "Highlights only" mode.
 */
 const ITIN = [
-  { id:"winnipeg-start", town:"Winnipeg", camp:"Town & Country Campground (Murdock Rd)", dates:"Sep 13 – 14 · Days 1–2", churchill:false,
+  { id:"winnipeg-start", town:"Winnipeg", camp:"Town & Country Campground (Murdock Rd)", dates:"Sep 13 – 14 · Days 1–2", churchill:false, wx:{hi:66,lo:49,rlo:38,rhi:82,lat:49.8271,lon:-96.9809},
     days:[
       { n:1, dow:"Sun", date:"Sep 13", headline:"Rendezvous at Town & Country — Meet & Greet",
         heads:"New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground & road closures). Advance parking Fri Sep 11 & Sat Sep 12, 1:00–4:00 PM. Your Sep 13 arrival window and site number came by individual email — go by yours. Bring your sealed Medical Emergency Form.",
@@ -301,7 +312,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"neepawa", town:"Neepawa", camp:"Lions Riverbend Campground", dates:"Sep 15 – 18 · Days 3–6", churchill:false,
+  { id:"neepawa", town:"Neepawa", camp:"Lions Riverbend Campground", dates:"Sep 15 – 18 · Days 3–6", churchill:false, wx:{hi:64,lo:48,rlo:32,rhi:83,lat:50.2289,lon:-99.4661},
     travel:{lead:"Travel · Winnipeg → Neepawa", dist:"115 mi / 185 km · ~2 hr", notes:["Departure time to be confirmed","Neepawa is the base for day-trips to Carberry & area farms"]},
     days:[
       { n:3, dow:"Tue", date:"Sep 15", headline:"Drive Winnipeg → Neepawa; settle in at Lions Riverbend",
@@ -333,7 +344,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"dauphin", town:"Dauphin", camp:"Vermillion Campground", dates:"Sep 19 – 22 · Days 7–10", churchill:false,
+  { id:"dauphin", town:"Dauphin", camp:"Vermillion Campground", dates:"Sep 19 – 22 · Days 7–10", churchill:false, wx:{hi:63,lo:47,rlo:33,rhi:79,lat:51.1494,lon:-100.0503},
     travel:{lead:"Travel · Neepawa → Dauphin", dist:"96 mi / 154 km · ~1 hr 48 min", notes:["Route via Hwy 10 being confirmed — closures reported (final route set late August)","Arrive at Vermillion Campground after 10:30 AM"]},
     days:[
       { n:7, dow:"Sat", date:"Sep 19", headline:"First peek at the Churchill train — Dauphin Rail Museum",
@@ -367,7 +378,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"swanriver", town:"Swan River", camp:"Green Acres Campground", dates:"Sep 23 – 25 · Days 11–13", churchill:false,
+  { id:"swanriver", town:"Swan River", camp:"Green Acres Campground", dates:"Sep 23 – 25 · Days 11–13", churchill:false, wx:{hi:64,lo:46,rlo:28,rhi:82,lat:52.1061,lon:-101.2672},
     travel:{lead:"Travel · Dauphin → Swan River", dist:"106 mi / 171 km · ~1 hr 46 min", notes:["Arrive at Green Acres after 1:30 PM"]},
     days:[
       { n:11, dow:"Wed", date:"Sep 23", headline:"Into Swan River — Polar Bear Town #3",
@@ -393,7 +404,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"thepas", town:"The Pas", camp:"The Pas Exhibition Grounds", dates:"Sep 26 – 29 · Days 14–17", churchill:false,
+  { id:"thepas", town:"The Pas", camp:"The Pas Exhibition Grounds", dates:"Sep 26 – 29 · Days 14–17", churchill:false, wx:{hi:60,lo:45,rlo:29,rhi:80,lat:53.825,lon:-101.2542},
     travel:{lead:"Travel · Swan River → The Pas", dist:"142 mi / 229 km · ~2 hr 19 min", notes:["Dump before you leave","Arrive at the Exhibition Grounds after 2:00 PM"]},
     days:[
       { n:14, dow:"Sat", date:"Sep 26", headline:"Into The Pas — Polar Bear Town #5",
@@ -427,7 +438,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"thompson", town:"Thompson", camp:"McCreedy Campground", dates:"Sep 30 – Oct 1 · Days 18–19", churchill:false,
+  { id:"thompson", town:"Thompson", camp:"McCreedy Campground", dates:"Sep 30 – Oct 1 · Days 18–19", churchill:false, wx:{hi:51,lo:39,rlo:24,rhi:67,lat:55.7435,lon:-97.8558},
     travel:{lead:"Travel · The Pas → Thompson", dist:"237 mi / 381 km · ~4 hr 14 min (plan ~6 hr)", notes:["National Truth & Reconciliation Day","Fuel up at Wabowden","Stop at Pisew Falls Provincial Park for the falls & bridge","Arrive at McCreedy after 4:00 PM"]},
     days:[
       { n:18, dow:"Wed", date:"Sep 30", headline:"The long haul to Thompson — Pisew Falls en route",
@@ -443,7 +454,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"churchill", town:"Churchill", camp:"By VIA Rail · Tundra Buggy Lodge & Tundra Inn", dates:"Oct 2 – 7 · Days 20–25", churchill:true,
+  { id:"churchill", town:"Churchill", camp:"By VIA Rail · Tundra Buggy Lodge & Tundra Inn", dates:"Oct 2 – 7 · Days 20–25", churchill:true, wx:{hi:43,lo:35,rlo:23,rhi:64,lat:58.7684,lon:-94.1647},
     days:[
       { n:20, dow:"Fri", date:"Oct 2", headline:"★ Board the train to Churchill — overnight",
         heads:"Get the rig ready to be left in Thompson for 5 days — 2 gal RV antifreeze in the drains, water lines drained &amp; blown out, hot water tank drained, electric heater left on the counter (no antifreeze in fresh water lines). Bruce Balsdon assists; keys stay with Colleen at McCreedy. Train baggage: carry-on 1 personal item (25 lb) + 1 item (50 lb / 62 linear in), checked 2 × 50 lb. No dining car (snack/lounge car only, very limited, no dietary accommodation) — bring your own; alcohol must be checked, not carry-on. Security screening in Thompson. No sleeper? Bring a pillow and blanket. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
@@ -499,7 +510,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"grandrapids", town:"Grand Rapids", camp:"Cook’s Campground", dates:"Oct 8 · Day 26", churchill:false,
+  { id:"grandrapids", town:"Grand Rapids", camp:"Cook’s Campground", dates:"Oct 8 · Day 26", churchill:false, wx:{hi:49,lo:42,rlo:32,rhi:56,lat:53.1919,lon:-99.2761},
     travel:{lead:"Travel · Thompson → Grand Rapids", dist:"205 mi / 330 km · ~3 hr 38 min", notes:["Fuel up at Wabowden","Arrive at Cook’s Campground after 3:00 PM"]},
     days:[
       { n:26, dow:"Thu", date:"Oct 8", headline:"Down to Grand Rapids",
@@ -510,7 +521,7 @@ const ITIN = [
         ]},
     ]},
 
-  { id:"winnipeg", town:"Winnipeg", camp:"Town & Country Campground", dates:"Oct 9 – 13 · Days 27–31", churchill:false,
+  { id:"winnipeg", town:"Winnipeg", camp:"Town & Country Campground", dates:"Oct 9 – 13 · Days 27–31", churchill:false, wx:{hi:54,lo:40,rlo:19,rhi:74,lat:49.8271,lon:-96.9809},
     travel:{lead:"Travel · Grand Rapids → Winnipeg", dist:"269 mi / 433 km · ~4 hr 50 min", notes:["RV/truck wash en route — 6n73 WandWASH (Woodlands) or Birds Hill Car & Truck Wash (East St. Paul)","Arrive at Town & Country after 3:00 PM"]},
     days:[
       { n:27, dow:"Fri", date:"Oct 9", headline:"Into Winnipeg — the home stretch",
@@ -586,6 +597,12 @@ ITIN.forEach(leg=>{
       <div class="leg-eyebrow">${leg.churchill?'★ The main event':'Caravan stop'}</div>
       <div class="leg-town">${leg.town}</div>
       <div class="leg-meta"><span class="camp">${leg.camp}</span> · ${leg.dates}</div>
+      ${leg.wx?`<div class="leg-wx" data-lat="${leg.wx.lat}" data-lon="${leg.wx.lon}">
+        <span class="wx-i"><b class="hi">${leg.wx.hi}&deg;</b><i>avg high</i></span>
+        <span class="wx-i"><b class="lo">${leg.wx.lo}&deg;</b><i>avg low</i></span>
+        <span class="wx-i wx-ext"><b>${leg.wx.rlo}&deg;&ndash;${leg.wx.rhi}&deg;</b><i>range seen</i></span>
+        <span class="wx-i wx-now"><b class="live">&middot;&middot;&middot;</b><i>right now</i></span>
+      </div>`:''}
     </div>`;
 
   leg.days.forEach(day=>{
@@ -606,6 +623,31 @@ ITIN.forEach(leg=>{
   sec.innerHTML=html;
   route.appendChild(sec);
 });
+
+/* ---- live temps per stop (Open-Meteo, no key; degrades quietly) ---- */
+(function(){
+  var boxes = document.querySelectorAll('.leg-wx');
+  if(!boxes.length || !window.fetch) return;
+  var lats=[], lons=[];
+  boxes.forEach(function(b){ lats.push(b.dataset.lat); lons.push(b.dataset.lon); });
+  var url='https://api.open-meteo.com/v1/forecast?latitude='+lats.join(',')
+        +'&longitude='+lons.join(',')+'&current=temperature_2m'
+        +'&temperature_unit=fahrenheit&timezone=America%2FWinnipeg';
+  function quiet(){ boxes.forEach(function(b){ var n=b.querySelector('.wx-now'); if(n) n.style.display='none'; }); }
+  fetch(url,{mode:'cors'})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(data){
+      var list = Array.isArray(data)?data:[data];
+      boxes.forEach(function(b,i){
+        var el=b.querySelector('.live'), d=list[i];
+        if(!d||!d.current||typeof d.current.temperature_2m!=='number'){
+          var n=b.querySelector('.wx-now'); if(n) n.style.display='none'; return;
+        }
+        el.textContent = Math.round(d.current.temperature_2m)+'\u00B0';
+      });
+    })
+    .catch(quiet);
+})();
 
 /* ---- controls ---- */
 const toggle=document.getElementById('toggle');
