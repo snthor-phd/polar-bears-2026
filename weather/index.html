@@ -1,0 +1,190 @@
+---
+layout: default
+title: Weather
+hero_title: Weather on the Route
+hero_sub: What it normally does at each stop on the days we are actually there — and what it is doing right now.
+---
+
+<style>
+  .wx{max-width:860px;margin:0 auto;}
+  .wx .updated{font-size:.82rem;color:var(--stone);text-align:center;margin:0 0 22px;}
+  .wxwrap{overflow-x:auto;background:var(--snow);border:1px solid var(--line);
+    border-radius:16px;box-shadow:var(--shadow);}
+  table.wx-t{width:100%;border-collapse:collapse;font-size:.95rem;min-width:600px;}
+  table.wx-t th{font-size:.63rem;letter-spacing:.13em;text-transform:uppercase;color:var(--stone);
+    font-weight:700;text-align:left;padding:14px 12px 10px;border-bottom:2px solid var(--line);
+    white-space:nowrap;}
+  table.wx-t td{padding:13px 12px;border-bottom:1px solid var(--line-soft,#eee9dc);vertical-align:middle;}
+  table.wx-t tr:last-child td{border-bottom:none;}
+  .place b{color:var(--ink);} .place .sub{display:block;font-size:.78rem;color:var(--stone);margin-top:2px;}
+  .dates{white-space:nowrap;color:var(--ink-soft);font-size:.9rem;}
+  .hi,.lo{font-weight:700;font-size:1.15rem;text-align:center;white-space:nowrap;}
+  .hi{color:var(--amber);} .lo{color:var(--blue);}
+  .ext{white-space:nowrap;color:var(--stone);font-size:.85rem;text-align:center;}
+  .now{text-align:center;white-space:nowrap;min-width:96px;}
+  .live{font-weight:700;font-size:1.1rem;color:var(--aurora-deep);}
+  .live.err{font-weight:400;font-size:.82rem;color:var(--stone);}
+  .live .wsub{display:block;font-size:.72rem;font-weight:400;color:var(--stone);margin-top:2px;}
+  .wx .legend{margin-top:18px;font-size:.86rem;color:var(--stone);}
+  .wx .note{background:var(--snow);border:1px solid var(--line);border-left:4px solid var(--amber);
+    border-radius:14px;padding:20px 22px;margin-top:26px;box-shadow:var(--shadow);}
+  .wx .note h3{font-family:var(--serif);font-weight:600;font-size:1.15rem;margin:0 0 8px;color:var(--ink);}
+  .wx .note p{margin:0 0 .8em;color:var(--ink-soft);font-size:.97rem;}
+  .wx .note p:last-child{margin-bottom:0;}
+  @media (max-width:560px){ table.wx-t th,table.wx-t td{padding:11px 9px;} }
+</style>
+
+<div class="wx">
+
+<p class="updated">Averages computed from 15 years of daily records (2010&ndash;2024) for the exact
+dates the caravan is at each stop. Live readings refresh when you open the page.</p>
+
+<div class="wxwrap">
+<table class="wx-t">
+  <thead>
+    <tr><th>Stop</th><th>Dates</th><th style="text-align:center">Avg high</th>
+    <th style="text-align:center">Avg low</th><th style="text-align:center">Coldest &ndash; warmest</th>
+    <th style="text-align:center">Right now</th></tr>
+  </thead>
+  <tbody id="wxbody">
+      <tr data-lat="49.8271" data-lon="-96.9809" data-key="winnipeg-start">
+        <td class="place"><b>Winnipeg</b><span class="sub">Town &amp; Country, Winnipeg</span></td>
+        <td class="dates">Sep 13 – 14</td>
+        <td class="hi">66&deg;</td>
+        <td class="lo">49&deg;</td>
+        <td class="ext">38&deg; &ndash; 82&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="50.2289" data-lon="-99.4661" data-key="neepawa">
+        <td class="place"><b>Neepawa</b><span class="sub">Lions Riverbend, Neepawa</span></td>
+        <td class="dates">Sep 15 – 18</td>
+        <td class="hi">64&deg;</td>
+        <td class="lo">48&deg;</td>
+        <td class="ext">32&deg; &ndash; 83&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="51.1494" data-lon="-100.0503" data-key="dauphin">
+        <td class="place"><b>Dauphin</b><span class="sub">Dauphin</span></td>
+        <td class="dates">Sep 19 – 22</td>
+        <td class="hi">63&deg;</td>
+        <td class="lo">47&deg;</td>
+        <td class="ext">33&deg; &ndash; 79&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="52.1061" data-lon="-101.2672" data-key="swanriver">
+        <td class="place"><b>Swan River</b><span class="sub">Swan River</span></td>
+        <td class="dates">Sep 23 – 25</td>
+        <td class="hi">64&deg;</td>
+        <td class="lo">46&deg;</td>
+        <td class="ext">28&deg; &ndash; 82&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="53.825" data-lon="-101.2542" data-key="thepas">
+        <td class="place"><b>The Pas</b><span class="sub">The Pas</span></td>
+        <td class="dates">Sep 26 – 29</td>
+        <td class="hi">60&deg;</td>
+        <td class="lo">45&deg;</td>
+        <td class="ext">29&deg; &ndash; 80&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="55.7435" data-lon="-97.8558" data-key="thompson">
+        <td class="place"><b>Thompson</b><span class="sub">McCreedy, Thompson</span></td>
+        <td class="dates">Sep 30 – Oct 1, Oct 7</td>
+        <td class="hi">51&deg;</td>
+        <td class="lo">39&deg;</td>
+        <td class="ext">24&deg; &ndash; 67&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="58.7684" data-lon="-94.1647" data-key="churchill">
+        <td class="place"><b>Churchill</b><span class="sub">Churchill &amp; the Lodge</span></td>
+        <td class="dates">Oct 2 – 7</td>
+        <td class="hi">43&deg;</td>
+        <td class="lo">35&deg;</td>
+        <td class="ext">23&deg; &ndash; 64&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="53.1919" data-lon="-99.2761" data-key="grandrapids">
+        <td class="place"><b>Grand Rapids</b><span class="sub">Cook’s, Grand Rapids</span></td>
+        <td class="dates">Oct 8</td>
+        <td class="hi">49&deg;</td>
+        <td class="lo">42&deg;</td>
+        <td class="ext">32&deg; &ndash; 56&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+      <tr data-lat="49.8271" data-lon="-96.9809" data-key="winnipeg">
+        <td class="place"><b>Winnipeg</b><span class="sub">Town &amp; Country, Winnipeg</span></td>
+        <td class="dates">Oct 9 – 13</td>
+        <td class="hi">54&deg;</td>
+        <td class="lo">40&deg;</td>
+        <td class="ext">19&deg; &ndash; 74&deg;</td>
+        <td class="now"><span class="live" aria-live="polite">&middot;&middot;&middot;</span></td>
+      </tr>
+  </tbody>
+</table>
+</div>
+
+<p class="legend"><b>Avg high / low</b> is the mean daily maximum and minimum over those calendar
+days, 2010&ndash;2024. <b>Coldest &ndash; warmest</b> is the actual range seen across those fifteen
+years &mdash; the outer edges, not the norm. Plan for the averages; pack for the edges.</p>
+
+<div class="note">
+  <h3>What the numbers actually tell you</h3>
+  <p>The trip runs <b>downhill in temperature the whole way north</b>, then levels out. Winnipeg in
+  mid-September is shirtsleeves in the afternoon. By Thompson you have lost about fifteen degrees off
+  the daytime high, and Churchill takes another eight &mdash; averaging just above freezing overnight
+  with days in the low forties.</p>
+  <p>The spread matters more than the average. Swan River has seen 28&deg; and 82&deg; on the same
+  calendar dates in different years; Winnipeg on the way home has been down to 19&deg;. A single
+  average tells you what to expect, not what to survive.</p>
+  <p>And an average low of 35&deg; at Churchill is exactly why you are carrying two gallons of RV
+  antifreeze &mdash; see <a href="{{ '/winterizing/' | relative_url }}">winterizing</a>. Overnight
+  lows below freezing during the Churchill week are ordinary, not unlucky.</p>
+</div>
+
+<div class="seealso" style="justify-content:center;margin-top:24px;">
+  <a href="{{ '/itinerary/' | relative_url }}">The itinerary</a>
+  <a href="{{ '/before-you-go/' | relative_url }}">Before You Go</a>
+</div>
+
+<p style="text-align:center;margin-top:22px;font-size:.8rem;color:var(--stone);">
+Historical and live data from <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+(ERA5 reanalysis), free for non-commercial use. No account, no tracking.</p>
+
+</div>
+
+<script>
+(function(){
+  var rows = document.querySelectorAll('#wxbody tr');
+  if (!rows.length) return;
+  var lats = [], lons = [];
+  rows.forEach(function(r){ lats.push(r.dataset.lat); lons.push(r.dataset.lon); });
+  var url = 'https://api.open-meteo.com/v1/forecast'
+          + '?latitude=' + lats.join(',') + '&longitude=' + lons.join(',')
+          + '&current=temperature_2m&temperature_unit=fahrenheit&timezone=America%2FWinnipeg';
+
+  function fail(){
+    rows.forEach(function(r){
+      var el = r.querySelector('.live');
+      el.className = 'live err';
+      el.textContent = 'no signal';
+    });
+  }
+
+  fetch(url, {mode:'cors'})
+    .then(function(res){ if(!res.ok) throw new Error(res.status); return res.json(); })
+    .then(function(data){
+      var list = Array.isArray(data) ? data : [data];
+      rows.forEach(function(r, i){
+        var el = r.querySelector('.live');
+        var d = list[i];
+        if (!d || !d.current || typeof d.current.temperature_2m !== 'number'){
+          el.className = 'live err'; el.textContent = '\u2014'; return;
+        }
+        el.className = 'live';
+        el.innerHTML = Math.round(d.current.temperature_2m) + '&deg;'
+                     + '<span class="wsub">local now</span>';
+      });
+    })
+    .catch(fail);
+})();
+</script>

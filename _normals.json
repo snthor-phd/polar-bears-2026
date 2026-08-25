@@ -1,0 +1,110 @@
+[
+ {
+  "key": "winnipeg-start",
+  "town": "Winnipeg",
+  "camp": "Town & Country Campground",
+  "lat": 49.8271,
+  "lon": -96.9809,
+  "n": 30,
+  "high": 66,
+  "low": 49,
+  "record_high": 82,
+  "record_low": 38
+ },
+ {
+  "key": "neepawa",
+  "town": "Neepawa",
+  "camp": "Lions Riverbend",
+  "lat": 50.2289,
+  "lon": -99.4661,
+  "n": 60,
+  "high": 64,
+  "low": 48,
+  "record_high": 83,
+  "record_low": 32
+ },
+ {
+  "key": "dauphin",
+  "town": "Dauphin",
+  "camp": "",
+  "lat": 51.1494,
+  "lon": -100.0503,
+  "n": 60,
+  "high": 63,
+  "low": 47,
+  "record_high": 79,
+  "record_low": 33
+ },
+ {
+  "key": "swanriver",
+  "town": "Swan River",
+  "camp": "",
+  "lat": 52.1061,
+  "lon": -101.2672,
+  "n": 45,
+  "high": 64,
+  "low": 46,
+  "record_high": 82,
+  "record_low": 28
+ },
+ {
+  "key": "thepas",
+  "town": "The Pas",
+  "camp": "",
+  "lat": 53.825,
+  "lon": -101.2542,
+  "n": 60,
+  "high": 60,
+  "low": 45,
+  "record_high": 80,
+  "record_low": 29
+ },
+ {
+  "key": "thompson",
+  "town": "Thompson",
+  "camp": "McCreedy",
+  "lat": 55.7435,
+  "lon": -97.8558,
+  "n": 45,
+  "high": 51,
+  "low": 39,
+  "record_high": 67,
+  "record_low": 24
+ },
+ {
+  "key": "churchill",
+  "town": "Churchill",
+  "camp": "Lodge & Tundra Inn",
+  "lat": 58.7684,
+  "lon": -94.1647,
+  "n": 90,
+  "high": 43,
+  "low": 35,
+  "record_high": 64,
+  "record_low": 23
+ },
+ {
+  "key": "grandrapids",
+  "town": "Grand Rapids",
+  "camp": "Cook's",
+  "lat": 53.1919,
+  "lon": -99.2761,
+  "n": 15,
+  "high": 49,
+  "low": 42,
+  "record_high": 56,
+  "record_low": 32
+ },
+ {
+  "key": "winnipeg",
+  "town": "Winnipeg",
+  "camp": "Town & Country (return)",
+  "lat": 49.8271,
+  "lon": -96.9809,
+  "n": 75,
+  "high": 54,
+  "low": 40,
+  "record_high": 74,
+  "record_low": 19
+ }
+]
