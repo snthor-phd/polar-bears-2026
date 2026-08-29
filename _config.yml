@@ -27,3 +27,10 @@ exclude:
   - deploy.sh
   - README.md
   - CUSTOM_DOMAIN.md
+  # Local-build housekeeping. GitHub Pages ignores these anyway, but a local
+  # `bundle exec jekyll build` will try to read the installed gems as content
+  # and fail on Jekyll's own sample post unless vendor/ is excluded.
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+  - .bundle/

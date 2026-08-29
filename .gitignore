@@ -1,6 +1,8 @@
 .DS_Store
 ._*
-_site/
+.bundle/
 .jekyll-cache/
 .jekyll-metadata
 Thumbs.db
+_site/
+vendor/

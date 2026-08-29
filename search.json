@@ -28,9 +28,16 @@ search: false
 
   Requiring a title also keeps generated assets out of the index — GitHub Pages
   emits a themed assets/css/style.css as a "page", and it has no title.
+
+  The two conditions are chained rather than combined with `and`: Liquid 4.0.4,
+  which GitHub Pages ships with Jekyll 3.10, cannot parse a compound expression
+  inside where_exp. Newer Liquid can, so this WILL build locally and fail on
+  GitHub if you merge them back together.
 {%- endcomment -%}
-{%- assign indexed_pages = site.pages | where_exp: "p", "p.title and p.search != false" -%}
-{%- assign indexed_articles = site.articles | where_exp: "a", "a.title and a.search != false" -%}
+{%- assign indexed_pages = site.pages | where_exp: "p", "p.search != false" -%}
+{%- assign indexed_pages = indexed_pages | where_exp: "p", "p.title" -%}
+{%- assign indexed_articles = site.articles | where_exp: "a", "a.search != false" -%}
+{%- assign indexed_articles = indexed_articles | where_exp: "a", "a.title" -%}
 {%- assign entries = indexed_pages | concat: indexed_articles -%}
 [
 {%- for item in entries %}
