@@ -1,3 +1,7 @@
+---
+title: Trip Hub
+search: false
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,6 +81,18 @@
   .card.soon{opacity:.92;}
   .card.soon:hover{transform:none;}
 
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+  .hubsearch{display:flex;gap:9px;align-items:center;margin:0 0 26px;}
+  .hubsearch input{flex:1 1 auto;font-family:var(--sans);font-size:.98rem;color:var(--ink);
+    background:var(--snow);border:1px solid var(--line);border-radius:12px;padding:12px 16px;
+    box-shadow:var(--shadow);-webkit-appearance:none;appearance:none;}
+  .hubsearch input:focus{outline:none;border-color:var(--aurora);box-shadow:0 0 0 3px rgba(54,201,142,.18);}
+  .hubsearch a.go-search{flex:0 0 auto;text-decoration:none;font-size:.85rem;font-weight:600;
+    color:var(--aurora-deep);background:rgba(54,201,142,.1);border:1px solid rgba(54,201,142,.28);
+    padding:12px 16px;border-radius:12px;}
+  .hubsearch a.go-search:hover{background:rgba(54,201,142,.2);}
+
   .foot{margin-top:34px;border-top:1px solid var(--line);padding:22px 0 56px;font-size:.84rem;color:var(--stone);}
   .foot b{color:var(--ink-soft);}
 
@@ -99,6 +115,14 @@
 
   <main class="wrap">
     <p class="lead">Sep 13 – Oct 13, 2026 · 31 days · the schedule is subject to change, so check here before you count on a tour time.</p>
+
+    <div class="hubsearch">
+      <label class="sr-only" for="hubq">Search the site</label>
+      <input type="search" id="hubq" placeholder="Search the site — packing, the train, winterizing&hellip;"
+             autocomplete="off" autocorrect="off" spellcheck="false" />
+      <a class="go-search" id="hubgo" href="./search/">Search</a>
+    </div>
+
     <div class="grid">
       <a class="card feature" href="./itinerary/">
         <span class="tag ready">Ready</span>
@@ -123,12 +147,13 @@
         </div>
       </div>
 
-      <div class="card soon">
-        <span class="tag soon">Coming soon</span>
+      <a class="card" href="./packing-list/">
+        <span class="tag ready">Ready</span>
         <span class="kicker">What to bring</span>
         <h2>Packing List</h2>
-        <p>The full layer system for three climates in one month — being finalized now. Check back soon.</p>
-      </div>
+        <p>The full layer system for three climates in one month — base layers through parka, sized for the Churchill leg. Interactive checklist, a leg-by-leg guide, and a printable PDF for the binder.</p>
+        <span class="go">Open the packing list</span>
+      </a>
 
       <a class="card soon" href="./contacts/">
         <span class="tag soon">Coming soon</span>
@@ -177,5 +202,20 @@
       <p style="margin-top:14px;color:#9aa4b1;font-size:.8rem;"><b>Disclaimer:</b> This is an independent, personal trip site created and maintained by SN Thorsen. It is not an official publication of, and does not represent, speak for, or reflect the views of, Airstream Club International (ACI/WBCCI), the caravan’s leadership, or any other club or organization. Nothing here is official caravan communication — rely on caravan leaders’ official communications for authoritative details. This site exists at the pleasure of its creator and may be edited, corrected, or taken down at any time without notice.</p>
     </div>
   </main>
+<script>
+(function () {
+  var box = document.getElementById('hubq');
+  var go  = document.getElementById('hubgo');
+  if (!box || !go) return;
+  function target() {
+    var q = box.value.trim();
+    return './search/' + (q ? '?q=' + encodeURIComponent(q) : '');
+  }
+  box.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); location.href = target(); }
+  });
+  go.addEventListener('click', function (e) { e.preventDefault(); location.href = target(); });
+})();
+</script>
 </body>
 </html>

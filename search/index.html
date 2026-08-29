@@ -1,0 +1,177 @@
+---
+layout: default
+title: Search
+hero_title: Search the site
+hero_sub: Every page, the trip journal, and the packing list — all at once.
+search: false
+---
+
+<div class="searchpage">
+
+  <div class="searchbox">
+    <label class="sr-only" for="q">Search the caravan site</label>
+    <input type="search" id="q" placeholder="Try: parka, VIA baggage, Thompson, dump station&hellip;"
+           autocomplete="off" autocorrect="off" spellcheck="false" />
+    <p class="status" id="status">Loading the index&hellip;</p>
+  </div>
+
+  <div id="results" class="results" aria-live="polite"></div>
+
+  <div class="hints" id="hints">
+    <p class="hint-lead">Not sure where to start?</p>
+    <div class="chips">
+      <button type="button" data-q="packing">packing</button>
+      <button type="button" data-q="train">the train</button>
+      <button type="button" data-q="winterizing">winterizing</button>
+      <button type="button" data-q="polar bear">polar bears</button>
+      <button type="button" data-q="aurora">aurora</button>
+      <button type="button" data-q="drone">drones</button>
+      <button type="button" data-q="fire ban">fire ban</button>
+    </div>
+    <p class="hint-note">This searches page text, so it will find the itinerary page but not an
+      individual day within it &mdash; open the itinerary and use your browser's find
+      (<kbd>&#8984;F</kbd>) for that.</p>
+  </div>
+
+</div>
+
+<script src="{{ '/assets/js/lunr.min.js' | relative_url }}"></script>
+<script>
+(function () {
+  var input   = document.getElementById('q');
+  var status  = document.getElementById('status');
+  var results = document.getElementById('results');
+  var hints   = document.getElementById('hints');
+
+  var docs = [];
+  var idx  = null;
+
+  function say(msg) { status.textContent = msg; }
+
+  if (typeof lunr === 'undefined') {
+    say('Search could not load. Try refreshing, or browse from the trip hub.');
+    return;
+  }
+
+  input.disabled = true;
+
+  fetch('{{ "/search.json" | relative_url }}')
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      docs = data;
+      idx = lunr(function () {
+        this.ref('id');
+        this.field('title',   { boost: 12 });
+        this.field('summary', { boost: 4  });
+        this.field('body');
+        data.forEach(function (d) { this.add(d); }, this);
+      });
+      say(docs.length + ' pages indexed. Start typing.');
+      input.disabled = false;
+      input.focus();
+      var q = new URLSearchParams(location.search).get('q');
+      if (q) { input.value = q; run(q); }
+    })
+    .catch(function (err) {
+      say('Could not load the search index (' + err.message + '). Browse from the trip hub instead.');
+    });
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+
+  // A readable snippet centred on the first matching term.
+  function snippet(text, terms) {
+    if (!text) return '';
+    var lower = text.toLowerCase();
+    var at = -1;
+    for (var i = 0; i < terms.length; i++) {
+      var p = lower.indexOf(terms[i].toLowerCase());
+      if (p !== -1 && (at === -1 || p < at)) at = p;
+    }
+    if (at === -1) return text.slice(0, 180) + (text.length > 180 ? '\u2026' : '');
+    var start = Math.max(0, at - 70);
+    var end   = Math.min(text.length, at + 150);
+    var out   = text.slice(start, end);
+    if (start > 0) out = '\u2026' + out;
+    if (end < text.length) out += '\u2026';
+    return out;
+  }
+
+  function mark(text, terms) {
+    var safe = esc(text);
+    terms.forEach(function (t) {
+      if (t.length < 2) return;
+      var re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      safe = safe.replace(re, '<mark>$1</mark>');
+    });
+    return safe;
+  }
+
+  function run(raw) {
+    var q = raw.trim();
+    results.innerHTML = '';
+
+    if (!q) {
+      hints.hidden = false;
+      say(docs.length + ' pages indexed. Start typing.');
+      return;
+    }
+    hints.hidden = true;
+
+    var hits = [];
+    try {
+      // Prefix search, so "wint" matches "winterizing" while still typing.
+      hits = idx.search(q + '*');
+      if (!hits.length) hits = idx.search(q);
+    } catch (e) {
+      try { hits = idx.search(q.replace(/[~^:*+\-]/g, ' ')); } catch (e2) { hits = []; }
+    }
+
+    if (!hits.length) {
+      say('Nothing found for \u201C' + q + '\u201D.');
+      results.innerHTML =
+        '<p class="noresults">No matches. Try a single word, or a different one &mdash; ' +
+        'the index covers page text, not every line inside the itinerary.</p>';
+      return;
+    }
+
+    var terms = q.split(/\s+/).filter(Boolean);
+    say(hits.length + (hits.length === 1 ? ' result' : ' results') + ' for \u201C' + q + '\u201D.');
+
+    hits.slice(0, 20).forEach(function (hit) {
+      var d = docs[Number(hit.ref)];
+      if (!d) return;
+      var text = (d.summary && d.summary.length > 40) ? d.summary : d.body;
+      var a = document.createElement('a');
+      a.className = 'result';
+      a.href = d.url;
+      a.innerHTML =
+        '<span class="kind">' + esc(d.kind) + '</span>' +
+        '<h2>' + mark(d.title, terms) + '</h2>' +
+        '<p>' + mark(snippet(text, terms), terms) + '</p>';
+      results.appendChild(a);
+    });
+  }
+
+  var timer = null;
+  input.addEventListener('input', function () {
+    clearTimeout(timer);
+    var v = input.value;
+    timer = setTimeout(function () { run(v); }, 120);
+  });
+
+  hints.addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-q]');
+    if (!b) return;
+    input.value = b.getAttribute('data-q');
+    input.focus();
+    run(input.value);
+  });
+})();
+</script>

@@ -9,14 +9,21 @@ collections:
     permalink: /articles/:name/
 
 defaults:
+  # Everything is searchable unless a page sets `search: false` in its front matter.
+  # For content that must not ship at all, use `exclude:` below instead — that keeps it
+  # out of the build entirely, which is stronger than hiding it from search.
+  - scope:
+      path: ""
+    values:
+      search: true
   - scope:
       path: ""
       type: articles
     values:
       layout: article
+      search: true
 
 exclude:
-  - packing-list/index.html
   - deploy.sh
   - README.md
   - CUSTOM_DOMAIN.md
