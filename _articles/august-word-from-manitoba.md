@@ -15,7 +15,7 @@ Advance parking on Friday the 11th and Saturday the 12th is unchanged for those 
 
 Manitoba is extremely dry, and burning restrictions are in force across much of the route. **No open fires during the caravan.** The co-leaders are bringing a propane fire pit and tank for group use, so the evenings still happen — just without the woodsmoke.
 
-Be ready to see wildfire damage as we go north. Conditions around Thompson are expected to be well in hand by the time we get there, with much better air quality, though as Gail put it, her crystal ball is broken. Manitoba's province-wide state of emergency has been lifted, which is the good news.
+Be ready to see wildfire damage as we go north. Conditions around Thompson are expected to be well in hand by the time we get there, with much better air quality, though as one of the co-leaders put it, their crystal ball is broken. Manitoba's province-wide state of emergency has been lifted, which is the good news.
 
 ## One sealed envelope per person
 
@@ -23,7 +23,7 @@ The Medical Emergency Form is not one per rig. **Every person fills out their ow
 
 ## Buy the antifreeze before you leave
 
-The rigs sit in Thompson for five days while we're in Churchill. **Two gallons of RV antifreeze**, down the drains — not through the fresh water lines. Drain and blow out the water lines, drain the hot water tank, and leave an electric heater running on the counter. Bruce Balsdon will help anyone who wants a hand with it, and Colleen keeps the keys at McCreedy and checks the furnaces while we're gone. Full detail on the [Winterizing in Thompson]({{ '/winterizing/' | relative_url }}) page.
+The rigs sit in Thompson for five days while we're in Churchill. **Two gallons of RV antifreeze**, down the drains — not through the fresh water lines. Drain and blow out the water lines, drain the hot water tank, and leave an electric heater running on the counter. One of the co-leaders will help anyone who wants a hand with it, and Colleen keeps the keys at McCreedy and checks the furnaces while we're gone. Full detail on the [Winterizing in Thompson]({{ '/winterizing/' | relative_url }}) page.
 
 ## The community service collection
 
