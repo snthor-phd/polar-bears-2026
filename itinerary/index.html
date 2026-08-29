@@ -373,6 +373,22 @@ ITIN.forEach(leg=>{
   route.appendChild(sec);
 });
 
+/* ---- deep links from search ----
+   The day cards are built above, in the browser. A visitor arriving at
+   /itinerary/#day-14 from a search result gets here AFTER the browser has
+   already given up trying to find #day-14, so nothing scrolls. Re-run the
+   jump now that the target exists. Also covers #<town> links. */
+(function(){
+  if(!location.hash) return;
+  var target;
+  try { target = document.querySelector(location.hash); } catch(e) { return; }
+  if(!target) return;
+  // Let layout settle, then jump without adding a second history entry.
+  requestAnimationFrame(function(){
+    target.scrollIntoView({ block:'start' });
+  });
+})();
+
 /* ---- live temps per stop (Open-Meteo, no key; degrades quietly) ---- */
 (function(){
   var boxes = document.querySelectorAll('.leg-wx');
