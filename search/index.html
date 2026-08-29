@@ -10,7 +10,7 @@ search: false
 
   <div class="searchbox">
     <label class="sr-only" for="q">Search the caravan site</label>
-    <input type="search" id="q" placeholder="Try: parka, VIA baggage, Thompson, dump station&hellip;"
+    <input type="search" id="q" placeholder="Try: dog sledding, parka, Pisew Falls, day 14&hellip;"
            autocomplete="off" autocorrect="off" spellcheck="false" />
     <p class="status" id="status">Loading the index&hellip;</p>
   </div>
@@ -21,6 +21,7 @@ search: false
     <p class="hint-lead">Not sure where to start?</p>
     <div class="chips">
       <button type="button" data-q="packing">packing</button>
+      <button type="button" data-q="dog sledding">dog sledding</button>
       <button type="button" data-q="train">the train</button>
       <button type="button" data-q="winterizing">winterizing</button>
       <button type="button" data-q="polar bear">polar bears</button>
@@ -28,9 +29,8 @@ search: false
       <button type="button" data-q="drone">drones</button>
       <button type="button" data-q="fire ban">fire ban</button>
     </div>
-    <p class="hint-note">This searches page text, so it will find the itinerary page but not an
-      individual day within it &mdash; open the itinerary and use your browser's find
-      (<kbd>&#8984;F</kbd>) for that.</p>
+    <p class="hint-note">Every caravan day is searchable on its own — look for a tour, a meal or a
+      town and the result takes you straight to that day on the itinerary.</p>
   </div>
 
 </div>
@@ -137,7 +137,7 @@ search: false
       say('Nothing found for \u201C' + q + '\u201D.');
       results.innerHTML =
         '<p class="noresults">No matches. Try a single word, or a different one &mdash; ' +
-        'the index covers page text, not every line inside the itinerary.</p>';
+        'searching covers every page, the trip journal, and all 31 caravan days.</p>';
       return;
     }
 
@@ -151,6 +151,7 @@ search: false
       var a = document.createElement('a');
       a.className = 'result';
       a.href = d.url;
+      a.dataset.kind = d.kind;
       a.innerHTML =
         '<span class="kind">' + esc(d.kind) + '</span>' +
         '<h2>' + mark(d.title, terms) + '</h2>' +

@@ -184,6 +184,12 @@ main{padding:40px 0 12px;}
   margin:5px 0 6px;color:var(--ink);line-height:1.2;}
 .results .result p{margin:0;font-size:.9rem;color:var(--ink-soft);}
 .results .result mark{background:rgba(54,201,142,.28);color:inherit;border-radius:3px;padding:0 2px;}
+/* colour-code by source so 31 day entries don't visually swamp the topic pages */
+.results .result[data-kind="Itinerary"]{border-left-color:var(--amber);}
+.results .result[data-kind="Itinerary"]:hover{border-left-color:#b06f1d;}
+.results .result[data-kind="Itinerary"] .kind{color:var(--amber);}
+.results .result[data-kind="Journal"]{border-left-color:var(--violet);}
+.results .result[data-kind="Journal"] .kind{color:var(--violet);}
 .results .noresults{background:var(--snow);border:1px solid var(--line);border-radius:14px;
   padding:18px 20px;margin:0;font-size:.92rem;color:var(--ink-soft);}
 
