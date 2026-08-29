@@ -25,9 +25,12 @@ search: false
   Filter is `!= false`, not `== true`, deliberately. A page opts OUT explicitly;
   anything else is indexed. If the `defaults:` block in _config.yml ever stops
   applying, pages stay searchable rather than silently vanishing from results.
+
+  Requiring a title also keeps generated assets out of the index — GitHub Pages
+  emits a themed assets/css/style.css as a "page", and it has no title.
 {%- endcomment -%}
-{%- assign indexed_pages = site.pages | where_exp: "p", "p.search != false" -%}
-{%- assign indexed_articles = site.articles | where_exp: "a", "a.search != false" -%}
+{%- assign indexed_pages = site.pages | where_exp: "p", "p.title and p.search != false" -%}
+{%- assign indexed_articles = site.articles | where_exp: "a", "a.title and a.search != false" -%}
 {%- assign entries = indexed_pages | concat: indexed_articles -%}
 [
 {%- for item in entries %}
