@@ -377,15 +377,30 @@ ITIN.forEach(leg=>{
    The day cards are built above, in the browser. A visitor arriving at
    /itinerary/#day-14 from a search result gets here AFTER the browser has
    already given up trying to find #day-14, so nothing scrolls. Re-run the
-   jump now that the target exists. Also covers #<town> links. */
+   jump now that the target exists. Also covers #<town> links.
+
+   Two deliberate choices:
+   - behavior:'instant', not the CSS default of smooth. A smooth animation
+     across several thousand pixels is slow, and it does not run AT ALL when
+     the page opens in a background tab (cmd-click from a search result, or a
+     restored session), because requestAnimationFrame is suspended there.
+   - called directly plus on load and on becoming visible, rather than inside
+     requestAnimationFrame, for the same background-tab reason. */
 (function(){
   if(!location.hash) return;
-  var target;
-  try { target = document.querySelector(location.hash); } catch(e) { return; }
-  if(!target) return;
-  // Let layout settle, then jump without adding a second history entry.
-  requestAnimationFrame(function(){
-    target.scrollIntoView({ block:'start' });
+  var done = false;
+  function jump(){
+    if(done) return;
+    var target;
+    try { target = document.querySelector(location.hash); } catch(e) { return; }
+    if(!target) return;
+    target.scrollIntoView({ block:'start', behavior:'instant' });
+    done = true;
+  }
+  jump();
+  window.addEventListener('load', jump);
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') jump();
   });
 })();
 
