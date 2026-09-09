@@ -53,10 +53,22 @@
   "camp": "",
   "lat": 53.825,
   "lon": -101.2542,
-  "n": 60,
+  "n": 45,
   "high": 60,
-  "low": 45,
+  "low": 46,
   "record_high": 80,
+  "record_low": 29
+ },
+ {
+  "key": "flinflon",
+  "town": "Flin Flon",
+  "camp": "Flin Flon Campground",
+  "lat": 54.7682,
+  "lon": -101.865,
+  "n": 15,
+  "high": 58,
+  "low": 43,
+  "record_high": 73,
   "record_low": 29
  },
  {
