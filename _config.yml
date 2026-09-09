@@ -3,6 +3,11 @@ description: "The 2026 Northern Lights & Polar Bears RV caravan up Manitoba to C
 url: "https://snthor-phd.github.io"
 baseurl: "/polar-bears-2026"
 
+# Provenance for the schedule on the site. Bump both when a new itinerary
+# lands from the caravan leaders — the itinerary page and the hub both read them.
+itinerary_source_date: "September 7, 2026"
+itinerary_updated: "September 8, 2026"
+
 collections:
   articles:
     output: true

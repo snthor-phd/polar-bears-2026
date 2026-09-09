@@ -84,6 +84,8 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   }
   .stat .n{font-family:var(--serif);font-size:1.7rem;font-weight:600;line-height:1;}
   .stat .l{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:#9fb0b9;margin-top:6px;}
+  .stamp{margin:26px auto 0;max-width:62ch;font-size:.83rem;line-height:1.6;color:#9fb0b9;}
+  .stamp b{color:#eef3f1;font-weight:600;}
 
   /* ---------- CONTROLS ---------- */
   .controls{
@@ -238,7 +240,8 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
     .controls,.aurora-band,.btns,.jump,.legend{display:none !important;}
     body.highlights .row.routine{display:grid !important;} /* full schedule on paper */
     .hero{color:#16202e;background:#fff;border-bottom:2px solid var(--ink);}
-    .hero .sub,.route-line,.stat .l{color:#444;}
+    .hero .sub,.route-line,.stat .l,.stamp{color:#444;}
+    .stamp b{color:#16202e;}
     .hero h1 .amp,.eyebrow{color:var(--aurora-deep);}
     .stats{border-top-color:#ccc;}
     .day{box-shadow:none;border-color:#ccc;break-inside:avoid;page-break-inside:avoid;}
@@ -264,6 +267,7 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
         <div class="stat"><div class="n">9</div><div class="l">RV stops + Churchill</div></div>
         <div class="stat"><div class="n">~1,270<span style="font-size:1rem"> mi / 2,040 km</span></div><div class="l">Driving + the rail north</div></div>
       </div>
+      <p class="stamp">Schedule as issued by the caravan leaders <b>{{ site.itinerary_source_date }}</b>, posted here {{ site.itinerary_updated }}. It changes often as venues confirm &mdash; check back before you count on a tour time.</p>
     </div>
   </header>
 
