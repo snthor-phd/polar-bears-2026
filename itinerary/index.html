@@ -109,6 +109,9 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
     padding:8px 13px;border-radius:999px;cursor:pointer;white-space:nowrap;
   }
   .btn:hover{border-color:var(--stone);}
+  a.btn{text-decoration:none;display:inline-block;line-height:normal;}
+  a.btn.map{color:var(--aurora-deep);border-color:rgba(54,201,142,.45);}
+  a.btn.map:hover{background:rgba(54,201,142,.1);border-color:var(--aurora-deep);}
   .btn[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink);}
   .btn:focus-visible,.jump a:focus-visible{outline:2px solid var(--aurora);outline-offset:2px;}
 
@@ -275,6 +278,7 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
     <div class="wrap controls-inner">
       <div class="jump" id="jump"></div>
       <div class="btns">
+        <a class="btn map" href="../route-map/">Itinerary Map &rarr;</a>
         <button class="btn" id="toggle" aria-pressed="false">Highlights only</button>
         <button class="btn" id="print">Print</button>
       </div>
