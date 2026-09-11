@@ -1,25 +1,59 @@
 ---
 layout: default
-title: Route Map
-hero_title: Route Map
-hero_sub: The full caravan loop up the spine of Manitoba to Churchill, with trip progress that advances by date.
+title: Itinerary Map
+hero_title: Itinerary Map
+hero_sub: Every overnight, every venue, and the real highways between them — with trip progress that advances by date. Take it with you in Google Maps or your GPS.
 ---
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
 <div id="trip-status" class="trip-status">Loading trip progress&hellip;</div>
-<div id="map" class="route-map"></div>
-<div class="map-legend">
-  <span><i class="lg road-t"></i> Traveled</span>
-  <span><i class="lg road-u"></i> Still to come</span>
-  <span><i class="lg rail"></i> VIA Rail (Thompson &harr; Churchill)</span>
-  <span><i class="lg cur"></i> Caravan now</span>
+
+<div class="stats" id="stats" aria-label="Trip at a glance"></div>
+
+<div class="mapwrap">
+  <div class="mappane">
+    <div id="map" class="route-map" role="region" aria-label="Interactive caravan route map"></div>
+    <div class="map-legend">
+      <span><i class="lg road-t"></i> Driven</span>
+      <span><i class="lg road-u"></i> Still ahead</span>
+      <span><i class="lg rail"></i> VIA Rail, Thompson &harr; Churchill</span>
+      <span><i class="lg poi"></i> Venue / day-trip</span>
+      <span><i class="lg cur"></i> Caravan now</span>
+      <label class="toggle"><input type="checkbox" id="poi-toggle" checked> Show venues</label>
+    </div>
+  </div>
+  <aside class="rail" aria-label="Overnight stops">
+    <div class="rail-head"><span class="kicker">The route, stop by stop</span><span class="rail-sub">Tap a stop to fly there</span></div>
+    <ol id="stoplist" class="stoplist"></ol>
+  </aside>
 </div>
-<p class="map-note">Progress updates automatically each day. Tap any stop for dates, campground, and highlights. The Thompson&ndash;Churchill leg has no road &mdash; it is the overnight VIA Rail run, with the rigs left behind in Thompson.</p>
+
+<section class="exports" id="take-it-with-you">
+  <span class="kicker">Take it with you</span>
+  <h2>Load the whole trip into Google Maps or your GPS</h2>
+  <p>Two ways, depending on what you drive with. The KML carries every campground, venue and the road route as layers you can switch on and off; the GPX is the same for a Garmin or RV navigator. Either way, the pins are campground entrances, not town centres.</p>
+  <div class="dl-row">
+    <a class="dlbtn" href="{{ '/assets/docs/nlpb-2026-itinerary.kml' | relative_url }}" download><b>Google My Maps</b><span>KML &middot; stops, venues, route</span></a>
+    <a class="dlbtn" href="{{ '/assets/docs/nlpb-2026-itinerary.gpx' | relative_url }}" download><b>Garmin / RV GPS</b><span>GPX &middot; waypoints + track</span></a>
+    <a class="dlbtn alt" id="dir-north" href="#" target="_blank" rel="noopener"><b>Directions north</b><span>Winnipeg &rarr; Thompson, in Google Maps</span></a>
+    <a class="dlbtn alt" id="dir-south" href="#" target="_blank" rel="noopener"><b>Directions home</b><span>Thompson &rarr; Winnipeg, in Google Maps</span></a>
+  </div>
+  <div class="howto">
+    <div><b>1</b><p>On a computer, open <a href="https://www.google.com/maps/d/" target="_blank" rel="noopener">google.com/maps/d</a> and choose <em>Create a new map</em>.</p></div>
+    <div><b>2</b><p>In the layer panel click <em>Import</em> and pick the KML you just downloaded. Three layers appear: stops, venues, route.</p></div>
+    <div><b>3</b><p>On your phone the map shows up in Google Maps under <em>Saved &rarr; Maps</em>, signed in to the same account. Tap any pin for directions.</p></div>
+  </div>
+  <p class="fine">Google Maps caps a directions link at nine waypoints, which is why the drive is split into a northbound and a homebound link. Each stop in the list also has its own <em>Navigate</em> link. Road distances come from the OpenStreetMap road network; the VIA Rail line is drawn schematically, not from the surveyed track.</p>
+</section>
+
+<p class="map-note">Progress updates automatically each day. Two pins are approximate and say so: the Tundra Buggy Lodge, which Frontiers North positions on the tundra each season, and Spud Plains Farm, placed from its legal land description. The Pas Exhibition Grounds pin sits at the town centre &mdash; the entrance isn't on any map service, so go by the parkers.</p>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{{ '/assets/data/route.js' | relative_url }}"></script>
 {% raw %}
 <style>
-.trip-status{max-width:880px;margin:0 auto 16px;text-align:center;font-size:1.02rem;color:var(--ink-soft);
+main.wrap{max-width:1180px;}
+.trip-status{max-width:880px;margin:0 auto 18px;text-align:center;font-size:1.02rem;color:var(--ink-soft);
   background:var(--snow);border:1px solid var(--line);border-radius:12px;padding:13px 16px;box-shadow:var(--shadow);}
 .trip-status b{color:var(--ink);}
 .tag-live{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle;}
@@ -27,124 +61,211 @@ hero_sub: The full caravan loop up the spine of Manitoba to Churchill, with trip
 .tag-live.on{background:#36c98e;animation:lp 1.8s infinite;}
 .tag-live.done{background:#9aa4b1;}
 @keyframes lp{0%{box-shadow:0 0 0 0 rgba(54,201,142,.6);}70%{box-shadow:0 0 0 8px rgba(54,201,142,0);}100%{box-shadow:0 0 0 0 rgba(54,201,142,0);}}
-.route-map{height:520px;width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);}
-.map-legend{max-width:880px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:18px;justify-content:center;
-  font-size:.85rem;color:var(--ink-soft);}
-.map-legend span{display:inline-flex;align-items:center;gap:7px;}
+
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 0 18px;}
+.stats div{background:var(--snow);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow);text-align:center;}
+.stats b{display:block;font-family:var(--serif);font-size:1.55rem;font-weight:600;color:var(--ink);line-height:1.1;}
+.stats span{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--stone);margin-top:4px;}
+
+.mapwrap{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start;}
+.route-map{height:640px;width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#e9edf0;}
+.map-legend{margin:12px 4px 0;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:.83rem;color:var(--ink-soft);}
+.map-legend span,.map-legend label{display:inline-flex;align-items:center;gap:7px;}
 .map-legend .lg{display:inline-block;width:24px;height:0;border-top-width:3px;border-top-style:solid;}
 .map-legend .lg.road-t{border-top-color:#1c8a64;}
-.map-legend .lg.road-u{border-top-color:#5b6b7d;border-top-style:dashed;}
+.map-legend .lg.road-u{border-top-color:#1c8a64;opacity:.38;}
 .map-legend .lg.rail{border-top-color:#7a6cc6;border-top-style:dotted;border-top-width:4px;}
+.map-legend .lg.poi{width:9px;height:9px;border:2px solid #fff;border-radius:50%;background:#6c7787;box-shadow:0 0 0 1px #6c7787;}
 .map-legend .lg.cur{width:12px;height:12px;border:0;border-radius:50%;background:#36c98e;}
-.leaflet-container{font:inherit;background:#dfe6ea;}
-.pop b{font-family:var(--serif);font-size:1.03rem;}
-.pop .pd{color:#1c8a64;font-weight:600;font-size:.85rem;}
-.pop .pn{color:#6c7787;font-size:.85rem;}
-.stoplbl{background:rgba(255,255,255,.82);border:0;box-shadow:none;color:#16202e;font-weight:600;
-  font-size:.72rem;padding:0 3px;white-space:nowrap;}
+.map-legend .toggle{margin-left:auto;cursor:pointer;font-weight:600;color:var(--aurora-deep);}
+.map-legend .toggle input{accent-color:#1c8a64;}
+
+.rail{background:var(--snow);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);max-height:640px;display:flex;flex-direction:column;overflow:hidden;}
+.rail-head{padding:14px 16px 10px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.rail-head .kicker{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--stone);}
+.rail-sub{font-size:.74rem;color:var(--stone);}
+.stoplist{list-style:none;margin:0;padding:6px 0 8px;overflow:auto;flex:1;}
+.stoplist li{padding:10px 14px 10px 12px;display:grid;grid-template-columns:30px 1fr;gap:0 10px;cursor:pointer;border-left:3px solid transparent;transition:background .12s ease;}
+.stoplist li:hover{background:rgba(54,201,142,.07);}
+.stoplist li.active{background:rgba(54,201,142,.12);border-left-color:var(--aurora-deep);}
+.stoplist li.done .town{color:var(--stone);}
+.stoplist .num{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;font-size:.76rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.stoplist li.churchill .num{background:var(--amber);}
+.stoplist li.done .num{background:#9aa4b1;}
+.stoplist li.now .num{box-shadow:0 0 0 3px rgba(54,201,142,.45);}
+.stoplist .town{font-family:var(--serif);font-weight:600;font-size:1.06rem;color:var(--ink);line-height:1.15;}
+.stoplist .town small{font-family:var(--sans);font-weight:600;font-size:.72rem;color:var(--aurora-deep);margin-left:6px;}
+.stoplist .camp{font-size:.82rem;color:var(--ink-soft);margin-top:2px;}
+.stoplist .leg{font-size:.74rem;color:var(--stone);margin-top:3px;}
+.stoplist .leg.rail-leg{color:var(--violet);}
+.stoplist .links{margin-top:5px;display:flex;gap:12px;font-size:.76rem;font-weight:600;}
+.stoplist .links a{color:var(--aurora-deep);text-decoration:none;}
+.stoplist .links a:hover{text-decoration:underline;}
+
+.leaflet-container{font:inherit;}
+.leaflet-control-attribution{font-size:.62rem;background:rgba(255,255,255,.7);}
+.stopnum{width:26px;height:26px;border-radius:50%;background:#16202e;color:#fff;font:700 .76rem/26px var(--sans);text-align:center;
+  border:2px solid #fff;box-shadow:0 1px 4px rgba(22,32,46,.35);}
+.stopnum.ch{background:#d98a2b;}
+.stopnum.done{background:#9aa4b1;}
+.stopnum.now{box-shadow:0 0 0 0 rgba(54,201,142,.6);animation:mp 1.8s infinite;}
+@keyframes mp{0%{box-shadow:0 0 0 0 rgba(54,201,142,.6);}70%{box-shadow:0 0 0 14px rgba(54,201,142,0);}100%{box-shadow:0 0 0 0 rgba(54,201,142,0);}}
+.stoplbl{background:rgba(255,255,255,.85);border:0;box-shadow:none;color:#16202e;font-weight:600;font-size:.74rem;padding:0 4px;white-space:nowrap;border-radius:3px;}
 .stoplbl::before{display:none;}
-.pulse{width:16px;height:16px;border-radius:50%;background:#36c98e;border:2px solid #fff;
-  box-shadow:0 0 0 0 rgba(54,201,142,.6);animation:mp 1.8s infinite;}
-@keyframes mp{0%{box-shadow:0 0 0 0 rgba(54,201,142,.6);}70%{box-shadow:0 0 0 15px rgba(54,201,142,0);}100%{box-shadow:0 0 0 0 rgba(54,201,142,0);}}
-.map-note{max-width:820px;margin:18px auto 0;font-size:.9rem;color:#6c7787;text-align:center;line-height:1.5;}
-@media (max-width:560px){.route-map{height:430px;}}
+.poilbl{background:rgba(255,255,255,.9);border:1px solid #e4ddcd;box-shadow:none;color:#2b3a4d;font-size:.72rem;padding:1px 5px;border-radius:4px;}
+.poilbl::before{display:none;}
+.leaflet-popup-content-wrapper{border-radius:12px;box-shadow:0 10px 30px rgba(22,32,46,.18);}
+.leaflet-popup-content{margin:12px 14px;line-height:1.4;}
+.pop b{font-family:var(--serif);font-size:1.05rem;}
+.pop .pd{color:#1c8a64;font-weight:600;font-size:.84rem;}
+.pop .pc{font-size:.86rem;color:#2b3a4d;margin-top:2px;}
+.pop .pa{font-size:.76rem;color:#6c7787;}
+.pop .pn{color:#6c7787;font-size:.82rem;margin-top:4px;}
+.pop .pl{margin-top:7px;display:flex;gap:12px;font-size:.78rem;font-weight:600;}
+.pop .pl a{color:#1c8a64;text-decoration:none;}
+.pop .pl a:hover{text-decoration:underline;}
+
+.exports{margin:26px 0 0;background:linear-gradient(180deg,#10202f,#16202e);border:1px solid #21384d;border-radius:16px;
+  padding:24px 26px;color:#eef3f1;box-shadow:var(--shadow);}
+.exports .kicker{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--aurora);display:block;}
+.exports h2{font-family:var(--serif);font-weight:600;font-size:1.45rem;line-height:1.15;margin:7px 0 10px;color:#fff;}
+.exports p{margin:0 0 .9em;color:#b9c6cf;font-size:.98rem;max-width:70ch;}
+.exports a{color:var(--aurora);}
+.dl-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 18px;}
+.dlbtn{display:flex;flex-direction:column;gap:2px;text-decoration:none;background:rgba(255,255,255,.07);border:1px solid #2c4a63;
+  border-radius:12px;padding:12px 14px;color:#eef3f1;transition:border-color .15s ease,background .15s ease;}
+.dlbtn:hover{border-color:var(--aurora);background:rgba(255,255,255,.12);}
+.dlbtn b{font-size:.95rem;}
+.dlbtn span{font-size:.76rem;color:#9fb0b9;}
+.dlbtn.alt{border-style:dashed;}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 14px;}
+.howto div{display:grid;grid-template-columns:26px 1fr;gap:10px;align-items:start;}
+.howto b{width:24px;height:24px;border-radius:50%;background:var(--aurora);color:#0c1622;font-size:.78rem;display:flex;align-items:center;justify-content:center;}
+.howto p{margin:0;font-size:.88rem;color:#c9d4db;}
+.howto em{font-style:normal;color:#fff;font-weight:600;}
+.exports .fine{font-size:.8rem;color:#8fa0aa;margin:0;max-width:none;}
+.map-note{max-width:820px;margin:18px auto 0;font-size:.88rem;color:#6c7787;text-align:center;line-height:1.5;}
+@media (max-width:900px){
+  .mapwrap{grid-template-columns:1fr;}
+  .rail{max-height:none;}
+  .stoplist{max-height:420px;}
+  .stats{grid-template-columns:repeat(3,1fr);}
+  .dl-row,.howto{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:560px){
+  .route-map{height:440px;}
+  .stats{grid-template-columns:repeat(2,1fr);}
+  .dl-row,.howto{grid-template-columns:1fr;}
+  .exports{padding:20px 18px;}
+  .map-legend .toggle{margin-left:0;}
+}
 </style>
 <script>
 (function(){
-  var START=new Date("2026-09-13T12:00:00");
-  var END=new Date("2026-10-13T12:00:00");
-
-  // Ordered travel path (Thompson and Winnipeg appear twice - the loop revisits them).
-  // rail:true means the leg INTO this point is the VIA Rail run.
-  var ROUTE=[
-    {name:"Winnipeg",     lat:49.8951, lon:-97.1384, arrive:"2026-09-13", rail:false},
-    {name:"Neepawa",      lat:50.2292, lon:-99.4661, arrive:"2026-09-15", rail:false},
-    {name:"Dauphin",      lat:51.1494, lon:-100.0503,arrive:"2026-09-19", rail:false},
-    {name:"Swan River",   lat:52.1058, lon:-101.2676,arrive:"2026-09-23", rail:false},
-    {name:"The Pas",      lat:53.8253, lon:-101.2542,arrive:"2026-09-26", rail:false},
-    {name:"Flin Flon",    lat:54.7682, lon:-101.8650,arrive:"2026-09-29", rail:false},
-    {name:"Thompson",     lat:55.7435, lon:-97.8558, arrive:"2026-09-30", rail:false},
-    {name:"Churchill",    lat:58.7684, lon:-94.1650, arrive:"2026-10-03", rail:true},
-    {name:"Thompson",     lat:55.7435, lon:-97.8558, arrive:"2026-10-07", rail:true},
-    {name:"Grand Rapids", lat:53.1719, lon:-99.2717, arrive:"2026-10-08", rail:false},
-    {name:"Winnipeg",     lat:49.8951, lon:-97.1384, arrive:"2026-10-09", rail:false}
-  ];
-
-  // Unique town markers with popup detail.
-  var STOPS=[
-    {name:"Winnipeg", lat:49.8951, lon:-97.1384, dates:"Sep 13-14 &amp; Oct 9-13", camp:"Town &amp; Country Campground",
-     note:"Start &amp; finish - rendezvous, Welcome Dinner, and the guided city tours", kind:"start"},
-    {name:"Neepawa", lat:50.2292, lon:-99.4661, dates:"Sep 15-18", camp:"Lions Riverbend Campground",
-     note:"Base for the Carberry &amp; area farm day-trips"},
-    {name:"Dauphin", lat:51.1494, lon:-100.0503, dates:"Sep 19-22", camp:"Vermillion Campground",
-     note:"Dauphin Rail Museum - first look at the Churchill train"},
-    {name:"Swan River", lat:52.1058, lon:-101.2676, dates:"Sep 23-25", camp:"Green Acres Campground",
-     note:"Spruce Wood Products &amp; Pretty Valley Honey Farm"},
-    {name:"The Pas", lat:53.8253, lon:-101.2542, dates:"Sep 26-28", camp:"The Pas Exhibition Grounds",
-     note:"Opasquia Trails boardwalk, Sam Waller Museum &amp; Round the Bend Farm"},
-    {name:"Flin Flon", lat:54.7682, lon:-101.8650, dates:"Sep 29", camp:"Flin Flon Campground",
-     note:"New overnight - the Rotary Wheel campout"},
-    {name:"Thompson", lat:55.7435, lon:-97.8558, dates:"Sep 30 - Oct 1 &amp; Oct 7", camp:"McCreedy Campground",
-     note:"Leave the rigs here and board the train to Churchill"},
-    {name:"Churchill", lat:58.7684, lon:-94.1650, dates:"Oct 2-7", camp:"Tundra Buggy Lodge &amp; Tundra Inn (via VIA Rail)",
-     note:"Tundra Buggy among the polar bears, dog sledding, Polar Bears International", kind:"churchill"},
-    {name:"Grand Rapids", lat:53.1719, lon:-99.2717, dates:"Oct 8", camp:"Cook's Campground",
-     note:"Overnight on the way home"}
-  ];
-  var DAYTRIP={name:"Carberry", lat:49.8703, lon:-99.3596, note:"Day-trip from Neepawa - Spud Plains Farm (Sep 16)"};
-
+  var R=window.NLPB_ROUTE; if(!R){return;}
+  var START=new Date("2026-09-13T12:00:00"), END=new Date("2026-10-13T12:00:00");
+  var ARRIVE={"winnipeg-start":"2026-09-13",neepawa:"2026-09-15",dauphin:"2026-09-19",swanriver:"2026-09-23",thepas:"2026-09-26",
+              flinflon:"2026-09-29",thompson:"2026-09-30",churchill:"2026-10-03","thompson-back":"2026-10-07",grandrapids:"2026-10-08",winnipeg:"2026-10-09"};
+  // The loop in travel order; Thompson appears twice.
+  var ORDER=["winnipeg-start","neepawa","dauphin","swanriver","thepas","flinflon","thompson","churchill","thompson-back","grandrapids","winnipeg"];
+  var S={}; R.stops.forEach(function(s){S[s.id]=s;}); S["thompson-back"]=S.thompson;
   function d(s){return new Date(s+"T12:00:00");}
-  var now=new Date();
-  var todayN=new Date(now.getFullYear(),now.getMonth(),now.getDate(),12,0,0);
+  var now=new Date(), todayN=new Date(now.getFullYear(),now.getMonth(),now.getDate(),12,0,0);
+  var curIdx=-1; ORDER.forEach(function(id,i){ if(d(ARRIVE[id])<=todayN) curIdx=i; });
+  var afterEnd=todayN>END, curId=(curIdx>=0&&!afterEnd)?ORDER[curIdx]:null;
+  function reached(id){ var i=ORDER.indexOf(id); return afterEnd || (i>=0 && i<=curIdx); }
+  function gm(lat,lon){return 'https://www.google.com/maps/dir/?api=1&destination='+lat+','+lon+'&travelmode=driving';}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
 
+  // ---- stats
+  var st=document.getElementById('stats');
+  st.innerHTML=[[R.total_mi.toLocaleString()+' mi','of driving · '+R.total_km.toLocaleString()+' km'],['8','driving legs'],['9','towns'],['31','days'],['1','overnight train, each way']]
+    .map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');
+
+  // ---- map
   var map=L.map('map',{scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png',
-    {attribution:'&copy; OpenStreetMap contributors &copy; CARTO', subdomains:'abcd', maxZoom:11, minZoom:3}).addTo(map);
-  map.fitBounds(ROUTE.map(function(p){return [p.lat,p.lon];}),{padding:[34,34]});
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png',
+    {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a> · routing &copy; OSRM',subdomains:'abcd',maxZoom:15,minZoom:4}).addTo(map);
+  var all=[]; R.legs.forEach(function(l){all=all.concat(l.pts);}); all=all.concat(R.rail);
+  map.fitBounds(all,{padding:[28,28]});
 
-  // current progress: highest index already reached
-  var curIdx=-1;
-  for(var i=0;i<ROUTE.length;i++){ if(d(ROUTE[i].arrive)<=todayN) curIdx=i; }
-  var afterEnd = todayN>END;
-
-  // draw route segment by segment
-  for(var j=0;j<ROUTE.length-1;j++){
-    var a=ROUTE[j], b=ROUTE[j+1];
-    var seg=[[a.lat,a.lon],[b.lat,b.lon]];
-    var traveled=(j+1)<=curIdx;
-    var st;
-    if(b.rail){
-      st = traveled ? {color:'#6a5bc0',weight:4,opacity:.95,dashArray:'2,9',lineCap:'round'}
-                    : {color:'#7a6cc6',weight:3,opacity:.55,dashArray:'2,9',lineCap:'round'};
-    } else {
-      st = traveled ? {color:'#1c8a64',weight:4,opacity:.95}
-                    : {color:'#5b6b7d',weight:3,opacity:.5,dashArray:'6,8'};
-    }
-    L.polyline(seg,st).addTo(map);
-  }
-
-  // town markers
-  STOPS.forEach(function(s){
-    var isCh=s.kind==='churchill', isStart=s.kind==='start';
-    var color=isCh?'#d98a2b':(isStart?'#1c8a64':'#34618f');
-    var m=L.circleMarker([s.lat,s.lon],{radius:isCh?9:7,color:'#fff',weight:2,fillColor:color,fillOpacity:1}).addTo(map);
-    var star=isCh?' &#9733;':'';
-    m.bindPopup('<div class="pop"><b>'+s.name+'</b>'+star+'<br><span class="pd">'+s.dates+'</span><br>'+s.camp+'<br><span class="pn">'+s.note+'</span></div>');
-    m.bindTooltip(s.name,{permanent:true,direction:'right',className:'stoplbl',offset:[9,0]});
+  // rail (drawn first so roads sit on top where they meet at Thompson)
+  var railDone=reached('churchill');
+  L.polyline(R.rail,{color:'#fff',weight:6,opacity:.9,lineCap:'round'}).addTo(map);
+  L.polyline(R.rail,{color:'#7a6cc6',weight:3.5,opacity:railDone?.95:.55,dashArray:'1,8',lineCap:'round'}).addTo(map);
+  // roads: casing + line
+  R.legs.forEach(function(l){
+    var done=reached(l.to);
+    L.polyline(l.pts,{color:'#fff',weight:7,opacity:.9,lineJoin:'round'}).addTo(map);
+    L.polyline(l.pts,{color:'#1c8a64',weight:4,opacity:done?.95:.38,lineJoin:'round'}).addTo(map)
+      .bindTooltip(S[l.from].town+' → '+S[l.to].town+' · '+l.mi+' mi · '+l.hrs,{sticky:true,className:'poilbl'});
   });
-  L.circleMarker([DAYTRIP.lat,DAYTRIP.lon],{radius:4,color:'#fff',weight:1,fillColor:'#9aa4b1',fillOpacity:.9})
-    .addTo(map).bindPopup('<div class="pop"><b>'+DAYTRIP.name+'</b><br><span class="pn">'+DAYTRIP.note+'</span></div>');
 
-  // current-position marker
-  if(curIdx>=0 && !afterEnd){
-    var c=ROUTE[curIdx];
-    var ic=L.divIcon({className:'',html:'<div class="pulse"></div>',iconSize:[16,16],iconAnchor:[8,8]});
-    L.marker([c.lat,c.lon],{icon:ic,zIndexOffset:1000}).addTo(map).bindPopup('<div class="pop"><b>The caravan is here</b><br><span class="pn">'+c.name+'</span></div>');
+  // POIs (venues)
+  var poiLayer=L.layerGroup();
+  R.pois.forEach(function(p){
+    var m=L.circleMarker([p.lat,p.lon],{radius:4.5,color:'#fff',weight:1.5,fillColor:'#6c7787',fillOpacity:1});
+    m.bindTooltip(p.name,{direction:'top',offset:[0,-4],className:'poilbl'});
+    m.bindPopup('<div class="pop"><b>'+esc(p.name)+'</b><br><span class="pd">'+esc(p.when)+'</span><div class="pc">'+esc(p.what)+(p.approx?' <span class="pa">(approximate location)</span>':'')+'</div>'+
+      '<div class="pl"><a href="'+gm(p.lat,p.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+p.stop+'">Day-by-day →</a></div></div>');
+    poiLayer.addLayer(m);
+  });
+  var poiToggle=document.getElementById('poi-toggle');
+  function syncPois(){ var show=poiToggle.checked && map.getZoom()>=7; if(show){ if(!map.hasLayer(poiLayer)) poiLayer.addTo(map);} else if(map.hasLayer(poiLayer)) map.removeLayer(poiLayer); }
+  map.on('zoomend',syncPois); poiToggle.addEventListener('change',syncPois); syncPois();
+
+  // stop markers (Winnipeg drawn once)
+  var markers={}, items={};
+  R.stops.forEach(function(s){
+    if(s.id==='winnipeg') return;
+    var isCh=s.kind==='churchill', done=reached(s.id)&&s.id!==curId&&!(s.id==='thompson'&&curId==='thompson-back');
+    var cls='stopnum'+(isCh?' ch':'')+(done?' done':'')+((s.id===curId||(s.id==='thompson'&&curId==='thompson-back'))?' now':'');
+    var ic=L.divIcon({className:'',html:'<div class="'+cls+'">'+s.n+'</div>',iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-12]});
+    var m=L.marker([s.lat,s.lon],{icon:ic,zIndexOffset:isCh?600:500}).addTo(map);
+    var dates=s.id==='winnipeg-start'?'Sep 13 – 14 &amp; Oct 9 – 13 · Days 1–2 &amp; 27–31':esc(s.dates)+' · '+esc(s.days);
+    m.bindPopup('<div class="pop"><b>'+esc(s.town)+'</b>'+(isCh?' &#9733;':'')+'<br><span class="pd">'+dates+'</span><div class="pc">'+esc(s.camp)+'</div><div class="pa">'+esc(s.addr)+'</div><div class="pn">'+esc(s.note)+'</div>'+
+      '<div class="pl"><a href="'+gm(s.lat,s.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+s.id+'">Day-by-day →</a></div></div>');
+    m.bindTooltip(s.town,{permanent:true,direction:isCh?'top':'right',className:'stoplbl',offset:isCh?[0,-14]:[14,0]});
+    m.on('click',function(){setActive(s.id,false);});
+    markers[s.id]=m;
+  });
+
+  // ---- stop rail
+  var list=document.getElementById('stoplist');
+  var legByTo={}; R.legs.forEach(function(l){legByTo[l.to]=l;});
+  R.stops.forEach(function(s){
+    var li=document.createElement('li');
+    li.className=(s.kind==='churchill'?'churchill ':'')+(reached(s.id)&&s.id!==curId?'done ':'')+(s.id===curId?'now':'');
+    var leg=legByTo[s.id], legTxt;
+    if(s.rail) legTxt='<div class="leg rail-leg">By VIA Rail from Thompson · overnight, both ways</div>';
+    else if(leg) legTxt='<div class="leg">'+leg.mi+' mi / '+leg.km+' km · about '+leg.hrs+' from '+esc(S[leg.from].town)+'</div>';
+    else legTxt='<div class="leg">Rendezvous · advance parking Sep 11–12</div>';
+    li.innerHTML='<span class="num">'+(s.id==='winnipeg'?'1':s.n)+'</span><div><div class="town">'+esc(s.town)+'<small>'+esc(s.dates)+'</small></div>'+
+      '<div class="camp">'+esc(s.camp)+' · '+esc(s.days)+'</div>'+legTxt+
+      '<div class="links"><a href="'+gm(s.lat,s.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+s.id+'">Day-by-day →</a></div></div>';
+    li.addEventListener('click',function(e){ if(e.target.tagName==='A') return; setActive(s.id,true); });
+    list.appendChild(li); items[s.id]=li;
+  });
+  var active=null;
+  function setActive(id,fly){
+    var mid=id==='winnipeg'?'winnipeg-start':id;
+    if(active) active.classList.remove('active');
+    active=items[id]; active.classList.add('active');
+    var m=markers[mid];
+    if(fly){ map.flyTo(m.getLatLng(), Math.max(map.getZoom(),9),{duration:.9}); setTimeout(function(){m.openPopup();},950); }
   }
+  if(location.hash){ var h=location.hash.slice(1); if(items[h]) setTimeout(function(){setActive(h,true);},400); }
 
-  // status banner
-  var el=document.getElementById('trip-status');
-  var MS=86400000;
+  // ---- Google Maps directions links (max 9 waypoints per link)
+  function dirs(ids){
+    var pts=ids.map(function(id){return S[id].lat+','+S[id].lon;});
+    return 'https://www.google.com/maps/dir/?api=1&origin='+pts[0]+'&destination='+pts[pts.length-1]+'&waypoints='+encodeURIComponent(pts.slice(1,-1).join('|'))+'&travelmode=driving';
+  }
+  document.getElementById('dir-north').href=dirs(["winnipeg-start","neepawa","dauphin","swanriver","thepas","flinflon","thompson"]);
+  document.getElementById('dir-south').href=dirs(["thompson","grandrapids","winnipeg"]);
+
+  // ---- status banner
+  var el=document.getElementById('trip-status'), MS=86400000;
   function fmt(dt){return dt.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});}
   if(todayN<START){
     var days=Math.round((START-todayN)/MS);
@@ -153,7 +274,7 @@ hero_sub: The full caravan loop up the spine of Manitoba to Churchill, with trip
     el.innerHTML='<span class="tag-live done"></span> <b>Journey complete</b> &middot; 31 days, Winnipeg to Churchill and back';
   } else {
     var dayNum=Math.floor((todayN-START)/MS)+1;
-    el.innerHTML='<span class="tag-live on"></span> <b>Day '+dayNum+' of 31</b> &middot; the caravan is at <b>'+ROUTE[curIdx].name+'</b>';
+    el.innerHTML='<span class="tag-live on"></span> <b>Day '+dayNum+' of 31</b> &middot; the caravan is at <b>'+S[curId].town+'</b>';
   }
 })();
 </script>
