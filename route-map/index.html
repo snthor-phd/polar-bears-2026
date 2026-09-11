@@ -73,7 +73,7 @@ main.wrap{max-width:1180px;}
 .map-legend span,.map-legend label{display:inline-flex;align-items:center;gap:7px;}
 .map-legend .lg{display:inline-block;width:24px;height:0;border-top-width:3px;border-top-style:solid;}
 .map-legend .lg.road-t{border-top-color:#1c8a64;}
-.map-legend .lg.road-u{border-top-color:#1c8a64;opacity:.38;}
+.map-legend .lg.road-u{border-top-color:#1c8a64;opacity:.58;}
 .map-legend .lg.rail{border-top-color:#7a6cc6;border-top-style:dotted;border-top-width:4px;}
 .map-legend .lg.poi{width:9px;height:9px;border:2px solid #fff;border-radius:50%;background:#6c7787;box-shadow:0 0 0 1px #6c7787;}
 .map-legend .lg.cur{width:12px;height:12px;border:0;border-radius:50%;background:#36c98e;}
@@ -183,13 +183,16 @@ main.wrap{max-width:1180px;}
     .map(function(x){return '<div><b>'+x[0]+'</b><span>'+x[1]+'</span></div>';}).join('');
 
   // ---- map
-  var map=L.map('map',{scrollWheelZoom:false});
-  // Esri's light-grey canvas: muted, no API key. CARTO's free basemaps now watermark without a key.
-  var ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
-  L.tileLayer(ESRI+'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-    {attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors · routing &copy; OSRM',maxZoom:15,minZoom:4}).addTo(map);
+  var map=L.map('map',{scrollWheelZoom:false,zoomSnap:.25,zoomDelta:.5,minZoom:4,maxZoom:16});
+  // Basemaps from Esri (no API key; CARTO's free tiles now carry a watermark). The muted grey canvas
+  // tells the story at overview scale; from zoom 10 the street map takes over so roads and highway
+  // numbers are there when someone zooms into a town or campground.
+  var ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/';
+  var ATTR='Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors · routing &copy; OSRM';
+  L.tileLayer(ESRI+'Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:ATTR,minZoom:4,maxZoom:9,maxNativeZoom:9}).addTo(map);
   map.createPane('labels'); map.getPane('labels').style.zIndex=350; map.getPane('labels').style.pointerEvents='none';
-  L.tileLayer(ESRI+'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:15,minZoom:4,pane:'labels',opacity:.9}).addTo(map);
+  L.tileLayer(ESRI+'Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{minZoom:4,maxZoom:9,maxNativeZoom:9,pane:'labels',opacity:.9}).addTo(map);
+  L.tileLayer(ESRI+'World_Street_Map/MapServer/tile/{z}/{y}/{x}',{minZoom:10,maxZoom:16,maxNativeZoom:16}).addTo(map);
   var all=[]; R.legs.forEach(function(l){all=all.concat(l.pts);}); all=all.concat(R.rail);
   map.fitBounds(all,{padding:[28,28]});
 
@@ -201,7 +204,7 @@ main.wrap{max-width:1180px;}
   R.legs.forEach(function(l){
     var done=reached(l.to);
     L.polyline(l.pts,{color:'#fff',weight:7,opacity:.9,lineJoin:'round'}).addTo(map);
-    L.polyline(l.pts,{color:'#1c8a64',weight:4,opacity:done?.95:.38,lineJoin:'round'}).addTo(map)
+    L.polyline(l.pts,{color:'#1c8a64',weight:4,opacity:done?.95:.58,lineJoin:'round'}).addTo(map)
       .bindTooltip(S[l.from].town+' → '+S[l.to].town+' · '+l.mi+' mi · '+l.hrs,{sticky:true,className:'poilbl'});
   });
 
@@ -256,7 +259,7 @@ main.wrap{max-width:1180px;}
     if(active) active.classList.remove('active');
     active=items[id]; active.classList.add('active');
     var m=markers[mid];
-    if(fly){ map.flyTo(m.getLatLng(), Math.max(map.getZoom(),9),{duration:.9}); setTimeout(function(){m.openPopup();},950); }
+    if(fly){ map.flyTo(m.getLatLng(), Math.max(map.getZoom(),10),{duration:.9}); setTimeout(function(){m.openPopup();},950); }
   }
   if(location.hash){ var h=location.hash.slice(1); if(items[h]) setTimeout(function(){setActive(h,true);},400); }
 
