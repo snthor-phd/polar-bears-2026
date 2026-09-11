@@ -184,8 +184,12 @@ main.wrap{max-width:1180px;}
 
   // ---- map
   var map=L.map('map',{scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png',
-    {attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a> · routing &copy; OSRM',subdomains:'abcd',maxZoom:15,minZoom:4}).addTo(map);
+  // Esri's light-grey canvas: muted, no API key. CARTO's free basemaps now watermark without a key.
+  var ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+  L.tileLayer(ESRI+'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+    {attribution:'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors · routing &copy; OSRM',maxZoom:15,minZoom:4}).addTo(map);
+  map.createPane('labels'); map.getPane('labels').style.zIndex=350; map.getPane('labels').style.pointerEvents='none';
+  L.tileLayer(ESRI+'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:15,minZoom:4,pane:'labels',opacity:.9}).addTo(map);
   var all=[]; R.legs.forEach(function(l){all=all.concat(l.pts);}); all=all.concat(R.rail);
   map.fitBounds(all,{padding:[28,28]});
 
