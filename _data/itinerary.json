@@ -1,1231 +1,1615 @@
 [
-  {
-    "id": "winnipeg-start",
-    "town": "Winnipeg",
-    "camp": "Town & Country Campground (Murdock Rd)",
-    "dates": "Sep 13 – 14 · Days 1–2",
-    "churchill": false,
-    "wx": {
-      "hi": 66,
-      "lo": 49,
-      "rlo": 38,
-      "rhi": 82,
-      "lat": 49.8271,
-      "lon": -96.9809
-    },
-    "days": [
-      {
-        "n": 1,
-        "dow": "Sun",
-        "date": "Sep 13",
-        "headline": "Rendezvous at Town & Country — Meet & Greet",
-        "heads": "New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground &amp; road closures). Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM. Your Sep 13 arrival window and site number came by individual email — go by yours. Bring your sealed Medical Emergency Form.",
-        "rows": [
-          {
-            "t": "1:00 PM",
-            "c": "arrive",
-            "d": "Arrive &amp; park — Town &amp; Country Campground, Winnipeg <span class='tag pbt'>parkers on duty 1:00–4:00 PM</span> · your own arrival window came by individual email"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "meal",
-            "d": "Meet &amp; Greet — finger food at the T&amp;C Restaurant <span class='tag inc'>included</span>"
-          },
-          {
-            "t": "After dinner",
-            "c": "routine",
-            "d": "Campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 2,
-        "dow": "Mon",
-        "date": "Sep 14",
-        "headline": "Guided bus tour of Winnipeg &amp; the Welcome Dinner",
-        "rows": [
-          {
-            "t": "9:00 AM",
-            "c": "routine",
-            "d": "First-Timers meeting — tent area, Site #167 or #193"
-          },
-          {
-            "t": "9:45 AM",
-            "c": "tour",
-            "d": "Board the chartered bus at Site #193"
-          },
-          {
-            "t": "10:00 AM",
-            "c": "tour",
-            "d": "Chartered bus tour of Winnipeg — <strong>bring snacks</strong> if you need to eat at set times"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "free",
-            "d": "Bus back to Town &amp; Country · lunch on your own at 1:30"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "Caravan schedule review — including the drive from Winnipeg to Neepawa"
-          },
-          {
-            "t": "6:00 PM",
-            "c": "meal",
-            "d": "Welcome Dinner — T&amp;C Restaurant <span class='tag inc'>incl. gratuity</span> · bring your own beverage &amp; glasses"
-          },
-          {
-            "t": "Later",
-            "c": "routine",
-            "d": "Campfire (weather permitting)"
-          }
-        ]
-      }
-    ]
+ {
+  "id": "winnipeg-start",
+  "town": "Winnipeg",
+  "camp": "Town & Country Campground (Murdock Rd)",
+  "dates": "Sep 13 – 14 · Days 1–2",
+  "churchill": false,
+  "wx": {
+   "hi": 66,
+   "lo": 49,
+   "rlo": 38,
+   "rhi": 82,
+   "lat": 49.8271,
+   "lon": -96.9809
   },
-  {
-    "id": "neepawa",
-    "town": "Neepawa",
-    "camp": "Lions Riverbend Campground",
-    "dates": "Sep 15 – 18 · Days 3–6",
-    "churchill": false,
-    "wx": {
-      "hi": 64,
-      "lo": 48,
-      "rlo": 32,
-      "rhi": 83,
-      "lat": 50.2289,
-      "lon": -99.4661
-    },
-    "travel": {
-      "lead": "Travel · Winnipeg → Neepawa",
-      "dist": "131 mi / 210 km · ~2 hr 30 min",
-      "notes": [
-        "Leaders, parkers &amp; cooking team out at 9:00 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
-        "Stop at the Happy Rock in Gladstone on the way — it is in the travel guide",
-        "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+  "days": [
+   {
+    "n": 1,
+    "dow": "Sun",
+    "date": "Sep 13",
+    "headline": "Rendezvous at Town & Country — Meet & Greet",
+    "heads": "New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground &amp; road closures). Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM. Your Sep 13 arrival window and site number came by individual email — go by yours. Bring your sealed Medical Emergency Form.",
+    "rows": [
+     {
+      "t": "1:00 PM",
+      "c": "arrive",
+      "d": "Arrive &amp; park — Town &amp; Country Campground, Winnipeg <span class='tag pbt'>parkers on duty 1:00–4:00 PM</span> · your own arrival window came by individual email",
+      "links": [
+       {
+        "l": "Town & Country",
+        "u": "https://townandcountrycamping.com/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 3,
-        "dow": "Tue",
-        "date": "Sep 15",
-        "headline": "Drive Winnipeg → Neepawa; settle in at Lions Riverbend",
-        "rows": [
-          {
-            "t": "10:00 AM",
-            "c": "arrive",
-            "d": "Drive to Neepawa · park at Lions Riverbend <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "“Take a hike” or “go by bike” — 10 km of Neepawa trails"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "routine",
-            "d": "Get-Acquainted Meeting (GAM #1)"
-          },
-          {
-            "t": "After dinner",
-            "c": "routine",
-            "d": "Campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 4,
-        "dow": "Wed",
-        "date": "Sep 16",
-        "headline": "Day-trip to Spud Plains Farm, Carberry",
-        "rows": [
-          {
-            "t": "12:15 PM",
-            "c": "tour",
-            "d": "Carpool to Spud Plains Farm, Carberry (27 mi / 43 km · ~30 min)"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "tour",
-            "d": "Tour of Spud Plains Farm"
-          },
-          {
-            "t": "3:30 PM",
-            "c": "free",
-            "d": "Back to Riverbend · free time"
-          },
-          {
-            "t": "6:00 PM",
-            "c": "meal",
-            "d": "Cookout — Bratt's dinner at the campground"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "social",
-            "d": "Social hour — Polar Bear Town #1 <span class='tag pbt'>Welcome to Churchill</span>"
-          }
-        ]
-      },
-      {
-        "n": 5,
-        "dow": "Thu",
-        "date": "Sep 17",
-        "headline": "“A Day in the Life of a Farmer” — RnR Galbraith Farms",
-        "rows": [
-          {
-            "t": "9:00 AM",
-            "c": "tour",
-            "d": "Gather to carpool to RnR Galbraith Farms — <strong>bring a bag lunch &amp; lawn chairs</strong>, and rain gear if it's wet"
-          },
-          {
-            "t": "10:00 AM",
-            "c": "tour",
-            "d": "WYSIWYG farm tour, Groups A &amp; B — details set the day we arrive"
-          },
-          {
-            "t": "12:00 PM",
-            "c": "free",
-            "d": "Bag lunch at the farm · tour continues 1:00 PM"
-          },
-          {
-            "t": "2:00 PM",
-            "c": "tour",
-            "d": "Maybe out to the fields to see the harvest"
-          },
-          {
-            "t": "3:00 PM",
-            "c": "free",
-            "d": "Free time — Minnedosa on the way back, or shop, hike, bike"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "No GAM or social hour · dinner on your own · campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 6,
-        "dow": "Fri",
-        "date": "Sep 18",
-        "headline": "Farmers Brewery Estate tours &amp; dinner at the Legion",
-        "rows": [
-          {
-            "t": "9:45 AM",
-            "c": "tour",
-            "d": "Group A leaves for the tour · Group B free this morning"
-          },
-          {
-            "t": "10:00 AM",
-            "c": "tour",
-            "d": "Group A — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "1:15 PM",
-            "c": "tour",
-            "d": "Group B leaves for the tour · Group A free this afternoon"
-          },
-          {
-            "t": "1:30 PM",
-            "c": "tour",
-            "d": "Group B — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "Get-Acquainted Meeting (GAM #2)"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "meal",
-            "d": "Catered dinner at the Legion <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "7:00 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 7:30 Dauphin parkers meeting"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "dauphin",
-    "town": "Dauphin",
-    "camp": "Vermillion Campground",
-    "dates": "Sep 19 – 22 · Days 7–10",
-    "churchill": false,
-    "wx": {
-      "hi": 63,
-      "lo": 47,
-      "rlo": 33,
-      "rhi": 79,
-      "lat": 51.1494,
-      "lon": -100.0503
-    },
-    "travel": {
-      "lead": "Travel · Neepawa → Dauphin",
-      "dist": "96 mi / 155 km · ~1 hr 48 min",
-      "notes": [
-        "Leaders &amp; parkers out at 9:00 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
-        "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+     },
+     {
+      "t": "5:30 PM",
+      "c": "meal",
+      "d": "Meet &amp; Greet — finger food at the T&amp;C Restaurant <span class='tag inc'>included</span>",
+      "links": [
+       {
+        "l": "Town & Country",
+        "u": "https://townandcountrycamping.com/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 7,
-        "dow": "Sat",
-        "date": "Sep 19",
-        "headline": "Into Dauphin — Polar Bear Town #2",
-        "rows": [
-          {
-            "t": "10:00 AM",
-            "c": "arrive",
-            "d": "Travel to Dauphin · park at Vermillion Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "Free time to shop or explore Dauphin"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "social",
-            "d": "Social hour — Polar Bear Town #2 <span class='tag pbt'>Paparazzi Alert</span>"
-          },
-          {
-            "t": "6:00 PM",
-            "c": "free",
-            "d": "Dinner on your own · campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 8,
-        "dow": "Sun",
-        "date": "Sep 20",
-        "headline": "Ukrainian crafts, church tour, dinner &amp; dancers",
-        "rows": [
-          {
-            "t": "AM",
-            "c": "church",
-            "d": "Church of your choice · free morning"
-          },
-          {
-            "t": "1:30 PM",
-            "c": "tour",
-            "d": "Ukrainian crafts — Pysanky egg writing at the Super 8 by Wyndham"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "No GAM or social hour"
-          },
-          {
-            "t": "4:30 PM",
-            "c": "tour",
-            "d": "Ukrainian Catholic Church of the Resurrection — guided tour <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "meal",
-            "d": "Ukrainian dinner at the Super 8 by Wyndham <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "After dinner",
-            "c": "social",
-            "d": "Ukrainian dancers perform <span class='tag inc'>incl. gratuity</span> · campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 9,
-        "dow": "Mon",
-        "date": "Sep 21",
-        "headline": "First look at the Churchill train — Dauphin Rail Museum",
-        "rows": [
-          {
-            "t": "9:00 AM",
-            "c": "free",
-            "d": "Free morning to tour or shop in Dauphin"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "tour",
-            "d": "Group B — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group A free"
-          },
-          {
-            "t": "2:00 PM",
-            "c": "tour",
-            "d": "Group A — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group B free"
-          },
-          {
-            "t": "4:30 PM",
-            "c": "routine",
-            "d": "Get-Acquainted Meeting (GAM #3)"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 8:00 Swan River parkers meeting"
-          }
-        ]
-      },
-      {
-        "n": 10,
-        "dow": "Tue",
-        "date": "Sep 22",
-        "headline": "Riding Mountain National Park",
-        "rows": [
-          {
-            "t": "9:30 AM",
-            "c": "tour",
-            "d": "Leave for Riding Mountain National Park"
-          },
-          {
-            "t": "10:00 AM",
-            "c": "tour",
-            "d": "RMNP vehicle tour with guide Ryan Murray — GMRS radios, 14 available <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "12:00 PM",
-            "c": "free",
-            "d": "Lunch on your own with the guide · possible afternoon hiking tour <span class='tag opt'>to be confirmed</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "Free — shop Wasagaming, visit the buffalo, hike or bike the trails"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "No GAM or social hour · dinner on your own"
-          }
-        ]
-      }
+     },
+     {
+      "t": "After dinner",
+      "c": "routine",
+      "d": "Campfire (weather permitting)"
+     }
     ]
-  },
-  {
-    "id": "swanriver",
-    "town": "Swan River",
-    "camp": "Green Acres Campground",
-    "dates": "Sep 23 – 25 · Days 11–13",
-    "churchill": false,
-    "wx": {
-      "hi": 64,
-      "lo": 46,
-      "rlo": 28,
-      "rhi": 82,
-      "lat": 52.1061,
-      "lon": -101.2672
-    },
-    "travel": {
-      "lead": "Travel · Dauphin → Swan River",
-      "dist": "106 mi / 171 km · ~1 hr 46 min",
-      "notes": [
-        "Route may change — road reconstruction from the flooding. Alternate is Hwy 83 to Roblin, 133 mi / 214 km · ~2 hr 10 min",
-        "Leaders &amp; parkers out at 8:30 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
-        "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+   },
+   {
+    "n": 2,
+    "dow": "Mon",
+    "date": "Sep 14",
+    "headline": "Guided bus tour of Winnipeg &amp; the Welcome Dinner",
+    "rows": [
+     {
+      "t": "9:00 AM",
+      "c": "routine",
+      "d": "First-Timers meeting — tent area, Site #167 or #193"
+     },
+     {
+      "t": "9:45 AM",
+      "c": "tour",
+      "d": "Board the chartered bus at Site #193"
+     },
+     {
+      "t": "10:00 AM",
+      "c": "tour",
+      "d": "Chartered bus tour of Winnipeg — <strong>bring snacks</strong> if you need to eat at set times"
+     },
+     {
+      "t": "1:00 PM",
+      "c": "free",
+      "d": "Bus back to Town &amp; Country · lunch on your own at 1:30"
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "Caravan schedule review — including the drive from Winnipeg to Neepawa"
+     },
+     {
+      "t": "6:00 PM",
+      "c": "meal",
+      "d": "Welcome Dinner — T&amp;C Restaurant <span class='tag inc'>incl. gratuity</span> · bring your own beverage &amp; glasses",
+      "links": [
+       {
+        "l": "Town & Country",
+        "u": "https://townandcountrycamping.com/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 11,
-        "dow": "Wed",
-        "date": "Sep 23",
-        "headline": "Into Swan River — Polar Bear Town #3",
-        "rows": [
-          {
-            "t": "10:00 AM",
-            "c": "arrive",
-            "d": "Travel to Swan River · park at Green Acres <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "Free time — tour, shop, hike or bike"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "social",
-            "d": "Social hour — Polar Bear Town #3 <span class='tag pbt'>Rumble on the Tundra</span>"
-          }
-        ]
-      },
-      {
-        "n": 12,
-        "dow": "Thu",
-        "date": "Sep 24",
-        "headline": "Spruce Wood Products &amp; the campout",
-        "rows": [
-          {
-            "t": "9:30 AM",
-            "c": "tour",
-            "d": "Group B — Spruce Wood Products tour · Group A free"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "tour",
-            "d": "Group A — Spruce Wood Products tour · Group B free"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "Get-Acquainted Meeting (GAM #4)"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "meal",
-            "d": "Campout at the campground"
-          },
-          {
-            "t": "7:00 PM",
-            "c": "routine",
-            "d": "Campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 13,
-        "dow": "Fri",
-        "date": "Sep 25",
-        "headline": "Pretty Valley Honey Farm · Polar Bear Town #4",
-        "heads": "Bring Canadian cash to shop at the Honey Farm.",
-        "rows": [
-          {
-            "t": "8:45 AM",
-            "c": "tour",
-            "d": "Gather to carpool to Pretty Valley Honey Farm · leave at 9:00"
-          },
-          {
-            "t": "9:30 AM",
-            "c": "tour",
-            "d": "Pretty Valley Honey Farm tour, Groups A &amp; B <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "Free time — tour, shop, hike or bike"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "social",
-            "d": "Social hour — Polar Bear Town #4 <span class='tag pbt'>Halloween Horror Story</span>"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "free",
-            "d": "Dinner on your own"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 8:00 The Pas parkers meeting"
-          }
-        ]
-      }
+     },
+     {
+      "t": "Later",
+      "c": "routine",
+      "d": "Campfire (weather permitting)"
+     }
     ]
+   }
+  ],
+  "camp_url": "https://townandcountrycamping.com/"
+ },
+ {
+  "id": "neepawa",
+  "town": "Neepawa",
+  "camp": "Lions Riverbend Campground",
+  "dates": "Sep 15 – 18 · Days 3–6",
+  "churchill": false,
+  "wx": {
+   "hi": 64,
+   "lo": 48,
+   "rlo": 32,
+   "rhi": 83,
+   "lat": 50.2289,
+   "lon": -99.4661
   },
-  {
-    "id": "thepas",
-    "town": "The Pas",
-    "camp": "The Pas Exhibition Grounds",
-    "dates": "Sep 26 – 28 · Days 14–16",
-    "churchill": false,
-    "wx": {
-      "hi": 60,
-      "lo": 46,
-      "rlo": 29,
-      "rhi": 80,
-      "lat": 53.825,
-      "lon": -101.2542
-    },
-    "travel": {
-      "lead": "Travel · Swan River → The Pas",
-      "dist": "142 mi / 229 km · ~2 hr 19 min",
-      "notes": [
-        "Dump before you leave the campground",
-        "Leaders &amp; parkers out at 8:30 AM · deparkers 9:00–10:00 AM · caravan rolls at 9:30 AM",
-        "Arrive after 2:00 PM · parkers on duty 2:00–4:00 PM"
+  "travel": {
+   "lead": "Travel · Winnipeg → Neepawa",
+   "dist": "131 mi / 210 km · ~2 hr 30 min",
+   "notes": [
+    "Leaders, parkers &amp; cooking team out at 9:00 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
+    "Stop at the Happy Rock in Gladstone on the way — it is in the travel guide",
+    "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 3,
+    "dow": "Tue",
+    "date": "Sep 15",
+    "headline": "Drive Winnipeg → Neepawa; settle in at Lions Riverbend",
+    "rows": [
+     {
+      "t": "10:00 AM",
+      "c": "arrive",
+      "d": "Drive to Neepawa · park at Lions Riverbend <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
+      "links": [
+       {
+        "l": "Riverbend Campground",
+        "u": "https://www.neepawa.ca/riverbend-campground/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 14,
-        "dow": "Sat",
-        "date": "Sep 26",
-        "headline": "Into The Pas",
-        "rows": [
-          {
-            "t": "9:30 AM",
-            "c": "arrive",
-            "d": "Travel to The Pas · park at the Exhibition Grounds <span class='tag pbt'>parkers on duty 2:00–4:00 PM</span>"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "routine",
-            "d": "Get-Acquainted Meeting (GAM #5)"
-          },
-          {
-            "t": "6:00 PM",
-            "c": "free",
-            "d": "Dinner on your own · campfire (weather permitting)"
-          }
-        ]
-      },
-      {
-        "n": 15,
-        "dow": "Sun",
-        "date": "Sep 27",
-        "headline": "Opasquia Trails boardwalk &amp; the Sam Waller Museum",
-        "rows": [
-          {
-            "t": "10:00 AM",
-            "c": "church",
-            "d": "Church of your choice · free morning"
-          },
-          {
-            "t": "12:50 PM",
-            "c": "tour",
-            "d": "Carpool to the Opasquia Trails boardwalk"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "tour",
-            "d": "Opasquia Trails boardwalk — split into Groups A &amp; B"
-          },
-          {
-            "t": "3:00 PM",
-            "c": "tour",
-            "d": "Guided tour of the Sam Waller Museum <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "6:30 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 7:00 Flin Flon parkers meeting"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "social",
-            "d": "Social hour — Polar Bear Town #5 <span class='tag pbt'>Parole Day</span>"
-          }
-        ]
-      },
-      {
-        "n": 16,
-        "dow": "Mon",
-        "date": "Sep 28",
-        "headline": "Round the Bend Farm — Blanket Exercise &amp; bison kabobs",
-        "rows": [
-          {
-            "t": "Morning",
-            "c": "free",
-            "d": "Free time · lunch on your own at noon"
-          },
-          {
-            "t": "1:50 PM",
-            "c": "tour",
-            "d": "Leave for Round the Bend Farm"
-          },
-          {
-            "t": "2:30 PM",
-            "c": "tour",
-            "d": "Blanket Exercise at Round the Bend Farm"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "tour",
-            "d": "Tour of Round the Bend Farm"
-          },
-          {
-            "t": "6:00 PM",
-            "c": "meal",
-            "d": "Dinner at the farm — bison kabobs with farm-fresh vegetables"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "arrive",
-            "d": "Back to the campground"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "flinflon",
-    "town": "Flin Flon",
-    "camp": "Flin Flon Campground",
-    "dates": "Sep 29 · Day 17",
-    "churchill": false,
-    "wx": {
-      "hi": 58,
-      "lo": 43,
-      "rlo": 29,
-      "rhi": 73,
-      "lat": 54.7682,
-      "lon": -101.865
-    },
-    "travel": {
-      "lead": "Travel · The Pas → Flin Flon",
-      "dist": "84 mi / 135 km · ~2 hr",
-      "notes": [
-        "Dump before you leave the campground",
-        "Leaders &amp; parkers out at 8:30 AM · deparkers 9:00–10:00 AM · caravan rolls at 9:30 AM",
-        "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "“Take a hike” or “go by bike” — 10 km of Neepawa trails",
+      "links": [
+       {
+        "l": "Neepawa trails",
+        "u": "https://www.neepawa.ca/recreational-trails/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 17,
-        "dow": "Tue",
-        "date": "Sep 29",
-        "headline": "New overnight — Flin Flon &amp; the Rotary Wheel campout",
-        "heads": "New stop, added in Gail's Sep 7 itinerary. The fourth night moves from The Pas up to Flin Flon, and the Clearwater Lake free afternoon and GAM #6 are gone with it.",
-        "rows": [
-          {
-            "t": "9:30 AM",
-            "c": "arrive",
-            "d": "Travel to Flin Flon · park at the Flin Flon Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "meal",
-            "d": "Campout at the Rotary Wheel at the campground"
-          },
-          {
-            "t": "6:30 PM",
-            "c": "social",
-            "d": "Social hour — Polar Bear Town #6 <span class='tag pbt'>Quest for Cubs</span>"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 8:00 Thompson parkers meeting · campfire (weather permitting)"
-          }
-        ]
-      }
+     },
+     {
+      "t": "5:00 PM",
+      "c": "routine",
+      "d": "Get-Acquainted Meeting (GAM #1)"
+     },
+     {
+      "t": "After dinner",
+      "c": "routine",
+      "d": "Campfire (weather permitting)"
+     }
     ]
-  },
-  {
-    "id": "thompson",
-    "town": "Thompson",
-    "camp": "McCreedy Campground",
-    "dates": "Sep 30 – Oct 1 · Days 18–19",
-    "churchill": false,
-    "wx": {
-      "hi": 51,
-      "lo": 39,
-      "rlo": 24,
-      "rhi": 67,
-      "lat": 55.7435,
-      "lon": -97.8558
-    },
-    "travel": {
-      "lead": "Travel · Flin Flon → Thompson",
-      "dist": "235 mi / 378 km · ~4 hr (plan on ~6 hr)",
-      "notes": [
-        "National Truth &amp; Reconciliation Day",
-        "Leaders &amp; parkers out at 7:45 AM · deparkers 7:45–9:00 AM · caravan rolls at 8:45 AM",
-        "Fuel up at Wabowden",
-        "Stop at Pisew Falls Provincial Park for the falls &amp; bridge",
-        "Arrive after 4:00 PM · parkers on duty 4:00–6:00 PM"
+   },
+   {
+    "n": 4,
+    "dow": "Wed",
+    "date": "Sep 16",
+    "headline": "Day-trip to Spud Plains Farm, Carberry",
+    "rows": [
+     {
+      "t": "12:15 PM",
+      "c": "tour",
+      "d": "Carpool to Spud Plains Farm, Carberry (27 mi / 43 km · ~30 min)",
+      "links": [
+       {
+        "l": "Spud Plains Farms",
+        "u": "https://www.spudplainsfarms.com/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 18,
-        "dow": "Wed",
-        "date": "Sep 30",
-        "headline": "The long haul to Thompson — Pisew Falls en route",
-        "rows": [
-          {
-            "t": "8:45 AM",
-            "c": "arrive",
-            "d": "Travel to Thompson — a long day; plan on ~6 hr with fuel and Pisew Falls <span class='tag pbt'>parkers on duty 4:00–6:00 PM</span>"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "routine",
-            "d": "No GAM or social hour · dinner on your own at 6:30"
-          }
-        ]
-      },
-      {
-        "n": 19,
-        "dow": "Thu",
-        "date": "Oct 1",
-        "headline": "Community service & Heritage North — “Update on Churchill”",
-        "heads": "This is where the donations you collected get sorted — some stay in Thompson for the women's shelter and local schools, the rest is boxed for the train to Churchill (VIA carries them free).",
-        "rows": [
-          {
-            "t": "10:00 AM",
-            "c": "tour",
-            "d": "Community service — sort &amp; distribute goods at the University College of the North"
-          },
-          {
-            "t": "1:30 PM",
-            "c": "tour",
-            "d": "Heritage North Museum tour"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "social",
-            "d": "Social hour — Update on Churchill"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "churchill",
-    "town": "Churchill",
-    "camp": "By VIA Rail · Tundra Buggy Lodge & Tundra Inn",
-    "dates": "Oct 2 – 7 · Days 20–25",
-    "churchill": true,
-    "wx": {
-      "hi": 43,
-      "lo": 35,
-      "rlo": 23,
-      "rhi": 64,
-      "lat": 58.7684,
-      "lon": -94.1647
-    },
-    "days": [
-      {
-        "n": 20,
-        "dow": "Fri",
-        "date": "Oct 2",
-        "headline": "★ Board the train to Churchill — overnight",
-        "heads": "Get the rig ready to be left in Thompson for 5 days — 2 gal RV antifreeze in the drains, water lines drained &amp; blown out, hot water tank drained, electric heater left on the counter (no antifreeze in fresh water lines). A co-leader assists; keys stay with Colleen at McCreedy. Train baggage: carry-on 1 personal item (25 lb) + 1 item (50 lb / 62 linear in), checked 2 × 50 lb. No dining car (snack/lounge car only, very limited, no dietary accommodation) — bring your own; alcohol must be checked, not carry-on. Security screening in Thompson. No sleeper? Bring a pillow and blanket. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
-        "rows": [
-          {
-            "t": "11:00 AM",
-            "c": "meal",
-            "d": "Group lunch — Northern Inn &amp; Steakhouse <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "2:50 PM",
-            "c": "arrive",
-            "d": "Checked baggage to the campground lot · 3:00 the owners run it to the station"
-          },
-          {
-            "t": "3:50 PM",
-            "c": "arrive",
-            "d": "Gather with your carry-on for the ride to the train station <span class='tag inc'>included</span>"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "bear",
-            "d": "Train departs for Churchill — overnight, limited meals on board"
-          }
-        ]
-      },
-      {
-        "n": 21,
-        "dow": "Sat",
-        "date": "Oct 3",
-        "headline": "Arrive Churchill — town, community service, then out to the Lodge",
-        "heads": "Gratuities for the Churchill meals and tours are all covered by the kitty fee. You are split into Groups A and B on arrival and stay in the same group the whole time in Churchill.",
-        "rows": [
-          {
-            "t": "9:00 AM",
-            "c": "bear",
-            "d": "Train arrives Churchill — met by Frontiers North escorts · checked baggage goes straight out to the Tundra Lodge"
-          },
-          {
-            "t": "9:15 AM",
-            "c": "tour",
-            "d": "Shuttle tour of Churchill — Miss Piggy, the Inukshuk, the Polar Bear Holding Facility (carry-on rides along, to be confirmed)"
-          },
-          {
-            "t": "11:30 AM",
-            "c": "meal",
-            "d": "Lunch at the Seaport Restaurant <span class='tag inc'>included</span> — Group A 11:30, Group B 11:45"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "tour",
-            "d": "Group A — Itsanitaq Museum · Group B — Polar Bears International House"
-          },
-          {
-            "t": "2:00 PM",
-            "c": "tour",
-            "d": "Community service — St. Paul's Anglican Church &amp; York Factory First Nation"
-          },
-          {
-            "t": "3:00 PM",
-            "c": "social",
-            "d": "Cultural presentation at the Town Theatre"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "bear",
-            "d": "Meet at the Ptarmigan for the bus to the Tundra Buggy Dock — pastries, coffee &amp; tea while you wait"
-          },
-          {
-            "t": "4:30 PM",
-            "c": "bear",
-            "d": "Onto the Tundra Buggy — looking for bears the whole way out to the Lodge"
-          },
-          {
-            "t": "6:30 PM",
-            "c": "meal",
-            "d": "Arrive at the Tundra Buggy Lodge · orientation · dinner at 6:45 <span class='tag inc'>included</span> · observation deck for the northern lights"
-          }
-        ]
-      },
-      {
-        "n": 22,
-        "dow": "Sun",
-        "date": "Oct 4",
-        "headline": "Tundra Buggy — out among the polar bears",
-        "rows": [
-          {
-            "t": "7–8 AM",
-            "c": "meal",
-            "d": "Breakfast at the Lodge <span class='tag inc'>included</span>"
-          },
-          {
-            "t": "8:00 AM",
-            "c": "bear",
-            "d": "Board the Tundra Buggy for the day's tour"
-          },
-          {
-            "t": "Noon",
-            "c": "meal",
-            "d": "Lunch on the buggy <span class='tag inc'>included</span> · tour continues"
-          },
-          {
-            "t": "4:30 PM",
-            "c": "social",
-            "d": "Back to the Lodge — beverages &amp; snacks in the lounge"
-          },
-          {
-            "t": "6:00 PM",
-            "c": "meal",
-            "d": "Dinner at the Lodge <span class='tag inc'>included</span> · overnight on the tundra, observation deck for the lights"
-          }
-        ]
-      },
-      {
-        "n": 23,
-        "dow": "Mon",
-        "date": "Oct 5",
-        "headline": "Full-day buggy tour, then into Churchill",
-        "heads": "Mark your luggage and leave it in front of your lower bunk — Frontiers North moves it to the Tundra Inn. Take what you need for the day with you.",
-        "rows": [
-          {
-            "t": "7–8 AM",
-            "c": "meal",
-            "d": "Breakfast at the Lodge <span class='tag inc'>included</span>"
-          },
-          {
-            "t": "8:00 AM",
-            "c": "bear",
-            "d": "Board the Tundra Buggy for the full-day tour"
-          },
-          {
-            "t": "Noon",
-            "c": "meal",
-            "d": "Lunch on the buggy <span class='tag inc'>included</span>"
-          },
-          {
-            "t": "4:30 PM",
-            "c": "bear",
-            "d": "Back to the Tundra Buggy Dock"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "arrive",
-            "d": "Check in at the Tundra Inn, Churchill"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "meal",
-            "d": "Dinner at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group B 5:30, Group A 6:00"
-          }
-        ]
-      },
-      {
-        "n": 24,
-        "dow": "Tue",
-        "date": "Oct 6",
-        "headline": "Wapusk dog sledding, the museums — night train out",
-        "heads": "Dress warm for Wapusk Adventures — in early October you may be on a wheeled cart rather than a sled. Leave checked baggage outside your room at the Tundra Inn for transfer to the station; carry-on goes to a holding room and you collect it before the train.",
-        "rows": [
-          {
-            "t": "7:00 AM",
-            "c": "meal",
-            "d": "Breakfast at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group A 7:00, Group B 7:30"
-          },
-          {
-            "t": "9:00 AM",
-            "c": "bear",
-            "d": "Wapusk Adventures — dog sledding, dress warm · Group A 9:00, Group B 10:00"
-          },
-          {
-            "t": "11:15 AM",
-            "c": "meal",
-            "d": "Lunch at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group A 11:15, Group B 11:45"
-          },
-          {
-            "t": "1:00 PM",
-            "c": "tour",
-            "d": "Group A — Parks Canada Visitor Centre · Group B — Itsanitaq Museum"
-          },
-          {
-            "t": "2:00 PM",
-            "c": "tour",
-            "d": "Group B — Parks Canada Visitor Centre · Group A — Polar Bears International at 3:00 · time for the shops"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "meal",
-            "d": "Dinner at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group B 5:00, Group A 5:30"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "bear",
-            "d": "Collect your carry-on at the Tundra Inn · shuttle to the VIA Rail station"
-          },
-          {
-            "t": "8:30 PM",
-            "c": "bear",
-            "d": "Night train departs Churchill for Thompson"
-          }
-        ]
-      },
-      {
-        "n": 25,
-        "dow": "Wed",
-        "date": "Oct 7",
-        "headline": "Back in Thompson — free afternoon",
-        "rows": [
-          {
-            "t": "Noon",
-            "c": "arrive",
-            "d": "Arrive Thompson · claim your luggage at the baggage car · ride back to McCreedy <span class='tag inc'>included</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "Free day — laundry or tour Thompson · no GAM or social hour"
-          },
-          {
-            "t": "7:00 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 7:30 Grand Rapids parkers meeting"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "grandrapids",
-    "town": "Grand Rapids",
-    "camp": "Cook’s Campground",
-    "dates": "Oct 8 · Day 26",
-    "churchill": false,
-    "wx": {
-      "hi": 49,
-      "lo": 42,
-      "rlo": 32,
-      "rhi": 56,
-      "lat": 53.1919,
-      "lon": -99.2761
-    },
-    "travel": {
-      "lead": "Travel · Thompson → Grand Rapids",
-      "dist": "205 mi / 330 km · ~3 hr 38 min",
-      "notes": [
-        "Leaders &amp; parkers out at 8:00 AM · deparkers 8:30–9:30 AM · caravan rolls at 9:00 AM",
-        "Fuel up at Wabowden",
-        "Arrive after 3:00 PM · parkers on duty 3:00–5:00 PM"
+     },
+     {
+      "t": "1:00 PM",
+      "c": "tour",
+      "d": "Tour of Spud Plains Farm",
+      "links": [
+       {
+        "l": "Spud Plains Farms",
+        "u": "https://www.spudplainsfarms.com/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 26,
-        "dow": "Thu",
-        "date": "Oct 8",
-        "headline": "Down to Grand Rapids",
-        "rows": [
-          {
-            "t": "9:00 AM",
-            "c": "arrive",
-            "d": "Travel to Grand Rapids · park at Cook’s Campground <span class='tag pbt'>parkers on duty 3:00–5:00 PM</span>"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "social",
-            "d": "Group social hour"
-          },
-          {
-            "t": "6:30 PM",
-            "c": "free",
-            "d": "Dinner on your own — <strong>no restaurants here, so come prepared</strong>"
-          },
-          {
-            "t": "7:30 PM",
-            "c": "routine",
-            "d": "Drivers meeting · 8:00 Winnipeg parkers meeting"
-          }
-        ]
-      }
+     },
+     {
+      "t": "3:30 PM",
+      "c": "free",
+      "d": "Back to Riverbend · free time"
+     },
+     {
+      "t": "6:00 PM",
+      "c": "meal",
+      "d": "Cookout — Bratt's dinner at the campground"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "social",
+      "d": "Social hour — Polar Bear Town #1 <span class='tag pbt'>Welcome to Churchill</span>"
+     }
     ]
-  },
-  {
-    "id": "winnipeg",
-    "town": "Winnipeg",
-    "camp": "Town & Country Campground",
-    "dates": "Oct 9 – 13 · Days 27–31",
-    "churchill": false,
-    "wx": {
-      "hi": 54,
-      "lo": 40,
-      "rlo": 19,
-      "rhi": 74,
-      "lat": 49.8271,
-      "lon": -96.9809
-    },
-    "travel": {
-      "lead": "Travel · Grand Rapids → Winnipeg",
-      "dist": "269 mi / 433 km · ~4 hr 50 min",
-      "notes": [
-        "Leaders &amp; parkers out at 8:00 AM · deparkers 8:30–9:30 AM · caravan rolls at 9:00 AM",
-        "RV/truck wash en route — 6n73 WandWASH in Woodlands, or Birds Hill Car &amp; Truck Wash, 195 Besson St, East St. Paul",
-        "Arrive after 3:00 PM · parkers on duty 3:00–5:00 PM"
+   },
+   {
+    "n": 5,
+    "dow": "Thu",
+    "date": "Sep 17",
+    "headline": "“A Day in the Life of a Farmer” — RnR Galbraith Farms",
+    "rows": [
+     {
+      "t": "9:00 AM",
+      "c": "tour",
+      "d": "Gather to carpool to RnR Galbraith Farms — <strong>bring a bag lunch &amp; lawn chairs</strong>, and rain gear if it's wet",
+      "links": [
+       {
+        "l": "RnR Galbraith Farms",
+        "u": "https://galbraithfarms.com/"
+       }
       ]
-    },
-    "days": [
-      {
-        "n": 27,
-        "dow": "Fri",
-        "date": "Oct 9",
-        "headline": "Into Winnipeg — the home stretch",
-        "rows": [
-          {
-            "t": "9:00 AM",
-            "c": "arrive",
-            "d": "Travel to Winnipeg · park at Town &amp; Country <span class='tag pbt'>parkers on duty 3:00–5:00 PM</span>"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "social",
-            "d": "Group social hour — maybe another episode of Polar Bear Town, Season 2"
-          }
-        ]
-      },
-      {
-        "n": 28,
-        "dow": "Sat",
-        "date": "Oct 10",
-        "headline": "Free day in Winnipeg — tour to be advised",
-        "rows": [
-          {
-            "t": "Morning",
-            "c": "tour",
-            "d": "Tour to be advised <span class='tag opt'>not yet set</span>"
-          },
-          {
-            "t": "2:00 PM",
-            "c": "free",
-            "d": "Lunch on your own · free afternoon to tour Winnipeg"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "social",
-            "d": "Group social hour"
-          },
-          {
-            "t": "6:30 PM",
-            "c": "meal",
-            "d": "Dinner on your own — maybe a pizza party"
-          }
-        ]
-      },
-      {
-        "n": 29,
-        "dow": "Sun",
-        "date": "Oct 11",
-        "headline": "Canadian Museum for Human Rights",
-        "rows": [
-          {
-            "t": "10:00 AM",
-            "c": "church",
-            "d": "Church of your choice — check online for the closest · free time to shop or tour"
-          },
-          {
-            "t": "12:45 PM",
-            "c": "tour",
-            "d": "Leave for the museum · 1:00 tour of the Canadian Museum for Human Rights"
-          },
-          {
-            "t": "5:00 PM",
-            "c": "social",
-            "d": "Group social hour · dinner on your own at 6:00"
-          }
-        ]
-      },
-      {
-        "n": 30,
-        "dow": "Mon",
-        "date": "Oct 12",
-        "headline": "Winnipeg Zoo — Journey to Churchill — &amp; the Farewell Dinner",
-        "rows": [
-          {
-            "t": "9:30 AM",
-            "c": "tour",
-            "d": "Leave for the Winnipeg Zoo"
-          },
-          {
-            "t": "10:00 AM",
-            "c": "tour",
-            "d": "Self-guided tour — Journey to Churchill <span class='tag inc'>incl. gratuity</span>"
-          },
-          {
-            "t": "Afternoon",
-            "c": "free",
-            "d": "Lunch on your own · free time to tour Winnipeg"
-          },
-          {
-            "t": "4:00 PM",
-            "c": "social",
-            "d": "Group social hour at the campground restaurant"
-          },
-          {
-            "t": "5:30 PM",
-            "c": "meal",
-            "d": "Farewell Dinner — campground restaurant"
-          }
-        ]
-      },
-      {
-        "n": 31,
-        "dow": "Tue",
-        "date": "Oct 13",
-        "headline": "Farewells &amp; so-longs — caravan departs",
-        "rows": [
-          {
-            "t": "7:30 AM",
-            "c": "meal",
-            "d": "Continental breakfast or grab &amp; go"
-          },
-          {
-            "t": "9:30 AM",
-            "c": "social",
-            "d": "Farewells &amp; so-longs"
-          },
-          {
-            "t": "Noon",
-            "c": "arrive",
-            "d": "Caravan departs Winnipeg"
-          }
-        ]
-      }
+     },
+     {
+      "t": "10:00 AM",
+      "c": "tour",
+      "d": "WYSIWYG farm tour, Groups A &amp; B — details set the day we arrive"
+     },
+     {
+      "t": "12:00 PM",
+      "c": "free",
+      "d": "Bag lunch at the farm · tour continues 1:00 PM"
+     },
+     {
+      "t": "2:00 PM",
+      "c": "tour",
+      "d": "Maybe out to the fields to see the harvest"
+     },
+     {
+      "t": "3:00 PM",
+      "c": "free",
+      "d": "Free time — Minnedosa on the way back, or shop, hike, bike",
+      "links": [
+       {
+        "l": "Minnedosa",
+        "u": "https://www.minnedosa.com/p/tourism"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "No GAM or social hour · dinner on your own · campfire (weather permitting)"
+     }
     ]
-  }
+   },
+   {
+    "n": 6,
+    "dow": "Fri",
+    "date": "Sep 18",
+    "headline": "Farmers Brewery Estate tours &amp; dinner at the Legion",
+    "rows": [
+     {
+      "t": "9:45 AM",
+      "c": "tour",
+      "d": "Group A leaves for the tour · Group B free this morning"
+     },
+     {
+      "t": "10:00 AM",
+      "c": "tour",
+      "d": "Group A — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Farmery Estate Brewery",
+        "u": "https://farmery.ca/"
+       }
+      ]
+     },
+     {
+      "t": "1:15 PM",
+      "c": "tour",
+      "d": "Group B leaves for the tour · Group A free this afternoon"
+     },
+     {
+      "t": "1:30 PM",
+      "c": "tour",
+      "d": "Group B — Farmers Brewery Estate tour <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Farmery Estate Brewery",
+        "u": "https://farmery.ca/"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "Get-Acquainted Meeting (GAM #2)"
+     },
+     {
+      "t": "5:30 PM",
+      "c": "meal",
+      "d": "Catered dinner at the Legion <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Legion Br. 23 (Facebook)",
+        "u": "https://www.facebook.com/p/Royal-Canadian-Legion-23-100068852499402/"
+       }
+      ]
+     },
+     {
+      "t": "7:00 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 7:30 Dauphin parkers meeting"
+     }
+    ]
+   }
+  ],
+  "camp_url": "https://www.neepawa.ca/riverbend-campground/"
+ },
+ {
+  "id": "dauphin",
+  "town": "Dauphin",
+  "camp": "Vermillion Campground",
+  "dates": "Sep 19 – 22 · Days 7–10",
+  "churchill": false,
+  "wx": {
+   "hi": 63,
+   "lo": 47,
+   "rlo": 33,
+   "rhi": 79,
+   "lat": 51.1494,
+   "lon": -100.0503
+  },
+  "travel": {
+   "lead": "Travel · Neepawa → Dauphin",
+   "dist": "96 mi / 155 km · ~1 hr 48 min",
+   "notes": [
+    "Leaders &amp; parkers out at 9:00 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
+    "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 7,
+    "dow": "Sat",
+    "date": "Sep 19",
+    "headline": "Into Dauphin — Polar Bear Town #2",
+    "rows": [
+     {
+      "t": "10:00 AM",
+      "c": "arrive",
+      "d": "Travel to Dauphin · park at Vermillion Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "Free time to shop or explore Dauphin"
+     },
+     {
+      "t": "4:00 PM",
+      "c": "social",
+      "d": "Social hour — Polar Bear Town #2 <span class='tag pbt'>Paparazzi Alert</span>"
+     },
+     {
+      "t": "6:00 PM",
+      "c": "free",
+      "d": "Dinner on your own · campfire (weather permitting)"
+     }
+    ]
+   },
+   {
+    "n": 8,
+    "dow": "Sun",
+    "date": "Sep 20",
+    "headline": "Ukrainian crafts, church tour, dinner &amp; dancers",
+    "rows": [
+     {
+      "t": "AM",
+      "c": "church",
+      "d": "Church of your choice · free morning"
+     },
+     {
+      "t": "1:30 PM",
+      "c": "tour",
+      "d": "Ukrainian crafts — Pysanky egg writing at the Super 8 by Wyndham",
+      "links": [
+       {
+        "l": "Super 8 Dauphin",
+        "u": "https://www.wyndhamhotels.com/super-8/dauphin-manitoba/super-8-dauphin/overview"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "No GAM or social hour"
+     },
+     {
+      "t": "4:30 PM",
+      "c": "tour",
+      "d": "Ukrainian Catholic Church of the Resurrection — guided tour <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Church of the Resurrection (Facebook)",
+        "u": "https://www.facebook.com/profile.php?id=100068828970393"
+       }
+      ]
+     },
+     {
+      "t": "5:30 PM",
+      "c": "meal",
+      "d": "Ukrainian dinner at the Super 8 by Wyndham <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Super 8 Dauphin",
+        "u": "https://www.wyndhamhotels.com/super-8/dauphin-manitoba/super-8-dauphin/overview"
+       }
+      ]
+     },
+     {
+      "t": "After dinner",
+      "c": "social",
+      "d": "Ukrainian dancers perform <span class='tag inc'>incl. gratuity</span> · campfire (weather permitting)"
+     }
+    ]
+   },
+   {
+    "n": 9,
+    "dow": "Mon",
+    "date": "Sep 21",
+    "headline": "First look at the Churchill train — Dauphin Rail Museum",
+    "rows": [
+     {
+      "t": "9:00 AM",
+      "c": "free",
+      "d": "Free morning to tour or shop in Dauphin"
+     },
+     {
+      "t": "1:00 PM",
+      "c": "tour",
+      "d": "Group B — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group A free",
+      "links": [
+       {
+        "l": "Dauphin Rail Museum (Facebook)",
+        "u": "https://www.facebook.com/dauphinrailmuseum/"
+       }
+      ]
+     },
+     {
+      "t": "2:00 PM",
+      "c": "tour",
+      "d": "Group A — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group B free",
+      "links": [
+       {
+        "l": "Dauphin Rail Museum (Facebook)",
+        "u": "https://www.facebook.com/dauphinrailmuseum/"
+       }
+      ]
+     },
+     {
+      "t": "4:30 PM",
+      "c": "routine",
+      "d": "Get-Acquainted Meeting (GAM #3)"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 8:00 Swan River parkers meeting"
+     }
+    ]
+   },
+   {
+    "n": 10,
+    "dow": "Tue",
+    "date": "Sep 22",
+    "headline": "Riding Mountain National Park",
+    "rows": [
+     {
+      "t": "9:30 AM",
+      "c": "tour",
+      "d": "Leave for Riding Mountain National Park",
+      "links": [
+       {
+        "l": "Riding Mountain NP",
+        "u": "https://parks.canada.ca/pn-np/mb/riding"
+       }
+      ]
+     },
+     {
+      "t": "10:00 AM",
+      "c": "tour",
+      "d": "RMNP vehicle tour with guide Ryan Murray — GMRS radios, 14 available <span class='tag inc'>incl. gratuity</span>"
+     },
+     {
+      "t": "12:00 PM",
+      "c": "free",
+      "d": "Lunch on your own with the guide · possible afternoon hiking tour <span class='tag opt'>to be confirmed</span>"
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "Free — shop Wasagaming, visit the buffalo, hike or bike the trails",
+      "links": [
+       {
+        "l": "Wasagaming / Clear Lake",
+        "u": "https://discoverclearlake.com/about-the-chamber/"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "No GAM or social hour · dinner on your own"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "swanriver",
+  "town": "Swan River",
+  "camp": "Green Acres Campground",
+  "dates": "Sep 23 – 25 · Days 11–13",
+  "churchill": false,
+  "wx": {
+   "hi": 64,
+   "lo": 46,
+   "rlo": 28,
+   "rhi": 82,
+   "lat": 52.1061,
+   "lon": -101.2672
+  },
+  "travel": {
+   "lead": "Travel · Dauphin → Swan River",
+   "dist": "106 mi / 171 km · ~1 hr 46 min",
+   "notes": [
+    "Route may change — road reconstruction from the flooding. Alternate is Hwy 83 to Roblin, 133 mi / 214 km · ~2 hr 10 min",
+    "Leaders &amp; parkers out at 8:30 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
+    "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 11,
+    "dow": "Wed",
+    "date": "Sep 23",
+    "headline": "Into Swan River — Polar Bear Town #3",
+    "rows": [
+     {
+      "t": "10:00 AM",
+      "c": "arrive",
+      "d": "Travel to Swan River · park at Green Acres <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "Free time — tour, shop, hike or bike"
+     },
+     {
+      "t": "5:00 PM",
+      "c": "social",
+      "d": "Social hour — Polar Bear Town #3 <span class='tag pbt'>Rumble on the Tundra</span>"
+     }
+    ]
+   },
+   {
+    "n": 12,
+    "dow": "Thu",
+    "date": "Sep 24",
+    "headline": "Spruce Wood Products &amp; the campout",
+    "rows": [
+     {
+      "t": "9:30 AM",
+      "c": "tour",
+      "d": "Group B — Spruce Wood Products tour · Group A free",
+      "links": [
+       {
+        "l": "Spruce Products Ltd",
+        "u": "https://spl.mb.ca/"
+       }
+      ]
+     },
+     {
+      "t": "1:00 PM",
+      "c": "tour",
+      "d": "Group A — Spruce Wood Products tour · Group B free",
+      "links": [
+       {
+        "l": "Spruce Products Ltd",
+        "u": "https://spl.mb.ca/"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "Get-Acquainted Meeting (GAM #4)"
+     },
+     {
+      "t": "5:30 PM",
+      "c": "meal",
+      "d": "Campout at the campground"
+     },
+     {
+      "t": "7:00 PM",
+      "c": "routine",
+      "d": "Campfire (weather permitting)"
+     }
+    ]
+   },
+   {
+    "n": 13,
+    "dow": "Fri",
+    "date": "Sep 25",
+    "headline": "Pretty Valley Honey Farm · Polar Bear Town #4",
+    "heads": "Bring Canadian cash to shop at the Honey Farm.",
+    "rows": [
+     {
+      "t": "8:45 AM",
+      "c": "tour",
+      "d": "Gather to carpool to Pretty Valley Honey Farm · leave at 9:00",
+      "links": [
+       {
+        "l": "Pretty Valley Honey",
+        "u": "https://www.prettyvalleyhoney.ca/"
+       }
+      ]
+     },
+     {
+      "t": "9:30 AM",
+      "c": "tour",
+      "d": "Pretty Valley Honey Farm tour, Groups A &amp; B <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Pretty Valley Honey",
+        "u": "https://www.prettyvalleyhoney.ca/"
+       }
+      ]
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "Free time — tour, shop, hike or bike"
+     },
+     {
+      "t": "4:00 PM",
+      "c": "social",
+      "d": "Social hour — Polar Bear Town #4 <span class='tag pbt'>Halloween Horror Story</span>"
+     },
+     {
+      "t": "5:30 PM",
+      "c": "free",
+      "d": "Dinner on your own"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 8:00 The Pas parkers meeting"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "thepas",
+  "town": "The Pas",
+  "camp": "The Pas Exhibition Grounds",
+  "dates": "Sep 26 – 28 · Days 14–16",
+  "churchill": false,
+  "wx": {
+   "hi": 60,
+   "lo": 46,
+   "rlo": 29,
+   "rhi": 80,
+   "lat": 53.825,
+   "lon": -101.2542
+  },
+  "travel": {
+   "lead": "Travel · Swan River → The Pas",
+   "dist": "142 mi / 229 km · ~2 hr 19 min",
+   "notes": [
+    "Dump before you leave the campground",
+    "Leaders &amp; parkers out at 8:30 AM · deparkers 9:00–10:00 AM · caravan rolls at 9:30 AM",
+    "Arrive after 2:00 PM · parkers on duty 2:00–4:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 14,
+    "dow": "Sat",
+    "date": "Sep 26",
+    "headline": "Into The Pas",
+    "rows": [
+     {
+      "t": "9:30 AM",
+      "c": "arrive",
+      "d": "Travel to The Pas · park at the Exhibition Grounds <span class='tag pbt'>parkers on duty 2:00–4:00 PM</span>",
+      "links": [
+       {
+        "l": "Exhibition Grounds (Facebook)",
+        "u": "https://www.facebook.com/OASAEG/"
+       }
+      ]
+     },
+     {
+      "t": "5:00 PM",
+      "c": "routine",
+      "d": "Get-Acquainted Meeting (GAM #5)"
+     },
+     {
+      "t": "6:00 PM",
+      "c": "free",
+      "d": "Dinner on your own · campfire (weather permitting)"
+     }
+    ]
+   },
+   {
+    "n": 15,
+    "dow": "Sun",
+    "date": "Sep 27",
+    "headline": "Opasquia Trails boardwalk &amp; the Sam Waller Museum",
+    "rows": [
+     {
+      "t": "10:00 AM",
+      "c": "church",
+      "d": "Church of your choice · free morning"
+     },
+     {
+      "t": "12:50 PM",
+      "c": "tour",
+      "d": "Carpool to the Opasquia Trails boardwalk",
+      "links": [
+       {
+        "l": "Opasquia Trails",
+        "u": "https://opasquiatrails.ca/"
+       }
+      ]
+     },
+     {
+      "t": "1:00 PM",
+      "c": "tour",
+      "d": "Opasquia Trails boardwalk — split into Groups A &amp; B",
+      "links": [
+       {
+        "l": "Opasquia Trails",
+        "u": "https://opasquiatrails.ca/"
+       }
+      ]
+     },
+     {
+      "t": "3:00 PM",
+      "c": "tour",
+      "d": "Guided tour of the Sam Waller Museum <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Sam Waller Museum",
+        "u": "https://www.samwallermuseum.ca/"
+       }
+      ]
+     },
+     {
+      "t": "6:30 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 7:00 Flin Flon parkers meeting"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "social",
+      "d": "Social hour — Polar Bear Town #5 <span class='tag pbt'>Parole Day</span>"
+     }
+    ]
+   },
+   {
+    "n": 16,
+    "dow": "Mon",
+    "date": "Sep 28",
+    "headline": "Round the Bend Farm — Blanket Exercise &amp; bison kabobs",
+    "rows": [
+     {
+      "t": "Morning",
+      "c": "free",
+      "d": "Free time · lunch on your own at noon"
+     },
+     {
+      "t": "1:50 PM",
+      "c": "tour",
+      "d": "Leave for Round the Bend Farm",
+      "links": [
+       {
+        "l": "Round the Bend Farm",
+        "u": "https://www.roundthebend.ca/"
+       }
+      ]
+     },
+     {
+      "t": "2:30 PM",
+      "c": "tour",
+      "d": "Blanket Exercise at Round the Bend Farm",
+      "links": [
+       {
+        "l": "Round the Bend Farm",
+        "u": "https://www.roundthebend.ca/"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "tour",
+      "d": "Tour of Round the Bend Farm",
+      "links": [
+       {
+        "l": "Round the Bend Farm",
+        "u": "https://www.roundthebend.ca/"
+       }
+      ]
+     },
+     {
+      "t": "6:00 PM",
+      "c": "meal",
+      "d": "Dinner at the farm — bison kabobs with farm-fresh vegetables"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "arrive",
+      "d": "Back to the campground"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "flinflon",
+  "town": "Flin Flon",
+  "camp": "Flin Flon Campground",
+  "dates": "Sep 29 · Day 17",
+  "churchill": false,
+  "wx": {
+   "hi": 58,
+   "lo": 43,
+   "rlo": 29,
+   "rhi": 73,
+   "lat": 54.7682,
+   "lon": -101.865
+  },
+  "travel": {
+   "lead": "Travel · The Pas → Flin Flon",
+   "dist": "84 mi / 135 km · ~2 hr",
+   "notes": [
+    "Dump before you leave the campground",
+    "Leaders &amp; parkers out at 8:30 AM · deparkers 9:00–10:00 AM · caravan rolls at 9:30 AM",
+    "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 17,
+    "dow": "Tue",
+    "date": "Sep 29",
+    "headline": "New overnight — Flin Flon &amp; the Rotary Wheel campout",
+    "heads": "New stop, added in Gail's Sep 7 itinerary. The fourth night moves from The Pas up to Flin Flon, and the Clearwater Lake free afternoon and GAM #6 are gone with it.",
+    "rows": [
+     {
+      "t": "9:30 AM",
+      "c": "arrive",
+      "d": "Travel to Flin Flon · park at the Flin Flon Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
+      "links": [
+       {
+        "l": "Flin Flon Campground",
+        "u": "https://cityofflinflon.ca/campground"
+       }
+      ]
+     },
+     {
+      "t": "5:00 PM",
+      "c": "meal",
+      "d": "Campout at the Rotary Wheel at the campground"
+     },
+     {
+      "t": "6:30 PM",
+      "c": "social",
+      "d": "Social hour — Polar Bear Town #6 <span class='tag pbt'>Quest for Cubs</span>"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 8:00 Thompson parkers meeting · campfire (weather permitting)"
+     }
+    ]
+   }
+  ],
+  "camp_url": "https://cityofflinflon.ca/campground"
+ },
+ {
+  "id": "thompson",
+  "town": "Thompson",
+  "camp": "McCreedy Campground",
+  "dates": "Sep 30 – Oct 1 · Days 18–19",
+  "churchill": false,
+  "wx": {
+   "hi": 51,
+   "lo": 39,
+   "rlo": 24,
+   "rhi": 67,
+   "lat": 55.7435,
+   "lon": -97.8558
+  },
+  "travel": {
+   "lead": "Travel · Flin Flon → Thompson",
+   "dist": "235 mi / 378 km · ~4 hr (plan on ~6 hr)",
+   "notes": [
+    "National Truth &amp; Reconciliation Day",
+    "Leaders &amp; parkers out at 7:45 AM · deparkers 7:45–9:00 AM · caravan rolls at 8:45 AM",
+    "Fuel up at Wabowden",
+    "Stop at Pisew Falls Provincial Park for the falls &amp; bridge",
+    "Arrive after 4:00 PM · parkers on duty 4:00–6:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 18,
+    "dow": "Wed",
+    "date": "Sep 30",
+    "headline": "The long haul to Thompson — Pisew Falls en route",
+    "rows": [
+     {
+      "t": "8:45 AM",
+      "c": "arrive",
+      "d": "Travel to Thompson — a long day; plan on ~6 hr with fuel and Pisew Falls <span class='tag pbt'>parkers on duty 4:00–6:00 PM</span>",
+      "links": [
+       {
+        "l": "Pisew Falls",
+        "u": "https://www.gov.mb.ca/sd/parks/park-maps-and-locations/northeast/pisew.html"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "routine",
+      "d": "No GAM or social hour · dinner on your own at 6:30"
+     }
+    ]
+   },
+   {
+    "n": 19,
+    "dow": "Thu",
+    "date": "Oct 1",
+    "headline": "Community service & Heritage North — “Update on Churchill”",
+    "heads": "This is where the donations you collected get sorted — some stay in Thompson for the women's shelter and local schools, the rest is boxed for the train to Churchill (VIA carries them free).",
+    "rows": [
+     {
+      "t": "10:00 AM",
+      "c": "tour",
+      "d": "Community service — sort &amp; distribute goods at the University College of the North",
+      "links": [
+       {
+        "l": "UCN Thompson",
+        "u": "https://ucn.ca/locations/thompson/"
+       }
+      ]
+     },
+     {
+      "t": "1:30 PM",
+      "c": "tour",
+      "d": "Heritage North Museum tour",
+      "links": [
+       {
+        "l": "Heritage North Museum",
+        "u": "https://heritagenorth-thompson.ca/"
+       }
+      ]
+     },
+     {
+      "t": "5:00 PM",
+      "c": "social",
+      "d": "Social hour — Update on Churchill"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "churchill",
+  "town": "Churchill",
+  "camp": "By VIA Rail · Tundra Buggy Lodge & Tundra Inn",
+  "dates": "Oct 2 – 7 · Days 20–25",
+  "churchill": true,
+  "wx": {
+   "hi": 43,
+   "lo": 35,
+   "rlo": 23,
+   "rhi": 64,
+   "lat": 58.7684,
+   "lon": -94.1647
+  },
+  "days": [
+   {
+    "n": 20,
+    "dow": "Fri",
+    "date": "Oct 2",
+    "headline": "★ Board the train to Churchill — overnight",
+    "heads": "Get the rig ready to be left in Thompson for 5 days — 2 gal RV antifreeze in the drains, water lines drained &amp; blown out, hot water tank drained, electric heater left on the counter (no antifreeze in fresh water lines). A co-leader assists; keys stay with Colleen at McCreedy. Train baggage: carry-on 1 personal item (25 lb) + 1 item (50 lb / 62 linear in), checked 2 × 50 lb. No dining car (snack/lounge car only, very limited, no dietary accommodation) — bring your own; alcohol must be checked, not carry-on. Security screening in Thompson. No sleeper? Bring a pillow and blanket. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
+    "rows": [
+     {
+      "t": "11:00 AM",
+      "c": "meal",
+      "d": "Group lunch — Northern Inn &amp; Steakhouse <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Northern Inn (Facebook)",
+        "u": "https://www.facebook.com/p/Northern-Inn-and-steak-house-100067352988606/"
+       }
+      ]
+     },
+     {
+      "t": "2:50 PM",
+      "c": "arrive",
+      "d": "Checked baggage to the campground lot · 3:00 the owners run it to the station"
+     },
+     {
+      "t": "3:50 PM",
+      "c": "arrive",
+      "d": "Gather with your carry-on for the ride to the train station <span class='tag inc'>included</span>"
+     },
+     {
+      "t": "5:00 PM",
+      "c": "bear",
+      "d": "Train departs for Churchill — overnight, limited meals on board",
+      "links": [
+       {
+        "l": "VIA Rail",
+        "u": "https://www.viarail.ca/en/explore-our-destinations/trains/regional-trains/winnipeg-churchill"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "n": 21,
+    "dow": "Sat",
+    "date": "Oct 3",
+    "headline": "Arrive Churchill — town, community service, then out to the Lodge",
+    "heads": "Gratuities for the Churchill meals and tours are all covered by the kitty fee. You are split into Groups A and B on arrival and stay in the same group the whole time in Churchill.",
+    "rows": [
+     {
+      "t": "9:00 AM",
+      "c": "bear",
+      "d": "Train arrives Churchill — met by Frontiers North escorts · checked baggage goes straight out to the Tundra Lodge",
+      "links": [
+       {
+        "l": "VIA Rail",
+        "u": "https://www.viarail.ca/en/explore-our-destinations/trains/regional-trains/winnipeg-churchill"
+       }
+      ]
+     },
+     {
+      "t": "9:15 AM",
+      "c": "tour",
+      "d": "Shuttle tour of Churchill — Miss Piggy, the Inukshuk, the Polar Bear Holding Facility (carry-on rides along, to be confirmed)",
+      "links": [
+       {
+        "l": "Polar Bear Alert Program",
+        "u": "https://www.gov.mb.ca/nrnd/fish-wildlife/polar_bears/index.html"
+       }
+      ]
+     },
+     {
+      "t": "11:30 AM",
+      "c": "meal",
+      "d": "Lunch at the Seaport Restaurant <span class='tag inc'>included</span> — Group A 11:30, Group B 11:45",
+      "links": [
+       {
+        "l": "Seaport Hotel",
+        "u": "http://www.seaporthotel.ca/"
+       }
+      ]
+     },
+     {
+      "t": "1:00 PM",
+      "c": "tour",
+      "d": "Group A — Itsanitaq Museum · Group B — Polar Bears International House",
+      "links": [
+       {
+        "l": "Itsanitaq Museum (Facebook)",
+        "u": "https://www.facebook.com/2146978028728792"
+       },
+       {
+        "l": "PBI House",
+        "u": "https://polarbearsinternational.org/polar-bears-changing-arctic/discover-polar-bears/polar-bears-international-house/"
+       }
+      ]
+     },
+     {
+      "t": "2:00 PM",
+      "c": "tour",
+      "d": "Community service — St. Paul's Anglican Church &amp; York Factory First Nation"
+     },
+     {
+      "t": "3:00 PM",
+      "c": "social",
+      "d": "Cultural presentation at the Town Theatre",
+      "links": [
+       {
+        "l": "Town Centre Complex",
+        "u": "https://www.churchill.ca/p/recreation"
+       }
+      ]
+     },
+     {
+      "t": "4:00 PM",
+      "c": "bear",
+      "d": "Meet at the Ptarmigan for the bus to the Tundra Buggy Dock — pastries, coffee &amp; tea while you wait",
+      "links": [
+       {
+        "l": "The Ptarmigan",
+        "u": "https://www.goodptimes.ca/"
+       }
+      ]
+     },
+     {
+      "t": "4:30 PM",
+      "c": "bear",
+      "d": "Onto the Tundra Buggy — looking for bears the whole way out to the Lodge",
+      "links": [
+       {
+        "l": "Tundra Buggy",
+        "u": "https://frontiersnorth.com/experience/tundra-buggy/"
+       }
+      ]
+     },
+     {
+      "t": "6:30 PM",
+      "c": "meal",
+      "d": "Arrive at the Tundra Buggy Lodge · orientation · dinner at 6:45 <span class='tag inc'>included</span> · observation deck for the northern lights",
+      "links": [
+       {
+        "l": "Tundra Buggy Lodge",
+        "u": "https://frontiersnorth.com/experience/tundra-buggy-lodge/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "n": 22,
+    "dow": "Sun",
+    "date": "Oct 4",
+    "headline": "Tundra Buggy — out among the polar bears",
+    "rows": [
+     {
+      "t": "7–8 AM",
+      "c": "meal",
+      "d": "Breakfast at the Lodge <span class='tag inc'>included</span>"
+     },
+     {
+      "t": "8:00 AM",
+      "c": "bear",
+      "d": "Board the Tundra Buggy for the day's tour",
+      "links": [
+       {
+        "l": "Tundra Buggy",
+        "u": "https://frontiersnorth.com/experience/tundra-buggy/"
+       }
+      ]
+     },
+     {
+      "t": "Noon",
+      "c": "meal",
+      "d": "Lunch on the buggy <span class='tag inc'>included</span> · tour continues"
+     },
+     {
+      "t": "4:30 PM",
+      "c": "social",
+      "d": "Back to the Lodge — beverages &amp; snacks in the lounge"
+     },
+     {
+      "t": "6:00 PM",
+      "c": "meal",
+      "d": "Dinner at the Lodge <span class='tag inc'>included</span> · overnight on the tundra, observation deck for the lights"
+     }
+    ]
+   },
+   {
+    "n": 23,
+    "dow": "Mon",
+    "date": "Oct 5",
+    "headline": "Full-day buggy tour, then into Churchill",
+    "heads": "Mark your luggage and leave it in front of your lower bunk — Frontiers North moves it to the Tundra Inn. Take what you need for the day with you.",
+    "rows": [
+     {
+      "t": "7–8 AM",
+      "c": "meal",
+      "d": "Breakfast at the Lodge <span class='tag inc'>included</span>"
+     },
+     {
+      "t": "8:00 AM",
+      "c": "bear",
+      "d": "Board the Tundra Buggy for the full-day tour",
+      "links": [
+       {
+        "l": "Tundra Buggy",
+        "u": "https://frontiersnorth.com/experience/tundra-buggy/"
+       }
+      ]
+     },
+     {
+      "t": "Noon",
+      "c": "meal",
+      "d": "Lunch on the buggy <span class='tag inc'>included</span>"
+     },
+     {
+      "t": "4:30 PM",
+      "c": "bear",
+      "d": "Back to the Tundra Buggy Dock"
+     },
+     {
+      "t": "5:00 PM",
+      "c": "arrive",
+      "d": "Check in at the Tundra Inn, Churchill",
+      "links": [
+       {
+        "l": "Tundra Inn",
+        "u": "https://tundrainn.com/"
+       }
+      ]
+     },
+     {
+      "t": "5:30 PM",
+      "c": "meal",
+      "d": "Dinner at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group B 5:30, Group A 6:00",
+      "links": [
+       {
+        "l": "The Ptarmigan",
+        "u": "https://www.goodptimes.ca/"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "n": 24,
+    "dow": "Tue",
+    "date": "Oct 6",
+    "headline": "Wapusk dog sledding, the museums — night train out",
+    "heads": "Dress warm for Wapusk Adventures — in early October you may be on a wheeled cart rather than a sled. Leave checked baggage outside your room at the Tundra Inn for transfer to the station; carry-on goes to a holding room and you collect it before the train.",
+    "rows": [
+     {
+      "t": "7:00 AM",
+      "c": "meal",
+      "d": "Breakfast at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group A 7:00, Group B 7:30",
+      "links": [
+       {
+        "l": "The Ptarmigan",
+        "u": "https://www.goodptimes.ca/"
+       }
+      ]
+     },
+     {
+      "t": "9:00 AM",
+      "c": "bear",
+      "d": "Wapusk Adventures — dog sledding, dress warm · Group A 9:00, Group B 10:00",
+      "links": [
+       {
+        "l": "Wapusk Adventures",
+        "u": "https://www.wapuskadventures.com/"
+       }
+      ]
+     },
+     {
+      "t": "11:15 AM",
+      "c": "meal",
+      "d": "Lunch at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group A 11:15, Group B 11:45",
+      "links": [
+       {
+        "l": "The Ptarmigan",
+        "u": "https://www.goodptimes.ca/"
+       }
+      ]
+     },
+     {
+      "t": "1:00 PM",
+      "c": "tour",
+      "d": "Group A — Parks Canada Visitor Centre · Group B — Itsanitaq Museum",
+      "links": [
+       {
+        "l": "Itsanitaq Museum (Facebook)",
+        "u": "https://www.facebook.com/2146978028728792"
+       },
+       {
+        "l": "Parks Canada Visitor Centre",
+        "u": "https://parks.canada.ca/pn-np/mb/wapusk/activ/centre"
+       }
+      ]
+     },
+     {
+      "t": "2:00 PM",
+      "c": "tour",
+      "d": "Group B — Parks Canada Visitor Centre · Group A — Polar Bears International at 3:00 · time for the shops",
+      "links": [
+       {
+        "l": "PBI House",
+        "u": "https://polarbearsinternational.org/polar-bears-changing-arctic/discover-polar-bears/polar-bears-international-house/"
+       },
+       {
+        "l": "Parks Canada Visitor Centre",
+        "u": "https://parks.canada.ca/pn-np/mb/wapusk/activ/centre"
+       }
+      ]
+     },
+     {
+      "t": "5:00 PM",
+      "c": "meal",
+      "d": "Dinner at the Ptarmigan <span class='tag inc'>incl. gratuity</span> — Group B 5:00, Group A 5:30",
+      "links": [
+       {
+        "l": "The Ptarmigan",
+        "u": "https://www.goodptimes.ca/"
+       }
+      ]
+     },
+     {
+      "t": "7:30 PM",
+      "c": "bear",
+      "d": "Collect your carry-on at the Tundra Inn · shuttle to the VIA Rail station",
+      "links": [
+       {
+        "l": "Tundra Inn",
+        "u": "https://tundrainn.com/"
+       }
+      ]
+     },
+     {
+      "t": "8:30 PM",
+      "c": "bear",
+      "d": "Night train departs Churchill for Thompson",
+      "links": [
+       {
+        "l": "VIA Rail",
+        "u": "https://www.viarail.ca/en/explore-our-destinations/trains/regional-trains/winnipeg-churchill"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "n": 25,
+    "dow": "Wed",
+    "date": "Oct 7",
+    "headline": "Back in Thompson — free afternoon",
+    "rows": [
+     {
+      "t": "Noon",
+      "c": "arrive",
+      "d": "Arrive Thompson · claim your luggage at the baggage car · ride back to McCreedy <span class='tag inc'>included</span>"
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "Free day — laundry or tour Thompson · no GAM or social hour"
+     },
+     {
+      "t": "7:00 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 7:30 Grand Rapids parkers meeting"
+     }
+    ]
+   }
+  ],
+  "camp_url": "https://frontiersnorth.com/experience/tundra-buggy-lodge/"
+ },
+ {
+  "id": "grandrapids",
+  "town": "Grand Rapids",
+  "camp": "Cook’s Campground",
+  "dates": "Oct 8 · Day 26",
+  "churchill": false,
+  "wx": {
+   "hi": 49,
+   "lo": 42,
+   "rlo": 32,
+   "rhi": 56,
+   "lat": 53.1919,
+   "lon": -99.2761
+  },
+  "travel": {
+   "lead": "Travel · Thompson → Grand Rapids",
+   "dist": "205 mi / 330 km · ~3 hr 38 min",
+   "notes": [
+    "Leaders &amp; parkers out at 8:00 AM · deparkers 8:30–9:30 AM · caravan rolls at 9:00 AM",
+    "Fuel up at Wabowden",
+    "Arrive after 3:00 PM · parkers on duty 3:00–5:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 26,
+    "dow": "Thu",
+    "date": "Oct 8",
+    "headline": "Down to Grand Rapids",
+    "rows": [
+     {
+      "t": "9:00 AM",
+      "c": "arrive",
+      "d": "Travel to Grand Rapids · park at Cook’s Campground <span class='tag pbt'>parkers on duty 3:00–5:00 PM</span>",
+      "links": [
+       {
+        "l": "Cook's Campground",
+        "u": "https://www.cookscampgroundandcabins.com/"
+       }
+      ]
+     },
+     {
+      "t": "5:30 PM",
+      "c": "social",
+      "d": "Group social hour"
+     },
+     {
+      "t": "6:30 PM",
+      "c": "free",
+      "d": "Dinner on your own — <strong>no restaurants here, so come prepared</strong>"
+     },
+     {
+      "t": "7:30 PM",
+      "c": "routine",
+      "d": "Drivers meeting · 8:00 Winnipeg parkers meeting"
+     }
+    ]
+   }
+  ],
+  "camp_url": "https://www.cookscampgroundandcabins.com/"
+ },
+ {
+  "id": "winnipeg",
+  "town": "Winnipeg",
+  "camp": "Town & Country Campground",
+  "dates": "Oct 9 – 13 · Days 27–31",
+  "churchill": false,
+  "wx": {
+   "hi": 54,
+   "lo": 40,
+   "rlo": 19,
+   "rhi": 74,
+   "lat": 49.8271,
+   "lon": -96.9809
+  },
+  "travel": {
+   "lead": "Travel · Grand Rapids → Winnipeg",
+   "dist": "269 mi / 433 km · ~4 hr 50 min",
+   "notes": [
+    "Leaders &amp; parkers out at 8:00 AM · deparkers 8:30–9:30 AM · caravan rolls at 9:00 AM",
+    "RV/truck wash en route — 6n73 WandWASH in Woodlands, or Birds Hill Car &amp; Truck Wash, 195 Besson St, East St. Paul",
+    "Arrive after 3:00 PM · parkers on duty 3:00–5:00 PM"
+   ]
+  },
+  "days": [
+   {
+    "n": 27,
+    "dow": "Fri",
+    "date": "Oct 9",
+    "headline": "Into Winnipeg — the home stretch",
+    "rows": [
+     {
+      "t": "9:00 AM",
+      "c": "arrive",
+      "d": "Travel to Winnipeg · park at Town &amp; Country <span class='tag pbt'>parkers on duty 3:00–5:00 PM</span>",
+      "links": [
+       {
+        "l": "Town & Country",
+        "u": "https://townandcountrycamping.com/"
+       }
+      ]
+     },
+     {
+      "t": "5:00 PM",
+      "c": "social",
+      "d": "Group social hour — maybe another episode of Polar Bear Town, Season 2"
+     }
+    ]
+   },
+   {
+    "n": 28,
+    "dow": "Sat",
+    "date": "Oct 10",
+    "headline": "Free day in Winnipeg — tour to be advised",
+    "rows": [
+     {
+      "t": "Morning",
+      "c": "tour",
+      "d": "Tour to be advised <span class='tag opt'>not yet set</span>"
+     },
+     {
+      "t": "2:00 PM",
+      "c": "free",
+      "d": "Lunch on your own · free afternoon to tour Winnipeg"
+     },
+     {
+      "t": "5:00 PM",
+      "c": "social",
+      "d": "Group social hour"
+     },
+     {
+      "t": "6:30 PM",
+      "c": "meal",
+      "d": "Dinner on your own — maybe a pizza party"
+     }
+    ]
+   },
+   {
+    "n": 29,
+    "dow": "Sun",
+    "date": "Oct 11",
+    "headline": "Canadian Museum for Human Rights",
+    "rows": [
+     {
+      "t": "10:00 AM",
+      "c": "church",
+      "d": "Church of your choice — check online for the closest · free time to shop or tour"
+     },
+     {
+      "t": "12:45 PM",
+      "c": "tour",
+      "d": "Leave for the museum · 1:00 tour of the Canadian Museum for Human Rights",
+      "links": [
+       {
+        "l": "CMHR",
+        "u": "https://humanrights.ca/visit/plan-your-visit"
+       }
+      ]
+     },
+     {
+      "t": "5:00 PM",
+      "c": "social",
+      "d": "Group social hour · dinner on your own at 6:00"
+     }
+    ]
+   },
+   {
+    "n": 30,
+    "dow": "Mon",
+    "date": "Oct 12",
+    "headline": "Winnipeg Zoo — Journey to Churchill — &amp; the Farewell Dinner",
+    "rows": [
+     {
+      "t": "9:30 AM",
+      "c": "tour",
+      "d": "Leave for the Winnipeg Zoo",
+      "links": [
+       {
+        "l": "Assiniboine Park Zoo",
+        "u": "https://www.assiniboinepark.ca/zoo/animals/journey-to-churchill"
+       }
+      ]
+     },
+     {
+      "t": "10:00 AM",
+      "c": "tour",
+      "d": "Self-guided tour — Journey to Churchill <span class='tag inc'>incl. gratuity</span>",
+      "links": [
+       {
+        "l": "Journey to Churchill",
+        "u": "https://www.assiniboinepark.ca/zoo/animals/journey-to-churchill"
+       }
+      ]
+     },
+     {
+      "t": "Afternoon",
+      "c": "free",
+      "d": "Lunch on your own · free time to tour Winnipeg"
+     },
+     {
+      "t": "4:00 PM",
+      "c": "social",
+      "d": "Group social hour at the campground restaurant"
+     },
+     {
+      "t": "5:30 PM",
+      "c": "meal",
+      "d": "Farewell Dinner — campground restaurant"
+     }
+    ]
+   },
+   {
+    "n": 31,
+    "dow": "Tue",
+    "date": "Oct 13",
+    "headline": "Farewells &amp; so-longs — caravan departs",
+    "rows": [
+     {
+      "t": "7:30 AM",
+      "c": "meal",
+      "d": "Continental breakfast or grab &amp; go"
+     },
+     {
+      "t": "9:30 AM",
+      "c": "social",
+      "d": "Farewells &amp; so-longs"
+     },
+     {
+      "t": "Noon",
+      "c": "arrive",
+      "d": "Caravan departs Winnipeg"
+     }
+    ]
+   }
+  ],
+  "camp_url": "https://townandcountrycamping.com/"
+ }
 ]

@@ -121,7 +121,7 @@ main.wrap{max-width:1180px;}
 .pop .pc{font-size:.86rem;color:#2b3a4d;margin-top:2px;}
 .pop .pa{font-size:.76rem;color:#6c7787;}
 .pop .pn{color:#6c7787;font-size:.82rem;margin-top:4px;}
-.pop .pl{margin-top:7px;display:flex;gap:12px;font-size:.78rem;font-weight:600;}
+.pop .pl{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px 12px;font-size:.78rem;font-weight:600;}
 .pop .pl a{color:#1c8a64;text-decoration:none;}
 .pop .pl a:hover{text-decoration:underline;}
 
@@ -215,7 +215,7 @@ main.wrap{max-width:1180px;}
     var m=L.circleMarker([p.lat,p.lon],{radius:4.5,color:'#fff',weight:1.5,fillColor:'#6c7787',fillOpacity:1});
     m.bindTooltip(p.name,{direction:'top',offset:[0,-4],className:'poilbl'});
     m.bindPopup('<div class="pop"><b>'+esc(p.name)+'</b><br><span class="pd">'+esc(p.when)+'</span><div class="pc">'+esc(p.what)+(p.approx?' <span class="pa">(approximate location)</span>':'')+'</div>'+
-      '<div class="pl"><a href="'+gm(p.lat,p.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+p.stop+'">Day-by-day →</a></div></div>');
+      '<div class="pl"><a href="'+gm(p.lat,p.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+p.stop+'">Day-by-day →</a>'+(p.url?'<a href="'+p.url+'" target="_blank" rel="noopener">Website ↗</a>':'')+'</div></div>');
     poiLayer.addLayer(m);
   });
   var poiToggle=document.getElementById('poi-toggle');
@@ -232,7 +232,7 @@ main.wrap{max-width:1180px;}
     var m=L.marker([s.lat,s.lon],{icon:ic,zIndexOffset:isCh?600:500}).addTo(map);
     var dates=s.id==='winnipeg-start'?'Sep 13 – 14 &amp; Oct 9 – 13 · Days 1–2 &amp; 27–31':esc(s.dates)+' · '+esc(s.days);
     m.bindPopup('<div class="pop"><b>'+esc(s.town)+'</b>'+(isCh?' &#9733;':'')+'<br><span class="pd">'+dates+'</span><div class="pc">'+esc(s.camp)+'</div><div class="pa">'+esc(s.addr)+'</div><div class="pn">'+esc(s.note)+'</div>'+
-      '<div class="pl"><a href="'+gm(s.lat,s.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+s.id+'">Day-by-day →</a></div></div>');
+      '<div class="pl"><a href="'+gm(s.lat,s.lon)+'" target="_blank" rel="noopener">Navigate ↗</a><a href="../itinerary/#'+s.id+'">Day-by-day →</a>'+(s.url?'<a href="'+s.url+'" target="_blank" rel="noopener">Website ↗</a>':'')+'</div></div>');
     m.bindTooltip(s.town,{permanent:true,direction:isCh?'top':'right',className:'stoplbl',offset:isCh?[0,-14]:[14,0]});
     m.on('click',function(){setActive(s.id,false);});
     markers[s.id]=m;

@@ -210,6 +210,16 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .tag.inc{background:rgba(54,201,142,.15);color:var(--aurora-deep);}
   .tag.opt{background:rgba(217,138,43,.16);color:#9c5e12;}
   .tag.pbt{background:rgba(122,108,198,.16);color:#5a4ba0;}
+  /* venue website links */
+  .vls{display:inline;}
+  .vl{display:inline-block;margin-left:8px;font-size:.76rem;font-weight:600;color:var(--aurora-deep);
+    text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(28,138,100,.35);line-height:1.2;}
+  .vl:hover{border-bottom-color:var(--aurora-deep);}
+  .vl .arr{font-size:.7em;margin-left:2px;opacity:.8;}
+  .row.routine .vl{color:var(--stone);border-bottom-color:rgba(108,119,135,.4);}
+  .campl{color:inherit;text-decoration:none;border-bottom:1px solid rgba(28,138,100,.45);}
+  .campl:hover{color:var(--aurora-deep);}
+  .campl .arr{font-size:.7em;margin-left:2px;color:var(--aurora-deep);}
 
   .heads{
     margin:10px 0 2px;background:rgba(217,138,43,.09);border:1px solid rgba(217,138,43,.28);
@@ -241,6 +251,8 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   @media print{
     body{background:#fff;font-size:11px;}
     .controls,.aurora-band,.btns,.jump,.legend{display:none !important;}
+    .vl,.campl{color:#444;border-bottom:0;}
+    .vl .arr,.campl .arr{display:none;}
     body.highlights .row.routine{display:grid !important;} /* full schedule on paper */
     .hero{color:#16202e;background:#fff;border-bottom:2px solid var(--ink);}
     .hero .sub,.route-line,.stat .l,.stamp{color:#444;}
@@ -352,7 +364,7 @@ ITIN.forEach(leg=>{
     <div class="leg-head">
       <div class="leg-eyebrow">${leg.churchill?'★ The main event':'Caravan stop'}</div>
       <div class="leg-town">${leg.town}</div>
-      <div class="leg-meta"><span class="camp">${leg.camp}</span> · ${leg.dates}</div>
+      <div class="leg-meta"><span class="camp">${leg.camp_url?`<a class="campl" href="${leg.camp_url}" target="_blank" rel="noopener">${leg.camp}<span class="arr">&#8599;</span></a>`:leg.camp}</span> · ${leg.dates}</div>
       ${leg.wx?`<div class="leg-wx" data-lat="${leg.wx.lat}" data-lon="${leg.wx.lon}">
         <div class="wx-label">Temperatures &middot; historical &amp; current <span>&deg;F</span></div>
         <span class="wx-i"><b class="hi">${leg.wx.hi}&deg;</b><i>avg high</i></span>
@@ -372,7 +384,8 @@ ITIN.forEach(leg=>{
     if(day.heads){html+=`<div class="heads"><span class="ic">⚠</span><span>${day.heads}</span></div>`;}
     html+=`<ul class="sched">`;
     day.rows.forEach(r=>{
-      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="d">${r.d}</span></li>`;
+      const vl=(r.links||[]).map(x=>`<a class="vl" href="${x.u}" target="_blank" rel="noopener">${x.l}<span class="arr">&#8599;</span></a>`).join('');
+      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="d">${r.d}${vl?`<span class="vls">${vl}</span>`:''}</span></li>`;
     });
     html+=`</ul></article>`;
   });

@@ -6,3 +6,6 @@
 Thumbs.db
 _site/
 vendor/
+
+# Python bytecode from the build scripts
+__pycache__/

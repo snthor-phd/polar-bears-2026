@@ -1,6 +1,9 @@
 import json, sys, math, html, os
 sys.path.insert(0,'.')
 from data import STOPS, POIS
+from venue_links import POI_URL, STOP_URL
+for _s in STOPS:
+    if _s['id'] in STOP_URL: _s['url']=STOP_URL[_s['id']]
 legs=json.load(open("legs.json"))
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(os.getcwd())))
 
@@ -40,7 +43,7 @@ for l in legs:
                     "hrs":fmt_h(l["duration_s"]),"pts":[[round(p[1],4),round(p[0],4)] for p in pts]})
 total_mi=sum(x["mi"] for x in js_legs); total_km=sum(x["km"] for x in js_legs)
 js={"legs":js_legs,"rail":RAIL,"stops":STOPS,
-    "pois":[{"name":n,"lat":la,"lon":lo,"when":w,"what":wh,"stop":st,"approx":ap} for (n,la,lo,w,wh,st,ap) in POIS],
+    "pois":[{"name":n,"lat":la,"lon":lo,"when":w,"what":wh,"stop":st,"approx":ap,"url":POI_URL.get(n)} for (n,la,lo,w,wh,st,ap) in POIS],
     "total_mi":total_mi,"total_km":total_km}
 os.makedirs(os.path.join(ROOT,"assets/data"),exist_ok=True)
 with open(os.path.join(ROOT,"assets/data/route.js"),"w") as f:
@@ -80,13 +83,13 @@ for s in STOPS:
     dates=s["dates"] if s["id"]!="winnipeg-start" else "Sep 13 – 14 &amp; Oct 9 – 13"
     days=s["days"] if s["id"]!="winnipeg-start" else "Days 1–2 &amp; 27–31"
     ap=" <i>(pin is the town centre — exact entrance not on map services; go by the parkers)</i>" if s.get("approx") else ""
-    desc=f"<b>{s['camp']}</b><br>{s['addr']}{ap}<br>{dates} · {days}<br>{s['note']}"
+    desc=f"<b>{s['camp']}</b><br>{s['addr']}{ap}<br>{dates} · {days}<br>{s['note']}"+(f"<br><a href='{s['url']}'>Website</a>" if s.get('url') else "")
     k.append(placemark(f"{s['n'] if s['id']!='winnipeg' else 1}. {s['town']} — {s['camp']}",desc,s["lat"],s["lon"],st))
 k.append('  </Folder>\n')
 # folder: venues
 k.append('  <Folder><name>Venues &amp; day-trips</name>\n')
 for (n,la,lo,w,wh,stid,ap) in POIS:
-    desc=f"{w}<br>{wh}"+(" <i>(approximate location)</i>" if ap else "")+f"<br><small>Base: {S[stid]['town']}</small>"
+    desc=f"{w}<br>{wh}"+(" <i>(approximate location)</i>" if ap else "")+f"<br><small>Base: {S[stid]['town']}</small>"+(f"<br><a href='{POI_URL[n]}'>Website</a>" if n in POI_URL else "")
     k.append(placemark(n,desc,la,lo,"poi"))
 k.append('  </Folder>\n')
 # folder: route
