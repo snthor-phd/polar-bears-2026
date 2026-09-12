@@ -12,3 +12,4 @@ __pycache__/
 
 # files the Claude desktop app drops here when it delivers something
 Claude outputs/
+.journal-review-url.txt
