@@ -2,6 +2,27 @@
 layout: default
 ---
 <article class="article">
+  {%- if page.byline %}
+  <p class="article-byline">By <strong>{{ page.byline }}</strong>{% if page.place %}<span class="dot">&middot;</span>{{ page.place }}{% endif %}</p>
+  {%- endif %}
+
   {{ content }}
+
+  {%- if page.photos and page.photos.size > 0 %}
+  <div class="article-shots">
+    {%- for p in page.photos %}
+    <figure>
+      <img src="{{ p.src | relative_url }}" alt="{{ p.cap | default: 'Photo sent in from the road' | strip_html }}" loading="lazy" />
+      {%- if p.cap %}<figcaption>{{ p.cap }}</figcaption>{% endif %}
+    </figure>
+    {%- endfor %}
+  </div>
+  {%- endif %}
+
+  {%- if page.submitted %}
+  <p class="article-contrib">Sent in from the road{% if page.byline %} by {{ page.byline }}{% endif %}.
+    <a href="{{ '/articles/submit/' | relative_url }}">Add your own entry</a></p>
+  {%- endif %}
+
   <p class="article-back"><a href="{{ '/articles/' | relative_url }}">&larr; All journal entries</a></p>
 </article>

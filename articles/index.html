@@ -4,6 +4,11 @@ title: Trip Journal
 hero_title: Trip Journal
 hero_sub: Dispatches, notes, and articles from the road.
 ---
+<div class="journal-add">
+  <p><strong>On the trip?</strong> Write an entry yourself &mdash; no account needed, photos welcome.</p>
+  <a href="{{ '/articles/submit/' | relative_url }}">Add your entry</a>
+</div>
+
 {% assign entries = site.articles | sort: 'date' | reverse %}
 {% if entries.size == 0 %}
 <p class="article" style="text-align:center;">No entries yet &mdash; check back once we're rolling.</p>

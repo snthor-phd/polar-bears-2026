@@ -204,3 +204,80 @@ main{padding:40px 0 12px;}
 .hints .hint-note{margin:16px 0 0;font-size:.82rem;color:var(--stone);max-width:62ch;}
 .hints kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;
   background:rgba(22,32,46,.06);border:1px solid var(--line);border-radius:4px;padding:1px 5px;}
+
+/* ---------- JOURNAL SUBMISSION FORM (/articles/submit/) ---------- */
+.jform{margin:0;}
+.jrow{margin:0 0 18px;}
+.jrow label{display:block;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;color:var(--stone);margin:0 0 6px;}
+.jrow .req-dot{color:var(--amber);}
+.jrow .jopt{letter-spacing:.04em;text-transform:none;font-weight:600;color:var(--stone);opacity:.8;}
+.jform input[type=text],.jform input[type=date],.jform textarea{
+  width:100%;font-family:var(--sans);font-size:1.02rem;color:var(--ink);background:var(--snow);
+  border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+  -webkit-appearance:none;appearance:none;}
+.jform textarea{line-height:1.55;resize:vertical;min-height:170px;}
+.jform input[type=text]:focus,.jform input[type=date]:focus,.jform textarea:focus{
+  outline:none;border-color:var(--aurora);box-shadow:0 0 0 3px rgba(54,201,142,.18);}
+.jform input[type=file]{width:100%;font-family:var(--sans);font-size:.95rem;color:var(--ink-soft);
+  background:var(--frost);border:1px dashed var(--line);border-radius:12px;padding:13px 14px;}
+.jhalf{display:grid;grid-template-columns:1.4fr 1fr;gap:14px;}
+.jhint{margin:7px 2px 0;font-size:.8rem;color:var(--stone);}
+.jhoney{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+
+.jthumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px;}
+.jthumbs:empty{display:none;}
+.jthumb{position:relative;margin:0;background:var(--snow);border:1px solid var(--line);
+  border-radius:12px;padding:8px;box-shadow:var(--shadow);}
+.jthumb img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;
+  background:var(--frost);}
+.jthumb input[type=text]{margin-top:7px;font-size:.82rem;padding:7px 9px;border-radius:8px;}
+.jthumb-size{display:block;margin-top:5px;font-size:.7rem;color:var(--stone);text-align:center;}
+.jthumb-x{position:absolute;top:-8px;right:-8px;z-index:2;width:26px;height:26px;line-height:1;
+  cursor:pointer;font-size:1.05rem;font-weight:700;color:#fff;background:var(--ink);
+  border:2px solid var(--frost);border-radius:999px;padding:0;}
+.jthumb-x:hover{background:#a8402c;}
+
+.jactions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:6px;}
+.jbtn{font-family:var(--sans);font-size:1rem;font-weight:700;cursor:pointer;
+  background:var(--aurora-deep);color:#fff;border:1px solid var(--aurora-deep);
+  border-radius:12px;padding:13px 26px;transition:background .15s ease,opacity .15s ease;}
+.jbtn:hover{background:#166f51;}
+.jbtn:disabled{opacity:.55;cursor:progress;}
+.jbtn.ghost{background:transparent;color:var(--ink-soft);border-color:var(--line);font-weight:600;}
+.jbtn.ghost:hover{background:#fff;border-color:var(--stone);}
+.jbtn.ghost.armed{color:#a8402c;border-color:#a8402c;background:rgba(168,64,44,.06);}
+
+.jstatus{margin:14px 0 0;font-size:.94rem;min-height:1.2em;}
+.jstatus.is-busy{color:var(--blue);}
+.jstatus.is-warn{color:#9c5f12;background:rgba(217,138,43,.12);border-radius:10px;padding:11px 14px;}
+.jstatus.is-good{color:var(--aurora-deep);background:rgba(54,201,142,.14);border-radius:10px;
+  padding:11px 14px;font-weight:600;}
+@media (max-width:560px){
+  .jhalf{grid-template-columns:1fr;}
+  .jthumbs{grid-template-columns:repeat(2,1fr);}
+  .jbtn{flex:1 1 auto;text-align:center;}
+}
+
+/* ---------- SUBMITTED-ENTRY BYLINE + PHOTOS (article layout) ---------- */
+.article-byline{margin:-6px 0 26px;font-size:.9rem;color:var(--stone);text-align:center;}
+.article-byline strong{color:var(--ink-soft);font-weight:600;}
+.article-byline .dot{opacity:.5;margin:0 7px;}
+.article-shots{margin:1.8em 0 0;display:grid;gap:16px;}
+.article-shots figure{margin:0;}
+.article-shots img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--line);}
+.article-shots figcaption{margin-top:8px;font-size:.85rem;color:var(--stone);text-align:center;}
+.article-contrib{margin-top:2.2em;padding-top:16px;border-top:1px solid var(--line);
+  font-size:.84rem;color:var(--stone);}
+.article-contrib a{color:var(--aurora-deep);font-weight:600;}
+
+/* the "Add your entry" call on the journal index */
+.journal-add{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  background:var(--snow);border:1px solid var(--line);border-left:4px solid var(--aurora);
+  border-radius:14px;padding:16px 20px;margin:0 0 22px;box-shadow:var(--shadow);}
+.journal-add p{margin:0;font-size:.95rem;color:var(--ink-soft);}
+.journal-add strong{color:var(--ink);}
+.journal-add a{display:inline-block;text-decoration:none;font-weight:700;font-size:.92rem;
+  background:var(--aurora-deep);color:#fff;border-radius:999px;padding:10px 20px;white-space:nowrap;}
+.journal-add a:hover{background:#166f51;}
+.journal-add a::after{content:" \2192";}

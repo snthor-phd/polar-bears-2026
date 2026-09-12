@@ -1,0 +1,358 @@
+---
+layout: default
+title: Add a Journal Entry
+hero_title: Add a Journal Entry
+hero_sub: Write it, add a photo or three, send it. Steve gives it a quick look and it goes live on the Trip Journal.
+search: false
+---
+<div class="docpage">
+
+  <section class="action">
+    <span class="kicker">How it works</span>
+    <h2>You write, we post</h2>
+    <p>No account, no app, nothing to install. Fill this in from your phone at the campsite and hit
+      <strong>Send entry</strong>. It lands in Steve's queue, he approves it, and it shows up on the
+      <a href="{{ '/articles/' | relative_url }}">Trip Journal</a> within a minute or two &mdash; your name on it.</p>
+    <p>Photos are shrunk right here in your browser before they're sent, and
+      <strong>all location data is stripped</strong> &mdash; nothing tells the world where your rig is parked.</p>
+  </section>
+
+  <section>
+    <span class="kicker">Your entry</span>
+    <h2>Tell us about it</h2>
+
+    <form id="jform" class="jform" novalidate>
+      <div class="jrow">
+        <label for="f-name">Your name <span class="req-dot">*</span></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" maxlength="80" required
+               placeholder="Gail &amp; Bruce Harrower" />
+      </div>
+
+      <div class="jrow jhalf">
+        <div>
+          <label for="f-place">Where were you? <span class="req-dot">*</span></label>
+          <input type="text" id="f-place" name="place" list="stops" maxlength="80" required
+                 placeholder="Flin Flon, MB" />
+          <datalist id="stops">
+            <!-- Caravan overnight stops. If the itinerary's stops change, update this list too. -->
+            <option value="Winnipeg, MB"></option>
+            <option value="Neepawa, MB"></option>
+            <option value="Dauphin, MB"></option>
+            <option value="Swan River, MB"></option>
+            <option value="The Pas, MB"></option>
+            <option value="Flin Flon, MB"></option>
+            <option value="Thompson, MB"></option>
+            <option value="Churchill, MB"></option>
+            <option value="Grand Rapids, MB"></option>
+            <option value="On the road"></option>
+          </datalist>
+        </div>
+        <div>
+          <label for="f-date">Date <span class="req-dot">*</span></label>
+          <input type="date" id="f-date" name="date" required />
+        </div>
+      </div>
+
+      <div class="jrow">
+        <label for="f-title">Give it a title <span class="req-dot">*</span></label>
+        <input type="text" id="f-title" name="title" maxlength="110" required
+               placeholder="Northern lights over the Pas" />
+      </div>
+
+      <div class="jrow">
+        <label for="f-body">Your entry <span class="req-dot">*</span></label>
+        <textarea id="f-body" name="body" rows="10" required
+                  placeholder="Blank lines make new paragraphs. Write it however it comes out &mdash; a couple of sentences is a fine entry."></textarea>
+        <p class="jhint"><span id="wordcount">0 words</span> &middot; blank line = new paragraph</p>
+      </div>
+
+      <div class="jrow">
+        <label for="f-photos">Photos <span class="jopt">optional, up to 3</span></label>
+        <input type="file" id="f-photos" name="photos" accept="image/*" multiple />
+        <p class="jhint">Any size &mdash; they're resized here before sending. Add a caption under each if you like.</p>
+        <div id="thumbs" class="jthumbs"></div>
+      </div>
+
+      <!-- Spam trap: real people never see or fill this. -->
+      <div class="jhoney" aria-hidden="true">
+        <label for="f-website">Website</label>
+        <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+
+      <div class="jactions">
+        <button type="submit" id="f-send" class="jbtn">Send entry</button>
+        <button type="button" id="f-clear" class="jbtn ghost">Clear</button>
+      </div>
+
+      <p id="jstatus" class="jstatus" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section>
+    <span class="kicker">A few notes</span>
+    <h2>Worth knowing</h2>
+    <ul>
+      <li><strong>Signal is thin north of Thompson.</strong> Your draft is saved in this browser as you
+        type, so if the send fails you won't lose the writing &mdash; reopen this page and it'll still be here.</li>
+      <li><strong>Photos of people:</strong> please only send pictures the folks in them would be happy
+        to see on a public website.</li>
+      <li><strong>Typos happen.</strong> Send it anyway &mdash; small fixes get made before it posts.</li>
+    </ul>
+    <div class="seealso">
+      <a href="{{ '/articles/' | relative_url }}">Read the journal</a>
+      <a href="{{ '/photos/' | relative_url }}">Share photos instead</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  /* Apps Script web-app endpoint. Replace when the deployment is redeployed with a new URL. */
+  var JOURNAL_ENDPOINT = "REPLACE_WITH_WEBAPP_URL";
+</script>
+{% raw %}
+<script>
+(function () {
+  var MAX_EDGE = 1600, JPEG_Q = 0.82, MAX_PHOTOS = 3, DRAFT_KEY = "nlpb-journal-draft";
+  var form = document.getElementById("jform");
+  var statusEl = document.getElementById("jstatus");
+  var thumbs = document.getElementById("thumbs");
+  var fileInput = document.getElementById("f-photos");
+  var sendBtn = document.getElementById("f-send");
+  var dateInput = document.getElementById("f-date");
+  var bodyInput = document.getElementById("f-body");
+  var wordEl = document.getElementById("wordcount");
+  var t0 = Date.now();
+  var photos = [];   // { blob, dataUrl, name, caption }
+
+  // ---------- default the date to today, local ----------
+  function todayISO() {
+    var d = new Date(), p = function (n) { return String(n).padStart(2, "0"); };
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+  if (!dateInput.value) dateInput.value = todayISO();
+
+  // ---------- draft save / restore ----------
+  var TEXT_FIELDS = ["name", "place", "date", "title", "body"];
+  function saveDraft() {
+    try {
+      var d = {};
+      TEXT_FIELDS.forEach(function (k) { d[k] = form.elements[k].value; });
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(d));
+    } catch (e) { /* private browsing, full disk — not worth bothering anyone about */ }
+  }
+  function restoreDraft() {
+    try {
+      var raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      var d = JSON.parse(raw);
+      TEXT_FIELDS.forEach(function (k) { if (d[k]) form.elements[k].value = d[k]; });
+    } catch (e) { /* ignore */ }
+  }
+  function clearDraft() { try { localStorage.removeItem(DRAFT_KEY); } catch (e) {} }
+  restoreDraft();
+
+  function countWords() {
+    var n = bodyInput.value.trim().split(/\s+/).filter(Boolean).length;
+    wordEl.textContent = n === 1 ? "1 word" : n + " words";
+  }
+  countWords();
+  form.addEventListener("input", function () { saveDraft(); countWords(); });
+
+  // ---------- photo handling: resize + re-encode (which drops EXIF/GPS) ----------
+  function loadImage(file) {
+    return new Promise(function (resolve, reject) {
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () { URL.revokeObjectURL(url); resolve(img); };
+      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error("decode")); };
+      img.src = url;
+    });
+  }
+
+  function shrink(file) {
+    return loadImage(file).then(function (img) {
+      // Browsers apply the EXIF orientation flag when decoding an <img>, and canvas
+      // drawImage inherits that, so portrait shots stay portrait. Re-encoding through
+      // canvas also discards every scrap of metadata, GPS included.
+      var w = img.naturalWidth, h = img.naturalHeight;
+      var scale = Math.min(1, MAX_EDGE / Math.max(w, h));
+      var cw = Math.max(1, Math.round(w * scale)), ch = Math.max(1, Math.round(h * scale));
+      var c = document.createElement("canvas");
+      c.width = cw; c.height = ch;
+      var ctx = c.getContext("2d");
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, cw, ch);
+      ctx.drawImage(img, 0, 0, cw, ch);
+      return new Promise(function (resolve, reject) {
+        c.toBlob(function (blob) {
+          if (!blob) { reject(new Error("encode")); return; }
+          var fr = new FileReader();
+          fr.onload = function () { resolve({ blob: blob, dataUrl: fr.result }); };
+          fr.onerror = function () { reject(new Error("read")); };
+          fr.readAsDataURL(blob);
+        }, "image/jpeg", JPEG_Q);
+      });
+    });
+  }
+
+  function renderThumbs() {
+    thumbs.innerHTML = "";
+    photos.forEach(function (p, i) {
+      var fig = document.createElement("figure");
+      fig.className = "jthumb";
+      var img = document.createElement("img");
+      img.src = p.dataUrl;
+      img.alt = "";
+      var cap = document.createElement("input");
+      cap.type = "text";
+      cap.maxLength = 140;
+      cap.placeholder = "Caption (optional)";
+      cap.value = p.caption || "";
+      cap.addEventListener("input", function () { photos[i].caption = cap.value; });
+      var kill = document.createElement("button");
+      kill.type = "button";
+      kill.className = "jthumb-x";
+      kill.setAttribute("aria-label", "Remove this photo");
+      kill.textContent = "×";
+      kill.addEventListener("click", function () { photos.splice(i, 1); renderThumbs(); });
+      var size = document.createElement("span");
+      size.className = "jthumb-size";
+      size.textContent = Math.round(p.blob.size / 1024) + " KB";
+      fig.appendChild(kill);
+      fig.appendChild(img);
+      fig.appendChild(cap);
+      fig.appendChild(size);
+      thumbs.appendChild(fig);
+    });
+  }
+
+  fileInput.addEventListener("change", function () {
+    var files = Array.prototype.slice.call(fileInput.files || []);
+    fileInput.value = "";
+    if (!files.length) return;
+    var room = MAX_PHOTOS - photos.length;
+    if (room <= 0) { say("That's the three-photo limit. Remove one to swap it out.", "warn"); return; }
+    var take = files.slice(0, room);
+    if (files.length > room) say("Only the first " + room + " added — three photos max.", "warn");
+    say("Shrinking " + (take.length === 1 ? "photo" : take.length + " photos") + "…", "busy");
+    Promise.all(take.map(function (f) {
+      return shrink(f).then(function (out) {
+        photos.push({ blob: out.blob, dataUrl: out.dataUrl, name: f.name, caption: "" });
+      }).catch(function () {
+        say("Couldn't read “" + f.name + "”. If it came straight from the camera roll, "
+          + "try opening it in Photos first and sharing it from there.", "warn");
+      });
+    })).then(function () {
+      renderThumbs();
+      if (statusEl.dataset.kind === "busy") say("", "");
+    });
+  });
+
+  // ---------- status line ----------
+  function say(msg, kind) {
+    statusEl.textContent = msg;
+    statusEl.dataset.kind = kind || "";
+    statusEl.className = "jstatus" + (kind ? " is-" + kind : "");
+  }
+
+  // ---------- submit ----------
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+
+    var payload = {
+      name: form.elements.name.value.trim(),
+      place: form.elements.place.value.trim(),
+      date: form.elements.date.value,
+      title: form.elements.title.value.trim(),
+      body: form.elements.body.value.trim(),
+      website: form.elements.website.value,        // honeypot
+      elapsed: Math.round((Date.now() - t0) / 1000),
+      photos: photos.map(function (p) {
+        return { data: p.dataUrl, caption: (p.caption || "").trim() };
+      })
+    };
+
+    var missing = [];
+    if (!payload.name) missing.push("your name");
+    if (!payload.place) missing.push("where you were");
+    if (!payload.date) missing.push("the date");
+    if (!payload.title) missing.push("a title");
+    if (payload.body.length < 20) missing.push("a bit more writing");
+    if (missing.length) {
+      say("Still need " + missing.join(", ") + ".", "warn");
+      return;
+    }
+
+    sendBtn.disabled = true;
+    say("Sending… hang on, photos take a moment on slow signal.", "busy");
+
+    // Deliberately no custom headers: that keeps this a "simple" cross-origin
+    // request, so the browser skips the preflight that Apps Script can't answer.
+    fetch(JOURNAL_ENDPOINT, {
+      method: "POST",
+      body: JSON.stringify(payload),
+      redirect: "follow"
+    })
+      .then(function (r) { return r.text(); })
+      .then(function (txt) {
+        var res = {};
+        try { res = JSON.parse(txt); } catch (e) { res = { ok: /"ok"\s*:\s*true/.test(txt) }; }
+        if (res.ok) {
+          done();
+        } else {
+          sendBtn.disabled = false;
+          say(res.error || "The server didn't take that. Give it another go in a minute.", "warn");
+        }
+      })
+      .catch(function () {
+        // Opaque or failed response. The POST may well have landed, but we can't
+        // read the answer — so tell the truth rather than claiming success.
+        sendBtn.disabled = false;
+        say("Couldn't confirm that went through — signal, most likely. Your draft is saved. "
+          + "Try Send again in a minute; if it still won't go, text Steve and he'll post it.", "warn");
+      });
+  });
+
+  function done() {
+    clearDraft();
+    form.reset();
+    photos = [];
+    renderThumbs();
+    dateInput.value = todayISO();
+    countWords();
+    sendBtn.disabled = false;
+    say("Got it — thank you! Steve gets a note now, and it'll be on the journal shortly.", "good");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Two-tap clear rather than a confirm() dialog — modal dialogs are a poor fit
+  // on a phone and block anything scripted from driving this page.
+  var clearBtn = document.getElementById("f-clear");
+  var clearArmed = false, clearTimer = null;
+  clearBtn.addEventListener("click", function () {
+    if (!clearArmed) {
+      clearArmed = true;
+      clearBtn.textContent = "Tap again to clear";
+      clearBtn.classList.add("armed");
+      clearTimer = setTimeout(disarm, 4000);
+      return;
+    }
+    clearTimeout(clearTimer);
+    disarm();
+    clearDraft();
+    form.reset();
+    photos = [];
+    renderThumbs();
+    dateInput.value = todayISO();
+    countWords();
+    say("Cleared.", "");
+  });
+  function disarm() {
+    clearArmed = false;
+    clearBtn.textContent = "Clear";
+    clearBtn.classList.remove("armed");
+  }
+})();
+</script>
+{% endraw %}
