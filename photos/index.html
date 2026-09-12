@@ -112,6 +112,40 @@ search_summary: "The shared caravan album — how to add your photos, what to sh
     .panel,.step,.tip,.qr-card{box-shadow:none;break-inside:avoid;}
     h1{color:#000;}
   }
+
+  /* --- from-the-road gallery --- */
+  .gnote{max-width:66ch;color:var(--ink-soft);margin:0 0 18px;}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .shot{margin:0;background:var(--snow);border:1px solid var(--line);border-radius:12px;
+    overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;}
+  .shot-btn{display:block;padding:0;border:0;background:#e8e3d6;cursor:zoom-in;width:100%;line-height:0;}
+  .shot-btn img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .25s ease;}
+  .shot-btn:hover img{transform:scale(1.03);}
+  .shot-btn:focus-visible{outline:3px solid var(--aurora);outline-offset:-3px;}
+  .shot figcaption{padding:12px 14px;font-size:.88rem;color:var(--ink-soft);flex:1;}
+  .shot figcaption b{color:var(--ink);font-weight:700;}
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(12,22,34,.94);display:none;z-index:90;
+    align-items:center;justify-content:center;padding:24px;}
+  .lb.open{display:flex;}
+  .lb figure{margin:0;max-width:min(1100px,100%);max-height:100%;display:flex;
+    flex-direction:column;align-items:center;gap:14px;}
+  .lb img{max-width:100%;max-height:78vh;border-radius:10px;display:block;
+    box-shadow:0 18px 50px rgba(0,0,0,.5);}
+  .lb figcaption{color:#dce6e2;font-size:.95rem;text-align:center;max-width:66ch;}
+  .lb-close{position:absolute;top:16px;right:20px;background:none;border:0;color:#dce6e2;
+    font-size:2.2rem;line-height:1;cursor:pointer;padding:6px 12px;border-radius:8px;}
+  .lb-close:hover{color:#fff;}
+  .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.10);
+    border:0;color:#fff;font-size:1.8rem;line-height:1;cursor:pointer;padding:14px 18px;border-radius:10px;}
+  .lb-nav:hover{background:rgba(255,255,255,.2);}
+  .lb-prev{left:14px;} .lb-next{right:14px;}
+  @media (max-width:680px){
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .shot-btn img{height:150px;}
+    .lb-nav{padding:10px 12px;font-size:1.4rem;}
+  }
+  @media print{.gallery{grid-template-columns:repeat(3,1fr);}.lb{display:none !important;}}
 </style>
 </head>
 <body>
@@ -155,6 +189,80 @@ search_summary: "The shared caravan album — how to add your photos, what to sh
           <code>snthor-phd.github.io/polar-bears-2026/photos/</code>
         </div>
       </div>
+    </div>
+
+
+    <h2 id="from-the-road">From the road</h2>
+    <p class="gnote">A few straight onto the page so there is something to look at before the album
+      fills up. Everything else &mdash; all twenty-some rigs&rsquo; worth &mdash; lives in the shared
+      album above.</p>
+    <div class="gallery">
+
+      <figure class="shot">
+        <button class="shot-btn" type="button"
+          data-src="{{ '/assets/img/gallery/2026-09-11-rendezvous-site.jpg' | relative_url }}"
+          data-cap="Sep 11 &middot; Set up at the rendezvous, Town &amp; Country, RM of Springfield.">
+          <img src="{{ '/assets/img/gallery/2026-09-11-rendezvous-site.jpg' | relative_url }}"
+               alt="Two of us in front of an Airstream and tow truck at a grassy campsite, other rigs down the road"
+               loading="lazy" width="1024" height="768">
+        </button>
+        <figcaption><b>Sep 11</b> &middot; Set up at the rendezvous, Town &amp; Country.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="shot-btn" type="button"
+          data-src="{{ '/assets/img/gallery/2026-09-11-belly-pan-work.jpg' | relative_url }}"
+          data-cap="Sep 11 &middot; Under the belly pan on departure eve &mdash; mat on the grass, drill and pliers within reach, and a grin about it.">
+          <img src="{{ '/assets/img/gallery/2026-09-11-belly-pan-work.jpg' | relative_url }}"
+               alt="A man lying on a mat under an Airstream, smiling up at the camera, cordless drill and pliers beside him"
+               loading="lazy" width="768" height="1024">
+        </button>
+        <figcaption><b>Sep 11</b> &middot; Under the belly pan on departure eve.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="shot-btn" type="button"
+          data-src="{{ '/assets/img/gallery/2026-09-11-ball-valve.jpg' | relative_url }}"
+          data-cap="Sep 11 &middot; The new red-handled ball valve, in and buttoned up.">
+          <img src="{{ '/assets/img/gallery/2026-09-11-ball-valve.jpg' | relative_url }}"
+               alt="Close view under a trailer of a brass ball valve with a red handle mounted through the belly pan"
+               loading="lazy" width="768" height="1024">
+        </button>
+        <figcaption><b>Sep 11</b> &middot; The new valve, in and buttoned up.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="shot-btn" type="button"
+          data-src="{{ '/assets/img/gallery/2026-09-11-southland-park.jpg' | relative_url }}"
+          data-cap="Sep 11 &middot; An afternoon away from the campground &mdash; Southland Park, Winnipeg.">
+          <img src="{{ '/assets/img/gallery/2026-09-11-southland-park.jpg' | relative_url }}"
+               alt="Two of us on a concrete terrace above a still pond with geese, trees and blue sky behind"
+               loading="lazy" width="1024" height="768">
+        </button>
+        <figcaption><b>Sep 11</b> &middot; Southland Park, Winnipeg.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button class="shot-btn" type="button"
+          data-src="{{ '/assets/img/gallery/2026-09-12-legion-100.jpg' | relative_url }}"
+          data-cap="Sep 12 &middot; The Royal Canadian Legion centennial coin set, 1926&ndash;2026 &mdash; picked up on the way north.">
+          <img src="{{ '/assets/img/gallery/2026-09-12-legion-100.jpg' | relative_url }}"
+               alt="Royal Canadian Mint folder for the Legion centennial, holding two toonies, one coloured and one plain"
+               loading="lazy" width="1200" height="1600">
+        </button>
+        <figcaption><b>Sep 12</b> &middot; Legion centennial coin set, 1926&ndash;2026.</figcaption>
+      </figure>
+
+    </div>
+
+    <div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button class="lb-close" type="button" id="lbClose" aria-label="Close">&times;</button>
+      <button class="lb-nav lb-prev" type="button" id="lbPrev" aria-label="Previous photo">&#8249;</button>
+      <button class="lb-nav lb-next" type="button" id="lbNext" aria-label="Next photo">&#8250;</button>
+      <figure>
+        <img id="lbImg" src="" alt="">
+        <figcaption id="lbCap"></figcaption>
+      </figure>
     </div>
 
     <h2>Adding photos from your phone</h2>
@@ -337,6 +445,39 @@ search_summary: "The shared caravan album — how to add your photos, what to sh
   var add = document.getElementById('add'), view = document.getElementById('view');
   add.href = ALBUM_URL;  add.target = '_blank';
   view.href = ALBUM_URL; view.target = '_blank';
+})();
+</script>
+<script>
+(function(){
+  var lb = document.getElementById('lightbox');
+  if (!lb) return;
+  var img = document.getElementById('lbImg'), cap = document.getElementById('lbCap');
+  var btns = [].slice.call(document.querySelectorAll('.shot-btn'));
+  var i = 0, opener = null;
+
+  function show(n){
+    i = (n + btns.length) % btns.length;
+    var b = btns[i];
+    img.src = b.getAttribute('data-src');
+    img.alt = b.querySelector('img').alt;
+    cap.innerHTML = b.getAttribute('data-cap') || '';
+  }
+  function open(n, from){ opener = from; show(n); lb.classList.add('open');
+    document.body.style.overflow = 'hidden'; document.getElementById('lbClose').focus(); }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = '';
+    img.src = ''; if (opener) opener.focus(); }
+
+  btns.forEach(function(b, n){ b.addEventListener('click', function(){ open(n, b); }); });
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); show(i-1); });
+  document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); show(i+1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb || e.target.tagName === 'FIGURE') close(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowLeft') show(i-1);
+    else if (e.key === 'ArrowRight') show(i+1);
+  });
 })();
 </script>
 </body>
