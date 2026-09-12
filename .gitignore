@@ -9,3 +9,6 @@ vendor/
 
 # Python bytecode from the build scripts
 __pycache__/
+
+# files the Claude desktop app drops here when it delivers something
+Claude outputs/
