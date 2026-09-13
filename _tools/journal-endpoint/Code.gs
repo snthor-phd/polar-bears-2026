@@ -189,6 +189,13 @@ function approve_(id) {
   var entry = readEntry_(f);
   if (!entry) return '<div class="note"><p>Could not read that submission.</p></div>';
 
+  if (!props_().getProperty('GITHUB_TOKEN')) {
+    return '<div class="note"><p><strong>Not published \u2014 no GitHub token yet.</strong></p>' +
+      '<p>The entry is still sitting safely in the queue. Add a fine-grained token as the script ' +
+      'property <code>GITHUB_TOKEN</code> (repo contents, read and write), then approve again.</p>' +
+      '<p><a href="javascript:history.back()">Back to the queue</a></p></div>';
+  }
+
   var stem = entry.date + '-' + slug_(entry.title);
   if (ghExists_('_articles/' + stem + '.md')) stem = stem + '-2';
 
@@ -203,7 +210,19 @@ function approve_(id) {
   }
   files.push({ path: '_articles/' + stem + '.md', text: markdown_(entry, photos) });
 
-  var sha = commit_(files, 'Journal entry from ' + entry.name + ': ' + entry.title);
+  var sha;
+  try {
+    sha = commit_(files, 'Journal entry from ' + entry.name + ': ' + entry.title);
+  } catch (err) {
+    // Nothing has moved yet, so the submission stays in the queue and can be
+    // approved again once whatever GitHub objected to is fixed.
+    return '<div class="note"><p><strong>Not published.</strong> GitHub refused the commit:</p>' +
+      '<p style="font-size:.85rem;color:#8d5a16;word-break:break-word">' +
+      esc_(String((err && err.message) || err)) + '</p>' +
+      '<p>The entry is still in the queue \u2014 fix that and approve again. A 401 &ldquo;Bad ' +
+      'credentials&rdquo; means the token is missing, mistyped or expired.</p>' +
+      '<p><a href="javascript:history.back()">Back to the queue</a></p></div>';
+  }
   f.moveTo(sub_(queueRoot_(), 'published'));
 
   var url = SITE + '/articles/' + stem + '/';
