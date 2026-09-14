@@ -157,7 +157,7 @@
      {
       "t": "5:00 PM",
       "c": "routine",
-      "d": "Get-Acquainted Meeting (GAM #1)"
+      "d": "Get-Acquainted Meeting (GAM #1) <a class='gaml' href='../gams/#gam1'>who&rsquo;s hosting</a>"
      },
      {
       "t": "After dinner",
@@ -302,7 +302,7 @@
      {
       "t": "4:00 PM",
       "c": "routine",
-      "d": "Get-Acquainted Meeting (GAM #2)"
+      "d": "Get-Acquainted Meeting (GAM #2) <a class='gaml' href='../gams/#gam2'>who&rsquo;s hosting</a>"
      },
      {
       "t": "5:30 PM",
@@ -468,7 +468,7 @@
      {
       "t": "4:30 PM",
       "c": "routine",
-      "d": "Get-Acquainted Meeting (GAM #3)"
+      "d": "Get-Acquainted Meeting (GAM #3) <a class='gaml' href='../gams/#gam3'>who&rsquo;s hosting</a>"
      },
      {
       "t": "7:30 PM",
@@ -602,7 +602,7 @@
      {
       "t": "4:00 PM",
       "c": "routine",
-      "d": "Get-Acquainted Meeting (GAM #4)"
+      "d": "Get-Acquainted Meeting (GAM #4) <a class='gaml' href='../gams/#gam4'>who&rsquo;s hosting</a>"
      },
      {
       "t": "5:30 PM",
@@ -713,7 +713,7 @@
      {
       "t": "5:00 PM",
       "c": "routine",
-      "d": "Get-Acquainted Meeting (GAM #5)"
+      "d": "Get-Acquainted Meeting (GAM #5) <a class='gaml' href='../gams/#gam5'>who&rsquo;s hosting</a>"
      },
      {
       "t": "6:00 PM",

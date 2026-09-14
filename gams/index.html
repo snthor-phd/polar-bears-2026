@@ -1,0 +1,281 @@
+---
+title: GAM Hosts
+search: true
+search_summary: "All five Get Acquainted Meetings — Sep 15, 18, 21, 24 and 26 — with who hosts each group and which rigs go where. Type your rig number to see your five nights."
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GAM Hosts — 2026 Caravan</title>
+<style>
+  :root{
+    --ink:#16202e;--ink-soft:#2b3a4d;--frost:#f4f1e9;--snow:#ffffff;
+    --aurora:#36c98e;--aurora-deep:#1c8a64;--violet:#7a6cc6;--blue:#34618f;
+    --amber:#d98a2b;--stone:#6c7787;--line:#e4ddcd;--line-soft:#eee9dc;
+    --shadow:0 1px 2px rgba(22,32,46,.05),0 8px 24px rgba(22,32,46,.06);
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--frost);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 20px;}
+  .top{background:
+      radial-gradient(120% 90% at 20% -20%, rgba(54,201,142,.35), transparent 55%),
+      radial-gradient(120% 90% at 85% -10%, rgba(122,108,198,.36), transparent 55%),
+      linear-gradient(180deg,#0c1622 0%,#142233 60%,#16202e 100%);
+    color:#eef3f1;padding:44px 0 38px;}
+  .home{display:inline-block;font-size:.78rem;letter-spacing:.04em;color:var(--aurora);
+    text-decoration:none;margin-bottom:18px;font-weight:600;}
+  .kicker{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--aurora);font-weight:700;}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,6vw,2.9rem);margin:8px 0 0;line-height:1.05;}
+  .top .sub{margin:14px 0 0;color:#b9c6cf;font-size:1rem;max-width:58ch;}
+  .jump{margin-top:22px;display:flex;gap:6px;flex-wrap:wrap;}
+  .jump a{font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600;text-decoration:none;
+    color:#cdd7dd;padding:5px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.22);}
+  .jump a:hover{color:var(--aurora);border-color:var(--aurora);}
+  main{padding:36px 0 60px;}
+  .lead{font-family:var(--serif);font-size:1.12rem;color:var(--ink-soft);margin:0 0 8px;max-width:62ch;}
+  .lead-note{font-size:.88rem;color:var(--stone);margin:0 0 26px;max-width:62ch;}
+
+  /* ---- find your rig ---- */
+  .finder{background:var(--snow);border:1px solid var(--line);border-top:4px solid var(--aurora);
+    border-radius:12px;padding:18px 20px 20px;box-shadow:var(--shadow);margin-bottom:34px;}
+  .finder h2{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:0 0 4px;}
+  .finder p.hint{margin:0 0 14px;font-size:.88rem;color:var(--stone);}
+  .finder .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .finder select{font:inherit;font-size:1rem;padding:9px 12px;border:1px solid var(--line);
+    border-radius:9px;background:var(--frost);color:var(--ink);min-width:240px;max-width:100%;}
+  .finder button{font:inherit;font-size:.86rem;font-weight:600;padding:9px 14px;border-radius:9px;
+    border:1px solid var(--line);background:var(--frost);color:var(--ink-soft);cursor:pointer;}
+  .finder button:hover{border-color:var(--aurora);color:var(--aurora-deep);}
+  #mine{margin-top:18px;}
+  #mine .who{font-family:var(--serif);font-size:1.06rem;margin:0 0 12px;color:var(--ink);}
+  .mine-list{list-style:none;margin:0;padding:0;display:grid;gap:9px;}
+  .mine-list li{display:flex;gap:12px;align-items:baseline;background:var(--frost);
+    border:1px solid var(--line-soft);border-left:3px solid var(--stone);border-radius:9px;padding:10px 13px;}
+  .mine-list li.host{border-left-color:var(--amber);background:rgba(217,138,43,.08);}
+  .mine-list .when{font-weight:700;font-size:.82rem;color:var(--stone);white-space:nowrap;min-width:13em;}
+  .mine-list .what{font-size:.94rem;color:var(--ink-soft);}
+  .mine-list .what b{color:var(--ink);}
+  .mine-list li.host .what b{color:#9a5f12;}
+  .mine-note{margin:12px 0 0;font-size:.82rem;color:var(--stone);}
+
+  /* ---- gam sections ---- */
+  section{margin-top:34px;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--line);
+    padding-bottom:8px;margin-bottom:16px;flex-wrap:wrap;}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:1.5rem;margin:0;letter-spacing:-.005em;}
+  .sec-head .n{font-size:.74rem;font-weight:700;color:var(--stone);letter-spacing:.08em;text-transform:uppercase;}
+  .sec-head .dayl{margin-left:auto;font-size:.78rem;font-weight:600;text-decoration:none;
+    color:var(--aurora-deep);white-space:nowrap;}
+  .sec-head .dayl::after{content:" \2192";}
+  .sec-head .dayl:hover{text-decoration:underline;}
+  .groups{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .group{background:var(--snow);border:1px solid var(--line);border-top:4px solid var(--violet);
+    border-radius:12px;padding:15px 17px;box-shadow:var(--shadow);}
+  .group .hostline{font-family:var(--serif);font-weight:600;font-size:1.1rem;margin:0 0 2px;color:var(--ink);}
+  .group .hosttag{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--amber);}
+  .group ul{list-style:none;margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line-soft);
+    font-size:.9rem;color:var(--ink-soft);display:grid;gap:5px;}
+  .group ul li{display:flex;gap:9px;}
+  .rig{display:inline-block;min-width:2.1em;text-align:center;font-size:.72rem;font-weight:700;
+    color:var(--stone);background:var(--frost);border:1px solid var(--line);border-radius:5px;padding:1px 5px;
+    line-height:1.5;align-self:center;}
+  .group .hostrig{color:#9a5f12;background:rgba(217,138,43,.12);border-color:rgba(217,138,43,.4);}
+
+  /* ---- roster ---- */
+  .roster{columns:2;column-gap:26px;list-style:none;margin:0;padding:0;font-size:.92rem;}
+  .roster li{break-inside:avoid;padding:5px 0;border-bottom:1px solid var(--line-soft);display:flex;gap:10px;}
+  .roster li span.nm{color:var(--ink-soft);}
+  .foot{margin-top:44px;border-top:1px solid var(--line);padding-top:20px;font-size:.84rem;color:var(--stone);}
+  .foot a{color:var(--aurora-deep);font-weight:600;text-decoration:none;}
+  .foot .disc{margin-top:14px;font-size:.8rem;}
+  @media (max-width:640px){
+    .groups{grid-template-columns:1fr;}
+    .roster{columns:1;}
+    .mine-list li{flex-direction:column;gap:3px;}
+    .mine-list .when{min-width:0;}
+  }
+  @media print{
+    .top{background:#fff;color:#000;padding:10px 0;}
+    .home,.jump,.finder{display:none;}
+    body{background:#fff;font-size:12px;}
+    .group{box-shadow:none;break-inside:avoid;}
+    h1{color:#000;}
+    .top .sub{color:#333;}
+    .kicker{color:#555;}
+  }
+</style>
+</head>
+<body>
+  <div class="top"><div class="wrap">
+    <a class="home" href="../">&larr; Trip hub</a>
+    <p class="kicker">Five evenings &middot; Sep 15 &ndash; 26</p>
+    <h1>GAM Hosts</h1>
+    <p class="sub">Get Acquainted Meetings &mdash; five rounds of small groups, so by The Pas everybody's sat down with everybody. Twenty rigs, five groups of four a night, a different mix each time.</p>
+    <div class="jump">
+      <a href="#finder">Find your rig</a>
+      <a href="#gam1">GAM 1</a>
+      <a href="#gam2">GAM 2</a>
+      <a href="#gam3">GAM 3</a>
+      <a href="#gam4">GAM 4</a>
+      <a href="#gam5">GAM 5</a>
+      <a href="#roster">Rig roster</a>
+    </div>
+  </div></div>
+
+  <main class="wrap">
+    <p class="lead">Each GAM splits the caravan into five groups of four. One rig in each group hosts &mdash; that's where the other three show up.</p>
+    <p class="lead-note">Over the five evenings the groups reshuffle, so you meet a new set each time. Most rigs host once, several host twice. Schedule, times and pairings as issued by the caravan leaders &mdash; each GAM links to its day in the itinerary.</p>
+
+    <div class="finder" id="finder">
+      <h2>Find your rig</h2>
+      <p class="hint">Pick your number and you'll get your five nights &mdash; where you go, and the night you host.</p>
+      <div class="row">
+        <label class="sr-only" for="rigsel" style="position:absolute;left:-9999px;">Your rig number</label>
+        <select id="rigsel"><option value="">Choose your rig&hellip;</option></select>
+        <button type="button" id="clearbtn">Clear</button>
+      </div>
+      <div id="mine"></div>
+    </div>
+
+    <div id="gamsections"></div>
+
+    <section id="roster">
+      <div class="sec-head">
+        <h2>Rig roster</h2>
+        <span class="n">20 rigs</span>
+      </div>
+      <ul class="roster" id="rosterlist"></ul>
+    </section>
+
+    <div class="foot">
+      <p>GAM stands for Get Acquainted Meeting &mdash; an Airstream club tradition. Bring your own chair and your own drink; the host sets out the welcome mat.</p>
+      <p style="margin-top:10px;">Source: the 2026 Northern Lights &amp; Polar Bears GAM Hosts sheet from the caravan binder. Since this page is public, last names show as an initial &mdash; go by the rig number. If the leaders change a pairing on the road, go by what they announce.</p>
+      <p class="disc"><b>Disclaimer:</b> This is an independent, personal trip site created and maintained by SN Thorsen. It is not an official publication of, and does not represent, speak for, or reflect the views of, Airstream Club International (ACI/WBCCI), the caravan&rsquo;s leadership, or any other club or organization. Nothing here is official caravan communication &mdash; rely on caravan leaders&rsquo; official communications for authoritative details.</p>
+    </div>
+  </main>
+
+<script>
+(function(){
+  var ROSTER = {
+    1:"Peter & Bonnie C.",      2:"Dave & Mindy W.",      3:"George & Sheryl M.",
+    4:"Steven & Yvonne B.",     5:"Randy & Carol W.",     6:"Chris & Kay O.",
+    7:"John & Robin B.",        8:"Keith & Missy L.",     9:"Robert & Jody C.",
+    10:"Daniel & Laurie V.",    11:"Bruce B.",            12:"Dan & Maria M.",
+    13:"Ron & Joyce B.",        14:"John H. & Dawn W.",   15:"Jim & Karin D.",
+    16:"Steven & Colleen T.",   17:"Peter & Jennifer B.", 18:"Jim & Dwana G.",
+    19:"Jim & Judi R.",         20:"Bruce & Gail H."
+  };
+
+  var GAMS = [
+    { n:1, day:"Tuesday", date:"Sep 15", time:"5:00 PM", dayn:3, where:"Neepawa &middot; Lions Riverbend",
+      groups:[ {host:14,rigs:[1,10,14,18]}, {host:12,rigs:[4,8,12,16]}, {host:6,rigs:[2,6,15,19]},
+               {host:13,rigs:[5,9,13,17]}, {host:3,rigs:[3,7,11,20]} ] },
+    { n:2, day:"Friday", date:"Sep 18", time:"4:00 PM", dayn:6, where:"Neepawa &middot; Lions Riverbend",
+      groups:[ {host:1,rigs:[1,8,15,17]}, {host:2,rigs:[2,9,11,18]}, {host:19,rigs:[3,10,12,19]},
+               {host:4,rigs:[4,6,13,20]}, {host:5,rigs:[5,7,14,16]} ] },
+    { n:3, day:"Monday", date:"Sep 21", time:"4:30 PM", dayn:9, where:"Dauphin &middot; Vermillion",
+      groups:[ {host:9,rigs:[1,9,12,20]}, {host:18,rigs:[4,7,15,18]}, {host:10,rigs:[2,10,13,16]},
+               {host:8,rigs:[5,8,11,19]}, {host:17,rigs:[3,6,14,17]} ] },
+    { n:4, day:"Thursday", date:"Sep 24", time:"4:00 PM", dayn:12, where:"Swan River &middot; Green Acres",
+      groups:[ {host:16,rigs:[1,6,11,16]}, {host:7,rigs:[4,7,12,17]}, {host:13,rigs:[3,8,13,18]},
+               {host:2,rigs:[2,9,14,19]}, {host:15,rigs:[5,10,15,20]} ] },
+    { n:5, day:"Saturday", date:"Sep 26", time:"5:00 PM", dayn:14, where:"The Pas &middot; Exhibition Grounds",
+      groups:[ {host:1,rigs:[1,7,13,19]}, {host:6,rigs:[5,6,12,18]}, {host:10,rigs:[4,10,11,17]},
+               {host:3,rigs:[3,9,15,16]}, {host:14,rigs:[2,8,14,20]} ] }
+  ];
+
+  function esc(s){ return String(s).replace(/&(?!\w+;)/g,"&amp;").replace(/</g,"&lt;"); }
+  function nm(r){ return esc(ROSTER[r] || ("Rig " + r)); }
+
+  /* ---- render the five GAM sections ---- */
+  var out = [];
+  GAMS.forEach(function(g){
+    var cards = g.groups.map(function(gr){
+      var guests = gr.rigs.filter(function(r){ return r !== gr.host; });
+      return '<div class="group">'
+        + '<span class="hosttag">Host &middot; Rig ' + gr.host + '</span>'
+        + '<p class="hostline">' + nm(gr.host) + '</p>'
+        + '<ul>' + guests.map(function(r){
+            return '<li><span class="rig">' + r + '</span><span>' + nm(r) + '</span></li>';
+          }).join("") + '</ul>'
+        + '</div>';
+    }).join("");
+    out.push('<section id="gam' + g.n + '">'
+      + '<div class="sec-head"><h2>GAM #' + g.n + ' &mdash; ' + g.day + ', ' + g.date + '</h2>'
+      + '<span class="n">' + g.time + ' &middot; ' + g.where + '</span>'
+      + '<a class="dayl" href="../itinerary/#day-' + g.dayn + '">Day ' + g.dayn + ' in the itinerary</a></div>'
+      + '<div class="groups">' + cards + '</div></section>');
+  });
+  document.getElementById("gamsections").innerHTML = out.join("");
+
+  /* ---- roster ---- */
+  var rl = [];
+  for (var i = 1; i <= 20; i++){
+    rl.push('<li><span class="rig">' + i + '</span><span class="nm">' + nm(i) + '</span></li>');
+  }
+  document.getElementById("rosterlist").innerHTML = rl.join("");
+
+  /* ---- find your rig ---- */
+  var sel = document.getElementById("rigsel");
+  for (var j = 1; j <= 20; j++){
+    var o = document.createElement("option");
+    o.value = j; o.textContent = j + " — " + (ROSTER[j] || "");
+    sel.appendChild(o);
+  }
+
+  function show(rig){
+    var box = document.getElementById("mine");
+    if (!rig){ box.innerHTML = ""; return; }
+    rig = Number(rig);
+    var items = GAMS.map(function(g){
+      var mine = null;
+      for (var k = 0; k < g.groups.length; k++){
+        if (g.groups[k].rigs.indexOf(rig) !== -1){ mine = g.groups[k]; break; }
+      }
+      if (!mine) return '<li><span class="when">GAM #' + g.n + ' &middot; ' + g.date + ' &middot; ' + g.time + '</span>'
+        + '<span class="what">Not on the sheet for this one.</span></li>';
+      var others = mine.rigs.filter(function(r){ return r !== rig; });
+      var withline = others.map(function(r){ return nm(r); }).join(", ");
+      if (mine.host === rig){
+        return '<li class="host"><span class="when">GAM #' + g.n + ' &middot; ' + g.date + ' &middot; ' + g.time + '</span>'
+          + '<span class="what"><b>You host.</b> ' + withline + ' come to you.</span></li>';
+      }
+      var guestsOnly = others.filter(function(r){ return r !== mine.host; })
+                             .map(function(r){ return nm(r); }).join(" and ");
+      var line = 'Go to <b>' + nm(mine.host) + '</b> (rig ' + mine.host + ')'
+        + (guestsOnly ? ', with ' + guestsOnly : '');
+      if (!/\.$/.test(line)) line += '.';
+      return '<li><span class="when">GAM #' + g.n + ' &middot; ' + g.date + ' &middot; ' + g.time + '</span>'
+        + '<span class="what">' + line + '</span></li>';
+    }).join("");
+    var hosts = GAMS.filter(function(g){
+      return g.groups.some(function(gr){ return gr.host === rig; });
+    }).map(function(g){ return "#" + g.n; });
+    box.innerHTML = '<p class="who">Rig ' + rig + ' &mdash; ' + nm(rig) + '</p>'
+      + '<ul class="mine-list">' + items + '</ul>'
+      + '<p class="mine-note">' + (hosts.length
+          ? 'You host GAM ' + hosts.join(" and ") + '.'
+          : 'You’re not down to host this run.') + '</p>';
+    try { localStorage.setItem("pb2026rig", rig); } catch(e){}
+  }
+
+  sel.addEventListener("change", function(){ show(sel.value); });
+  document.getElementById("clearbtn").addEventListener("click", function(){
+    sel.value = ""; show("");
+    try { localStorage.removeItem("pb2026rig"); } catch(e){}
+  });
+
+  try {
+    var saved = localStorage.getItem("pb2026rig");
+    if (saved && ROSTER[saved]){ sel.value = saved; show(saved); }
+  } catch(e){}
+})();
+</script>
+</body>
+</html>

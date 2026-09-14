@@ -210,6 +210,11 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .tag.inc{background:rgba(54,201,142,.15);color:var(--aurora-deep);}
   .tag.opt{background:rgba(217,138,43,.16);color:#9c5e12;}
   .tag.pbt{background:rgba(122,108,198,.16);color:#5a4ba0;}
+  /* link from a GAM row to the GAM hosts page */
+  .gaml{font-weight:600;text-decoration:none;color:var(--aurora-deep);white-space:nowrap;}
+  .gaml::after{content:" \2192";}
+  .gaml:hover{text-decoration:underline;}
+
   /* venue website links */
   .vls{display:inline;}
   .vl{display:inline-block;margin-left:8px;font-size:.76rem;font-weight:600;color:var(--aurora-deep);
