@@ -275,6 +275,15 @@ search_summary: "All five Get Acquainted Meetings — Sep 15, 18, 21, 24 and 26 
     var saved = localStorage.getItem("pb2026rig");
     if (saved && ROSTER[saved]){ sel.value = saved; show(saved); }
   } catch(e){}
+
+  /* The sections above are built in JS, so a #gam4 arriving from the itinerary
+     has already failed to find its target by the time we get here. Re-run it. */
+  if (location.hash){
+    try {
+      var target = document.querySelector(location.hash);
+      if (target) target.scrollIntoView();
+    } catch(e){}
+  }
 })();
 </script>
 </body>
