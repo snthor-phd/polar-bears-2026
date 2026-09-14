@@ -275,15 +275,31 @@ search_summary: "All five Get Acquainted Meetings — Sep 15, 18, 21, 24 and 26 
     var saved = localStorage.getItem("pb2026rig");
     if (saved && ROSTER[saved]){ sel.value = saved; show(saved); }
   } catch(e){}
+})();
 
-  /* The sections above are built in JS, so a #gam4 arriving from the itinerary
-     has already failed to find its target by the time we get here. Re-run it. */
-  if (location.hash){
-    try {
-      var target = document.querySelector(location.hash);
-      if (target) target.scrollIntoView();
-    } catch(e){}
+/* ---- deep links in ----
+   The GAM sections are built above, in the browser. A visitor arriving at
+   /gams/#gam4 from the itinerary gets here AFTER the browser has already given
+   up trying to find #gam4, so nothing scrolls. Re-run the jump now that the
+   target exists. Same shape as the itinerary page's, and for the same reasons:
+   behavior 'instant' rather than the CSS smooth default, and called directly
+   plus on load and on becoming visible, so a background tab still lands. */
+(function(){
+  if(!location.hash) return;
+  var done = false;
+  function jump(){
+    if(done) return;
+    var target;
+    try { target = document.querySelector(location.hash); } catch(e) { return; }
+    if(!target) return;
+    target.scrollIntoView({ block:'start', behavior:'instant' });
+    done = true;
   }
+  jump();
+  window.addEventListener('load', jump);
+  document.addEventListener('visibilitychange', function(){
+    if(document.visibilityState === 'visible') jump();
+  });
 })();
 </script>
 </body>
