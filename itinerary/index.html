@@ -212,7 +212,11 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .day-wx.is-today i{color:var(--aurora-deep);}
 
   .sched{list-style:none;margin:0;padding:0;}
-  .row{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:3px 0;align-items:baseline;}
+  .row{display:grid;grid-template-columns:62px 18px 1fr;gap:8px;padding:3px 0;align-items:baseline;}
+  /* hourly forecast icon for the row's start time — empty until a forecast exists */
+  .row .rw{width:18px;height:18px;align-self:start;margin-top:1px;color:var(--stone);}
+  .row .rw .wxi{width:18px;height:18px;display:block;}
+  .row .rw.night{color:var(--violet);}
   .row .t{
     font-size:.82rem;color:var(--ink-soft);font-weight:600;text-align:right;
     font-variant-numeric:tabular-nums;white-space:nowrap;padding-top:1px;
@@ -272,6 +276,7 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
 
   /* highlights mode hides routine noise */
   body.highlights .row.routine{display:none;}
+  @media print{.row .rw{visibility:hidden;}}
   body.highlights .day.empty-collapsible{opacity:.85;}
 
   /* ---------- LEGEND / FOOTER ---------- */
@@ -283,7 +288,8 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
 
   @media (max-width:560px){
     .stats{gap:20px;}
-    .row{grid-template-columns:54px 1fr;gap:8px;}
+    .row{grid-template-columns:54px 16px 1fr;gap:6px;}
+    .row .rw,.row .rw .wxi{width:16px;height:16px;}
     .leg-town{font-size:1.5rem;}
     .jump{order:2;width:100%;}
     .btns{order:1;}
@@ -377,6 +383,17 @@ const ITIN = {{ site.data.itinerary | jsonify }};
 const GROUPS = {{ site.data.groups | jsonify }};
 /* Group rosters come from _data/groups.json (binder Event #1/#2/#3 tables, valid Sep 13).
    A row opts in with "grp": {"set":"e1","show":"A"|"B"|"AB"}. */
+/* start hour (0–23) of a schedule row, for the hourly forecast icon; null if the time is too vague */
+function rowHour(t){
+  const s=String(t).replace(/<[^>]+>/g,'').trim().toLowerCase();
+  const m=s.match(/^(\d{1,2})(?::(\d{2}))?(?:\s*(?:to|–|-)\s*\d{1,2}(?::\d{2})?)?\s*(am|pm)/);
+  if(m){let h=+m[1]%12; if(m[3]==='pm')h+=12; if(m[2]&&+m[2]>=45)h=(h+1)%24; return h;}
+  if(/^noon/.test(s))return 12;
+  if(/^morning|^am$/.test(s))return 9;
+  if(/^afternoon/.test(s))return 14;
+  if(/^after dinner|^evening/.test(s))return 19;
+  return null;
+}
 function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
 function grpHTML(g){
   const set=GROUPS[g.set]; if(!set) return '';
@@ -450,7 +467,8 @@ ITIN.forEach((leg,legIdx)=>{
     html+=`<ul class="sched">`;
     day.rows.forEach(r=>{
       const vl=(r.links||[]).map(x=>`<a class="vl" href="${x.u}" target="_blank" rel="noopener">${x.l}<span class="arr">&#8599;</span></a>`).join('');
-      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="d">${r.d}${vl?`<span class="vls">${vl}</span>`:''}${r.grp?grpHTML(r.grp):''}</span></li>`;
+      const hr=(leg.wx&&day.iso&&r.out)?rowHour(r.t):null;   /* outdoor rows only */
+      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="rw"${hr!==null?` data-iso="${day.iso}" data-h="${hr}" data-i="${legIdx}"`:''}></span><span class="d">${r.d}${vl?`<span class="vls">${vl}</span>`:''}${r.grp?grpHTML(r.grp):''}</span></li>`;
     });
     html+=`</ul></article>`;
   });
@@ -515,7 +533,8 @@ ITIN.forEach((leg,legIdx)=>{
   var cards = document.querySelectorAll('.day-wx');
   if(!window.fetch || (!boxes.length && !cards.length)) return;
 
-  var CACHE = 'nlpb-wx-v1';
+  var CACHE = 'nlpb-wx-v2';
+  var rowsWx = document.querySelectorAll('.rw[data-h]');
   var lats=[], lons=[], slot={}, k=0;
   ITIN.forEach(function(l,i){
     if(!l.wx) return;
@@ -536,7 +555,9 @@ ITIN.forEach((leg,legIdx)=>{
     rain : '<path d="'+CH+'"/><path d="M9.2 17.9l-1 2.8M12.4 17.9l-1 2.8M15.6 17.9l-1 2.8"/>',
     snow : '<path d="'+CH+'"/><path d="M8.9 17.9v2.6M7.7 19.2h2.4M15.1 17.9v2.6M13.9 19.2h2.4'
          + 'M12 19.2v2.4M10.9 20.4h2.2"/>',
-    storm: '<path d="'+CH+'"/><path d="M13.1 17.4l-3 4h2.5l-1.1 2.4"/>'
+    storm: '<path d="'+CH+'"/><path d="M13.1 17.4l-3 4h2.5l-1.1 2.4"/>',
+    moon : '<path d="M19 14.6A7.6 7.6 0 1 1 9.4 5a6 6 0 0 0 9.6 9.6z"/>',
+    mpart: '<path d="M20.6 9.6A3.6 3.6 0 1 1 16.4 4.2a2.8 2.8 0 0 0 4.2 5.4z"/><path d="'+C+'"/>'
   };
   function look(c){
     if(c===0)                       return ['sun'  ,'Clear'];
@@ -582,6 +603,7 @@ ITIN.forEach((leg,legIdx)=>{
       return m;
     });
 
+    paintHours(list, today);
     cards.forEach(function(el){
       var d = list[slot[+el.dataset.i]];
       if(!d||!d.daily) return;
@@ -609,6 +631,32 @@ ITIN.forEach((leg,legIdx)=>{
     });
   }
 
+  function paintHours(list, today){
+    var hidx=list.map(function(d){
+      var m={}; if(d&&d.hourly&&d.hourly.time) d.hourly.time.forEach(function(t,p){ m[t]=p; });
+      return m;
+    });
+    rowsWx.forEach(function(el){
+      var k=slot[+el.dataset.i], d=list[k];
+      if(!d||!d.hourly) return;
+      var gap=days(today, el.dataset.iso);
+      if(gap>7) return;                                  /* hourly skill is poor past a week: leave blank */
+      var h=+el.dataset.h, key=el.dataset.iso+'T'+(h<10?'0':'')+h+':00';
+      var p=hidx[k][key];
+      if(p===undefined) return;
+      var code=d.hourly.weather_code[p];
+      if(typeof code!=='number') return;
+      var w=look(code), night=d.hourly.is_day&&d.hourly.is_day[p]===0, name=w[0];
+      if(night&&name==='sun') name='moon';
+      if(night&&name==='part') name='mpart';
+      var tt=d.hourly.temperature_2m?d.hourly.temperature_2m[p]:null;
+      var hh=(h%12||12)+(h<12?' AM':' PM');
+      el.className='rw'+(night?' night':'');
+      el.title=(night&&w[1]==='Clear'?'Clear night':w[1])+(typeof tt==='number'?' · '+Math.round(tt)+'°F':'')
+              +' at '+hh+' · '+(gap<0?'what it actually did':gap===0?'today':'forecast');
+      el.innerHTML=svg(name);
+    });
+  }
   function cached(){
     try{
       var raw=localStorage.getItem(CACHE);
@@ -620,6 +668,7 @@ ITIN.forEach((leg,legIdx)=>{
         +'&longitude='+lons.join(',')
         +'&current=temperature_2m'
         +'&daily=weather_code,temperature_2m_max,temperature_2m_min'
+        +'&hourly=weather_code,is_day,temperature_2m'
         +'&temperature_unit=fahrenheit&timezone=America%2FWinnipeg'
         +'&past_days=14&forecast_days=16';
 

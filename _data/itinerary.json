@@ -31,7 +31,8 @@
         "l": "Town & Country",
         "u": "https://townandcountrycamping.com/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "5:30 PM",
@@ -47,7 +48,8 @@
      {
       "t": "After dinner",
       "c": "routine",
-      "d": "Campfire (weather permitting)"
+      "d": "Campfire (weather permitting)",
+      "out": true
      }
     ]
    },
@@ -71,7 +73,8 @@
      {
       "t": "10:00 AM",
       "c": "tour",
-      "d": "Chartered bus tour of Winnipeg — <strong>bring snacks</strong> if you need to eat at set times"
+      "d": "Chartered bus tour of Winnipeg — <strong>bring snacks</strong> if you need to eat at set times",
+      "out": true
      },
      {
       "t": "1:00 PM",
@@ -97,7 +100,8 @@
      {
       "t": "Later",
       "c": "routine",
-      "d": "Campfire (weather permitting)"
+      "d": "Campfire (weather permitting)",
+      "out": true
      }
     ]
    }
@@ -151,7 +155,8 @@
         "l": "Riverbend Campground",
         "u": "https://www.neepawa.ca/riverbend-campground/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "Afternoon",
@@ -162,7 +167,8 @@
         "l": "Neepawa trails",
         "u": "https://www.neepawa.ca/recreational-trails/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "5:00 PM",
@@ -172,7 +178,8 @@
      {
       "t": "After dinner",
       "c": "routine",
-      "d": "Campfire (weather permitting)"
+      "d": "Campfire (weather permitting)",
+      "out": true
      }
     ]
    },
@@ -203,7 +210,8 @@
         "l": "Spud Plains Farms",
         "u": "https://www.spudplainsfarms.com/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "3:30 PM",
@@ -213,7 +221,8 @@
      {
       "t": "6:00 PM",
       "c": "meal",
-      "d": "Cookout — Bratt's dinner at the campground <span class='ckby'>cooked by Peter &amp; Jennifer B.</span>"
+      "d": "Cookout — Bratt's dinner at the campground <span class='ckby'>cooked by Peter &amp; Jennifer B.</span>",
+      "out": true
      },
      {
       "t": "7:30 PM",
@@ -247,17 +256,20 @@
       "grp": {
        "set": "e1",
        "show": "AB"
-      }
+      },
+      "out": true
      },
      {
       "t": "12:00 PM",
       "c": "free",
-      "d": "Bag lunch at the farm · tour continues 1:00 PM"
+      "d": "Bag lunch at the farm · tour continues 1:00 PM",
+      "out": true
      },
      {
       "t": "2:00 PM",
       "c": "tour",
-      "d": "Maybe out to the fields to see the harvest"
+      "d": "Maybe out to the fields to see the harvest",
+      "out": true
      },
      {
       "t": "3:00 PM",
@@ -268,7 +280,8 @@
         "l": "Minnedosa",
         "u": "https://www.minnedosa.com/p/tourism"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "4:00 PM",
@@ -384,7 +397,8 @@
      {
       "t": "10:00 AM",
       "c": "arrive",
-      "d": "Travel to Dauphin · park at Vermillion Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
+      "d": "Travel to Dauphin · park at Vermillion Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
+      "out": true
      },
      {
       "t": "Afternoon",
@@ -535,7 +549,8 @@
      {
       "t": "10:00 AM",
       "c": "tour",
-      "d": "RMNP vehicle tour with guide Ryan Murray — GMRS radios, 14 available <span class='tag inc'>incl. gratuity</span>"
+      "d": "RMNP vehicle tour with guide Ryan Murray — GMRS radios, 14 available <span class='tag inc'>incl. gratuity</span>",
+      "out": true
      },
      {
       "t": "12:00 PM",
@@ -551,7 +566,8 @@
         "l": "Wasagaming / Clear Lake",
         "u": "https://discoverclearlake.com/about-the-chamber/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "4:00 PM",
@@ -603,12 +619,14 @@
      {
       "t": "10:00 AM",
       "c": "arrive",
-      "d": "Travel to Swan River · park at Green Acres <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>"
+      "d": "Travel to Swan River · park at Green Acres <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
+      "out": true
      },
      {
       "t": "Afternoon",
       "c": "free",
-      "d": "Free time — tour, shop, hike or bike"
+      "d": "Free time — tour, shop, hike or bike",
+      "out": true
      },
      {
       "t": "5:00 PM",
@@ -662,12 +680,14 @@
      {
       "t": "5:30 PM",
       "c": "meal",
-      "d": "Campout at the campground <span class='ckby'>cooked by Jim &amp; Judi R.</span>"
+      "d": "Campout at the campground <span class='ckby'>cooked by Jim &amp; Judi R.</span>",
+      "out": true
      },
      {
       "t": "7:00 PM",
       "c": "routine",
-      "d": "Campfire (weather permitting)"
+      "d": "Campfire (weather permitting)",
+      "out": true
      }
     ]
    },
@@ -703,12 +723,14 @@
       "grp": {
        "set": "e2",
        "show": "AB"
-      }
+      },
+      "out": true
      },
      {
       "t": "Afternoon",
       "c": "free",
-      "d": "Free time — tour, shop, hike or bike"
+      "d": "Free time — tour, shop, hike or bike",
+      "out": true
      },
      {
       "t": "4:00 PM",
@@ -770,7 +792,8 @@
         "l": "Exhibition Grounds (Facebook)",
         "u": "https://www.facebook.com/OASAEG/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "5:00 PM",
@@ -820,7 +843,8 @@
       "grp": {
        "set": "e3",
        "show": "AB"
-      }
+      },
+      "out": true
      },
      {
       "t": "3:00 PM",
@@ -877,7 +901,8 @@
         "l": "Round the Bend Farm",
         "u": "https://www.roundthebend.ca/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "4:00 PM",
@@ -888,12 +913,14 @@
         "l": "Round the Bend Farm",
         "u": "https://www.roundthebend.ca/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "6:00 PM",
       "c": "meal",
-      "d": "Dinner at the farm — bison kabobs with farm-fresh vegetables"
+      "d": "Dinner at the farm — bison kabobs with farm-fresh vegetables",
+      "out": true
      },
      {
       "t": "7:30 PM",
@@ -952,12 +979,14 @@
         "l": "Flin Flon Campground",
         "u": "https://cityofflinflon.ca/campground"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "5:00 PM",
       "c": "meal",
-      "d": "Campout at the Rotary Wheel at the campground <span class='ckby'>cooked by Jim &amp; Karin D.</span>"
+      "d": "Campout at the Rotary Wheel at the campground <span class='ckby'>cooked by Jim &amp; Karin D.</span>",
+      "out": true
      },
      {
       "t": "6:30 PM",
@@ -1017,7 +1046,8 @@
         "l": "Pisew Falls",
         "u": "https://www.gov.mb.ca/sd/parks/park-maps-and-locations/northeast/pisew.html"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "4:00 PM",
@@ -1154,7 +1184,8 @@
       "grp": {
        "set": "e1",
        "show": "AB"
-      }
+      },
+      "out": true
      },
      {
       "t": "11:30 AM",
@@ -1218,7 +1249,8 @@
         "l": "Tundra Buggy",
         "u": "https://frontiersnorth.com/experience/tundra-buggy/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "6:30 PM",
@@ -1254,7 +1286,8 @@
         "l": "Tundra Buggy",
         "u": "https://frontiersnorth.com/experience/tundra-buggy/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "Noon",
@@ -1295,7 +1328,8 @@
         "l": "Tundra Buggy",
         "u": "https://frontiersnorth.com/experience/tundra-buggy/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "Noon",
@@ -1367,7 +1401,8 @@
       "grp": {
        "set": "e1",
        "show": "AB"
-      }
+      },
+      "out": true
      },
      {
       "t": "11:15 AM",
@@ -1513,7 +1548,8 @@
         "l": "Cook's Campground",
         "u": "https://www.cookscampgroundandcabins.com/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "5:30 PM",
@@ -1575,7 +1611,8 @@
         "l": "Town & Country",
         "u": "https://townandcountrycamping.com/"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "5:00 PM",
@@ -1670,7 +1707,8 @@
         "l": "Journey to Churchill",
         "u": "https://www.assiniboinepark.ca/zoo/animals/journey-to-churchill"
        }
-      ]
+      ],
+      "out": true
      },
      {
       "t": "Afternoon",
