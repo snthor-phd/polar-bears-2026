@@ -197,6 +197,20 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .headline{font-family:var(--serif);font-size:1.12rem;line-height:1.25;margin:2px 0 12px;color:var(--ink);}
   .is-churchill .headline{color:var(--aurora-deep);}
 
+  /* per-day weather readout, right side of the day header */
+  .day-wx{margin-left:auto;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;
+    font-variant-numeric:tabular-nums;}
+  .day-wx .wxi{width:15px;height:15px;flex:none;color:var(--stone);opacity:.85;}
+  .day-wx b{font-weight:700;font-size:.87rem;}
+  .day-wx b .hi{color:var(--amber);} .day-wx b .lo{color:var(--blue);}
+  .day-wx b .sep{color:var(--stone);font-weight:400;margin:0 1px;opacity:.55;}
+  .day-wx i{font-style:normal;font-size:.57rem;letter-spacing:.11em;text-transform:uppercase;
+    font-weight:700;color:var(--stone);}
+  /* historical average, not a forecast — demoted so it never reads as one */
+  .day-wx.is-typical{opacity:.72;}
+  .day-wx.is-typical b .hi,.day-wx.is-typical b .lo{color:var(--stone);font-weight:600;}
+  .day-wx.is-today i{color:var(--aurora-deep);}
+
   .sched{list-style:none;margin:0;padding:0;}
   .row{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:3px 0;align-items:baseline;}
   .row .t{
@@ -340,6 +354,14 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
       <p><b>No open fires:</b> Manitoba is extremely dry and burning restrictions are in force across much of the route — no open fires during the caravan. The caravan carries a propane fire pit and tank for group use. Expect to see wildfire damage; the province-wide state of emergency has been lifted.</p>
       <p><b>Bring on arrival:</b> a completed <b>Medical Emergency Form</b> per person, sealed in a named envelope — collected in Winnipeg, opened only in an emergency, returned before you leave. Blanks available on site. Full prep list on the <a href="../before-you-go/" style="color:var(--aurora-deep);">Before You Go</a> page, with detail on the <a href="../community-service/" style="color:var(--aurora-deep);">community service project</a>, <a href="../via-rail/" style="color:var(--aurora-deep);">the train to Churchill</a>, <a href="../winterizing/" style="color:var(--aurora-deep);">winterizing in Thompson</a>, <a href="../tundra-buggy-lodge/" style="color:var(--aurora-deep);">the Tundra Buggy Lodge</a>, <a href="../dog-sledding/" style="color:var(--aurora-deep);">dog sledding at Wapusk</a>, and <a href="../weather/" style="color:var(--aurora-deep);">average and live weather for every stop</a>.</p>
       <p><b>Good to know:</b> Times and tours are <i>subject to change without notice.</i> Most breakfasts and many lunches/dinners are on your own; “included” tags mark meals, tours and gratuities covered by the kitty fee. Churchill meals, tours and gratuities are all in the kitty fee.</p>
+      <p><b>The weather on each day card</b> comes from Open-Meteo and refreshes every time you
+      open this page. <i>Actual</i> is what the day really did; <i>forecast</i> is one to seven days
+      out; <i>outlook</i> is eight to sixteen days out and worth a good deal less — forecast skill
+      falls off hard past a week. Dates further out than that show the grey <i>typical</i> figure
+      instead, the fifteen-year average for that date at that stop, and they pick up a real forecast
+      on their own as we get closer. Load the page once on wifi and the numbers stay put when you
+      lose signal. Full averages and the recorded range for every stop are on the
+      <a href="../weather/" style="color:var(--aurora-deep);">weather page</a>.</p>
       <p><b>Deparkers at Winnipeg:</b> the caravan co-leaders.</p>
       <p style="margin-top:14px;color:#9aa4b1;">Rebuilt from the preliminary detailed itinerary (rev. 2025-04-07). Open this file on your phone in the rig, or print it for the binder — it works with no signal once it’s loaded.</p>
     </div>
@@ -379,7 +401,7 @@ townOrder.forEach((t,i)=>{
   if(i<townOrder.length-1){const a=document.createElement('span');a.className='arr';a.textContent='→';rl.appendChild(a);}
 });
 
-ITIN.forEach(leg=>{
+ITIN.forEach((leg,legIdx)=>{
   const a=document.createElement('a');
   a.href='#'+leg.id; a.textContent=leg.town;
   if(leg.churchill)a.className='churchill';
@@ -420,6 +442,8 @@ ITIN.forEach(leg=>{
       <div class="day-top">
         <span class="daynum">Day ${day.n}</span>
         <span class="date"><span class="dow">${day.dow}</span> · ${day.date}</span>
+        ${(leg.wx&&day.iso)?`<span class="day-wx is-typical" data-iso="${day.iso}" data-i="${legIdx}"
+          title="15-year average high and low for this date at ${leg.town}"><b><span class="hi">${leg.wx.hi}&deg;</span><span class="sep">/</span><span class="lo">${leg.wx.lo}&deg;</span></b><i>typical</i></span>`:''}
       </div>
       <div class="headline">${day.headline}</div>`;
     if(day.heads){html+=`<div class="heads"><span class="ic">⚠</span><span>${day.heads}</span></div>`;}
@@ -466,29 +490,151 @@ ITIN.forEach(leg=>{
   });
 })();
 
-/* ---- live temps per stop (Open-Meteo, no key; degrades quietly) ---- */
+/* ---- weather: one Open-Meteo call feeds both the stop headers and every day card ----
+
+   No key, no account, no tracking. One request covers all ten stops, the current
+   temperature at each, and a daily high/low from 14 days back through 16 days ahead.
+
+   Every day card renders first with the stop's 15-year average, styled muted and
+   labelled "typical" so it can never be mistaken for a forecast. Real data upgrades
+   the card in place and relabels it:
+
+       actual    the date has passed  — what it really did
+       today     it is today
+       forecast  1–7 days out
+       outlook   8–16 days out       — named apart because skill falls off hard past a week
+
+   Dates past the end of the forecast window (today, the Churchill week) simply keep
+   their "typical" average and pick up a real forecast on their own as the trip moves.
+
+   The last good response is cached in localStorage, so a page loaded on wifi in town
+   still shows numbers out on the road with no signal. Everything is date-stamped, so
+   a stale cache degrades to showing less, never to showing something wrong.       */
 (function(){
   var boxes = document.querySelectorAll('.leg-wx');
-  if(!boxes.length || !window.fetch) return;
-  var lats=[], lons=[];
-  boxes.forEach(function(b){ lats.push(b.dataset.lat); lons.push(b.dataset.lon); });
+  var cards = document.querySelectorAll('.day-wx');
+  if(!window.fetch || (!boxes.length && !cards.length)) return;
+
+  var CACHE = 'nlpb-wx-v1';
+  var lats=[], lons=[], slot={}, k=0;
+  ITIN.forEach(function(l,i){
+    if(!l.wx) return;
+    slot[i]=k++; lats.push(l.wx.lat); lons.push(l.wx.lon);
+  });
+  if(!lats.length) return;
+
+  /* --- WMO weather codes -> one of seven icons + a plain-English label --- */
+  var C  = 'M7 17.4h9.5a3.3 3.3 0 0 0 .2-6.6 4.9 4.9 0 0 0-9.4-1.2A3.5 3.5 0 0 0 7 17.4z';
+  var CH = 'M7 15.2h9.5a3.3 3.3 0 0 0 .2-6.6 4.9 4.9 0 0 0-9.4-1.2A3.5 3.5 0 0 0 7 15.2z';
+  var ICON = {
+    sun  : '<circle cx="12" cy="12" r="4.3"/><path d="M12 2.7v2.1M12 19.2v2.1M2.7 12h2.1M19.2 12h2.1'
+         + 'M5.4 5.4l1.5 1.5M17.1 17.1l1.5 1.5M18.6 5.4l-1.5 1.5M6.9 17.1l-1.5 1.5"/>',
+    part : '<circle cx="15.8" cy="7.4" r="2.7"/><path d="M15.8 2.4v1.4M20.8 7.4h-1.4M19.3 3.9l-1 1'
+         + 'M19.3 10.9l-1-1"/><path d="'+C+'"/>',
+    cloud: '<path d="'+C+'"/>',
+    fog  : '<path d="'+CH+'"/><path d="M6.2 18.6h11.6M8.4 21.2h7.2"/>',
+    rain : '<path d="'+CH+'"/><path d="M9.2 17.9l-1 2.8M12.4 17.9l-1 2.8M15.6 17.9l-1 2.8"/>',
+    snow : '<path d="'+CH+'"/><path d="M8.9 17.9v2.6M7.7 19.2h2.4M15.1 17.9v2.6M13.9 19.2h2.4'
+         + 'M12 19.2v2.4M10.9 20.4h2.2"/>',
+    storm: '<path d="'+CH+'"/><path d="M13.1 17.4l-3 4h2.5l-1.1 2.4"/>'
+  };
+  function look(c){
+    if(c===0)                       return ['sun'  ,'Clear'];
+    if(c===1||c===2)                return ['part' ,'Partly cloudy'];
+    if(c===3)                       return ['cloud','Overcast'];
+    if(c===45||c===48)              return ['fog'  ,'Fog'];
+    if(c>=51&&c<=57)                return ['rain' ,'Drizzle'];
+    if(c>=61&&c<=67)                return ['rain' ,'Rain'];
+    if(c>=71&&c<=77)                return ['snow' ,'Snow'];
+    if(c>=80&&c<=82)                return ['rain' ,'Showers'];
+    if(c===85||c===86)              return ['snow' ,'Snow showers'];
+    if(c>=95)                       return ['storm','Thunderstorms'];
+    return ['cloud','Cloudy'];
+  }
+  function svg(name){
+    return '<svg class="wxi" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+         + 'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+         + ICON[name] + '</svg>';
+  }
+  function days(a,b){ return Math.round((Date.parse(b+'T00:00:00Z')-Date.parse(a+'T00:00:00Z'))/864e5); }
+
+  function paint(list){
+    /* current temperature in each stop header */
+    boxes.forEach(function(b,i){
+      var el=b.querySelector('.live'), d=list[i];
+      if(!el) return;
+      if(!d||!d.current||typeof d.current.temperature_2m!=='number'){
+        var n=b.querySelector('.wx-now'); if(n) n.style.display='none'; return;
+      }
+      el.textContent = Math.round(d.current.temperature_2m)+'°';
+    });
+
+    /* today, taken from the API in Manitoba time rather than the visitor's clock */
+    var today=null;
+    for(var q=0;q<list.length;q++){
+      if(list[q]&&list[q].current&&list[q].current.time){ today=list[q].current.time.slice(0,10); break; }
+    }
+    if(!today){ var n=new Date(); today=n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2); }
+
+    /* build date -> index once per stop */
+    var idx=list.map(function(d){
+      var m={}; if(d&&d.daily&&d.daily.time) d.daily.time.forEach(function(t,p){ m[t]=p; });
+      return m;
+    });
+
+    cards.forEach(function(el){
+      var d = list[slot[+el.dataset.i]];
+      if(!d||!d.daily) return;
+      var p = idx[slot[+el.dataset.i]][el.dataset.iso];
+      if(p===undefined) return;                       /* outside the window: keep "typical" */
+      var hi=d.daily.temperature_2m_max[p], lo=d.daily.temperature_2m_min[p];
+      if(typeof hi!=='number'||typeof lo!=='number') return;
+
+      var gap=days(today, el.dataset.iso), label;
+      if(gap<0)       label='actual';
+      else if(gap===0)label='today';
+      else if(gap<=7) label='forecast';
+      else            label='outlook';
+
+      var w=look(d.daily.weather_code[p]);
+      el.className='day-wx'+(gap===0?' is-today':'');
+      var why = label==='actual'  ? 'what it actually did'
+              : label==='today'   ? "today's high and low"
+              : label==='outlook' ? 'outlook — 8 to 16 days out, treat it loosely'
+              :                     'forecast high and low';
+      el.title = w[1]+' · '+why;
+      el.innerHTML = svg(w[0])
+        + '<b><span class="hi">'+Math.round(hi)+'&deg;</span><span class="sep">/</span>'
+        + '<span class="lo">'+Math.round(lo)+'&deg;</span></b><i>'+label+'</i>';
+    });
+  }
+
+  function cached(){
+    try{
+      var raw=localStorage.getItem(CACHE);
+      if(raw) paint(JSON.parse(raw));
+    }catch(e){}
+  }
+
   var url='https://api.open-meteo.com/v1/forecast?latitude='+lats.join(',')
-        +'&longitude='+lons.join(',')+'&current=temperature_2m'
-        +'&temperature_unit=fahrenheit&timezone=America%2FWinnipeg';
-  function quiet(){ boxes.forEach(function(b){ var n=b.querySelector('.wx-now'); if(n) n.style.display='none'; }); }
+        +'&longitude='+lons.join(',')
+        +'&current=temperature_2m'
+        +'&daily=weather_code,temperature_2m_max,temperature_2m_min'
+        +'&temperature_unit=fahrenheit&timezone=America%2FWinnipeg'
+        +'&past_days=14&forecast_days=16';
+
   fetch(url,{mode:'cors'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(data){
       var list = Array.isArray(data)?data:[data];
-      boxes.forEach(function(b,i){
-        var el=b.querySelector('.live'), d=list[i];
-        if(!d||!d.current||typeof d.current.temperature_2m!=='number'){
-          var n=b.querySelector('.wx-now'); if(n) n.style.display='none'; return;
-        }
-        el.textContent = Math.round(d.current.temperature_2m)+'\u00B0';
-      });
+      paint(list);
+      try{ localStorage.setItem(CACHE, JSON.stringify(list)); }catch(e){}
     })
-    .catch(quiet);
+    .catch(function(){
+      /* no signal — fall back to whatever was last loaded, else the averages stand */
+      cached();
+      boxes.forEach(function(b){ var n=b.querySelector('.wx-now'); if(n) n.style.display='none'; });
+    });
 })();
 
 /* ---- controls ---- */

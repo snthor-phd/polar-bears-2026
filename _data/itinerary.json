@@ -18,6 +18,7 @@
     "n": 1,
     "dow": "Sun",
     "date": "Sep 13",
+    "iso": "2026-09-13",
     "headline": "Rendezvous at Town & Country — Meet & Greet",
     "heads": "New start point — the caravan now gathers in Winnipeg, not Carberry (western-Manitoba flooding plus campground &amp; road closures). Advance parking Fri Sep 11 &amp; Sat Sep 12, 1:00–4:00 PM. Your Sep 13 arrival window and site number came by individual email — go by yours. Bring your sealed Medical Emergency Form.",
     "rows": [
@@ -54,6 +55,7 @@
     "n": 2,
     "dow": "Mon",
     "date": "Sep 14",
+    "iso": "2026-09-14",
     "headline": "Guided bus tour of Winnipeg &amp; the Welcome Dinner",
     "rows": [
      {
@@ -137,6 +139,7 @@
     "n": 3,
     "dow": "Tue",
     "date": "Sep 15",
+    "iso": "2026-09-15",
     "headline": "Drive Winnipeg → Neepawa; settle in at Lions Riverbend",
     "rows": [
      {
@@ -177,6 +180,7 @@
     "n": 4,
     "dow": "Wed",
     "date": "Sep 16",
+    "iso": "2026-09-16",
     "headline": "Day-trip to Spud Plains Farm, Carberry",
     "rows": [
      {
@@ -222,6 +226,7 @@
     "n": 5,
     "dow": "Thu",
     "date": "Sep 17",
+    "iso": "2026-09-17",
     "headline": "“A Day in the Life of a Farmer” — RnR Galbraith Farms",
     "rows": [
      {
@@ -276,6 +281,7 @@
     "n": 6,
     "dow": "Fri",
     "date": "Sep 18",
+    "iso": "2026-09-18",
     "headline": "Farmers Brewery Estate tours &amp; dinner at the Legion",
     "rows": [
      {
@@ -372,6 +378,7 @@
     "n": 7,
     "dow": "Sat",
     "date": "Sep 19",
+    "iso": "2026-09-19",
     "headline": "Into Dauphin — Polar Bear Town #2",
     "rows": [
      {
@@ -400,6 +407,7 @@
     "n": 8,
     "dow": "Sun",
     "date": "Sep 20",
+    "iso": "2026-09-20",
     "headline": "Ukrainian crafts, church tour, dinner &amp; dancers",
     "rows": [
      {
@@ -456,6 +464,7 @@
     "n": 9,
     "dow": "Mon",
     "date": "Sep 21",
+    "iso": "2026-09-21",
     "headline": "First look at the Churchill train — Dauphin Rail Museum",
     "rows": [
      {
@@ -509,6 +518,7 @@
     "n": 10,
     "dow": "Tue",
     "date": "Sep 22",
+    "iso": "2026-09-22",
     "headline": "Riding Mountain National Park",
     "rows": [
      {
@@ -587,6 +597,7 @@
     "n": 11,
     "dow": "Wed",
     "date": "Sep 23",
+    "iso": "2026-09-23",
     "headline": "Into Swan River — Polar Bear Town #3",
     "rows": [
      {
@@ -610,6 +621,7 @@
     "n": 12,
     "dow": "Thu",
     "date": "Sep 24",
+    "iso": "2026-09-24",
     "headline": "Spruce Wood Products &amp; the campout",
     "rows": [
      {
@@ -663,6 +675,7 @@
     "n": 13,
     "dow": "Fri",
     "date": "Sep 25",
+    "iso": "2026-09-25",
     "headline": "Pretty Valley Honey Farm · Polar Bear Town #4",
     "heads": "Bring Canadian cash to shop at the Honey Farm.",
     "rows": [
@@ -745,6 +758,7 @@
     "n": 14,
     "dow": "Sat",
     "date": "Sep 26",
+    "iso": "2026-09-26",
     "headline": "Into The Pas",
     "rows": [
      {
@@ -774,6 +788,7 @@
     "n": 15,
     "dow": "Sun",
     "date": "Sep 27",
+    "iso": "2026-09-27",
     "headline": "Opasquia Trails boardwalk &amp; the Sam Waller Museum",
     "rows": [
      {
@@ -834,6 +849,7 @@
     "n": 16,
     "dow": "Mon",
     "date": "Sep 28",
+    "iso": "2026-09-28",
     "headline": "Round the Bend Farm — Blanket Exercise &amp; bison kabobs",
     "rows": [
      {
@@ -923,6 +939,7 @@
     "n": 17,
     "dow": "Tue",
     "date": "Sep 29",
+    "iso": "2026-09-29",
     "headline": "New overnight — Flin Flon &amp; the Rotary Wheel campout",
     "heads": "New stop, added in Gail's Sep 7 itinerary. The fourth night moves from The Pas up to Flin Flon, and the Clearwater Lake free afternoon and GAM #6 are gone with it.",
     "rows": [
@@ -988,6 +1005,7 @@
     "n": 18,
     "dow": "Wed",
     "date": "Sep 30",
+    "iso": "2026-09-30",
     "headline": "The long haul to Thompson — Pisew Falls en route",
     "rows": [
      {
@@ -1012,6 +1030,7 @@
     "n": 19,
     "dow": "Thu",
     "date": "Oct 1",
+    "iso": "2026-10-01",
     "headline": "Community service & Heritage North — “Update on Churchill”",
     "heads": "This is where the donations you collected get sorted — some stay in Thompson for the women's shelter and local schools, the rest is boxed for the train to Churchill (VIA carries them free).",
     "rows": [
@@ -1065,6 +1084,7 @@
     "n": 20,
     "dow": "Fri",
     "date": "Oct 2",
+    "iso": "2026-10-02",
     "headline": "★ Board the train to Churchill — overnight",
     "heads": "Get the rig ready to be left in Thompson for 5 days — 2 gal RV antifreeze in the drains, water lines drained &amp; blown out, hot water tank drained, electric heater left on the counter (no antifreeze in fresh water lines). A co-leader assists; keys stay with Colleen at McCreedy. Train baggage: carry-on 1 personal item (25 lb) + 1 item (50 lb / 62 linear in), checked 2 × 50 lb. No dining car (snack/lounge car only, very limited, no dietary accommodation) — bring your own; alcohol must be checked, not carry-on. Security screening in Thompson. No sleeper? Bring a pillow and blanket. Camping fees, taxi to the station, and all Churchill gratuities are in the kitty fee.",
     "rows": [
@@ -1106,6 +1126,7 @@
     "n": 21,
     "dow": "Sat",
     "date": "Oct 3",
+    "iso": "2026-10-03",
     "headline": "Arrive Churchill — town, community service, then out to the Lodge",
     "heads": "Gratuities for the Churchill meals and tours are all covered by the kitty fee. You are split into Groups A and B on arrival and stay in the same group the whole time in Churchill.",
     "rows": [
@@ -1216,6 +1237,7 @@
     "n": 22,
     "dow": "Sun",
     "date": "Oct 4",
+    "iso": "2026-10-04",
     "headline": "Tundra Buggy — out among the polar bears",
     "rows": [
      {
@@ -1255,6 +1277,7 @@
     "n": 23,
     "dow": "Mon",
     "date": "Oct 5",
+    "iso": "2026-10-05",
     "headline": "Full-day buggy tour, then into Churchill",
     "heads": "Mark your luggage and leave it in front of your lower bunk — Frontiers North moves it to the Tundra Inn. Take what you need for the day with you.",
     "rows": [
@@ -1316,6 +1339,7 @@
     "n": 24,
     "dow": "Tue",
     "date": "Oct 6",
+    "iso": "2026-10-06",
     "headline": "Wapusk dog sledding, the museums — night train out",
     "heads": "Dress warm for Wapusk Adventures — in early October you may be on a wheeled cart rather than a sled. Leave checked baggage outside your room at the Tundra Inn for transfer to the station; carry-on goes to a holding room and you collect it before the train.",
     "rows": [
@@ -1425,6 +1449,7 @@
     "n": 25,
     "dow": "Wed",
     "date": "Oct 7",
+    "iso": "2026-10-07",
     "headline": "Back in Thompson — free afternoon",
     "rows": [
      {
@@ -1476,6 +1501,7 @@
     "n": 26,
     "dow": "Thu",
     "date": "Oct 8",
+    "iso": "2026-10-08",
     "headline": "Down to Grand Rapids",
     "rows": [
      {
@@ -1537,6 +1563,7 @@
     "n": 27,
     "dow": "Fri",
     "date": "Oct 9",
+    "iso": "2026-10-09",
     "headline": "Into Winnipeg — the home stretch",
     "rows": [
      {
@@ -1561,6 +1588,7 @@
     "n": 28,
     "dow": "Sat",
     "date": "Oct 10",
+    "iso": "2026-10-10",
     "headline": "Free day in Winnipeg — tour to be advised",
     "rows": [
      {
@@ -1589,6 +1617,7 @@
     "n": 29,
     "dow": "Sun",
     "date": "Oct 11",
+    "iso": "2026-10-11",
     "headline": "Canadian Museum for Human Rights",
     "rows": [
      {
@@ -1618,6 +1647,7 @@
     "n": 30,
     "dow": "Mon",
     "date": "Oct 12",
+    "iso": "2026-10-12",
     "headline": "Winnipeg Zoo — Journey to Churchill — &amp; the Farewell Dinner",
     "rows": [
      {
@@ -1663,6 +1693,7 @@
     "n": 31,
     "dow": "Tue",
     "date": "Oct 13",
+    "iso": "2026-10-13",
     "headline": "Farewells &amp; so-longs — caravan departs",
     "rows": [
      {
