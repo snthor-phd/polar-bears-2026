@@ -108,6 +108,12 @@
   "camp": "Lions Riverbend Campground",
   "dates": "Sep 15 – 18 · Days 3–6",
   "churchill": false,
+  "cook": {
+   "who": "Peter &amp; Jennifer B.",
+   "meal": "Cookout — Bratt&rsquo;s dinner",
+   "when": "Wed Sep 16 · 6:00 PM",
+   "day": 4
+  },
   "wx": {
    "hi": 64,
    "lo": 48,
@@ -203,7 +209,7 @@
      {
       "t": "6:00 PM",
       "c": "meal",
-      "d": "Cookout — Bratt's dinner at the campground"
+      "d": "Cookout — Bratt's dinner at the campground <span class='ckby'>cooked by Peter &amp; Jennifer B.</span>"
      },
      {
       "t": "7:30 PM",
@@ -232,7 +238,11 @@
      {
       "t": "10:00 AM",
       "c": "tour",
-      "d": "WYSIWYG farm tour, Groups A &amp; B — details set the day we arrive"
+      "d": "WYSIWYG farm tour, Groups A &amp; B — details set the day we arrive",
+      "grp": {
+       "set": "e1",
+       "show": "AB"
+      }
      },
      {
       "t": "12:00 PM",
@@ -282,7 +292,11 @@
         "l": "Farmery Estate Brewery",
         "u": "https://farmery.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e2",
+       "show": "A"
+      }
      },
      {
       "t": "1:15 PM",
@@ -298,7 +312,11 @@
         "l": "Farmery Estate Brewery",
         "u": "https://farmery.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e2",
+       "show": "B"
+      }
      },
      {
       "t": "4:00 PM",
@@ -454,7 +472,11 @@
         "l": "Dauphin Rail Museum (Facebook)",
         "u": "https://www.facebook.com/dauphinrailmuseum/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e3",
+       "show": "B"
+      }
      },
      {
       "t": "2:00 PM",
@@ -465,7 +487,11 @@
         "l": "Dauphin Rail Museum (Facebook)",
         "u": "https://www.facebook.com/dauphinrailmuseum/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e3",
+       "show": "A"
+      }
      },
      {
       "t": "4:30 PM",
@@ -532,6 +558,12 @@
   "camp": "Green Acres Campground",
   "dates": "Sep 23 – 25 · Days 11–13",
   "churchill": false,
+  "cook": {
+   "who": "Jim &amp; Judi R.",
+   "meal": "Campout at the campground",
+   "when": "Thu Sep 24 · 5:30 PM",
+   "day": 12
+  },
   "wx": {
    "hi": 64,
    "lo": 46,
@@ -589,7 +621,11 @@
         "l": "Spruce Products Ltd",
         "u": "https://spl.mb.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e1",
+       "show": "B"
+      }
      },
      {
       "t": "1:00 PM",
@@ -600,7 +636,11 @@
         "l": "Spruce Products Ltd",
         "u": "https://spl.mb.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e1",
+       "show": "A"
+      }
      },
      {
       "t": "4:00 PM",
@@ -610,7 +650,7 @@
      {
       "t": "5:30 PM",
       "c": "meal",
-      "d": "Campout at the campground"
+      "d": "Campout at the campground <span class='ckby'>cooked by Jim &amp; Judi R.</span>"
      },
      {
       "t": "7:00 PM",
@@ -646,7 +686,11 @@
         "l": "Pretty Valley Honey",
         "u": "https://www.prettyvalleyhoney.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e2",
+       "show": "AB"
+      }
      },
      {
       "t": "Afternoon",
@@ -757,7 +801,11 @@
         "l": "Opasquia Trails",
         "u": "https://opasquiatrails.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e3",
+       "show": "AB"
+      }
      },
      {
       "t": "3:00 PM",
@@ -846,6 +894,12 @@
   "camp": "Flin Flon Campground",
   "dates": "Sep 29 · Day 17",
   "churchill": false,
+  "cook": {
+   "who": "Jim &amp; Karin D.",
+   "meal": "Campout at the Rotary Wheel",
+   "when": "Tue Sep 29 · 5:00 PM",
+   "day": 17
+  },
   "wx": {
    "hi": 58,
    "lo": 43,
@@ -886,7 +940,7 @@
      {
       "t": "5:00 PM",
       "c": "meal",
-      "d": "Campout at the Rotary Wheel at the campground"
+      "d": "Campout at the Rotary Wheel at the campground <span class='ckby'>cooked by Jim &amp; Karin D.</span>"
      },
      {
       "t": "6:30 PM",
@@ -1075,7 +1129,11 @@
         "l": "Polar Bear Alert Program",
         "u": "https://www.gov.mb.ca/nrnd/fish-wildlife/polar_bears/index.html"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e1",
+       "show": "AB"
+      }
      },
      {
       "t": "11:30 AM",
@@ -1246,7 +1304,11 @@
         "l": "The Ptarmigan",
         "u": "https://www.goodptimes.ca/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e1",
+       "show": "AB"
+      }
      }
     ]
    },
@@ -1277,7 +1339,11 @@
         "l": "Wapusk Adventures",
         "u": "https://www.wapuskadventures.com/"
        }
-      ]
+      ],
+      "grp": {
+       "set": "e1",
+       "show": "AB"
+      }
      },
      {
       "t": "11:15 AM",

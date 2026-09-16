@@ -1,0 +1,80 @@
+{
+ "e1": {
+  "A": [
+   "Ron & Joyce B.",
+   "Steven & Yvonne B.",
+   "John & Robin B.",
+   "Robert & Jody C.",
+   "Jim & Dwana G.",
+   "Bruce & Gail H.",
+   "George & Sheryl M.",
+   "Chris & Kay O.",
+   "Steven & Colleen T.",
+   "David & Mindy W."
+  ],
+  "B": [
+   "Bruce B.",
+   "Peter & Jennifer B.",
+   "Peter & Bonnie C.",
+   "Jim & Karin D.",
+   "John H. & Dawn W.",
+   "Keith & Missy L.",
+   "Dan Jr. & Maria M.",
+   "Jim & Judi R.",
+   "Daniel & Laurie V.",
+   "Randy & Carol W."
+  ]
+ },
+ "e2": {
+  "A": [
+   "Bruce B.",
+   "Peter & Jennifer B.",
+   "John & Robin B.",
+   "Peter & Bonnie C.",
+   "Jim & Karin D.",
+   "John H. & Dawn W.",
+   "George & Sheryl M.",
+   "Dan Jr. & Maria M.",
+   "Jim & Judi R.",
+   "Daniel & Laurie V."
+  ],
+  "B": [
+   "Ron & Joyce B.",
+   "Steven & Yvonne B.",
+   "Robert & Jody C.",
+   "Jim & Dwana G.",
+   "Bruce & Gail H.",
+   "Keith & Missy L.",
+   "Chris & Kay O.",
+   "Steven & Colleen T.",
+   "David & Mindy W.",
+   "Randy & Carol W."
+  ]
+ },
+ "e3": {
+  "A": [
+   "Ron & Joyce B.",
+   "Bruce B.",
+   "Peter & Jennifer B.",
+   "John & Robin B.",
+   "Robert & Jody C.",
+   "Jim & Dwana G.",
+   "John H. & Dawn W.",
+   "Chris & Kay O.",
+   "David & Mindy W.",
+   "Randy & Carol W."
+  ],
+  "B": [
+   "Steven & Yvonne B.",
+   "Peter & Bonnie C.",
+   "Jim & Karin D.",
+   "Bruce & Gail H.",
+   "Keith & Missy L.",
+   "George & Sheryl M.",
+   "Dan Jr. & Maria M.",
+   "Jim & Judi R.",
+   "Steven & Colleen T.",
+   "Daniel & Laurie V."
+  ]
+ }
+}

@@ -137,6 +137,16 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .leg-town{font-family:var(--serif);font-size:1.75rem;font-weight:600;line-height:1.05;margin:3px 0 4px;letter-spacing:-.01em;}
   .leg-meta{font-size:.86rem;color:var(--stone);}
   .leg-meta .camp{color:var(--ink-soft);}
+  .leg-crew{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:10px;
+    padding:8px 12px;background:rgba(54,201,142,.07);border:1px solid rgba(54,201,142,.3);
+    border-radius:10px;font-size:.88rem;}
+  .leg-crew .ck-tag{flex:0 0 100%;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;color:var(--aurora-deep);margin-bottom:2px;}
+  .leg-crew .ck-who{font-weight:600;color:var(--ink);}
+  .leg-crew .ck-meal{font-size:.82rem;color:var(--stone);text-decoration:none;}
+  .leg-crew .ck-meal::before{content:"· ";}
+  .leg-crew .ck-meal::after{content:" \2193";color:var(--aurora-deep);}
+  .leg-crew .ck-meal:hover{color:var(--aurora-deep);}
   .leg-wx{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;padding:9px 13px;
     background:rgba(22,32,46,.035);border:1px solid var(--line);border-radius:10px;}
   .leg-wx .wx-label{flex:0 0 100%;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;
@@ -210,6 +220,20 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .tag.inc{background:rgba(54,201,142,.15);color:var(--aurora-deep);}
   .tag.opt{background:rgba(217,138,43,.16);color:#9c5e12;}
   .tag.pbt{background:rgba(122,108,198,.16);color:#5a4ba0;}
+  .ckby{color:var(--aurora-deep);font-size:.84rem;font-weight:600;white-space:nowrap;}
+  /* A/B group rosters under split activities */
+  .grp{margin:5px 0 2px;font-size:.84rem;}
+  .grp summary{cursor:pointer;color:var(--aurora-deep);font-weight:600;list-style:none;}
+  .grp summary::-webkit-details-marker{display:none;}
+  .grp summary::before{content:"\25B8  ";}
+  .grp[open] summary::before{content:"\25BE  ";}
+  .grp .gcols{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:5px;padding:7px 11px;
+    background:rgba(22,32,46,.035);border:1px solid var(--line);border-radius:9px;}
+  .grp .gcol{min-width:150px;}
+  .grp .gh{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--stone);margin-bottom:2px;}
+  .grp ul{list-style:none;margin:0;padding:0;}
+  .grp li{padding:1px 0;color:var(--ink-soft);}
+  .grp li.me{font-weight:700;color:var(--ink);}
   /* link from a GAM row to the GAM hosts page */
   .gaml{font-weight:600;text-decoration:none;color:var(--aurora-deep);white-space:nowrap;}
   .gaml::after{content:" \2192";}
@@ -328,6 +352,17 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
    routine rows are hidden in "Highlights only" mode.
 */
 const ITIN = {{ site.data.itinerary | jsonify }};
+const GROUPS = {{ site.data.groups | jsonify }};
+/* Group rosters come from _data/groups.json (binder Event #1/#2/#3 tables, valid Sep 13).
+   A row opts in with "grp": {"set":"e1","show":"A"|"B"|"AB"}. */
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function grpHTML(g){
+  const set=GROUPS[g.set]; if(!set) return '';
+  const ks=g.show==='AB'?['A','B']:[g.show];
+  const lbl=ks.length>1?'Who&rsquo;s in Group A &amp; Group B':`Who&rsquo;s in Group ${ks[0]}`;
+  const cols=ks.map(k=>`<div class="gcol"><div class="gh">Group ${k}</div><ul>${set[k].map(n=>`<li>${esc(n)}</li>`).join('')}</ul></div>`).join('');
+  return `<details class="grp"><summary>${lbl}</summary><div class="gcols">${cols}</div></details>`;
+}
 /* Data lives in _data/itinerary.json — the single source of truth, shared with
    search.json so every day is individually searchable. Edit the JSON, not this. */
 
@@ -370,6 +405,7 @@ ITIN.forEach(leg=>{
       <div class="leg-eyebrow">${leg.churchill?'★ The main event':'Caravan stop'}</div>
       <div class="leg-town">${leg.town}</div>
       <div class="leg-meta"><span class="camp">${leg.camp_url?`<a class="campl" href="${leg.camp_url}" target="_blank" rel="noopener">${leg.camp}<span class="arr">&#8599;</span></a>`:leg.camp}</span> · ${leg.dates}</div>
+      ${leg.cook?`<div class="leg-crew"><span class="ck-tag">Cooking team</span><span class="ck-who">${leg.cook.who}</span><a class="ck-meal" href="#day-${leg.cook.day}">${leg.cook.meal} &middot; ${leg.cook.when}</a></div>`:''}
       ${leg.wx?`<div class="leg-wx" data-lat="${leg.wx.lat}" data-lon="${leg.wx.lon}">
         <div class="wx-label">Temperatures &middot; historical &amp; current <span>&deg;F</span></div>
         <span class="wx-i"><b class="hi">${leg.wx.hi}&deg;</b><i>avg high</i></span>
@@ -390,7 +426,7 @@ ITIN.forEach(leg=>{
     html+=`<ul class="sched">`;
     day.rows.forEach(r=>{
       const vl=(r.links||[]).map(x=>`<a class="vl" href="${x.u}" target="_blank" rel="noopener">${x.l}<span class="arr">&#8599;</span></a>`).join('');
-      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="d">${r.d}${vl?`<span class="vls">${vl}</span>`:''}</span></li>`;
+      html+=`<li class="row ${r.c}"><span class="t">${r.t}</span><span class="d">${r.d}${vl?`<span class="vls">${vl}</span>`:''}${r.grp?grpHTML(r.grp):''}</span></li>`;
     });
     html+=`</ul></article>`;
   });
