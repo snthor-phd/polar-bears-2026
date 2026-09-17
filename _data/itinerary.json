@@ -106,7 +106,8 @@
     ]
    }
   ],
-  "camp_url": "https://townandcountrycamping.com/"
+  "camp_url": "https://townandcountrycamping.com/",
+  "hookups": "30/50 A · full hookups"
  },
  {
   "id": "neepawa",
@@ -361,7 +362,8 @@
     ]
    }
   ],
-  "camp_url": "https://www.neepawa.ca/riverbend-campground/"
+  "camp_url": "https://www.neepawa.ca/riverbend-campground/",
+  "hookups": "30 A · water & sewer on some sites"
  },
  {
   "id": "dauphin",
@@ -576,7 +578,8 @@
      }
     ]
    }
-  ]
+  ],
+  "hookups": "30/50 A · sani-dump"
  },
  {
   "id": "swanriver",
@@ -749,7 +752,8 @@
      }
     ]
    }
-  ]
+  ],
+  "hookups": "20/30 A · mostly full hookups"
  },
  {
   "id": "thepas",
@@ -929,7 +933,8 @@
      }
     ]
    }
-  ]
+  ],
+  "hookups": "Fully serviced lots · amps not published"
  },
  {
   "id": "flinflon",
@@ -1001,7 +1006,8 @@
     ]
    }
   ],
-  "camp_url": "https://cityofflinflon.ca/campground"
+  "camp_url": "https://cityofflinflon.ca/campground",
+  "hookups": "24 powered sites of 70 · dump station"
  },
  {
   "id": "thompson",
@@ -1093,7 +1099,8 @@
      }
     ]
    }
-  ]
+  ],
+  "hookups": "30 A · dump station"
  },
  {
   "id": "churchill",
@@ -1569,7 +1576,8 @@
     ]
    }
   ],
-  "camp_url": "https://www.cookscampgroundandcabins.com/"
+  "camp_url": "https://www.cookscampgroundandcabins.com/",
+  "hookups": "30 A · no sewer"
  },
  {
   "id": "winnipeg",
@@ -1752,6 +1760,7 @@
     ]
    }
   ],
-  "camp_url": "https://townandcountrycamping.com/"
+  "camp_url": "https://townandcountrycamping.com/",
+  "hookups": "30/50 A · full hookups"
  }
 ]

@@ -137,6 +137,8 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .leg-town{font-family:var(--serif);font-size:1.75rem;font-weight:600;line-height:1.05;margin:3px 0 4px;letter-spacing:-.01em;}
   .leg-meta{font-size:.86rem;color:var(--stone);}
   .leg-meta .camp{color:var(--ink-soft);}
+  .leg-meta .hk{color:var(--stone);text-decoration:none;border-bottom:1px dotted rgba(108,119,135,.5);}
+  .leg-meta .hk:hover{color:var(--aurora-deep);border-bottom-color:var(--aurora-deep);}
   .leg-crew{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin-top:10px;
     padding:8px 12px;background:rgba(54,201,142,.07);border:1px solid rgba(54,201,142,.3);
     border-radius:10px;font-size:.88rem;}
@@ -312,7 +314,7 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   @media print{
     body{background:#fff;font-size:11px;}
     .controls,.aurora-band,.btns,.jump,.legend{display:none !important;}
-    .vl,.campl{color:#444;border-bottom:0;}
+    .vl,.campl,.leg-meta .hk{color:#444;border-bottom:0;}
     .vl .arr,.campl .arr{display:none;}
     body.highlights .row.routine{display:grid !important;} /* full schedule on paper */
     .hero{color:#16202e;background:#fff;border-bottom:2px solid var(--ink);}
@@ -455,7 +457,7 @@ ITIN.forEach((leg,legIdx)=>{
     <div class="leg-head">
       <div class="leg-eyebrow">${leg.churchill?'★ The main event':'Caravan stop'}</div>
       <div class="leg-town">${leg.town}</div>
-      <div class="leg-meta"><span class="camp">${leg.camp_url?`<a class="campl" href="${leg.camp_url}" target="_blank" rel="noopener">${leg.camp}<span class="arr">&#8599;</span></a>`:leg.camp}</span> · ${leg.dates}</div>
+      <div class="leg-meta"><span class="camp">${leg.camp_url?`<a class="campl" href="${leg.camp_url}" target="_blank" rel="noopener">${leg.camp}<span class="arr">&#8599;</span></a>`:leg.camp}</span> · ${leg.dates}${leg.hookups?` · <a class="hk" href="../hookups/#stops" title="Campground hookups">${leg.hookups}</a>`:''}</div>
       ${leg.cook?`<div class="leg-crew"><span class="ck-tag">Cooking team</span><span class="ck-who">${leg.cook.who}</span><a class="ck-meal" href="#day-${leg.cook.day}">${leg.cook.meal} &middot; ${leg.cook.when}</a></div>`:''}
       ${leg.wx?`<div class="leg-wx" data-lat="${leg.wx.lat}" data-lon="${leg.wx.lon}">
         <div class="wx-label">Temperatures &middot; historical &amp; current <span>&deg;F</span></div>
