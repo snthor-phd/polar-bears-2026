@@ -4,10 +4,13 @@ from data import STOPS
 S={s['id']:s for s in STOPS}
 LEGS=[("winnipeg-start","neepawa"),("neepawa","dauphin"),("dauphin","swanriver"),("swanriver","thepas"),
       ("thepas","flinflon"),("flinflon","thompson"),("thompson","grandrapids"),("grandrapids","winnipeg")]
+# Dauphin -> Swan River runs the ALTERNATE (Hwy 5 west to Roblin, Hwy 83 north) per the leaders, Sep 19 2026.
+VIA={("dauphin","swanriver"):[(-101.35206,51.23561)]}  # via point sits on Hwy 83 just north of Roblin
 out=[]
 for a,b in LEGS:
     A,B=S[a],S[b]
-    url=f"https://router.project-osrm.org/route/v1/driving/{A['lon']},{A['lat']};{B['lon']},{B['lat']}?overview=full&geometries=geojson"
+    mid=''.join(f'{x},{y};' for x,y in VIA.get((a,b),[]))
+    url=f"https://router.project-osrm.org/route/v1/driving/{A['lon']},{A['lat']};{mid}{B['lon']},{B['lat']}?overview=full&geometries=geojson"
     r=json.loads(subprocess.check_output(["curl","-sS","-m","60","-A","nlpb-caravan-site/1.0 (macnmath@gmail.com)",url]))
     rt=r["routes"][0]
     out.append({"from":a,"to":b,"distance_m":rt["distance"],"duration_s":rt["duration"],"coords":rt["geometry"]["coordinates"]})

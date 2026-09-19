@@ -388,6 +388,7 @@
     "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM",
     "<b>Change of plan</b> · Vermillion Campground couldn't be reopened after the flooding, so we're parking at the <b>Dauphin Recreation Centre, 200 1st Street SE</b> · it's paved",
     "Getting there · from Hwy 10, take 10A north onto Main Street · look right for the rec centre just before the railroad tracks",
+    "Power · most of us will have 110 V plugs, some will have a 30 A connection",
     "Showers &amp; restrooms at the rec centre are free for a set period · tell the front desk you're with the Airstream group outside"
    ]
   },
@@ -582,7 +583,7 @@
     ]
    }
   ],
-  "hookups": "Paved lot · showers & restrooms inside"
+  "hookups": "Paved lot · mostly 110 V plugs, some 30 A"
  },
  {
   "id": "swanriver",
@@ -606,9 +607,9 @@
   },
   "travel": {
    "lead": "Travel · Dauphin → Swan River",
-   "dist": "106 mi / 171 km · ~1 hr 46 min",
+   "dist": "133 mi / 214 km · ~2 hr 10 min · alternate route",
    "notes": [
-    "Route may change — road reconstruction from the flooding. Alternate is Hwy 83 to Roblin, 133 mi / 214 km · ~2 hr 10 min",
+    "<b>We're taking the alternate route</b> — Hwy 83 by way of Roblin — based on current conditions (road reconstruction from the flooding) · 133 mi / 214 km, not the original 106 mi / 171 km",
     "Leaders &amp; parkers out at 9:00 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
     "On duty this leg · parkers Ron &amp; Joyce B., Daniel &amp; Laurie V. and Peter &amp; Jennifer B. · deparker Peter &amp; Bonnie C. · caboose Steven &amp; Colleen T. · cooking team Jim &amp; Judi R.",
     "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"

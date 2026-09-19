@@ -266,10 +266,10 @@ main.wrap{max-width:1180px;}
 
   // ---- Google Maps directions links (max 9 waypoints per link)
   function dirs(ids){
-    var pts=ids.map(function(id){return S[id].lat+','+S[id].lon;});
+    var pts=ids.map(function(id){return S[id]?S[id].lat+','+S[id].lon:id;});
     return 'https://www.google.com/maps/dir/?api=1&origin='+pts[0]+'&destination='+pts[pts.length-1]+'&waypoints='+encodeURIComponent(pts.slice(1,-1).join('|'))+'&travelmode=driving';
   }
-  document.getElementById('dir-north').href=dirs(["winnipeg-start","neepawa","dauphin","swanriver","thepas","flinflon","thompson"]);
+  document.getElementById('dir-north').href=dirs(["winnipeg-start","neepawa","dauphin","51.23561,-101.35206","swanriver","thepas","flinflon","thompson"]);
   document.getElementById('dir-south').href=dirs(["thompson","grandrapids","winnipeg"]);
 
   // ---- status banner
