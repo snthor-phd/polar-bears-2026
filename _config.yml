@@ -6,7 +6,7 @@ baseurl: "/polar-bears-2026"
 # Provenance for the schedule on the site. Bump both when a new itinerary
 # lands from the caravan leaders — the itinerary page and the hub both read them.
 itinerary_source_date: "September 13, 2026"
-itinerary_updated: "September 14, 2026"
+itinerary_updated: "September 19, 2026"
 
 collections:
   articles:

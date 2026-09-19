@@ -368,7 +368,7 @@
  {
   "id": "dauphin",
   "town": "Dauphin",
-  "camp": "Vermillion Campground",
+  "camp": "Dauphin Recreation Centre · 200 1st Street SE",
   "dates": "Sep 19 – 22 · Days 7–10",
   "churchill": false,
   "wx": {
@@ -385,7 +385,10 @@
    "notes": [
     "Leaders &amp; parkers out at 9:00 AM · deparkers 9:30–10:30 AM · caravan rolls at 10:00 AM",
     "On duty this leg · parkers Dan Jr. &amp; Maria M. and Jim &amp; Karin D. · deparker George &amp; Sheryl M. · caboose Randy &amp; Carol W.",
-    "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM"
+    "Arrive after 1:00 PM · parkers on duty 1:00–3:00 PM",
+    "<b>Change of plan</b> · Vermillion Campground couldn't be reopened after the flooding, so we're parking at the <b>Dauphin Recreation Centre, 200 1st Street SE</b> · it's paved",
+    "Getting there · from Hwy 10, take 10A north onto Main Street · look right for the rec centre just before the railroad tracks",
+    "Showers &amp; restrooms at the rec centre are free for a set period · tell the front desk you're with the Airstream group outside"
    ]
   },
   "days": [
@@ -399,7 +402,7 @@
      {
       "t": "10:00 AM",
       "c": "arrive",
-      "d": "Travel to Dauphin · park at Vermillion Campground <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
+      "d": "Travel to Dauphin · park at the Dauphin Recreation Centre, 200 1st Street SE <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
       "out": true
      },
      {
@@ -579,7 +582,7 @@
     ]
    }
   ],
-  "hookups": "30/50 A · sani-dump"
+  "hookups": "Paved lot · showers & restrooms inside"
  },
  {
   "id": "swanriver",

@@ -53,8 +53,8 @@ LINKS=[
  ("journey to churchill","Journey to Churchill","https://www.assiniboinepark.ca/zoo/animals/journey-to-churchill"),
  ("winnipeg zoo","Assiniboine Park Zoo","https://www.assiniboinepark.ca/zoo/animals/journey-to-churchill"),
 ]
-# Deliberately NOT linked: Vermillion Park & Campground, Dauphin — its own page says it is CLOSED for
-# the 2026 season (flooding); the caravan leaders need to confirm the Dauphin campground first.
+# Dauphin: Vermillion Park stayed CLOSED for 2026 (flooding). As of Sep 19 the caravan parks at the
+# Dauphin Recreation Centre lot, 200 1st Street SE — no campground link.
 # Green Acres (Swan River), McCreedy (Thompson), St. Paul's Anglican: no official web presence found.
 
 # Campground link per stop (shown in the stop header)
