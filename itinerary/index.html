@@ -213,6 +213,30 @@ search_summary: "All 31 days grouped by stop — Winnipeg, Neepawa, Dauphin, Swa
   .day-wx.is-typical b .hi,.day-wx.is-typical b .lo{color:var(--stone);font-weight:600;}
   .day-wx.is-today i{color:var(--aurora-deep);}
 
+  /* tonight's aurora chance, left of the weather readout. One emphasis colour: green
+     only when the odds are good; everything else stays stone. */
+  .day-r{margin-left:auto;display:inline-flex;align-items:center;justify-content:flex-end;
+    flex-wrap:wrap;gap:3px 14px;}
+  .day-r .day-wx{margin-left:0;}
+  .day-au{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;text-decoration:none;
+    color:var(--stone);font-size:.8rem;font-variant-numeric:tabular-nums;border-radius:999px;}
+  .day-au[hidden]{display:none;}
+  .day-au .aui{width:15px;height:15px;flex:none;opacity:.85;}
+  .day-au .au-n{font-weight:500;}
+  .day-au b{font-weight:700;color:var(--ink-soft);}
+  .day-au .dot{opacity:.5;}
+  .day-au i{font-style:normal;font-size:.57rem;letter-spacing:.11em;text-transform:uppercase;
+    font-weight:700;color:var(--stone);}
+  .day-au.lv-0{opacity:.62;} .day-au.lv-0 b{font-weight:600;color:var(--stone);}
+  .day-au.lv-2,.day-au.lv-2 b,.day-au.lv-3,.day-au.lv-3 b{color:var(--aurora-deep);}
+  .day-au.lv-3{background:rgba(54,201,142,.13);padding:2px 9px 2px 7px;}
+  .day-au.is-cloud{opacity:.62;} .day-au.is-cloud,.day-au.is-cloud b{color:var(--stone);}
+  .day-au.is-cloud{background:none;padding:0;}
+  .day-au:hover b{text-decoration:underline;text-underline-offset:2px;}
+  .day-au:focus-visible{outline:2px solid var(--aurora);outline-offset:3px;}
+  @media (max-width:380px){ .day-au .au-n,.day-au .au-n + .dot{display:none;} }
+  @media print{.day-au{display:none !important;}}
+
   .sched{list-style:none;margin:0;padding:0;}
   .row{display:grid;grid-template-columns:62px 18px 1fr;gap:8px;padding:3px 0;align-items:baseline;}
   /* hourly forecast icon for the row's start time — empty until a forecast exists */
@@ -473,8 +497,9 @@ ITIN.forEach((leg,legIdx)=>{
       <div class="day-top">
         <span class="daynum">Day ${day.n}</span>
         <span class="date"><span class="dow">${day.dow}</span> · ${day.date}</span>
-        ${(leg.wx&&day.iso)?`<span class="day-wx is-typical" data-iso="${day.iso}" data-i="${legIdx}"
-          title="15-year average high and low for this date at ${leg.town}"><b><span class="hi">${leg.wx.hi}&deg;</span><span class="sep">/</span><span class="lo">${leg.wx.lo}&deg;</span></b><i>typical</i></span>`:''}
+        ${(leg.wx&&day.iso)?`<span class="day-r"><a class="day-au" hidden data-iso="${day.iso}" data-i="${legIdx}"
+          href="https://www.swpc.noaa.gov/products/aurora-30-minute-forecast" target="_blank" rel="noopener"></a><span class="day-wx is-typical" data-iso="${day.iso}" data-i="${legIdx}"
+          title="15-year average high and low for this date at ${leg.town}"><b><span class="hi">${leg.wx.hi}&deg;</span><span class="sep">/</span><span class="lo">${leg.wx.lo}&deg;</span></b><i>typical</i></span></span>`:''}
       </div>
       <div class="headline">${day.headline}</div>`;
     if(day.heads){html+=`<div class="heads"><span class="ic">⚠</span><span>${day.heads}</span></div>`;}
@@ -617,6 +642,7 @@ ITIN.forEach((leg,legIdx)=>{
       return m;
     });
 
+    WX={list:list,today:today}; paintAurora();
     paintHours(list, today);
     cards.forEach(function(el){
       var d = list[slot[+el.dataset.i]];
@@ -671,6 +697,133 @@ ITIN.forEach((leg,legIdx)=>{
       el.innerHTML=svg(name);
     });
   }
+
+  /* ---- AURORA: tonight's chance at this stop ---------------------------------------
+     Kp comes from NOAA's Space Weather Prediction Center. Two products, no key:
+       forecast  3-hourly Kp, about three nights out        (real skill)
+       outlook   largest daily Kp, 27 days out, reissued Mondays
+                 (recurrence-based: sees coronal-hole repeats, cannot see a CME coming)
+     The same Kp means different things at different stops, so each stop gets its own
+     thresholds from its geomagnetic latitude: the oval's equatorward edge sits near
+     66.5 deg at Kp 0 and moves about 2.05 deg south per Kp step (NOAA's table); aurora
+     is visible low on the north horizon from roughly 4 deg south of that edge.
+     NIGHT MAPPING: Manitoba's dark hours, 7 PM - 7 AM CDT, are 00-12 UT of the NEXT
+     UTC day. The night of card date D therefore reads UTC day D+1.
+     Cloud is the overnight mean (10 PM - 4 AM) from the weather request above, used
+     only inside a week. Over 70% and the chip says so, whatever Kp is doing.        */
+  var WX=null, AU=null, AUCACHE='nlpb-au-v1';
+  var auCards=document.querySelectorAll('.day-au');
+  var AUI='<svg class="aui" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+        + 'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'
+        + '<path d="M2.8 9.6c3.2-4.6 6.4 2.6 9.6-.8s5.6-3.6 8.8-1.2"/>'
+        + '<path d="M5.4 12.2v5.6M9.6 13.6v6.6M13.8 12v6.2M18 10.6v6.4"/></svg>';
+  var LEVEL=['Unlikely','Possible','Likely','Strong'];
+
+  function nextDay(iso){ return new Date(Date.parse(iso+'T00:00:00Z')+864e5).toISOString().slice(0,10); }
+  function magLat(lat,lon){                      /* dipole geomagnetic latitude, IGRF-14 pole (2025) */
+    var r=Math.PI/180, pl=80.85*r, po=-72.76*r, a=lat*r, o=lon*r;
+    return Math.asin(Math.sin(a)*Math.sin(pl)+Math.cos(a)*Math.cos(pl)*Math.cos(o-po))/r;
+  }
+  function moonLit(iso){                         /* fraction lit at local midnight; good to a few percent */
+    var t=Date.parse(nextDay(iso)+'T05:00:00Z'), ref=Date.UTC(2000,0,6,18,14), syn=29.530588853*864e5;
+    var ph=((t-ref)/syn)%1; if(ph<0) ph+=1;
+    return (1-Math.cos(2*Math.PI*ph))/2;
+  }
+  function nightCloud(d, iso){                   /* mean cloud cover, 10 PM - 4 AM local */
+    if(!d||!d.hourly||!d.hourly.cloud_cover||!d.hourly.time) return null;
+    var want={}, n2=nextDay(iso), sum=0, n=0;
+    ['22','23'].forEach(function(h){ want[iso+'T'+h+':00']=1; });
+    ['00','01','02','03','04'].forEach(function(h){ want[n2+'T'+h+':00']=1; });
+    d.hourly.time.forEach(function(t,p){
+      var v=d.hourly.cloud_cover[p];
+      if(want[t]&&typeof v==='number'){ sum+=v; n++; }
+    });
+    return n>=5 ? sum/n : null;
+  }
+  function nightKp(iso){                         /* -> [kp, 'forecast'|'outlook'] or null */
+    var u=nextDay(iso), f=AU.f||{}, best=null, core=0;
+    ['00','03','06','09'].forEach(function(h){
+      var v=f[u+'T'+h];
+      if(typeof v==='number'){ if(best===null||v>best) best=v; if(h==='03'||h==='06') core++; }
+    });
+    if(best!==null&&core===2) return [best,'forecast'];
+    var o=(AU.o||{})[u];
+    return typeof o==='number' ? [o,'outlook'] : null;
+  }
+
+  function paintAurora(){
+    if(!AU||!auCards.length) return;
+    var today=WX&&WX.today, hourNow=12;
+    if(WX&&WX.list) for(var q=0;q<WX.list.length;q++){
+      var c=WX.list[q]&&WX.list[q].current;
+      if(c&&c.time){ hourNow=+c.time.slice(11,13); break; }
+    }
+    if(!today){ var n=new Date(); today=n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2); hourNow=n.getHours(); }
+
+    auCards.forEach(function(el){
+      var iso=el.dataset.iso, leg=ITIN[+el.dataset.i], gap=days(today, iso);
+      /* past nights show nothing, except last night while it is still dark */
+      if(gap<-1||(gap===-1&&hourNow>=7)||!leg||!leg.wx){ el.hidden=true; return; }
+      var k=nightKp(iso);
+      if(!k){ el.hidden=true; return; }
+      var kp=Math.round(k[0]), m=magLat(leg.wx.lat, leg.wx.lon);
+      var over =Math.max(0,Math.round((66.5-m)/2.05)),
+          horiz=Math.max(0,Math.round((62.5-m)/2.05));
+      var lv = kp>=over+2 ? 3 : kp>=over ? 2 : kp>=horiz ? 1 : 0;
+
+      var cloud=(gap<=7&&WX&&WX.list)?nightCloud(WX.list[slot[+el.dataset.i]], iso):null;
+      var socked=cloud!==null&&cloud>70;
+      var moon=Math.round(moonLit(iso)*100);
+      var label=(gap<=0&&k[1]==='forecast')?'tonight':k[1];
+      var word=socked?'Clouded out':LEVEL[lv];
+
+      var where = lv===0 ? 'below what '+leg.town+' needs (Kp '+horiz+' for a glow low in the north)'
+                : lv===1 ? 'enough for a glow low on the northern horizon at '+leg.town+' (overhead needs Kp '+over+')'
+                : lv===2 ? 'enough to put it overhead at '+leg.town
+                :          'well past what '+leg.town+' needs — a bright, active night if it holds';
+      el.title = 'Peak Kp '+kp+' overnight, 7 PM–7 AM: '+where+'.'
+        + (cloud!==null ? ' Sky: '+Math.round(cloud)+'% cloud, 10 PM–4 AM'+(socked?' — likely hidden.':'.') : '')
+        + ' Moon '+moon+'% lit'+(moon>=60?' — washes out faint displays.':'.')
+        + (k[1]==='outlook' ? ' NOAA 27-day outlook: a guide, not a promise.' : ' NOAA 3-day forecast.')
+        + ' Tap for NOAA’s live aurora map.';
+      el.className='day-au lv-'+lv+(socked?' is-cloud':'');
+      el.innerHTML=AUI+'<span class="au-n">Aurora</span><span class="dot">&middot;</span><b>'+word+'</b>'
+        + '<span class="dot">&middot;</span><span class="kp">Kp '+kp+'</span><i>'+label+'</i>';
+      el.hidden=false;
+    });
+  }
+
+  function parseKp(json, txt){
+    var f={}, o={};
+    (json||[]).forEach(function(r){
+      if(r&&r.time_tag&&typeof +r.kp==='number'&&!isNaN(+r.kp)) f[String(r.time_tag).slice(0,13)]=+r.kp;
+    });
+    var MON={Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+    String(txt||'').split('\n').forEach(function(line){
+      var m=/^(\d{4}) (\w{3}) (\d{2})\s+\d+\s+\d+\s+(\d+)\s*$/.exec(line);
+      if(m&&MON[m[2]]) o[m[1]+'-'+('0'+MON[m[2]]).slice(-2)+'-'+m[3]]=+m[4];
+    });
+    return {f:f,o:o,at:Date.now()};
+  }
+  if(auCards.length){
+    var SW='https://services.swpc.noaa.gov/';
+    Promise.all([
+      fetch(SW+'products/noaa-planetary-k-index-forecast.json',{mode:'cors'}).then(function(r){ return r.ok?r.json():[]; }).catch(function(){ return []; }),
+      fetch(SW+'text/27-day-outlook.txt',{mode:'cors'}).then(function(r){ return r.ok?r.text():''; }).catch(function(){ return ''; })
+    ]).then(function(got){
+      var a=parseKp(got[0],got[1]);
+      if(!Object.keys(a.f).length&&!Object.keys(a.o).length) throw 0;
+      AU=a; paintAurora();
+      try{ localStorage.setItem(AUCACHE, JSON.stringify(a)); }catch(e){}
+    }).catch(function(){
+      /* no signal: an older forecast for a fixed date is still a forecast. Ten days, then drop it. */
+      try{
+        var a=JSON.parse(localStorage.getItem(AUCACHE)||'null');
+        if(a&&a.at&&Date.now()-a.at<10*864e5){ AU=a; paintAurora(); }
+      }catch(e){}
+    });
+  }
+
   function cached(){
     try{
       var raw=localStorage.getItem(CACHE);
@@ -682,7 +835,7 @@ ITIN.forEach((leg,legIdx)=>{
         +'&longitude='+lons.join(',')
         +'&current=temperature_2m'
         +'&daily=weather_code,temperature_2m_max,temperature_2m_min'
-        +'&hourly=weather_code,is_day,temperature_2m'
+        +'&hourly=weather_code,is_day,temperature_2m,cloud_cover'
         +'&temperature_unit=fahrenheit&timezone=America%2FWinnipeg'
         +'&past_days=14&forecast_days=16';
 
