@@ -769,7 +769,9 @@ ITIN.forEach((leg,legIdx)=>{
       var kp=Math.round(k[0]), m=magLat(leg.wx.lat, leg.wx.lon);
       var over =Math.max(0,Math.round((66.5-m)/2.05)),
           horiz=Math.max(0,Math.round((62.5-m)/2.05));
-      var lv = kp>=over+2 ? 3 : kp>=over ? 2 : kp>=horiz ? 1 : 0;
+      /* Strong needs geometry AND brightness: NOAA calls Kp 0-2 dim and quiet wherever you stand,
+         so it never reads Strong below Kp 3. Only Churchill (over = 0) is affected. */
+      var lv = kp>=Math.max(over+2,3) ? 3 : kp>=over ? 2 : kp>=horiz ? 1 : 0;
 
       var cloud=(gap<=7&&WX&&WX.list)?nightCloud(WX.list[slot[+el.dataset.i]], iso):null;
       var socked=cloud!==null&&cloud>70;
