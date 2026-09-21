@@ -341,7 +341,7 @@
      {
       "t": "4:00 PM",
       "c": "routine",
-      "d": "<s>Get-Acquainted Meeting (GAM #2)</s> — postponed to Sat Sep 19 (rain) <a class='gaml' href='../gams/#gam2'>who&rsquo;s hosting</a>"
+      "d": "Get-Acquainted Meeting (GAM #2) <a class='gaml' href='../gams/#gam2'>who&rsquo;s hosting</a>"
      },
      {
       "t": "5:30 PM",
@@ -403,18 +403,13 @@
      {
       "t": "10:00 AM",
       "c": "arrive",
-      "d": "Travel to Dauphin · park at the Dauphin Recreation Centre, 200 1st Street SE · arrival held to <strong>2:00 PM</strong> (electrical work at the site) <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
+      "d": "Travel to Dauphin · park at the Dauphin Recreation Centre, 200 1st Street SE <span class='tag pbt'>parkers on duty 1:00–3:00 PM</span>",
       "out": true
      },
      {
       "t": "Afternoon",
       "c": "free",
       "d": "Free time to shop or explore Dauphin"
-     },
-     {
-      "t": "4:00 PM",
-      "c": "routine",
-      "d": "Get-Acquainted Meeting (GAM #2) — moved from Friday <a class='gaml' href='../gams/#gam2'>who&rsquo;s hosting</a>"
      },
      {
       "t": "4:00 PM",
@@ -500,7 +495,7 @@
      {
       "t": "1:00 PM",
       "c": "tour",
-      "d": "Group B — Dauphin Rail Museum tour — meet at CN Park, just east of the museum off Main St <span class='tag inc'>incl. gratuity</span> · Group A free",
+      "d": "Group B — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group A free",
       "links": [
        {
         "l": "Dauphin Rail Museum (Facebook)",
@@ -515,7 +510,7 @@
      {
       "t": "2:00 PM",
       "c": "tour",
-      "d": "Group A — Dauphin Rail Museum tour — meet at CN Park, just east of the museum off Main St <span class='tag inc'>incl. gratuity</span> · Group B free",
+      "d": "Group A — Dauphin Rail Museum tour <span class='tag inc'>incl. gratuity</span> · Group B free",
       "links": [
        {
         "l": "Dauphin Rail Museum (Facebook)",
@@ -528,7 +523,7 @@
       }
      },
      {
-      "t": "4:00 PM",
+      "t": "4:30 PM",
       "c": "routine",
       "d": "Get-Acquainted Meeting (GAM #3) <a class='gaml' href='../gams/#gam3'>who&rsquo;s hosting</a>"
      },
