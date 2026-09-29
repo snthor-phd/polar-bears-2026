@@ -72,6 +72,17 @@ search: false
   .card.prep .subs a:hover{background:rgba(54,201,142,.2);}
   .card.prep .subs a::after{content:" \2192";}
   .tag.soon{background:rgba(108,119,135,.14);color:var(--stone);}
+  .card.bears:hover{transform:none;}
+  .card.bears h2{font-size:1.45rem;}
+  .card.bears .stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin:14px 0 12px;padding:14px 0 0;border-top:1px dashed var(--line);}
+  .card.bears .stat{flex:1 1 140px;}
+  .card.bears .stat b{display:block;font-family:var(--serif);font-weight:600;font-size:2.1rem;line-height:1;color:var(--ink);letter-spacing:-.01em;}
+  .card.bears .stat.now b{color:var(--aurora-deep);}
+  .card.bears .stat span{display:block;margin-top:5px;font-size:.8rem;color:var(--stone);line-height:1.3;}
+  .card.bears .src{font-size:.82rem;color:var(--stone);margin:0;}
+  .card.bears .src a{color:var(--aurora-deep);font-weight:600;text-decoration:none;}
+  .card.bears .src a:hover{text-decoration:underline;}
+  .card.bears .src a::after{content:" \2192";}
   .card.feature{grid-column:1 / -1;background:linear-gradient(180deg,#10202f,#16202e);color:#eef3f1;border-color:#21384d;}
   .card.wide{grid-column:1 / -1;}
   .card.feature .kicker{color:var(--aurora);}
@@ -97,6 +108,7 @@ search: false
   .foot b{color:var(--ink-soft);}
 
   @media (max-width:560px){.grid{grid-template-columns:1fr;}.card.feature h2{font-size:1.5rem;}}
+  @media (max-width:560px){.card.bears .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px 14px;}.card.bears .stat b{font-size:1.9rem;}}
   @media (prefers-reduced-motion:reduce){.aurora-band{animation:none;}.card{transition:none;}}
 </style>
 </head>
@@ -131,6 +143,21 @@ search: false
         <p>All 31 days grouped by stop, the driving legs with distances and the dump/fuel/cash reminders, building to the overnight train and the Tundra Buggy at Churchill. Toggle to highlights, or print for the binder.</p>
         <span class="go">Open the itinerary</span>
       </a>
+
+      {%- assign b = site.data.bear_alert -%}
+      <div class="card wide bears" aria-labelledby="bearwatch-h">
+        <span class="tag ready">Live</span>
+        <span class="kicker">Bear Watch · Churchill</span>
+        <h2 id="bearwatch-h">{{ b.week_reports }} polar bear {% if b.week_reports == 1 %}report{% else %}reports{% endif %} in town the week of {{ b.week_of | replace: ", 2026", "" }}</h2>
+        <p>Manitoba Conservation's Polar Bear Alert team logs every bear that turns up in or around Churchill, and moves the persistent ones to the holding facility until the bay freezes. The Town posts their weekly tally; this card picks it up automatically.</p>
+        <div class="stats">
+          <div class="stat now"><b>{{ b.week_reports }}</b><span>bear reports<br>that week</span></div>
+          <div class="stat"><b>{{ b.season_reports }}</b><span>reports so far<br>this season</span></div>
+          <div class="stat"><b>{{ b.pbhf_end }}</b><span>in the holding facility<br>at week's end</span></div>
+          <div class="stat"><b>{{ b.season_handled }}</b><span>bears handled<br>this season</span></div>
+        </div>
+        <p class="src">Report dated {{ b.report_date | date: "%b %-d, %Y" }} · <a href="{{ b.report_url }}" target="_blank" rel="noopener">the one-page report</a> · <a href="{{ b.source_page }}" target="_blank" rel="noopener">all weekly reports, Town of Churchill</a></p>
+      </div>
 
       <div class="card wide prep">
         <span class="tag ready">New</span>

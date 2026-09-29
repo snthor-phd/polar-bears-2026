@@ -1,0 +1,46 @@
+name: Refresh Bear Watch
+
+# Pulls the newest Polar Bear Alert weekly report from the Town of Churchill's stats page
+# and commits the numbers to _data/bear_alert.json, which the hub's Bear Watch card renders
+# from. The town posts a new one-page PDF most Mondays through the season; checking once a
+# day catches it within a day of posting. GitHub Pages rebuilds the site on the commit.
+
+on:
+  schedule:
+    - cron: "17 15 * * *"   # daily, 15:17 UTC = 10:17 AM Central (Churchill)
+  workflow_dispatch:        # "Run workflow" button in the Actions tab, for a manual refresh
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bear-alert
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch the newest weekly report
+        run: |
+          pip install --quiet pypdf
+          python3 _tools/bear-alert/fetch.py
+
+      - name: Commit if the numbers changed
+        run: |
+          if git diff --quiet -- _data/bear_alert.json; then
+            echo "Nothing new."
+            exit 0
+          fi
+          label=$(python3 -c "import json;print(json.load(open('_data/bear_alert.json'))['report_label'])")
+          git config user.name  "bear-watch bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add _data/bear_alert.json
+          git commit -m "Bear Watch: Polar Bear Alert report of $label"
+          git push
